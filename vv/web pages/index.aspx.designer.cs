@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace voicevanguard
+namespace vv.web_pages
 {
 
 

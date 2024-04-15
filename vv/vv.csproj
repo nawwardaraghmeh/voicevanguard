@@ -207,6 +207,7 @@
     <Content Include="styles\homepageStyles.css" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="web pages\index.aspx" />
+    <Content Include="web pages\login.aspx" />
     <Content Include="Web.config" />
     <Content Include="Bundle.config" />
     <Content Include="Site.Mobile.Master" />
@@ -246,6 +247,13 @@
     </Compile>
     <Compile Include="web pages\index.aspx.designer.cs">
       <DependentUpon>index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="web pages\login.aspx.cs">
+      <DependentUpon>login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="web pages\login.aspx.designer.cs">
+      <DependentUpon>login.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
