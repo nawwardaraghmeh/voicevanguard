@@ -5,9 +5,9 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace vv
+namespace vv.web_pages
 {
-    public partial class Contact : Page
+    public partial class index : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
