@@ -5,6 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <link rel="stylesheet" type="text/css" href="../styles/headerfooterStyles.css">
+    <link rel="stylesheet" type="text/css" href="../styles/faqpageStyles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Coustard:wght@400;900&display=swap"
@@ -34,70 +35,66 @@
     </nav>
 
     <form id="form1" runat="server">
-        <div>
+        <div class="faqmain">
+            <div>
+                <h1>Discover VoiceVanguard:  Frequently Asked Questions</h1>
+            </div>
+
+            <br />
+
+            <div class="faq">
+                <div class="faq-item">
+                    <div class="question" onclick="toggleAnswer(this)">
+                        Can I create my own events on VoiceVanguard?
+        <i class="fas fa-chevron-down arrow"></i>
+                    </div>
+                    <div class="answer">
+                        something somthing 
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="question" onclick="toggleAnswer(this)">
+                        Can I delete my VoiceVanguard account?
+        <i class="fas fa-chevron-down arrow"></i>
+                    </div>
+                    <div class="answer">
+                        something somthing 
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="question" onclick="toggleAnswer(this)">
+                        Can I delete my VoiceVanguard account?
+        <i class="fas fa-chevron-down arrow"></i>
+                    </div>
+                    <div class="answer">
+                        something somthing 
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="question" onclick="toggleAnswer(this)">
+                        How does the verification process for uploaded resources work?
+        <i class="fas fa-chevron-down arrow"></i>
+                    </div>
+                    <div class="answer">
+                        something somthing 
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="question" onclick="toggleAnswer(this)">
+                        What does the watermelon symbol mean?
+        <i class="fas fa-chevron-down arrow"></i>
+                    </div>
+                    <div class="answer">
+                        something somthing 
+                    </div>
+                </div>
+            </div>
         </div>
     </form>
 
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
 
     <!-- footer section -->
     <footer class="footer">
@@ -121,5 +118,14 @@
             </p>
         </div>
     </footer>
+
+
+
+    <script>
+        function toggleAnswer(element) {
+            element.nextElementSibling.classList.toggle('answer-show');
+            element.querySelector('.arrow').classList.toggle('rotate');
+        }
+    </script>
 </body>
 </html>

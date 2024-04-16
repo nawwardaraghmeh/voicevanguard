@@ -1,0 +1,56 @@
+﻿#form1 {
+    margin: 100px;
+    font-family: "Coustard", serif;
+    font-size: 14px;
+}
+
+    #form1 i {
+        
+    }
+
+    #form1 h1 {
+        text-align: center;
+    }
+
+.faqmain {
+    text-align: left;
+
+}
+
+
+.faq-item {
+    margin-bottom: 20px;
+}
+
+.question {
+    border: 1px solid #000;
+    border-radius: 20px;
+    padding: 15px;
+    cursor: pointer;
+    position: relative;
+    width: 75%;
+    margin-left: 12%;
+}
+
+.arrow {
+    position: absolute;
+    right: 10px;
+    color: #DE2B2B;
+    transition: transform 0.3s ease;
+}
+
+
+.answer {
+    display: none;
+    padding: 10px;
+    width: 75%;
+    margin-left: 12%;
+}
+
+.rotate {
+    transform: rotate(180deg);
+}
+
+.answer-show {
+    display: block;
+}
