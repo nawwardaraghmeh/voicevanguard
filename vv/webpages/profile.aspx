@@ -11,16 +11,17 @@
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
-    <title>VV FAQs PAGE </title>
+    <title>VV PROFILE PAGE </title>
 </head>
 <body>
+    <!-- header section -->
     <nav class="navbar">
         <div class="navbar-container">
             <div class="navbar-left">
                 <a href="index.aspx" class="nav-item">HOME</a>
                 <a href="evnets.aspx" class="nav-item">EVENTS</a>
                 <a href="community.aspx" class="nav-item">COMUUNITY</a>
-                <a href="faq.aspx" class="nav-item" >FAQs</a>
+                <a href="faq.aspx" class="nav-item">FAQs</a>
             </div>
             <div class="navbar-right">
                 <a href="#" class="nav-item icon"><i class="fa fa-bell" aria-hidden="true"></i></a>
@@ -56,7 +57,7 @@
     <br />
     <br />
     <br />
-    
+
     <br />
     <br />
     <br />
@@ -96,6 +97,7 @@
     <br />
     <br />
 
+    <!-- footer section -->
     <footer class="footer">
         <div class="footer-content">
             <h2>Contact</h2>
@@ -111,8 +113,10 @@
         </div>
 
         <div class="bottom-bar">
-            <p><i class="fa fa-copyright" aria-hidden="true"></i>2024 VoiceVanguard. All rights
-                reserved</p>
+            <p>
+                <i class="fa fa-copyright" aria-hidden="true"></i>2024 VoiceVanguard. All rights
+                reserved
+            </p>
         </div>
     </footer>
 </body>

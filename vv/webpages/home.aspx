@@ -5,23 +5,25 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <link rel="stylesheet" type="text/css" href="../styles/headerfooterStyles.css">
-        <link rel="stylesheet" type="text/css" href="../styles/homepageStyles.css">
+    <link rel="stylesheet" type="text/css" href="../styles/homepageStyles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Coustard:wght@400;900&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
-    <title>VV HOME PAGE </title>
+    <title>VV HOMEPAGE </title>
 </head>
 <body>
+
+    <!-- header section -->
     <nav class="navbar">
         <div class="navbar-container">
             <div class="navbar-left">
                 <a href="home.aspx" class="nav-item current-page">HOME</a>
                 <a href="events.aspx" class="nav-item">EVENTS</a>
                 <a href="community.aspx" class="nav-item">COMUUNITY</a>
-                <a href="faq.aspx" class="nav-item" >FAQs</a>
+                <a href="faq.aspx" class="nav-item">FAQs</a>
             </div>
             <div class="navbar-right">
                 <a href="#" class="nav-item icon"><i class="fa fa-bell" aria-hidden="true"></i></a>
@@ -31,7 +33,8 @@
         </div>
     </nav>
 
-       <form id="form2" runat="server">
+    <!-- main section -->
+    <form id="form2" runat="server">
         <asp:Image ID="Image1" runat="server" Height="524px" ImageUrl="~/resources/images/header.png"
             Width="100%" />
         <asp:Image ID="imgAboutus" CssClass="imgAboutus" runat="server" ImageUrl="~/resources/images/aboutusPic.png" />
@@ -56,34 +59,48 @@
             ForeColor="#656262" Width="500px"></asp:Label>
     </form>
 
-     <br />
- <br />
- <br />
- <br />
- <br />
- <br />
- <br />
- <br />
- <br />
- <br />
- <br />
- <br />
- <br />
- <br />
- <br />
- <br />
- <br />
- <br />
- <br />
- <br />
- <br />
- <br />
- <br />
- <br />
- <br />
- <br />
- <br />
- <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+
+    <!-- footer section -->
 
     <footer class="footer">
         <div class="footer-content">
@@ -100,8 +117,10 @@
         </div>
 
         <div class="bottom-bar">
-            <p><i class="fa fa-copyright" aria-hidden="true"></i>2024 VoiceVanguard. All rights
-                reserved</p>
+            <p>
+                <i class="fa fa-copyright" aria-hidden="true"></i>2024 VoiceVanguard. All rights
+                reserved
+            </p>
         </div>
     </footer>
 </body>
