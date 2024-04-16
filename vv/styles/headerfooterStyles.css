@@ -1,6 +1,7 @@
 ﻿body {
     margin: 0;
     font-family: "Coustard", serif;
+    font-size: 12px;
 }
 
 .navbar {
@@ -51,4 +52,3 @@
 .icon {
     padding: 10px;
 }
-
