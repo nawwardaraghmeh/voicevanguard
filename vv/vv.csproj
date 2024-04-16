@@ -207,6 +207,7 @@
     <Content Include="Site.Master" />
     <Content Include="styles\headerfooterStyles.css" />
     <Content Include="styles\homepageStyles.css" />
+    <Content Include="styles\Login_RegisterStyles.css" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="webpages\community.aspx" />
     <Content Include="webpages\events.aspx" />

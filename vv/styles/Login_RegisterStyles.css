@@ -1,0 +1,19 @@
+﻿/*Login and Registration Styles*/
+
+body {
+    background-image: url("../resources/images/bgSignupLogin.jpg");
+    background-size: 100vw 150vh;
+    background-repeat: no-repeat;
+    background-attachment: local;
+}
+p{
+    display: inline-block;
+}
+div {
+    background-color: white;
+    text-align: center;
+    width: 50%;
+    margin: auto;
+    border: solid;
+}
+
