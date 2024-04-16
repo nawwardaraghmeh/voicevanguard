@@ -52,15 +52,6 @@
                         something somthing 
                     </div>
                 </div>
-                <div class="faq-item">
-                    <div class="question" onclick="toggleAnswer(this)">
-                        Can I delete my VoiceVanguard account?
-        <i class="fas fa-chevron-down arrow"></i>
-                    </div>
-                    <div class="answer">
-                        something somthing 
-                    </div>
-                </div>
 
                 <div class="faq-item">
                     <div class="question" onclick="toggleAnswer(this)">
@@ -74,22 +65,43 @@
 
                 <div class="faq-item">
                     <div class="question" onclick="toggleAnswer(this)">
-                        How does the verification process for uploaded resources work?
-        <i class="fas fa-chevron-down arrow"></i>
+                        Can I delete my VoiceVanguard account?
+        <i class="fas fa-chevron-down arrow"></i>ething somthing 
                     </div>
                     <div class="answer">
                         something somthing 
                     </div>
                 </div>
 
-                <div class="faq-item">
-                    <div class="question" onclick="toggleAnswer(this)">
-                        What does the watermelon symbol mean?
+            </div>
+
+            <div class="faq-item">
+                <div class="question" onclick="toggleAnswer(this)">
+                    How does the verification process for uploaded resources work?
         <i class="fas fa-chevron-down arrow"></i>
-                    </div>
-                    <div class="answer">
-                        something somthing 
-                    </div>
+                </div>
+                <div class="answer">
+                    something somthing 
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="question" onclick="toggleAnswer(this)">
+                    What does the watermelon symbol mean?
+        <i class="fas fa-chevron-down arrow"></i>
+                </div>
+                <div class="answer">
+                    something somthing 
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="question" onclick="toggleAnswer(this)">
+                    What does the watermelon symbol mean?
+        <i class="fas fa-chevron-down arrow"></i>
+                </div>
+                <div class="answer">
+                    something somthing 
                 </div>
             </div>
         </div>
