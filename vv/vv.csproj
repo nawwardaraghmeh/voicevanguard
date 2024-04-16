@@ -146,6 +146,7 @@
     <Content Include="resources\images\aboutusText.png" />
     <Content Include="resources\images\bgSignupLogin.jpg" />
     <Content Include="resources\images\header.png" />
+    <Content Include="resources\images\icon.png" />
     <Content Include="resources\images\logo.png" />
     <Content Include="resources\images\signupBox.png" />
     <Content Include="Scripts\bootstrap.bundle.js" />

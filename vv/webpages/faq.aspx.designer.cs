@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace vv.webpages
+namespace vv.web_pages
 {
 
 
