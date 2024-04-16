@@ -204,15 +204,16 @@
     <Content Include="Scripts\WebForms\WebParts.js" />
     <Content Include="Scripts\WebForms\WebUIValidation.js" />
     <Content Include="Site.Master" />
+    <Content Include="styles\headerfooterStyles.css" />
     <Content Include="styles\homepageStyles.css" />
     <Content Include="ViewSwitcher.ascx" />
-    <Content Include="web pages\community.aspx" />
-    <Content Include="web pages\events.aspx" />
-    <Content Include="web pages\faq.aspx" />
-    <Content Include="web pages\index.aspx" />
-    <Content Include="web pages\login.aspx" />
-    <Content Include="web pages\profile.aspx" />
-    <Content Include="web pages\signup.aspx" />
+    <Content Include="webpages\community.aspx" />
+    <Content Include="webpages\events.aspx" />
+    <Content Include="webpages\faq.aspx" />
+    <Content Include="webpages\index.aspx" />
+    <Content Include="webpages\login.aspx" />
+    <Content Include="webpages\profile.aspx" />
+    <Content Include="webpages\signup.aspx" />
     <Content Include="Web.config" />
     <Content Include="Bundle.config" />
     <Content Include="Site.Mobile.Master" />
@@ -246,53 +247,53 @@
     <Compile Include="ViewSwitcher.ascx.designer.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
     </Compile>
-    <Compile Include="web pages\community.aspx.cs">
+    <Compile Include="webpages\community.aspx.cs">
       <DependentUpon>community.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="web pages\community.aspx.designer.cs">
+    <Compile Include="webpages\community.aspx.designer.cs">
       <DependentUpon>community.aspx</DependentUpon>
     </Compile>
-    <Compile Include="web pages\events.aspx.cs">
+    <Compile Include="webpages\events.aspx.cs">
       <DependentUpon>events.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="web pages\events.aspx.designer.cs">
+    <Compile Include="webpages\events.aspx.designer.cs">
       <DependentUpon>events.aspx</DependentUpon>
     </Compile>
-    <Compile Include="web pages\faq.aspx.cs">
+    <Compile Include="webpages\faq.aspx.cs">
       <DependentUpon>faq.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="web pages\faq.aspx.designer.cs">
+    <Compile Include="webpages\faq.aspx.designer.cs">
       <DependentUpon>faq.aspx</DependentUpon>
     </Compile>
-    <Compile Include="web pages\index.aspx.cs">
+    <Compile Include="webpages\index.aspx.cs">
       <DependentUpon>index.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="web pages\index.aspx.designer.cs">
+    <Compile Include="webpages\index.aspx.designer.cs">
       <DependentUpon>index.aspx</DependentUpon>
     </Compile>
-    <Compile Include="web pages\login.aspx.cs">
+    <Compile Include="webpages\login.aspx.cs">
       <DependentUpon>login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="web pages\login.aspx.designer.cs">
+    <Compile Include="webpages\login.aspx.designer.cs">
       <DependentUpon>login.aspx</DependentUpon>
     </Compile>
-    <Compile Include="web pages\profile.aspx.cs">
+    <Compile Include="webpages\profile.aspx.cs">
       <DependentUpon>profile.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="web pages\profile.aspx.designer.cs">
+    <Compile Include="webpages\profile.aspx.designer.cs">
       <DependentUpon>profile.aspx</DependentUpon>
     </Compile>
-    <Compile Include="web pages\signup.aspx.cs">
+    <Compile Include="webpages\signup.aspx.cs">
       <DependentUpon>signup.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="web pages\signup.aspx.designer.cs">
+    <Compile Include="webpages\signup.aspx.designer.cs">
       <DependentUpon>signup.aspx</DependentUpon>
     </Compile>
   </ItemGroup>

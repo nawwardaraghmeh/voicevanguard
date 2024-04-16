@@ -12,7 +12,7 @@
 
     <title>VV HOMEPAGE</title>
 </head>
-<body style="width:100vw; height:100vh; margin=0">
+<body style="width:100vw; height:100vh; margin:0">
     <form id="form1" runat="server">
         <div>
             <asp:Panel ID="headerPanel" CssClass="headerPanel" runat="server" BackColor="#E5E3E4"
