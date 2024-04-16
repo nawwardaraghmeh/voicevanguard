@@ -19,9 +19,10 @@
             <label>password</label><input type="password" /><br />
             <a href="" id="forgotPasswordLink">Forgot Password?</a><br />
             <input type="submit" value="LOGIN" /><br />
-            <!-- <img src="../resources/images/icon.png" alt="watermelon icon"/>-->
+            
             <p>New to VoiceVanguard?</p> <a href="" id="registerHereLink">Register Here</a>
-
+            <br />
+            <img src="../resources/images/icon.png" alt="watermelon icon"/>
            
 
         </div>
