@@ -1,5 +1,4 @@
-﻿
-/* homepage styles */
+﻿/* panel section styles */
 
 .headerPanel {
     position: relative;
@@ -41,6 +40,8 @@
     top: 23px;
 }
 
+
+/* about us section styles */
 .imgAboutus {
     position: absolute;
     width: 500px;

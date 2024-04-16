@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="index.aspx.cs"  Inherits="vv.web_pages.index" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="index.aspx.cs" Inherits="vv.web_pages.index" %>
 
 <!DOCTYPE html>
 
@@ -12,17 +12,18 @@
 
     <title>VV HOMEPAGE</title>
 </head>
-<body style="width:100vw; height:100vh; margin:0">
+<body style="width: 100vw; height: 100vh; margin: 0">
     <form id="form1" runat="server">
         <div>
+            <!-- panel section -->
             <asp:Panel ID="headerPanel" CssClass="headerPanel" runat="server" BackColor="#E5E3E4"
                 ForeColor="Black" Width="100%" BorderStyle="None">
 
-                <asp:Button ID="mainbtnSignup" CssClass="heroBtn" runat="server" Text="SIGNUP" 
+                <asp:Button ID="mainbtnSignup" CssClass="heroBtn" runat="server" Text="SIGNUP"
                     Font-Bold="True" Width="95px" />
 
-                <asp:Button ID="mainbtnLogin"  CssClass="heroBtn" runat="server" Text="LOGIN" 
-                     Font-Bold="True" Width="95px" />
+                <asp:Button ID="mainbtnLogin" CssClass="heroBtn" runat="server" Text="LOGIN"
+                    Font-Bold="True" Width="95px" />
 
                 <asp:Image ID="imgLogo" CssClass="imgLogo" runat="server" Height="29px" ImageUrl="~/resources/images/logo.png"
                     Width="188px" />
@@ -34,6 +35,8 @@
                 <br />
             </asp:Panel>
         </div>
+
+        <!-- about us section -->
         <asp:Image ID="Image1" runat="server" Height="524px" ImageUrl="~/resources/images/header.png"
             Width="100%" />
         <asp:Image ID="imgAboutus" CssClass="imgAboutus" runat="server" ImageUrl="~/resources/images/aboutusPic.png" />

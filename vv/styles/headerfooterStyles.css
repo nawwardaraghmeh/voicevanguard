@@ -1,10 +1,7 @@
-﻿body {
-    margin: 0;
+﻿/* header section styles */
+.navbar {
     font-family: "Coustard", serif;
     font-size: 12px;
-}
-
-.navbar {
     position: fixed;
     top: 0;
     left: 0;
@@ -45,6 +42,11 @@
         color: black;
     }
 
+.current-page {
+    background-color: #7BCC98;
+    color: black;
+}
+
 .navbar-right {
     display: flex;
 }
@@ -52,3 +54,73 @@
 .icon {
     padding: 10px;
 }
+
+
+/* footer section styles */
+.footer {
+    font-family: "Coustard", serif;
+    background-color: #000;
+    color: #fff;
+    text-align: center;
+    padding-top: 2px;
+    margin-top: 100px;
+}
+
+.footer-content {
+    max-width: 100%;
+    max-height: 20%;
+    margin: 0 auto;
+}
+
+    .footer-content p {
+        font-size: 20px;
+    }
+
+.footer h2 {
+    font-size: 24px;
+    margin-bottom: 5px;
+}
+
+.footer p {
+    margin-bottom: 5px;
+}
+
+.contact-info {
+    color: #fff;
+    text-decoration: none;
+}
+
+.social-icons {
+    margin-top: 10px;
+    margin-bottom: 20px
+}
+
+    .social-icons .icon {
+        color: #fff;
+        margin: 0 10px;
+        text-decoration: none;
+        transition: color 0.3s ease;
+        font-size:20px;
+    }
+
+        .social-icons .icon:hover {
+            color: #F1A7A7;
+        }
+
+
+.bottom-bar {
+    background: #F1A7A7;
+    text-align: center;
+    padding: 10px 0;
+}
+
+    .bottom-bar p {
+        color: black;
+        margin: 0;
+        font-size: 14px;
+        padding: 7px;
+    }
+
+        .bottom-bar p i {
+            margin-right: 4px;
+        }
