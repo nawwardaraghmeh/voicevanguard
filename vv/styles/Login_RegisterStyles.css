@@ -9,7 +9,7 @@ body {
 p{
     display: inline-block;
 }
-#loginDiv {
+div {
     background-color: white;
     text-align: center;
     width: 40%;
@@ -22,19 +22,20 @@ p{
     transform: translate(-50%, -50%);
 }
 
-input[type=text], input[type=password] {
+input[type=text], input[type=password], input[type=email], select {
     border-radius: 20px;
     padding: 5px;
     background-color: rgb(167, 221, 186);
     width:55%;
+    margin: 0px 0px 20px 20px;
 }
 
-    input[type=text]{
+   /* input[type=text]{
         margin:0px 0px 20px 20px;
     }
     input[type=password]{
         margin:0px 0px 0px 20px;
-    }
+    }*/
 
     input[type=submit] {
         border-radius: 20px;
