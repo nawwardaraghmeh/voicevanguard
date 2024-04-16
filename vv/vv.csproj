@@ -211,6 +211,7 @@
     <Content Include="webpages\community.aspx" />
     <Content Include="webpages\events.aspx" />
     <Content Include="webpages\faq.aspx" />
+    <Content Include="webpages\home.aspx" />
     <Content Include="webpages\index.aspx" />
     <Content Include="webpages\login.aspx" />
     <Content Include="webpages\profile.aspx" />
@@ -268,6 +269,13 @@
     </Compile>
     <Compile Include="webpages\faq.aspx.designer.cs">
       <DependentUpon>faq.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="webpages\home.aspx.cs">
+      <DependentUpon>home.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="webpages\home.aspx.designer.cs">
+      <DependentUpon>home.aspx</DependentUpon>
     </Compile>
     <Compile Include="webpages\index.aspx.cs">
       <DependentUpon>index.aspx</DependentUpon>
