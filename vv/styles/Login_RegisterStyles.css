@@ -9,11 +9,84 @@ body {
 p{
     display: inline-block;
 }
-div {
+#loginDiv {
     background-color: white;
     text-align: center;
-    width: 50%;
+    width: 40%;
+    height:60%;
     margin: auto;
-    border: solid;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
 }
+
+input[type=text], input[type=password] {
+    border-radius: 20px;
+    padding: 5px;
+    background-color: rgb(167, 221, 186);
+    width:55%;
+}
+
+    input[type=text]{
+        margin:0px 0px 20px 20px;
+    }
+    input[type=password]{
+        margin:0px 0px 0px 20px;
+    }
+
+    input[type=submit] {
+        border-radius: 20px;
+        margin: 20px;
+        padding: 3px;
+        font-size: 15pt;
+        cursor: pointer;
+        background-color: rgb(241, 167, 167);
+        width: 57%;
+        font-family: "Coustard", serif;
+        margin-left: 145px;
+    }
+
+label, p {
+    font-family: "Coustard", serif;
+    font-Size: 15pt;
+}
+
+h1 {
+    font-family: "Coustard", serif;
+    font-weight: bold;
+    font-size:30pt;
+}
+
+#forgotPasswordLink {
+    font-family: "Coustard", serif;
+    color:gray;
+    font-size:small;
+    margin-left:300px;
+}
+
+#registerHereLink {
+    color: rgb(228, 98, 98);
+    font-size:15pt;
+}
+
+p{
+    margin-left:100px;
+}
+a:hover{
+    text-decoration:underline;
+}
+a:link {
+    text-decoration: none;
+}
+
+/*img {
+    height: 130px;
+    width :130px;
+    transform: rotate(-0.25turn);
+    display:inline;
+    float:left;
+    margin-top:50px;
+}*/
 

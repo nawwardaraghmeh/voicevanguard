@@ -6,16 +6,23 @@
 <head runat="server">
     <title>Login VoiceVanguard</title>
      <link rel="stylesheet" type="text/css" href="../styles/Login_RegisterStyles.css"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Coustard:wght@400;900&display=swap"
+    rel="stylesheet">
 </head>
 <body>
     <form id="form1" runat="server">
-        <div>
-            <h2>Welcome Back</h2>
+        <div id="loginDiv">
+            <h1>Welcome Back</h1>
             <label>username</label><input type="text" /><br />
             <label>password</label><input type="password" /><br />
-            <a href="">Forgot Password?</a><br />
+            <a href="" id="forgotPasswordLink">Forgot Password?</a><br />
             <input type="submit" value="LOGIN" /><br />
-            <p>New to VoiceVanguard?</p><a href="">Register Here</a>
+            <!-- <img src="../resources/images/icon.png" alt="watermelon icon"/>-->
+            <p>New to VoiceVanguard?</p> <a href="" id="registerHereLink">Register Here</a>
+
+           
 
         </div>
     </form>
