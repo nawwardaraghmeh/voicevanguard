@@ -20,7 +20,7 @@
                 <a href="index.aspx" class="nav-item">HOME</a>
                 <a href="evnets.aspx" class="nav-item">EVENTS</a>
                 <a href="community.aspx" class="nav-item">COMUUNITY</a>
-                <a href="faq.aspx" class="nav-item">FAQs</a>
+                <a href="faq.aspx" class="nav-item current-page" >FAQs</a>
             </div>
             <div class="navbar-right">
                 <a href="#" class="nav-item icon"><i class="fa fa-bell" aria-hidden="true"></i></a>
@@ -35,31 +35,84 @@
         </div>
     </form>
 
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
 
     <footer class="footer">
-        <div class="footer-container">
-            <div class="footer-links">
-                <h3>LINKS</h3>
-                <ul>
-                    <li><a href="index.aspx">Home</a></li>
-                    <li><a href="events.aspx">Events</a></li>
-                    <li><a href="community.aspx">Community</a></li>
-                    <li><a href="faq.aspx">FAQs</a></li>
-                </ul>
+        <div class="footer-content">
+            <h2>Contact</h2>
+            <p>
+                <a href="mailto:voicevanguard@gmail.com" class="contact-info">voicevanguard@gmail.com</a>
+            </p>
+            <p>+972 12-345-6789</p>
+            <div class="social-icons">
+                <a href="#" class="icon"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="icon"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="icon"><i class="fab fa-twitter"></i></a>
             </div>
-            <div class="footer-logo">   
-                <img src="../resources/images/icon.png" alt="Logo">
-            </div>
-            <div class="footer-contact">
-                <h3>CONTACT</h3>
-                <p><a href="mailto:voicevanguard@gmail.com">voicevanguard@gmail.com</a></p>
-                <p>123-456-789</p>
-                <div class="social-icons">
-                    <a href="#"><i class="fa fa-facebook-official" aria-hidden="true"></i></a>
-                    <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
-                    <a href="#"><i class="fa fa-twitter-square" aria-hidden="true"></i></a>
-                </div>
-            </div>
+        </div>
+
+        <div class="bottom-bar">
+            <p><i class="fa fa-copyright" aria-hidden="true"></i>2024 VoiceVanguard. All rights
+                reserved</p>
         </div>
     </footer>
 </body>
