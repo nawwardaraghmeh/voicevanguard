@@ -20,10 +20,10 @@
                 ForeColor="Black" Width="100%" BorderStyle="None">
 
                 <asp:Button ID="mainbtnSignup" CssClass="heroBtn" runat="server" Text="SIGNUP"
-                    Font-Bold="True" Width="95px" />
+                    Font-Bold="True" Width="95px" OnClick="mainbtnSignup_Click" />
 
                 <asp:Button ID="mainbtnLogin" CssClass="heroBtn" runat="server" Text="LOGIN"
-                    Font-Bold="True" Width="95px" />
+                    Font-Bold="True" Width="95px" OnClick="mainbtnLogin_Click" />
 
                 <asp:Image ID="imgLogo" CssClass="imgLogo" runat="server" Height="29px" ImageUrl="~/resources/images/logo.png"
                     Width="188px" />

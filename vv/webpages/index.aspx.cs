@@ -13,5 +13,15 @@ namespace vv.web_pages
         {
 
         }
+
+        protected void mainbtnLogin_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/webpages/login.aspx");
+        }
+
+        protected void mainbtnSignup_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/webpages/Registration.aspx");
+        }
     }
 }
