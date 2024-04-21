@@ -5,18 +5,13 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace vv.web_pages
+namespace vv.webpages
 {
-    public partial class events : System.Web.UI.Page
+    public partial class addevent : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
 
-        }
-
-        protected void btnAddEvent_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("~/webpages/addevent.aspx");
         }
     }
 }

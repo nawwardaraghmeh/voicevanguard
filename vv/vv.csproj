@@ -181,6 +181,7 @@
     <Content Include="Content\bootstrap-grid.css.map" />
     <Content Include="styles\eventspageStyles.css" />
     <Content Include="styles\RegistrationStyles.css" />
+    <Content Include="webpages\addevent.aspx" />
     <Content Include="webpages\Registration.aspx" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
@@ -254,6 +255,13 @@
     </Compile>
     <Compile Include="ViewSwitcher.ascx.designer.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="webpages\addevent.aspx.cs">
+      <DependentUpon>addevent.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="webpages\addevent.aspx.designer.cs">
+      <DependentUpon>addevent.aspx</DependentUpon>
     </Compile>
     <Compile Include="webpages\community.aspx.cs">
       <DependentUpon>community.aspx</DependentUpon>
