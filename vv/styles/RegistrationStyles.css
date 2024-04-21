@@ -1,0 +1,65 @@
+﻿body {
+    background-image: url("../resources/images/bgSignupLogin.jpg");
+    background-size: 100vw 150vh;
+    background-repeat: no-repeat;
+    background-attachment: local;
+}
+div {
+    background-color: white;
+    text-align: center;
+    width: 40%;
+    height: 70%;
+    margin: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+input[type=text], input[type=password], input[type=email], select {
+    border-radius: 20px;
+    padding: 5px;
+    background-color: rgb(167, 221, 186);
+    width: 55%;
+    margin: 0px 0px 20px 20px;
+    display: inline-block;
+   
+}
+input[type=submit] {
+    border-radius: 20px;
+    margin: 5px;
+    padding: 3px;
+    font-size: 15pt;
+    cursor: pointer;
+    background-color: rgb(241, 167, 167);
+    width: 30%;
+    font-family: "Coustard", serif;
+    margin-right: 60px;
+}
+label{
+    font-family: "Coustard", serif;
+    font-Size: 14pt;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+a {
+    font-Size: 14pt;
+    text-decoration: none;
+    color: red;
+    font-family: "Coustard", serif;
+}
+p {
+    display: inline-block;
+    font-family: "Coustard", serif;
+    font-Size: 14pt;
+}
+h1 {
+    font-family: "Coustard", serif;
+    font-weight: bold;
+    font-size: 30pt;
+}
+
+
