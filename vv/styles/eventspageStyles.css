@@ -1,0 +1,146 @@
+﻿.events-main {
+    font-family: "Coustard", serif;
+}
+
+
+/* events page top section */
+.events-top {
+    display: flex;
+    padding: 10px;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    align-items: baseline;
+    justify-content: space-between;
+}
+
+#btnAddEvent {
+    font-family: "Coustard", serif;
+    background: #F1A7A7;
+    border-radius: 22px;
+    font-size: 16px;
+    font-weight: 700;
+    width: 150px;
+    height: 40px;
+    border-style: none;
+    cursor: pointer;
+    margin-left: 100px;
+}
+
+.search-container {
+    text-align: left;
+    margin-top: 50px;
+    height: 40px;
+    width: 450px;
+    margin-right: 100px;
+    float: right;
+}
+
+.search-box {
+    align-items: center;
+    background-color: #F1A7A7;
+    border-radius: 22px;
+    padding: 5px 10px;
+}
+
+    .search-box input[type="text"] {
+        border-style: none;
+        border-color: inherit;
+        border-width: medium;
+        padding: 10px;
+        background: #F1A7A7;
+        outline: none;
+        width: 350px;
+    }
+
+    .search-box i {
+        margin-left: 10px;
+        color: black;
+    }
+
+
+
+/* events page middle section */
+
+h1 {
+    font-weight: 800;
+    margin-left: 100px;
+}
+
+.seemore {
+    color: #545454;
+    margin-left: 110px;
+    text-decoration: none;
+}
+
+.card-container {
+    display: flex;
+    text-align: center;
+    margin-left: 100px;
+    margin-right: 100px;
+    width: 85%;
+    justify-content: space-between;
+}
+
+.card {
+    flex-basis: 31%;
+    background-color: #A7DDBA;
+    border-radius: 22px;
+    overflow: hidden;
+    position: relative;
+    text-align: center;
+    border-radius: 10px;
+    position: relative;
+    margin-bottom: 20px;
+}
+
+    .card img {
+        width: 95%;
+        height: auto;
+        margin: 10px;
+        border-radius: 22px;
+    }
+
+.content {
+    padding: 10px;
+    padding-bottom: 35px;
+}
+
+.btnLearnmore {
+    color: black;
+    background: #E46262;
+    border-radius: 22px;
+    text-align: center;
+    border-style: none;
+    opacity: 0;
+    width: 50%;
+    height: 30px;
+    margin: auto;
+    cursor: pointer;
+    margin-top: 15px;
+}
+
+.card:hover {
+    box-shadow: 5px 5px 4px #E46262;
+}
+
+    .card:hover .btnLearnmore {
+        opacity: 1;
+    }
+
+
+.details {
+    display: flex;
+    align-items: center;
+    margin: 15px;
+    justify-content: space-around;
+}
+
+.date, .time {
+    display: flex;
+    align-items: center;
+}
+
+    .date i, .time i {
+        margin-right: 5px;
+        margin-left: 10px; /* Add margin to separate the icon and text */
+    }
