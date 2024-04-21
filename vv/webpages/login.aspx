@@ -20,7 +20,7 @@
             <a href="" id="forgotPasswordLink">Forgot Password?</a><br />
             <input type="submit" value="LOGIN" /><br />
             
-            <p>New to VoiceVanguard?</p> <a href="" id="registerHereLink">Register Here</a>
+            <p>New to VoiceVanguard?</p> <a href="Registration.aspx" id="registerHereLink">Register Here</a>
             <br />
             <img src="../resources/images/icon.png" alt="watermelon icon"/>
            
