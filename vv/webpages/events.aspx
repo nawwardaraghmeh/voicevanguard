@@ -37,11 +37,11 @@
 
     <form id="form1" class="events-main" runat="server">
         <div class="events-top">
-
-            <div class="search-container">
-                </div>
-            <asp:Button ID="btnAddEvent" runat="server" Text="ADD EVENT" 
+            <asp:Button ID="btnAddEvent" runat="server" Text="ADD EVENT"
                 OnClick="btnAddEvent_Click" />
+            <div class="search-container">
+
+
                 <form action="/search" method="get">
                     <div class="search-box">
                         <i class="fas fa-search"></i>
@@ -50,6 +50,7 @@
                 </form>
             </div>
         </div>
+
 
         <!-- recommended events section -->
         <h1>Recommended for you</h1>
