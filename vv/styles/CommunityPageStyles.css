@@ -1,0 +1,53 @@
+﻿#heroDiv {
+    text-align: center;
+}
+input[type=button], select {
+    border-radius: 15px;
+    background-color: lightgray;
+    padding: 10px;
+    margin: 3px;
+    font-family: "Coustard", serif;
+    border:none;
+}
+
+.buttons{
+    margin:20px;
+}
+
+#createPostbtn {
+    background-color: rgb(241, 167, 167);
+    margin: 3px;
+    padding:10px;
+    border-radius: 15px;
+    width: 35%;
+    font-family: "Coustard", serif;
+    border:none;
+}
+
+#SecondDiv {
+    background-color: rgb(238, 230, 230);
+    border-radius: 15px;
+    width: 65%;
+    margin: auto;
+    top: 60%;
+    left: 50%;
+    text-align:center;
+   
+}
+
+.post {
+    background-color: rgb(167, 221, 186);
+    border-radius:15px;
+    padding:2px;
+    width:40%;
+    margin:10px;
+}
+.poster, .time{
+    display:inline-block;
+}
+.poster{
+    text-align:left;
+}
+.time{
+    text-align:right;
+}

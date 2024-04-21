@@ -5,6 +5,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <link rel="stylesheet" type="text/css" href="../styles/headerfooterStyles.css">
+    <link rel="stylesheet" type="text/css" href="../styles/CommunityPageStyles.css">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Coustard:wght@400;900&display=swap"
@@ -31,33 +33,59 @@
             </div>
         </div>
     </nav>
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
 
-    <form id="form1" runat="server">
-        <div>
+
+
+        <div id="heroDiv">
+            <div class="buttons">
+            <select>
+                <option>Topic</option>
+                <option>Women's Rights</option>
+                <option>Environment</option>
+                <option>Racial Issues</option>
+                <option>Animal Rights</option>
+                <option>Mental Health</option>
+            </select>
+            <input type="button" value="Most Popular" />
+            <input type="button" value="Recent Posts" />
+            <input type="button" value="Trending" />
+            <input id="createPostbtn" type="button" value="Join the community, Ignite the Action" />
+            </div>
+            <div id="SecondDiv">
+                <div class="post">
+                    <p class="poster">By: Andrew Matt</p><p class="time">2d ago</p><br />
+                    <h4>Is this Organization Legitimate?</h4>
+                    <p class="postContent">I've come across an organization that claims to support a cause close to my heart,
+                        but I want to ensure its legitimacy. 
+                        Has anyone had experience with “EarthGuardians”?
+                        I heard some bad rumors about it recently, and I ... Read More</p><br />
+                    <p class="num_of_comments">25 comments</p>
+                </div>
+                <div class="post">
+                    <p class="poster">By: Andrew Matt</p><p class="time">2d ago</p><br />
+                    <h4>Is this Organization Legitimate?</h4>
+                    <p class="postContent">I've come across an organization that claims to support a cause close to my heart,
+                        but I want to ensure its legitimacy. 
+                        Has anyone had experience with “EarthGuardians”?
+                        I heard some bad rumors about it recently, and I ... Read More</p><br />
+                    <p class="num_of_comments">25 comments</p>
+                </div>
+                <div class="post">
+                    <p class="poster">By: Andrew Matt</p><p class="time">2d ago</p><br />
+                    <h4>Is this Organization Legitimate?</h4>
+                    <p class="postContent">I've come across an organization that claims to support a cause close to my heart,
+                        but I want to ensure its legitimacy. 
+                        Has anyone had experience with “EarthGuardians”?
+                        I heard some bad rumors about it recently, and I ... Read More</p><br />
+                    <p class="num_of_comments">25 comments</p>
+                </div>
+            </div>
         </div>
-    </form>
-
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
 
     <br />
     <br />
