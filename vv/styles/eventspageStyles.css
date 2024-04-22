@@ -91,7 +91,6 @@ h1 {
     position: relative;
     text-align: center;
     border-radius: 10px;
-    position: relative;
     margin-bottom: 20px;
 }
 
@@ -152,8 +151,78 @@ h1 {
 /* add event page styles */
 
 .form-container {
-    margin: auto;
-    background-color: transparent;
-    border-radius: 22px;
-    border: 2px solid black;
+    width: 50%;
+    margin: 50px auto;
+    background-color: #fff;
+    border: 2px solid #000;
+    padding: 20px;
+    font-family: "Coustard", serif;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
 }
+
+.form-field {
+    margin-bottom: 20px;
+}
+
+label {
+    font-weight: bold;
+}
+
+input[type="text"],
+select {
+    padding: 10px;
+    border: 1px solid #E46262;
+    border-radius: 22px;
+    margin: 5px;
+    height: 21px;
+    width: 85%;
+}
+
+input[type="radio"] {
+    display: inline-block;
+    border: 1px solid #E46262;
+    border-radius: 50%;
+    margin-right: 5px;
+    position: relative;
+    cursor: pointer;
+}
+
+.radio-column {
+    display: flex;
+    flex-direction: row;
+}
+
+.addlinks {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-items: baseline;
+    justify-content: space-between;
+}
+
+.add-description,
+.add-picture,
+.add-room {
+    color: #DE2B2B;
+    cursor: pointer;
+}
+
+.add-picture {
+    float: right;
+}
+
+button {
+    background-color: #F1A7A7;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 22px;
+    cursor: pointer;
+}
+
+    button:hover {
+        background-color: #E46262;
+    }
