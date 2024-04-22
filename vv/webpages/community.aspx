@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="community.aspx.cs" Inherits="vv.web_pages.faq" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="community.aspx.cs" Inherits="vv.web_pages.community" %>
 
 <!DOCTYPE html>
 

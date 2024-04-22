@@ -16,7 +16,7 @@ namespace vv.web_pages
 
         protected void btnAddEvent_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/webpages/addevent.aspx");
+            Response.Redirect("~/webpages/login.aspx");
         }
     }
 }

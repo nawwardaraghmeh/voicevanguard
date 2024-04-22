@@ -11,7 +11,7 @@ namespace vv.web_pages
 {
 
 
-    public partial class faq
+    public partial class community
     {
     }
 }
