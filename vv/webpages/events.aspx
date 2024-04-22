@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="faq.aspx.cs" Inherits="vv.web_pages.faq" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="events.aspx.cs" Inherits="vv.web_pages.events" %>
 
 <!DOCTYPE html>
 
@@ -37,9 +37,11 @@
 
     <form id="form1" class="events-main" runat="server">
         <div class="events-top">
-            <button id="btnAddEvent">ADD EVENT</button>
-
+            <asp:Button ID="btnAddEvent" runat="server" Text="ADD EVENT"
+                OnClick="btnAddEvent_Click" />
             <div class="search-container">
+
+
                 <form action="/search" method="get">
                     <div class="search-box">
                         <i class="fas fa-search"></i>
@@ -48,6 +50,7 @@
                 </form>
             </div>
         </div>
+
 
         <!-- recommended events section -->
         <h1>Recommended for you</h1>

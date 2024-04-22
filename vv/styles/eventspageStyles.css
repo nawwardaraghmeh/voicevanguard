@@ -5,12 +5,15 @@
 
 /* events page top section */
 .events-top {
+    width: 85%;
     display: flex;
     padding: 10px;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     flex-direction: row;
     align-items: baseline;
     justify-content: space-between;
+    margin-left: 100px;
+    margin-top: 50px;
 }
 
 #btnAddEvent {
@@ -23,19 +26,18 @@
     height: 40px;
     border-style: none;
     cursor: pointer;
-    margin-left: 100px;
 }
 
 .search-container {
-    text-align: left;
-    margin-top: 50px;
+    display: flex;
+    align-items: center;
     height: 40px;
     width: 450px;
-    margin-right: 100px;
-    float: right;
+    text-align: left;
 }
 
 .search-box {
+    display: flex;
     align-items: center;
     background-color: #F1A7A7;
     border-radius: 22px;
@@ -53,7 +55,7 @@
     }
 
     .search-box i {
-        margin-left: 10px;
+        margin-right: 10px;
         color: black;
     }
 
@@ -142,5 +144,7 @@ h1 {
 
     .date i, .time i {
         margin-right: 5px;
-        margin-left: 10px; /* Add margin to separate the icon and text */
+        margin-left: 10px; 
     }
+
+
