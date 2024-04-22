@@ -148,3 +148,12 @@ h1 {
     }
 
 
+
+/* add event page styles */
+
+.form-container {
+    margin: auto;
+    background-color: transparent;
+    border-radius: 22px;
+    border: 2px solid black;
+}
