@@ -33,52 +33,52 @@
                         <div class="add-picture">+ Add Picture</div>
                     </div>
                 </div>
-                <div class="form-field dateTimeField">
-                    <div class="column">
+
+                <div class="form-field">
                         <label for="date">DATE</label>
-                        <input type="text" id="date" name="date" readonly required>
-                    </div>
-                    <div class="column">
+                        <input type="text" id="date" name="date" required>
+                 
                         <label for="time">TIME</label>
                         <div class="time-input">
-                            <input type="text" id="hour" name="hour" placeholder="HH" required>
-                            <input type="text" id="minute" name="minute" placeholder="MM" required>
+                            <input type="text" id="hour" name="hour" placeholder="HOUR" required>
+                            <input type="text" id="minute" name="minute" placeholder="MINUTE" required>
                             <select name="ampm" id="ampm">
                                 <option value="AM" selected>AM</option>
                                 <option value="PM">PM</option>
                             </select>
                         </div>
-                    </div>
-                    <div class="column">
+                 
                         <label for="duration">DURATION</label>
                         <input type="text" id="duration-hour" name="duration-hour" placeholder="H" required>
                         <span>H</span>
                         <input type="text" id="duration-minute" name="duration-minute" placeholder="M" required>
-                        <span>M</span>
-                    </div>
+                        <span>M</span>   
                 </div>
+
                 <div class="form-field">
-                    <div class="radio-column">
                         <input type="radio" id="physical-event" name="event-type" value="physical" checked>
                         <label for="physical-event">Physical Event</label>
                         <input type="text" id="location" name="location" placeholder="Location" required>
                         <div class="add-room">+ Add Room</div>
-                    </div>
-                    <div class="radio-column">
+                    
+
                         <input type="radio" id="virtual-event" name="event-type" value="virtual">
                         <label for="virtual-event">Virtual Event</label>
                         <input type="text" id="link" name="link" placeholder="Link">
-                    </div>
                 </div>
+
                 <div class="form-field">
                     <label for="tags">ADD TAGS</label>
                     <select name="tags" id="tags" multiple required>
                         <option value="tag1">Tag 1</option>
                         <option value="tag2">Tag 2</option>
                         <option value="tag3">Tag 3</option>
-                        <!-- Add more options as needed -->
+                        <option value="tag3">Tag 3</option>
+                        <option value="tag3">Tag 3</option>
+                        <option value="tag3">Tag 3</option>
                     </select>
                 </div>
+
                 <div class="form-field">
                     <input type="radio" id="co-organizers" name="co-organizers" value="yes">
                     <label for="co-organizers">Any Co-Organizers?</label>

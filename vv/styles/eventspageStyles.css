@@ -143,7 +143,7 @@ h1 {
 
     .date i, .time i {
         margin-right: 5px;
-        margin-left: 10px; 
+        margin-left: 10px;
     }
 
 
@@ -152,14 +152,12 @@ h1 {
 
 .form-container {
     width: 50%;
-    margin: 50px auto;
+    margin: 100px auto;
     background-color: #fff;
     border: 2px solid #000;
     padding: 20px;
+    border-radius: 22px;
     font-family: "Coustard", serif;
-    padding: 20px;
-    display: flex;
-    justify-content: space-between;
 }
 
 .form-field {
@@ -167,62 +165,14 @@ h1 {
 }
 
 label {
+    margin-bottom: 5px;
     font-weight: bold;
 }
 
-input[type="text"],
-select {
+input[type="text"], select {
     padding: 10px;
     border: 1px solid #E46262;
     border-radius: 22px;
-    margin: 5px;
-    height: 21px;
-    width: 85%;
+    margin: auto;
+    width: calc(90% - 10px); 
 }
-
-input[type="radio"] {
-    display: inline-block;
-    border: 1px solid #E46262;
-    border-radius: 50%;
-    margin-right: 5px;
-    position: relative;
-    cursor: pointer;
-}
-
-.radio-column {
-    display: flex;
-    flex-direction: row;
-}
-
-.addlinks {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    align-items: baseline;
-    justify-content: space-between;
-}
-
-.add-description,
-.add-picture,
-.add-room {
-    color: #DE2B2B;
-    cursor: pointer;
-}
-
-.add-picture {
-    float: right;
-}
-
-button {
-    background-color: #F1A7A7;
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    font-size: 16px;
-    border-radius: 22px;
-    cursor: pointer;
-}
-
-    button:hover {
-        background-color: #E46262;
-    }
