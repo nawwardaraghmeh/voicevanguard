@@ -152,7 +152,7 @@ h1 {
 
 .form-container {
     width: 50%;
-    margin: 100px auto;
+    margin: 30px auto;
     background-color: #fff;
     border: 2px solid #000;
     padding: 20px;
@@ -161,7 +161,8 @@ h1 {
 }
 
 .form-field {
-    margin-bottom: 20px;
+    margin-bottom: 10px;
+    padding: 10px;
 }
 
 label {
@@ -173,6 +174,60 @@ input[type="text"], select {
     padding: 10px;
     border: 1px solid #E46262;
     border-radius: 22px;
-    margin: auto;
-    width: calc(90% - 10px); 
+    width: calc(100% - 10px); 
+    margin: 10px 0;
 }
+
+select {
+    margin-bottom: 10px;
+}
+
+input[type="radio"] {
+    margin: 20px;
+}
+
+.addlinks {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+} 
+
+.add-description,
+.add-picture,
+.add-room {
+    color: #DE2B2B;
+    cursor: pointer;
+    margin-bottom: 5px;
+}
+
+.add-picture {
+    float: right;
+}
+
+#hour, #minute, #ampm {
+    width: 30%;
+}
+
+#duration-hour, #duration-minute {
+    width: 40%;
+}
+
+.time-input, .duration-input {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+button {
+    background-color: #F1A7A7;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 22px;
+    cursor: pointer;
+}
+
+    button:hover {
+        background-color: #E46262;
+    }
