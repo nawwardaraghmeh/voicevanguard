@@ -12,6 +12,7 @@ input[type=button], select {
 
 .buttons{
     margin:20px;
+    width:65%;
 }
 
 #createPostbtn {
@@ -37,11 +38,12 @@ input[type=button], select {
     background-color: rgb(167, 221, 186);
     border-radius:15px;
     padding:2px;
-    width:40%;
-    margin:10px;
+    width:95%;
+    margin:20px;
 }
-.poster, .time{
-    display:inline-block;
+.poster, .time {
+    display: inline-block;
+    color: rgb(84, 84, 84);
 }
 .poster{
     text-align:left;
@@ -49,3 +51,8 @@ input[type=button], select {
 .time{
     text-align:right;
 }
+
+.num_of_comments {
+    color: rgb(84, 84, 84);
+}
+
