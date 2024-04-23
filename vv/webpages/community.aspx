@@ -45,16 +45,17 @@
             <div class="buttons">
             <select>
                 <option>Topic</option>
-                <option>Women's Rights</option>
-                <option>Environment</option>
-                <option>Racial Issues</option>
-                <option>Animal Rights</option>
-                <option>Mental Health</option>
+                <option value="women's-Rights">Women's Rights</option>
+                <option value="Environment">Environment</option>
+                <option value="Racial-Issues">Racial Issues</option>
+                <option value="Animal-Rights">Animal Rights</option>
+                <option value="Mental-Health">Mental Health</option>
             </select>
             <input type="button" value="Most Popular" />
             <input type="button" value="Recent Posts" />
             <input type="button" value="Trending" />
-            <input id="createPostbtn" type="button" value="Join the community, Ignite the Action" />
+           <!-- <input  type="button" value="Join the community, Ignite the Action"/>-->
+            <button id="createPostbtn">Join the community, Ignite the Action<i class="fa-light fa-pen-to-square"></i></button>
             </div>
             <div id="SecondDiv">
                 <div class="post">
@@ -70,13 +71,13 @@
                     <p class="poster">By: Isabella Lopez</p><p class="time">3h ago</p><br />
                     <h4>Equality Rally Pictures</h4>
                     <p class="postContent">Captured these moments at today's equality rally. The power of unity! 
-💙✊ #SocialJustice #EqualityForAll</p><br />
+                                            💙✊ #SocialJustice #EqualityForAll</p><br />
                     <p class="num_of_comments">17 comments</p>
                 </div>
                 <div class="post">
                     <p class="poster">By: Aiden Kim </p><p class="time">2w ago</p><br />
                     <h4>Sustainable Living Article</h4>
-                    <p class="postContent">Stumbled upon an inspiring article about sustainable living. Dive into the details and let's discuss its impact on our community! https://www.example.com/sustainable-living</p><br />
+                    <p class="postContent">Stumbled upon an inspiring article about sustainable living. Dive into the details and let's discuss its impact on our community!                                             https://www.example.com/sustainable-living</p><br />
                     <p class="num_of_comments">49 comments</p>
                 </div>
             </div>
