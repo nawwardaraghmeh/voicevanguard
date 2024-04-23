@@ -35,36 +35,66 @@
                 </div>
 
                 <div class="form-field">
-                        <label for="date">DATE</label>
-                        <input type="text" id="date" name="date" required>
-                 
-                        <label for="time">TIME</label>
-                        <div class="time-input">
-                            <input type="text" id="hour" name="hour" placeholder="HOUR" required>
-                            <input type="text" id="minute" name="minute" placeholder="MINUTE" required>
-                            <select name="ampm" id="ampm">
-                                <option value="AM" selected>AM</option>
-                                <option value="PM">PM</option>
-                            </select>
-                        </div>
-                 
-                        <label for="duration">DURATION</label>
+                    <label for="date">DATE</label>
+                    <input type="text" id="date" name="date" required>
+
+                    <label for="time">TIME</label>
+                    <div class="time-input">
+                        <select name="hour" id="hour">
+                            <option value="one" selected>01</option>
+                            <option value="two">02</option>
+                            <option value="three">03</option>
+                            <option value="four">04</option>
+                            <option value="five">05</option>
+                            <option value="six">06</option>
+                            <option value="seven">07</option>
+                            <option value="eight">08</option>
+                            <option value="nine">09</option>
+                            <option value="ten">10</option>
+                            <option value="eleven">11</option>
+                            <option value="twelve">12</option>
+                        </select>
+
+
+                        <select name="minute" id="minute">
+                            <option value="zero-mins" selected>00</option>
+                            <option value="five-mins">05</option>
+                            <option value="ten-mins">10</option>
+                            <option value="fifteen-mins">15</option>
+                            <option value="twenty-mins">20</option>
+                            <option value="twentyfive-mins">25</option>
+                            <option value="thirty-mins">30</option>
+                            <option value="thirtyfive-mins">35</option>
+                            <option value="forty-mins">40</option>
+                            <option value="fortyfive-mins">45</option>
+                            <option value="fifty-mins">50</option>
+                            <option value="fiftyfive-mins">55</option>
+                        </select>
+
+
+                        <select name="ampm" id="ampm">
+                            <option value="AM" selected>AM</option>
+                            <option value="PM">PM</option>
+                        </select>
+                    </div>
+
+                    <label for="duration">DURATION</label>
+                    <div class="duration-input">
                         <input type="text" id="duration-hour" name="duration-hour" placeholder="H" required>
-                        <span>H</span>
                         <input type="text" id="duration-minute" name="duration-minute" placeholder="M" required>
-                        <span>M</span>   
+                    </div>
                 </div>
 
                 <div class="form-field">
-                        <input type="radio" id="physical-event" name="event-type" value="physical" checked>
-                        <label for="physical-event">Physical Event</label>
-                        <input type="text" id="location" name="location" placeholder="Location" required>
-                        <div class="add-room">+ Add Room</div>
-                    
+                    <input type="radio" id="physical-event" name="event-type" value="physical" checked>
+                    <label for="physical-event">Physical Event</label>
+                    <input type="text" id="location" name="location" placeholder="Location" required>
+                    <div class="add-room">+ Add Room</div>
 
-                        <input type="radio" id="virtual-event" name="event-type" value="virtual">
-                        <label for="virtual-event">Virtual Event</label>
-                        <input type="text" id="link" name="link" placeholder="Link">
+
+                    <input type="radio" id="virtual-event" name="event-type" value="virtual">
+                    <label for="virtual-event">Virtual Event</label>
+                    <input type="text" id="link" name="link" placeholder="Link">
                 </div>
 
                 <div class="form-field">
