@@ -187,6 +187,7 @@
     <Content Include="webpages\addevent.aspx" />
     <Content Include="webpages\Registration.aspx" />
     <Content Include="webpages\addpost.aspx" />
+    <Content Include="webpages\viewevent.aspx" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -329,6 +330,13 @@
     </Compile>
     <Compile Include="webpages\addpost.aspx.designer.cs">
       <DependentUpon>addpost.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="webpages\viewevent.aspx.cs">
+      <DependentUpon>viewevent.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="webpages\viewevent.aspx.designer.cs">
+      <DependentUpon>viewevent.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

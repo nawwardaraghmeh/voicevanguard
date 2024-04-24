@@ -86,42 +86,6 @@
         </form>
     <br />
     <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
 
     <!-- footer section -->
     <footer class="footer">
@@ -136,10 +100,7 @@
                 <a href="#" class="icon"><i class="fab fa-instagram"></i></a>
                 <a href="#" class="icon"><i class="fab fa-twitter"></i></a>
             </div>
-        </div>
-
-        <div class="bottom-bar">
-            <p>
+            <p style="font-size: 12px; padding-bottom: 10px;">
                 <i class="fa fa-copyright" aria-hidden="true"></i>2024 VoiceVanguard. All rights
                 reserved
             </p>
