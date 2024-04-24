@@ -209,7 +209,7 @@ input[type="radio"] {
 }
 
 #duration-hour, #duration-minute {
-    width: 40%;
+    width: 48%;
 }
 
 .time-input, .duration-input {
@@ -231,3 +231,15 @@ button {
     button:hover {
         background-color: #E46262;
     }
+
+
+/* view event page styles */
+
+form#vieweventform {
+    background-color: #A7DDBA;
+    border-style: none;
+    border-radius: 5px;
+    width: 75%;
+    margin: 0 auto;
+}
+

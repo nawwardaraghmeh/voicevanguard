@@ -13,5 +13,16 @@ namespace vv.webpages
         {
 
         }
+
+        protected void virtualEvent_CheckedChanged(object sender, EventArgs e)
+        {
+            location.Enabled = physicalEvent.Checked;
+            addRoomLink.Enabled = physicalEvent.Checked;
+        }
+
+        protected void physicalEvent_CheckedChanged(object sender, EventArgs e)
+        {
+            link.Enabled = virtualEvent.Checked;
+        }
     }
 }
