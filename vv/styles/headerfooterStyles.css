@@ -110,21 +110,3 @@
         .social-icons .icon:hover {
             color: #F1A7A7;
         }
-
-
-.bottom-bar {
-    background: #F1A7A7;
-    text-align: center;
-    padding: 10px 0;
-}
-
-    .bottom-bar p {
-        color: black;
-        margin: 0;
-        font-size: 14px;
-        padding: 7px;
-    }
-
-        .bottom-bar p i {
-            margin-right: 4px;
-        }
