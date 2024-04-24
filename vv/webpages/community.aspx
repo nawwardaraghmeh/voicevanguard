@@ -40,7 +40,7 @@
     <br />
 
 
-
+    <form runat="server">
         <div id="heroDiv">
             <div class="buttons">
             <select>
@@ -54,8 +54,8 @@
             <input type="button" value="Most Popular" />
             <input type="button" value="Recent Posts" />
             <input type="button" value="Trending" />
-           <!-- <input  type="button" value="Join the community, Ignite the Action"/>-->
-            <button id="createPostbtn">Join the community, Ignite the Action<i class="fa-light fa-pen-to-square"></i></button>
+           
+            <asp:Button runat="server" id="createPostbtn" Text="Join the community, Ignite the Action" OnClick="createPostbtn_Click"/>
             </div>
             <div id="SecondDiv">
                 <div class="post">
@@ -77,12 +77,13 @@
                 <div class="post">
                     <p class="poster">By: Aiden Kim </p><p class="time">2w ago</p><br />
                     <h4>Sustainable Living Article</h4>
-                    <p class="postContent">Stumbled upon an inspiring article about sustainable living. Dive into the details and let's discuss its impact on our community!                                             https://www.example.com/sustainable-living</p><br />
+                    <p class="postContent">Stumbled upon an inspiring article about sustainable living. Dive into the details and let's discuss its impact on our community!
+                                            https://www.example.com/sustainable-living</p><br />
                     <p class="num_of_comments">49 comments</p>
                 </div>
             </div>
         </div>
-
+        </form>
     <br />
     <br />
     <br />

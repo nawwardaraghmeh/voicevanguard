@@ -1,0 +1,41 @@
+﻿#heroDiv{
+    margin:auto;
+    border:solid;
+    border-radius:2px;
+    width:50%;
+    padding:3px;
+}
+label {
+    font-family: "Coustard", serif;
+}
+#titleBox {
+    border-radius: 15px;
+    margin: 10px;
+    padding: 5px;
+    width: 95%;
+    box-shadow: 1px 2px 1px #E46262;
+    border-color: #E46262;
+}
+
+select {
+    font-family: "Coustard", serif;
+    color: #E46262;
+    border:none;
+}
+
+#contentBox{
+    padding:50px 5px 50px 5px;
+    width:95%;
+    border-radius:20px;
+    margin:10px; 
+}
+
+#postBtn {
+    border: none;
+    background-color: #E46262;
+    font-family: "Coustard", serif;
+    font-size:20pt;
+    padding:20px;
+    margin:10px;
+    border-radius:20px;
+}

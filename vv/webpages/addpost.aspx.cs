@@ -5,18 +5,13 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace vv.web_pages
+namespace vv.webpages
 {
-    public partial class community : System.Web.UI.Page
+    public partial class WebForm2 : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
 
-        }
-
-        protected void createPostbtn_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("~/webpages/addpost.aspx");
         }
     }
 }
