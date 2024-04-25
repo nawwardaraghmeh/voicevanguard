@@ -51,6 +51,15 @@ namespace vv.webpages
         protected global::System.Web.UI.WebControls.Label lblEventOrganizer;
 
         /// <summary>
+        /// eventOrganizerProfile control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink eventOrganizerProfile;
+
+        /// <summary>
         /// imgPerson1 control.
         /// </summary>
         /// <remarks>
