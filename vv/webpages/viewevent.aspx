@@ -16,15 +16,18 @@
 <body>
     <form ID="vieweventform" runat="server">
         <div>
-            <asp:Image ID="eventMainImg" runat="server" />
+            <asp:Image ID="eventMainImg" runat="server" 
+                ImageUrl="~/resources/images/rallypic.jpg" />
+
             <div class="labelsEventMain">
-                <asp:Label ID="lblEventTitle" runat="server" Text="Label"></asp:Label>
-                <asp:Label ID="lblEventOrganizer" runat="server" Text="Label"></asp:Label>
+                <asp:Label ID="lblEventTitle" runat="server" Text="CLIMATE ACTION RALLY"></asp:Label>
+                <asp:Label ID="lblEventOrganizer" runat="server" Text="Organized by: Mia Singh "></asp:Label>
             </div>
 
-            <div>
-                <asp:Image ID="imgPerson1" runat="server" />
-                <asp:Image ID="imgPerson2" runat="server" />
+            <div class="profileimgs">
+                <asp:Image ID="imgPerson1" runat="server" 
+                    ImageUrl="~/resources/images/person1.jpg" />
+                <asp:Image ID="imgPerson2" runat="server" ImageUrl="~/resources/images/person2.jpg" />
             </div>
 
             <asp:Label ID="lblEventDesc" runat="server" Text="Label"></asp:Label>
