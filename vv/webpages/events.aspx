@@ -74,6 +74,7 @@
                             <span>10:00 AM</span>
                         </div>
                     </div>
+                    
                     <button class="btnLearnmore">LEARN MORE</button>
                 </div>
             </div>
