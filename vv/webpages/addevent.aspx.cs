@@ -14,15 +14,18 @@ namespace vv.webpages
 
         }
 
-        protected void virtualEvent_CheckedChanged(object sender, EventArgs e)
+        protected void rbtnPhysical_CheckedChanged(object sender, EventArgs e)
         {
-            location.Enabled = physicalEvent.Checked;
-            addRoomLink.Enabled = physicalEvent.Checked;
+            if (rbtnPhysical.Checked == true) txtLink.Enabled = false;
         }
 
-        protected void physicalEvent_CheckedChanged(object sender, EventArgs e)
+        protected void rbtnVirtual_CheckedChanged(object sender, EventArgs e)
         {
-            link.Enabled = virtualEvent.Checked;
+            if (rbtnVirtual.Checked == true)
+            {
+                txtLocation.Enabled = false;
+                hlinkAddRoom.Enabled = false;
+            }
         }
     }
 }
