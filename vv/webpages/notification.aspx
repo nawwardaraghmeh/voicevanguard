@@ -26,8 +26,8 @@
                 <a href="faq.aspx" class="nav-item">FAQs</a>
             </div>
             <div class="navbar-right">
-                <a href="notification.aspx" class="nav-item icon current-page"><i class="fa fa-bell" aria-hidden="true">
-                </i></a>
+                <a href="notification.aspx" class="nav-item icon current-page"><i class="fa fa-bell"
+                    aria-hidden="true"></i></a>
                 <a href="profile.aspx" class="nav-item icon"><i class="fa fa-user" aria-hidden="true">
                 </i></a>
             </div>
@@ -45,7 +45,7 @@
             </div>
         </div>
 
-                <div class="notifTemp">
+        <div class="notifTemp">
             <asp:Image ID="Image1" runat="server"
                 ImageUrl="~/resources/images/person2.jpg" />
             <div class="notifTextDiv">
@@ -54,7 +54,7 @@
             </div>
         </div>
 
-                <div class="notifTemp">
+        <div class="notifTemp">
             <asp:Image ID="Image2" runat="server"
                 ImageUrl="~/resources/images/person2.jpg" />
             <div class="notifTextDiv">
