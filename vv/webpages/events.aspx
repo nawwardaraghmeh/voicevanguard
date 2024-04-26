@@ -45,7 +45,8 @@
                 <form action="/search" method="get">
                     <div class="search-box">
                         <i class="fas fa-search"></i>
-                        <input type="text" placeholder="Eneter Keywords ... " name="search">
+                        <asp:TextBox runat="server" placeholder="Enter Keyword/s" name="search" >
+                        </asp:TextBox>
                     </div>
                 </form>
             </div>
@@ -74,8 +75,8 @@
                             <span>10:00 AM</span>
                         </div>
                     </div>
-                    
-                    <button class="btnLearnmore">LEARN MORE</button>
+                    <asp:Button runat="server" id="Button1" CssClass="learnmoreBtn" 
+                        Text="LEARN MORE" OnClick="btnLearnMore_Click"/>
                 </div>
             </div>
 
@@ -97,7 +98,8 @@
                             <span>10:00 AM</span>
                         </div>
                     </div>
-                    <button class="btnLearnmore">LEARN MORE</button>
+                    <asp:Button runat="server" id="Button6" CssClass="learnmoreBtn" 
+                        Text="LEARN MORE"/>
                 </div>
             </div>
 
@@ -119,7 +121,7 @@
                             <span>10:00 AM</span>
                         </div>
                     </div>
-                    <button class="btnLearnmore">LEARN MORE</button>
+                    <asp:Button runat="server" id="Button2" CssClass="learnmoreBtn" Text="LEARN MORE"/>
                 </div>
             </div>
 
@@ -148,7 +150,8 @@
                             <span>8:30 PM</span>
                         </div>
                     </div>
-                    <button class="btnLearnmore">LEARN MORE</button>
+                    <asp:Button runat="server" id="Button3" CssClass="learnmoreBtn" 
+                        Text="LEARN MORE" OnClick="Button3_Click"/>
                 </div>
             </div>
 
@@ -170,7 +173,7 @@
                             <span>8:30 PM</span>
                         </div>
                     </div>
-                    <button class="btnLearnmore">LEARN MORE</button>
+                    <asp:Button runat="server" id="Button4" CssClass="learnmoreBtn" Text="LEARN MORE"/>
                 </div>
             </div>
           
@@ -192,7 +195,7 @@
                             <span>8:30 PM</span>
                         </div>
                     </div>
-                    <button class="btnLearnmore">LEARN MORE</button>
+                    <asp:Button runat="server" id="Button5" CssClass="learnmoreBtn" Text="LEARN MORE"/>
                 </div>
             </div>
 

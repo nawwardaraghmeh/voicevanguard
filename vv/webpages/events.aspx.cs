@@ -18,5 +18,10 @@ namespace vv.web_pages
         {
             Response.Redirect("~/webpages/addevent.aspx");
         }
+
+        protected void btnLearnMore_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/webpages/viewevent.aspx");
+        }
     }
 }

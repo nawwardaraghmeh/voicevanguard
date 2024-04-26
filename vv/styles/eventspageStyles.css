@@ -106,7 +106,7 @@ h1 {
     padding-bottom: 35px;
 }
 
-.btnLearnmore {
+.learnmoreBtn {
     color: black;
     background: #E46262;
     border-radius: 22px;
@@ -124,7 +124,7 @@ h1 {
     box-shadow: 5px 5px 4px #E46262;
 }
 
-    .card:hover .btnLearnmore {
+    .card:hover .learnmoreBtn {
         opacity: 1;
     }
 
