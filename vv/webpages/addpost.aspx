@@ -10,6 +10,10 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Coustard:wght@400;900&display=swap"
         rel="stylesheet">
+    <script src="https://kit.fontawesome.com/f6d959a275.js" crossorigin="anonymous"></script>
+   
+
+
 </head>
 <body>
     <form id="form1" runat="server">
@@ -21,9 +25,16 @@
                 <option value="only-followers">Only Followers</option>
                 <option value="everyone">Everyone</option>
             </select><br />
-            <input type="text" id="contentBox" placeholder="What's On Your Mind?"/><br />
-            <div id="text-strip">
+            
+            <div id="secondDiv">
+                <input type="text" id="contentBox" placeholder="What's On Your Mind?"/><br />
+                <div id="text-strip">
 
+                        <label for="imageUpload"><i class="fa-solid fa-image fa-2x"></i> </label>
+                       <input type="file" id="imageUpload" name="imageUpload" /> 
+
+                        <i class="fa-regular fa-face-smile fa-2x"></i>
+                    </div>
             </div><br />
             <asp:Button runat="server" Text="POST" ID="postBtn" />
         </div>

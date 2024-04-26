@@ -11,7 +11,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Coustard:wght@400;900&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-Vh9Z5MuERqFHj6IwCXQX9gaGsD9+RBko754EpxIz9KAHS2xrM+hXeI0p3yGS6SJr" crossorigin="anonymous">
+
 
     <title>VV COMMUNITY PAGE </title>
 </head>

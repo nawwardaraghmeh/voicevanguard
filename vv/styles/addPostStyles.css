@@ -2,40 +2,63 @@
     margin:auto;
     border:solid;
     border-radius:2px;
-    width:50%;
+    width:40%;
     padding:3px;
 }
 label {
     font-family: "Coustard", serif;
+    margin:10px
 }
 #titleBox {
     border-radius: 15px;
     margin: 10px;
     padding: 5px;
     width: 95%;
-    box-shadow: 1px 2px 1px #E46262;
-    border-color: #E46262;
+    box-shadow: 1px 2px 1px #F1A7A7;
+    border-color: #F1A7A7;
 }
 
 select {
     font-family: "Coustard", serif;
-    color: #E46262;
-    border:none;
+    color: #F1A7A7;
+    border: none;
+    margin:10px;
 }
 
-#contentBox{
-    padding:50px 5px 50px 5px;
-    width:95%;
-    border-radius:20px;
-    margin:10px; 
+#contentBox {
+    padding: 60px 5px 60px 5px;
+    width: 95%;
+    border-radius: 20px;
+    margin: 10px;
+    background-color: #F5F5F5;
+}
+
+::placeholder {
+    font-family: "Coustard", serif;
+    top:10px;
+    font-size:15pt;
 }
 
 #postBtn {
     border: none;
-    background-color: #E46262;
+    background-color: #F1A7A7;
     font-family: "Coustard", serif;
-    font-size:20pt;
-    padding:20px;
-    margin:10px;
-    border-radius:20px;
+    width:20%;
+    font-size: 15pt;
+    padding: 5px;
+    margin: 10px;
+    border-radius: 20px;
+    font-weight:bold;
+}
+
+#text-strip {
+    background-color: #F1A7A7;
+    border-radius: 0px 0px 20px 20px;
+    text-align:right;
+    width:95%;
+    margin:0px 10px 0px 10px; ;
+}
+
+#imageUpload{
+    display:none;
 }
