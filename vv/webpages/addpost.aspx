@@ -18,8 +18,8 @@
 <body>
     <form id="form1" runat="server">
         <div id="heroDiv">
-            <label>Title</label><br />
-            <input type="text" id="titleBox"/><br />
+            <label id="title">TITLE</label><br />
+            <input type="text" id="titleBox" required="required"/><br />
             <select>
                 <option value="only-me">Only Me</option>
                 <option value="only-followers">Only Followers</option>
@@ -27,7 +27,7 @@
             </select><br />
             
             <div id="secondDiv">
-                <input type="text" id="contentBox" placeholder="What's On Your Mind?"/><br />
+                <input type="text" id="contentBox" placeholder="What's On Your Mind?" required="required"/><br />
                 <div id="text-strip">
 
                         <label for="imageUpload"><i class="fa-solid fa-image fa-2x"></i> </label>
