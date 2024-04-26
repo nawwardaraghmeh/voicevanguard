@@ -26,17 +26,41 @@
                 <a href="faq.aspx" class="nav-item">FAQs</a>
             </div>
             <div class="navbar-right">
-                <a href="notification.aspx" class="nav-item icon"><i class="fa fa-bell" aria-hidden="true">
+                <a href="notification.aspx" class="nav-item icon current-page"><i class="fa fa-bell" aria-hidden="true">
                 </i></a>
-                <a href="profile.aspx" class="nav-item icon current-page"><i class="fa fa-user" aria-hidden="true">
+                <a href="profile.aspx" class="nav-item icon"><i class="fa fa-user" aria-hidden="true">
                 </i></a>
             </div>
         </div>
     </nav>
 
 
-    <form id="form1" runat="server">
-        <div>
+    <form id="notifMainForm" runat="server">
+        <div class="notifTemp">
+            <asp:Image ID="notifImage" runat="server"
+                ImageUrl="~/resources/images/person2.jpg" />
+            <div class="notifTextDiv">
+                <asp:Label ID="lblNotifBody" runat="server" Text="X started following you"></asp:Label>
+                <asp:HyperLink ID="hLinkCheckNotif" runat="server">Check it out!</asp:HyperLink>
+            </div>
+        </div>
+
+                <div class="notifTemp">
+            <asp:Image ID="Image1" runat="server"
+                ImageUrl="~/resources/images/person2.jpg" />
+            <div class="notifTextDiv">
+                <asp:Label ID="Label1" runat="server" Text="X started following you"></asp:Label>
+                <asp:HyperLink ID="HyperLink1" runat="server">Check it out!</asp:HyperLink>
+            </div>
+        </div>
+
+                <div class="notifTemp">
+            <asp:Image ID="Image2" runat="server"
+                ImageUrl="~/resources/images/person2.jpg" />
+            <div class="notifTextDiv">
+                <asp:Label ID="Label2" runat="server" Text="X started following you"></asp:Label>
+                <asp:HyperLink ID="HyperLink2" runat="server">Check it out!</asp:HyperLink>
+            </div>
         </div>
     </form>
 
