@@ -150,6 +150,8 @@
     <Content Include="resources\images\logo.png" />
     <Content Include="resources\images\person1.jpg" />
     <Content Include="resources\images\person2.jpg" />
+    <Content Include="resources\images\pfp1.jpg" />
+    <Content Include="resources\images\pfp2.jpg" />
     <Content Include="resources\images\rallypic.jpg" />
     <Content Include="resources\images\signupBox.png" />
     <Content Include="resources\images\virtualeventpic.jpg" />
@@ -187,11 +189,13 @@
     <Content Include="styles\RegistrationStyles.css" />
     <Content Include="styles\CommunityPageStyles.css" />
     <Content Include="styles\ProfileStyles.css" />
+    <Content Include="styles\viewPostStyle.css" />
     <Content Include="webpages\addevent.aspx" />
     <Content Include="webpages\notification.aspx" />
     <Content Include="webpages\Registration.aspx" />
     <Content Include="webpages\addpost.aspx" />
     <Content Include="webpages\viewevent.aspx" />
+    <Content Include="webpages\viewPost.aspx" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -348,6 +352,13 @@
     </Compile>
     <Compile Include="webpages\viewevent.aspx.designer.cs">
       <DependentUpon>viewevent.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="webpages\viewPost.aspx.cs">
+      <DependentUpon>viewPost.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="webpages\viewPost.aspx.designer.cs">
+      <DependentUpon>viewPost.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
