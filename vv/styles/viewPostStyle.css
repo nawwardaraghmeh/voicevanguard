@@ -1,9 +1,14 @@
 ﻿#heroDiv {
-    background-color: #A7DDBA;
+    background-color: rgba(167, 221, 186, 0.75);
     margin: auto;
-    
-    width:50%;
-    padding:35px;
+    display: flex;
+    width: 50%;
+    padding: 35px;
+    flex-direction: column;
+}
+
+.nameAndPicDiv{
+    display:flex;
 }
 
 #pfp1, #pfp2, #pfp3{
@@ -19,27 +24,99 @@
 
 #userName {
     font-family: "Coustard", serif;
+    font-weight:bold;
     font-size:15pt;
     margin:0px 200px 10px 0px;
 }
 
-#post {
-    border: solid;
-    border-color: #E46262;
-    border-width: 4px;
-    border-radius:15px;
-}
-
-#comment {
+/*Post section*/
+#postDiv {
     border: solid;
     border-color: #E46262;
     border-width: 4px;
     border-radius: 15px;
+    margin:15px;
+    padding:15px;
+    display: flex;
+    flex-direction: column;
+}
+#postTitle {
+    font-family: "Coustard", serif;
+    margin: 0px 0px 20px 0px;
+    font-size:15pt;
 }
 
-#reply {
+#postContent {
+    font-family: "Coustard", serif;
+}
+
+/*comment number and report link*/
+#commentsAndReport {
+    display: flex;
+    justify-content: space-between;
+}
+
+/*post comment box*/
+#postComment {
+    padding: 20px 5px 60px 20px;
+    width: 95%;
+    height:50px;
+    border-radius: 20px;
+    margin: 10px;
+    background-color: #F5F5F5;
+    border-style: solid;
+}
+::placeholder {
+    font-family: "Coustard", serif;
+    margin: 0px 20px 20px 20px;
+    font-size: 13pt;
+}
+/*comment section begins*/
+
+#commentLabel {
+    font-family: "Coustard", serif;
+    font-size:20pt;
+    font-weight:bold;
+}
+
+#commentSectionDiv {
+    display: flex;
+    flex-direction: column;
+}
+
+#commentDiv {
     border: solid;
-    border-color: #F1A7A7;
+    border-color: #E46262;
     border-width: 4px;
     border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    margin:10px;
+    padding:20px;
+}
+
+#commentDiv label {
+        font-family: "Coustard", serif;
+    }
+
+#replyDiv {
+        border: solid;
+        border-color: #F1A7A7;
+        border-width: 4px;
+        border-radius: 15px;
+        display: flex;
+        flex-direction: column;
+    }
+
+#postDate, #commentPostDate, #replyDate, #commentNumber {
+    color: #545454;
+}
+#commentNumber{
+        display:inline;
+    }
+#reportPostLink {
+    color: #545454;
+    font-family: "Coustard", serif;
+    display: inline;
+
 }

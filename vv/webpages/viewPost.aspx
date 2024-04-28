@@ -16,27 +16,39 @@
     <form id="form1" runat="server">
         <div id="heroDiv">
 
+    <div class="nameAndPicDiv">       
         <asp:Image ID="pfp1" runat="server" src="../resources/images/pfp1.jpg"/>
-        <asp:Label ID="userName" runat="server" Text="Ahmad Ibraheem"></asp:Label><br />
-        <asp:Label ID="postDate" runat="server" Text="3d"></asp:Label><br />
-        <div id="post">
+        <asp:Label ID="userName" runat="server" Text="Ahmad Ibraheem"></asp:Label><br /><br />
+         <asp:Label ID="postDate" runat="server" Text="3d"></asp:Label><br />
+    </div>
+
+       <div>
+        <div id="postDiv">
             
             <asp:Label ID="postTitle" runat="server" Text="Is this Organization Legitimate? "></asp:Label>
-            <asp:Label ID="postContent" runat="server" Text="I've come across an organization that claims to support a cause close to my heart, but I want to ensure its legitimacy. Has anyone had experience with “EarthGuardians”? I heard some bad rumors about it recently, and I don’t want to accidentally support a corrupt organization. If anyone here has had experience with them please tell me. 
+            <asp:Label ID="postContent" runat="server" Text="I've come across an organization that claims to support a cause close to my heart,
+                but I want to ensure its legitimacy. Has anyone had experience with “EarthGuardians”? 
+                I heard some bad rumors about it recently, and I don’t want to accidentally support a corrupt organization. 
+                If anyone here has had experience with them please tell me.
 
-            Your opinion is much appreciated🙏🙏"></asp:Label><br />
+                Your opinion is much appreciated🙏🙏"></asp:Label><br />
             
-        </div><br />
-        <asp:Label ID="commentNumber" runat="server" Text="24 comments"></asp:Label>
-        <asp:HyperLink ID="reportPostLink" runat="server">Report Post</asp:HyperLink><br />
-        <asp:TextBox ID="postComment" runat="server"></asp:TextBox><br />
+        </div>
+            <div id="commentsAndReport">
+                <asp:Label ID="commentNumber" runat="server" Text="24 comments"></asp:Label>
+                <asp:HyperLink ID="reportPostLink" runat="server">Report Post</asp:HyperLink><br />
+            </div>
+            </div>
+
+        <asp:TextBox ID="postComment" runat="server" placeholder="Share Your Thoughts! " ></asp:TextBox><br />
         
         <asp:Label ID="commentLabel" runat="server" Text="COMMENTS"></asp:Label><br />
         
-        <div id="commentSection">
+        <div id="commentSectionDiv">
 
+            <div class="nameAndPicDiv">
             <asp:Image ID="pfp2" runat="server" src="../resources/images/pfp2.jpg"/>
-            <div id="comment">
+            <div id="commentDiv">
 
                 <asp:Label ID="userName2" runat="server" Text="Sam Wyler"></asp:Label><br />
                 <asp:Label ID="commentPostDate" runat="server" Text="2h"></asp:Label><br />
@@ -45,8 +57,11 @@
                 <asp:Button ID="replyButton1" runat="server" Text="Reply" /><br />
 
             </div>
+                </div>
+
+            <div class="nameAndPicDiv">
             <asp:Image ID="pfp3" runat="server" src="../resources/images/pfp1.jpg"/>
-            <div id="reply">
+            <div id="replyDiv">
 
                 <asp:Label ID="userName3" runat="server" Text="Ahmad Ibraheem"></asp:Label><br />
                 <asp:Label ID="replyDate" runat="server" Text="2h"></asp:Label><br />
@@ -55,6 +70,7 @@
                 <asp:Button ID="replyButton2" runat="server" Text="Reply" />
 
             </div>
+                </div>
 
         </div>
              </div>
