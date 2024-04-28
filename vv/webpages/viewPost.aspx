@@ -35,8 +35,8 @@
             
         </div>
             <div id="commentsAndReport">
-                <asp:Label ID="commentNumber" runat="server" Text="24 comments"></asp:Label>
-                <asp:HyperLink ID="reportPostLink" runat="server">Report Post</asp:HyperLink><br />
+                <asp:Label ID="commentNumber" runat="server" Text="24Comments"></asp:Label>
+                <asp:HyperLink ID="reportPostLink" runat="server">ReportPost</asp:HyperLink><br />
             </div>
             </div>
 
@@ -48,27 +48,32 @@
 
             <div class="nameAndPicDiv">
             <asp:Image ID="pfp2" runat="server" src="../resources/images/pfp2.jpg"/>
-            <div id="commentDiv">
+            <div id="commentDiv" class="commentsDetails">
 
-                <asp:Label ID="userName2" runat="server" Text="Sam Wyler"></asp:Label><br />
+                <asp:Label ID="userName2" runat="server" Text="Sam Wyler"></asp:Label>
                 <asp:Label ID="commentPostDate" runat="server" Text="2h"></asp:Label><br />
                 <asp:Label ID="commentContent" runat="server" Text="Hey, I’ve heard of that organization before. They are scammers! beware and don’t use their services!!"></asp:Label><br />
+               
+                <div class="reportAndReply">
                 <asp:HyperLink ID="reportCommentLink" runat="server">Report</asp:HyperLink>
-                <asp:Button ID="replyButton1" runat="server" Text="Reply" /><br />
+                <asp:Button ID="replyButton1" runat="server" Text="Reply" class="replybtn"/><br />
+                    </div>
 
             </div>
                 </div>
 
-            <div class="nameAndPicDiv">
+            <div class="nameAndPicDiv" id="replySectionDiv">
             <asp:Image ID="pfp3" runat="server" src="../resources/images/pfp1.jpg"/>
-            <div id="replyDiv">
+            <div id="replyDiv" class="commentsDetails">
 
                 <asp:Label ID="userName3" runat="server" Text="Ahmad Ibraheem"></asp:Label><br />
                 <asp:Label ID="replyDate" runat="server" Text="2h"></asp:Label><br />
                 <asp:Label ID="replyContent" runat="server" Text="Oh I see! Thank you."></asp:Label><br />
-                <asp:HyperLink ID="reportReplyLink" runat="server">Report</asp:HyperLink>
-                <asp:Button ID="replyButton2" runat="server" Text="Reply" />
 
+                <div class="reportAndReply">
+                <asp:HyperLink ID="reportReplyLink" runat="server">Report</asp:HyperLink>
+                <asp:Button ID="replyButton2" runat="server" Text="Reply" class="replybtn"/>
+                    </div>
             </div>
                 </div>
 
