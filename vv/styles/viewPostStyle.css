@@ -1,17 +1,45 @@
 ﻿#heroDiv {
     background-color: #A7DDBA;
     margin: auto;
-    text-align:center;
+    
     width:50%;
+    padding:35px;
 }
 
 #pfp1, #pfp2, #pfp3{
     width:50px;
     height:50px; 
     border-radius:50px;
+    text-align:left;
+}
+
+#pfp1{
+    margin-left: 10px;
 }
 
 #userName {
     font-family: "Coustard", serif;
     font-size:15pt;
+    margin:0px 200px 10px 0px;
+}
+
+#post {
+    border: solid;
+    border-color: #E46262;
+    border-width: 4px;
+    border-radius:15px;
+}
+
+#comment {
+    border: solid;
+    border-color: #E46262;
+    border-width: 4px;
+    border-radius: 15px;
+}
+
+#reply {
+    border: solid;
+    border-color: #F1A7A7;
+    border-width: 4px;
+    border-radius: 15px;
 }
