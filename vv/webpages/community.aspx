@@ -95,6 +95,7 @@
             <p>
                 <a href="mailto:voicevanguard@gmail.com" class="contact-info">voicevanguard@gmail.com</a>
             </p>
+            <br />
             <p>+972 12-345-6789</p>
             <div class="social-icons">
                 <a href="#" class="icon"><i class="fab fa-facebook-f"></i></a>
