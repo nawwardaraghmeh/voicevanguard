@@ -125,7 +125,7 @@
             </div>
 
         </div>
-        <a href="#" class="seemore">Click to see more</a>
+        <asp:HyperLink runat="server" class="seemore"> Click to see more! </asp:HyperLink>
 
 
         <!-- virtual events section -->
@@ -204,8 +204,7 @@
             </div>
 
         </div>
-        <a href="#" class="seemore">Click to see more</a>
-
+        <asp:HyperLink runat="server" class="seemore"> Click to see more! </asp:HyperLink>
     </form>
 
     <br />

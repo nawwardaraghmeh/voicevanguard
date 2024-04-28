@@ -40,17 +40,15 @@
             <asp:Image ID="notifImage" runat="server"
                 ImageUrl="~/resources/images/person2.jpg" />
             <div class="notifTextDiv">
-                <asp:Label ID="lblNotifBody" runat="server" Text="X started following you"></asp:Label>
-                <asp:HyperLink ID="hLinkCheckNotif" runat="server">Check it out!</asp:HyperLink>
+                <asp:Label ID="lblNotifBody" runat="server" Text="You gained a new follower!"></asp:Label>
             </div>
         </div>
 
         <div class="notifTemp">
             <asp:Image ID="Image1" runat="server"
-                ImageUrl="~/resources/images/person2.jpg" />
+                ImageUrl="~/resources/images/eventpic.png"/>
             <div class="notifTextDiv">
-                <asp:Label ID="Label1" runat="server" Text="X started following you"></asp:Label>
-                <asp:HyperLink ID="HyperLink1" runat="server">Check it out!</asp:HyperLink>
+                <asp:Label ID="Label1" runat="server" Text="X is interested in your event!"></asp:Label>
             </div>
         </div>
 
@@ -58,8 +56,37 @@
             <asp:Image ID="Image2" runat="server"
                 ImageUrl="~/resources/images/person2.jpg" />
             <div class="notifTextDiv">
-                <asp:Label ID="Label2" runat="server" Text="X started following you"></asp:Label>
-                <asp:HyperLink ID="HyperLink2" runat="server">Check it out!</asp:HyperLink>
+                <asp:Label ID="Label2" runat="server" Text="You gained a new follower!"></asp:Label>
+            </div>
+        </div>
+                <div class="notifTemp">
+            <asp:Image ID="Image3" runat="server"
+                ImageUrl="~/resources/images/eventpic.png"/>
+            <div class="notifTextDiv">
+                <asp:Label ID="Label3" runat="server" Text="X is interested in your event!"></asp:Label>
+            </div>
+        </div>
+
+        <div class="notifTemp">
+            <asp:Image ID="Image4" runat="server"
+                ImageUrl="~/resources/images/person2.jpg" />
+            <div class="notifTextDiv">
+                <asp:Label ID="Label4" runat="server" Text="You gained a new follower!"></asp:Label>
+            </div>
+        </div>
+                <div class="notifTemp">
+            <asp:Image ID="Image5" runat="server"
+                ImageUrl="~/resources/images/eventpic.png"/>
+            <div class="notifTextDiv">
+                <asp:Label ID="Label5" runat="server" Text="X is interested in your event!"></asp:Label>
+            </div>
+        </div>
+
+        <div class="notifTemp">
+            <asp:Image ID="Image6" runat="server"
+                ImageUrl="~/resources/images/person2.jpg" />
+            <div class="notifTextDiv">
+                <asp:Label ID="Label6" runat="server" Text="You gained a new follower!"></asp:Label>
             </div>
         </div>
     </form>
