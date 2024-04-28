@@ -11,16 +11,11 @@ namespace vv.web_pages
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
-            {
-                
-            }
-        }
-
-        protected void button_click(object sender, EventArgs e)
-        {
-            btnMyActivity.CssClass = "clickedBtn";
-            MainView.ActiveViewIndex = 0;
+            //if (!IsPostBack)
+           // {
+                btnMyActivity.CssClass = "clickedBtn";
+                MainView.ActiveViewIndex = 0;
+            //}
         }
 
         protected void btnMyActivity_Click(object sender, EventArgs e)
