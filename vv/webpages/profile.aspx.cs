@@ -11,7 +11,30 @@ namespace vv.web_pages
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack)
+            {
+                
+            }
+        }
 
+        protected void button_click(object sender, EventArgs e)
+        {
+            btnMyActivity.CssClass = "clickedBtn";
+            MainView.ActiveViewIndex = 0;
+        }
+
+        protected void btnMyActivity_Click(object sender, EventArgs e)
+        {
+            btnMyActivity.CssClass = "clickedBtn";
+            btnUpcomingEvents.CssClass = "initialBtn";
+            MainView.ActiveViewIndex = 0;
+        }
+
+        protected void btnUpcomingEvents_Click(object sender, EventArgs e)
+        {
+            btnMyActivity.CssClass = "initialBtn";
+            btnUpcomingEvents.CssClass = "clickedBtn";
+            MainView.ActiveViewIndex = 1;
         }
     }
 }
