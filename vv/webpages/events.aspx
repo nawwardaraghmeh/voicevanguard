@@ -26,7 +26,8 @@
                 <a href="faq.aspx" class="nav-item">FAQs</a>
             </div>
             <div class="navbar-right">
-                <a href="notification.aspx" class="nav-item icon"><i class="fa fa-bell" aria-hidden="true"></i></a>
+                <a href="notification.aspx" class="nav-item icon"><i class="fa fa-bell" aria-hidden="true">
+                </i></a>
                 <a href="profile.aspx" class="nav-item icon"><i class="fa fa-user" aria-hidden="true">
                 </i></a>
             </div>
@@ -40,15 +41,11 @@
             <asp:Button ID="btnAddEvent" runat="server" Text="ADD EVENT"
                 OnClick="btnAddEvent_Click" />
             <div class="search-container">
-
-
-                <form action="/search" method="get">
-                    <div class="search-box">
-                        <i class="fas fa-search"></i>
-                        <asp:TextBox runat="server" placeholder="Enter Keyword/s" name="search" >
-                        </asp:TextBox>
-                    </div>
-                </form>
+            </div>
+            <div class="search-box">
+                <i class="fas fa-search"></i>
+                <asp:TextBox runat="server" placeholder="Enter Keyword/s" name="search">
+                </asp:TextBox>
             </div>
         </div>
 
@@ -73,10 +70,11 @@
                         <div class="time">
                             <i class="far fa-clock"></i>
                             <span>10:00 AM</span>
+                            <br />
                         </div>
                     </div>
-                    <asp:Button runat="server" id="Button1" CssClass="learnmoreBtn" 
-                        Text="LEARN MORE" OnClick="btnLearnMore_Click"/>
+                    <asp:Button ID="Button1" runat="server" Text="LEARN MORE"
+                        CssClass="learnmoreBtn" OnClick="btnLearnMore_Click" />
                 </div>
             </div>
 
@@ -98,8 +96,8 @@
                             <span>10:00 AM</span>
                         </div>
                     </div>
-                    <asp:Button runat="server" id="Button6" CssClass="learnmoreBtn" 
-                        Text="LEARN MORE"/>
+                    <asp:Button ID="Button2" runat="server" Text="LEARN MORE"
+                        CssClass="learnmoreBtn" OnClick="btnLearnMore_Click" />
                 </div>
             </div>
 
@@ -121,7 +119,8 @@
                             <span>10:00 AM</span>
                         </div>
                     </div>
-                    <asp:Button runat="server" id="Button2" CssClass="learnmoreBtn" Text="LEARN MORE"/>
+                    <asp:Button ID="Button3" runat="server" Text="LEARN MORE"
+                        CssClass="learnmoreBtn" OnClick="btnLearnMore_Click" />
                 </div>
             </div>
 
@@ -138,7 +137,8 @@
                 <div class="content">
                     <h2>VOICES UNVEILED</h2>
                     <p>
-                        Experience the power of art through our virtual exhibition featuring works with diverse voices and social narratives.
+                        Experience the power of art through our virtual exhibition featuring works with
+                        diverse voices and social narratives.
                     </p>
                     <div class="details">
                         <div class="date">
@@ -150,18 +150,19 @@
                             <span>8:30 PM</span>
                         </div>
                     </div>
-                    <asp:Button runat="server" id="Button3" CssClass="learnmoreBtn" 
-                        Text="LEARN MORE" OnClick="Button3_Click"/>
+                    <asp:Button ID="Button4" runat="server" Text="LEARN MORE"
+                        CssClass="learnmoreBtn" OnClick="btnLearnMore_Click" />
                 </div>
             </div>
 
-            
+
             <div class="card">
                 <img src="../resources/images/virtualeventpic.jpg">
                 <div class="content">
                     <h2>VOICES UNVEILED</h2>
                     <p>
-                        Experience the power of art through our virtual exhibition featuring works with diverse voices and social narratives.
+                        Experience the power of art through our virtual exhibition featuring works with
+                        diverse voices and social narratives.
                     </p>
                     <div class="details">
                         <div class="date">
@@ -173,17 +174,19 @@
                             <span>8:30 PM</span>
                         </div>
                     </div>
-                    <asp:Button runat="server" id="Button4" CssClass="learnmoreBtn" Text="LEARN MORE"/>
+                    <asp:Button ID="Button5" runat="server" Text="LEARN MORE"
+                        CssClass="learnmoreBtn" OnClick="btnLearnMore_Click" />
                 </div>
             </div>
-          
-            
+
+
             <div class="card">
                 <img src="../resources/images/virtualeventpic.jpg">
                 <div class="content">
                     <h2>VOICES UNVEILED</h2>
                     <p>
-                        Experience the power of art through our virtual exhibition featuring works with diverse voices and social narratives.
+                        Experience the power of art through our virtual exhibition featuring works with
+                        diverse voices and social narratives.
                     </p>
                     <div class="details">
                         <div class="date">
@@ -195,7 +198,8 @@
                             <span>8:30 PM</span>
                         </div>
                     </div>
-                    <asp:Button runat="server" id="Button5" CssClass="learnmoreBtn" Text="LEARN MORE"/>
+                    <asp:Button ID="Button6" runat="server" Text="LEARN MORE"
+                        CssClass="learnmoreBtn" OnClick="btnLearnMore_Click" />
                 </div>
             </div>
 
