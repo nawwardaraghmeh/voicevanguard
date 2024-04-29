@@ -1,5 +1,5 @@
 ﻿#heroDiv {
-    background-color: rgba(167, 221, 186, 0.75);
+    background-color: rgba(167, 221, 186, 0.73);
     margin: auto;
     display: flex;
     width: 50%;
@@ -9,7 +9,6 @@
 
 .nameAndPicDiv{
     display:flex;
-    border:solid;
 }
 
 
@@ -29,6 +28,12 @@
     font-weight:bold;
     font-size:15pt;
     margin:0px 200px 0px 0px;
+}
+
+.alignPosterAndPostdate {
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px;
 }
 
 /*Post section*/
@@ -80,12 +85,9 @@
 .alignNameAndPostdate {
     display: flex;
     justify-content: space-between;
+    margin-bottom:10px;
 }
-.alignPosterAndPostdate {
-    display: flex;
-    flex-direction:column;
-    border:solid;
-}
+
 
 #commentLabel {
     font-family: "Coustard", serif;
@@ -123,9 +125,6 @@
     margin: 0px;
 }
 
-#commentContent{
-    margin:0px;
-}
 /*replies*/
 #replyDiv {
     border: solid;
@@ -145,6 +144,7 @@
     text-align: right;
     align-items: flex-end;
     justify-content: flex-end;
+    margin-top:0px;
 }
 
 .replybtn {
@@ -166,9 +166,7 @@
     color: #545454;
     font-family: "Coustard", serif;
 }
-#postDate{
-    margin:0px;
-}
+
 #commentNumber{
         display:inline;
     }

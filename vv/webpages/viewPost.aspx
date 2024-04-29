@@ -21,8 +21,8 @@
 
         
         <div class="alignPosterAndPostdate">
-        <asp:Label ID="userName" runat="server" Text="Ahmad Ibraheem"></asp:Label><br /><br />
-         <asp:Label ID="postDate" runat="server" Text="3d ago"></asp:Label><br />
+        <asp:Label ID="userName" runat="server" Text="Ahmad Ibraheem"></asp:Label>
+         <asp:Label ID="postDate" runat="server" Text="3d ago"></asp:Label>
             </div>
     </div>
 
