@@ -18,8 +18,12 @@
 
     <div class="nameAndPicDiv">       
         <asp:Image ID="pfp1" runat="server" src="../resources/images/pfp1.jpg"/>
+
+        
+        <div class="alignPosterAndPostdate">
         <asp:Label ID="userName" runat="server" Text="Ahmad Ibraheem"></asp:Label><br /><br />
-         <asp:Label ID="postDate" runat="server" Text="3d"></asp:Label><br />
+         <asp:Label ID="postDate" runat="server" Text="3d ago"></asp:Label><br />
+            </div>
     </div>
 
        <div>
@@ -50,13 +54,16 @@
             <asp:Image ID="pfp2" runat="server" src="../resources/images/pfp2.jpg"/>
             <div id="commentDiv" class="commentsDetails">
 
+                <div class="alignNameAndPostdate">
                 <asp:Label ID="userName2" runat="server" Text="Sam Wyler"></asp:Label>
-                <asp:Label ID="commentPostDate" runat="server" Text="2h"></asp:Label><br />
+                <asp:Label ID="commentPostDate" runat="server" Text="2h ago"></asp:Label>
+                    </div>
+
                 <asp:Label ID="commentContent" runat="server" Text="Hey, I’ve heard of that organization before. They are scammers! beware and don’t use their services!!"></asp:Label><br />
                
                 <div class="reportAndReply">
                 <asp:HyperLink ID="reportCommentLink" runat="server">Report</asp:HyperLink>
-                <asp:Button ID="replyButton1" runat="server" Text="Reply" class="replybtn"/><br />
+                <asp:Button ID="replyButton1" runat="server" Text="Reply" class="replybtn"/>
                     </div>
 
             </div>
@@ -66,9 +73,12 @@
             <asp:Image ID="pfp3" runat="server" src="../resources/images/pfp1.jpg"/>
             <div id="replyDiv" class="commentsDetails">
 
-                <asp:Label ID="userName3" runat="server" Text="Ahmad Ibraheem"></asp:Label><br />
-                <asp:Label ID="replyDate" runat="server" Text="2h"></asp:Label><br />
-                <asp:Label ID="replyContent" runat="server" Text="Oh I see! Thank you."></asp:Label><br />
+                <div class="alignNameAndPostdate">
+                <asp:Label ID="userName3" runat="server" Text="Ahmad Ibraheem"></asp:Label>
+                <asp:Label ID="replyDate" runat="server" Text="2h ago"></asp:Label>
+                    </div>
+
+                <asp:Label ID="replyContent" runat="server" Text="Oh I see! Thank you."></asp:Label>
 
                 <div class="reportAndReply">
                 <asp:HyperLink ID="reportReplyLink" runat="server">Report</asp:HyperLink>

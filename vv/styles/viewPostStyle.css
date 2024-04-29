@@ -9,6 +9,7 @@
 
 .nameAndPicDiv{
     display:flex;
+    border:solid;
 }
 
 
@@ -27,7 +28,7 @@
     font-family: "Coustard", serif;
     font-weight:bold;
     font-size:15pt;
-    margin:0px 200px 10px 0px;
+    margin:0px 200px 0px 0px;
 }
 
 /*Post section*/
@@ -75,10 +76,21 @@
 }
 /*comment section begins*/
 
+
+.alignNameAndPostdate {
+    display: flex;
+    justify-content: space-between;
+}
+.alignPosterAndPostdate {
+    display: flex;
+    flex-direction:column;
+    border:solid;
+}
+
 #commentLabel {
     font-family: "Coustard", serif;
-    font-size:20pt;
-    font-weight:bold;
+    font-size: 20pt;
+    font-weight: bold;
 }
 
 #commentSectionDiv {
@@ -152,6 +164,10 @@
 
 #postDate, #commentPostDate, #replyDate, #commentNumber {
     color: #545454;
+    font-family: "Coustard", serif;
+}
+#postDate{
+    margin:0px;
 }
 #commentNumber{
         display:inline;
