@@ -44,6 +44,7 @@ rel="stylesheet">
                 <input type="submit" value="SIGNUP" /><br />
                 <p>Already have an account? <a href="" id="registerHereLink">Login</a></p> 
             </div>
+          <img src="../resources/images/icon.png" alt="watermelon icon"/>
         </div>
     </form>
 </body>

@@ -31,10 +31,9 @@
 
 .submitAndLinkDiv {
     display: flex;
-    border:solid;
     flex-direction: column;
     align-items: flex-start;
-    margin-left:250px;
+    margin-left: 250px;
 }
 
 .heroDiv {
@@ -72,7 +71,7 @@ input[type=submit] {
     font-size: 15pt;
     cursor: pointer;
     background-color: rgb(241, 167, 167);
-    width: 30%;
+    width: 40%;
     font-family: "Coustard", serif;
     margin-bottom:0px;
 }
@@ -101,6 +100,14 @@ h1 {
     font-family: "Coustard", serif;
     font-weight: bold;
     font-size: 30pt;
+}
+img {
+    width: 150px;
+    height: 150px;
+    transform: rotate(270deg);
+    position: absolute;
+    left: -40px;
+    top: 380px;
 }
 
 
