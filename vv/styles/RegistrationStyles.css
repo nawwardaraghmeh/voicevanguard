@@ -8,6 +8,7 @@
 .flexboxDiv {
     display: flex;
     justify-content: center;
+
 }
 
 .labelsDiv {
@@ -17,15 +18,24 @@
     flex-direction: column;
     align-items: flex-end;
     justify-content: flex-start;
+
 }
 .inputsDiv {
     width: 55%;
-    margin:10px;
+    margin: 10px;
     display: flex;
     flex-direction: column;
     align-items: flex-end;
+
 }
 
+.submitAndLinkDiv {
+    display: flex;
+    border:solid;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-left:250px;
+}
 
 .heroDiv {
     background-color: white;
@@ -58,14 +68,13 @@ select{
 
 input[type=submit] {
     border-radius: 20px;
-    margin: 5px;
     padding: 3px;
     font-size: 15pt;
     cursor: pointer;
     background-color: rgb(241, 167, 167);
     width: 30%;
     font-family: "Coustard", serif;
-    margin-right: 60px;
+    margin-bottom:0px;
 }
 label{
     font-family: "Coustard", serif;

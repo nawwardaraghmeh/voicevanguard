@@ -26,7 +26,7 @@ rel="stylesheet">
                         <label>Areas of Interest</label>
                         
                         </div>
-
+       
             <div class="inputsDiv">  
                 <input type="text" />
                 <input type="email" />        
@@ -38,10 +38,12 @@ rel="stylesheet">
                          <option>Environment</option>
                          <option>Racial Issues</option>
                 </select>
-                </div>
-                </div>
-             <input type="submit" value="SIGNUP" /><br />
-             <p>Already have an account?</p> <a href="" id="registerHereLink">Login</a>
+                </div>              
+             </div>
+            <div class="submitAndLinkDiv">
+                <input type="submit" value="SIGNUP" /><br />
+                <p>Already have an account? <a href="" id="registerHereLink">Login</a></p> 
+            </div>
         </div>
     </form>
 </body>
