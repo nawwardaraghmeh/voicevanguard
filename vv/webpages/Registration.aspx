@@ -13,19 +13,33 @@ rel="stylesheet">
 </head>
 <body>
     <form id="form1" runat="server">
-        <div>
+        <div class="heroDiv">
              <h1>Join VoiceVanguard</h1>
 
-             <label>Username</label><input type="text" /><br />
-             <label>E-Mail</label><input type="email" /><br />
-             <label>Password</label><input type="password" /><br />
-             <label>Confirm Password</label><input type="password" /><br />
-             <label>Areas of Interest</label><select>
-                                                <option value="0">Select Interest</option>
-                                                <option>Women's Rights</option>
-                                                <option>Environment</option>
-                                                <option>Racial Issues</option>
-                                             </select><br />
+
+            <div class="flexboxDiv">
+                <div class="labelsDiv">  
+                        <label id="username">Username</label>
+                        <label>E-Mail</label>
+                        <label>Password</label>
+                        <label>Confirm Password</label>
+                        <label>Areas of Interest</label>
+                        
+                        </div>
+
+            <div class="inputsDiv">  
+                <input type="text" />
+                <input type="email" />        
+                <input type="password" />            
+                <input type="password" />           
+                <select>
+                         <option value="0">Select Interest</option>
+                         <option>Women's Rights</option>
+                         <option>Environment</option>
+                         <option>Racial Issues</option>
+                </select>
+                </div>
+                </div>
              <input type="submit" value="SIGNUP" /><br />
              <p>Already have an account?</p> <a href="" id="registerHereLink">Login</a>
         </div>
