@@ -48,8 +48,9 @@
 
                 <div class="profileAccountInfoGrey">
                     <asp:Label ID="lblJoinDate" runat="server" Text="Joined 3/12/2024"></asp:Label>
+                    
                     <asp:HyperLink ID="hLinkEditProfile" runat="server">Edit Profile</asp:HyperLink>
-                </div>
+                &nbsp;</div>
 
                 <asp:Label ID="lblAccountBio" runat="server" Text="Hello, I’m Amanda, 
                     and I care about the environment and women’s rights. I believe in Policy and change. 

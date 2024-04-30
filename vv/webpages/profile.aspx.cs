@@ -31,5 +31,6 @@ namespace vv.web_pages
             btnUpcomingEvents.CssClass = "clickedBtn";
             MainView.ActiveViewIndex = 1;
         }
+
     }
 }
