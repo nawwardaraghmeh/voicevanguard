@@ -67,7 +67,7 @@
             </div>
         </div>
 
-        <div class="leftRightDiv">
+
             <!-- tabs section -->
             <asp:MultiView ID="MainView" runat="server">
                 <asp:View ID="ActivityView" runat="server">
@@ -104,11 +104,6 @@
 
             </asp:MultiView>
 
-            <!-- right section -->
-            <div class="rightSection">
-                <h2>yo</h2>
-            </div>
-        </div>
     </form>
 
     <!-- footer section -->
