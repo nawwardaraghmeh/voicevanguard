@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Registration.aspx.cs" Inherits="vv.webpages.WebForm1" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Registration.aspx.cs" Inherits="vv.webpages.Registration" %>
 
 <!DOCTYPE html>
 
@@ -42,8 +42,9 @@ rel="stylesheet">
              </div>
             <div class="submitAndLinkDiv">
                 <input type="submit" value="SIGNUP" /><br />
-                <p>Already have an account? <a href="" id="registerHereLink">Login</a></p> 
-            </div>
+                <p>Already have an account? 
+                    <asp:HyperLink ID="loginLink" runat="server" OnDataBinding="loginLink_Click">Login</asp:HyperLink></p>
+
           <img src="../resources/images/icon.png" alt="watermelon icon"/>
         </div>
     </form>
