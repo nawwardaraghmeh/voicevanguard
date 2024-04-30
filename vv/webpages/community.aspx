@@ -61,7 +61,7 @@
             <div id="SecondDiv">
                 <div class="post">
                     <p class="poster">By: Andrew Matt</p><p class="time">2d ago</p><br />
-                    <h4>Is this Organization Legitimate?</h4>
+                    <asp:LinkButton runat="server" CssClass="h4" ID="title1" OnClick="title1_Click">Is this Organization Legitimate?</asp:LinkButton>
                     <p class="postContent">I've come across an organization that claims to support a cause close to my heart,
                         but I want to ensure its legitimacy. 
                         Has anyone had experience with “EarthGuardians”?
@@ -70,14 +70,14 @@
                 </div>
                 <div class="post">
                     <p class="poster">By: Isabella Lopez</p><p class="time">3h ago</p><br />
-                    <h4>Equality Rally Pictures</h4>
+                   <asp:LinkButton runat="server" CssClass="h4" ID="LinkButton2" OnClick="title1_Click">Equality Rally Pictures</asp:LinkButton>
                     <p class="postContent">Captured these moments at today's equality rally. The power of unity! 
                                             💙✊ #SocialJustice #EqualityForAll</p><br />
                     <p class="num_of_comments">17 comments</p>
                 </div>
                 <div class="post">
                     <p class="poster">By: Aiden Kim </p><p class="time">2w ago</p><br />
-                    <h4>Sustainable Living Article</h4>
+                    <asp:LinkButton runat="server" CssClass="h4" ID="LinkButton1" OnClick="title1_Click">Sustainable Living Article</asp:LinkButton>
                     <p class="postContent">Stumbled upon an inspiring article about sustainable living. Dive into the details and let's discuss its impact on our community!
                                             https://www.example.com/sustainable-living</p><br />
                     <p class="num_of_comments">49 comments</p>

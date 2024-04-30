@@ -18,5 +18,10 @@ namespace vv.web_pages
         {
             Response.Redirect("~/webpages/addpost.aspx");
         }
+
+        protected void title1_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/webpages/viewPost.aspx");
+        }
     }
 }
