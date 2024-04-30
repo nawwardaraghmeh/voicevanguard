@@ -24,7 +24,7 @@
 .profileAccountInfo {
     display: flex;
     padding: 10px;
-    margin: 10px;
+    margin-bottom: 10px;
     background-color: white;
     border-radius: 0 0 22px 22px;
     margin-top: -10px;
@@ -115,7 +115,6 @@
     flex-direction: column;
     border-radius: 22px;
     justify-content: flex-start;
-    margin-left: 15px;
 }
 
 /*
