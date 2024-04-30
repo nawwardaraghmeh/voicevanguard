@@ -33,7 +33,7 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    margin-left: 250px;
+    margin-left: 41%;
 }
 
 .heroDiv {
@@ -68,7 +68,7 @@ select{
 input[type=submit] {
     border-radius: 20px;
     padding: 3px;
-    font-size: 15pt;
+    font-size: 12pt;
     cursor: pointer;
     background-color: rgb(241, 167, 167);
     width: 40%;
@@ -108,7 +108,7 @@ img {
     transform: rotate(270deg);
     position: absolute;
     left: -40px;
-    top: 450px;
+    top: 400px;
 }
 
 

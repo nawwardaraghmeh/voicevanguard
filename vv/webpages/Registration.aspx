@@ -43,7 +43,7 @@ rel="stylesheet">
             <div class="submitAndLinkDiv">
                 <input type="submit" value="SIGNUP" /><br />
                 <p>Already have an account? 
-                    <asp:HyperLink ID="loginLink" runat="server" OnDataBinding="loginLink_Click">Login</asp:HyperLink></p>
+                    <asp:LinkButton ID="loginLink" runat="server" OnCLick="loginLink_Click">Login</asp:LinkButton></p>
 
           <img src="../resources/images/icon.png" alt="watermelon icon"/>
         </div>
