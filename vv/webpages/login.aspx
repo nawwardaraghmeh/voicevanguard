@@ -15,16 +15,27 @@
     <form id="form1" runat="server">
         <div id="loginDiv">
             <h1>Welcome Back</h1>
-            <label>username</label><input type="text" /><br />
-            <label>password</label><input type="password" /><br />
+            <label>username</label>
+            <asp:TextBox runat="server" CssClass="textboxStyles" ID="nametxtbox"></asp:TextBox> <br />
+            <asp:RequiredFieldValidator ID="rfvUsername" runat="server" ControlToValidate="nametxtbox"
+                ErrorMessage="Username is required" CssClass="errorlbl"></asp:RequiredFieldValidator> <br />
+            <br />
+
+            <label>password</label>
+            <asp:TextBox runat="server" CssClass="textboxStyles" TextMode="Password" ID="pwtxtbox"></asp:TextBox>  <br /> 
+            <asp:RequiredFieldValidator ID="rfvPassword" runat="server" ControlToValidate="pwtxtbox"
+                ErrorMessage="Password is required" CssClass="errorlbl"></asp:RequiredFieldValidator> <br />
+
+            <br />
+
             <a href="" id="forgotPasswordLink">Forgot Password?</a><br />
-            <input type="submit" value="LOGIN" /><br />
+            <asp:Button runat="server" ID="btnLogin" Text="LOGIN" CssClass="btnLoginStyle" 
+                OnClick="btnLogin_Click"  />
+           <br />
             
             <p>New to VoiceVanguard?</p> <a href="Registration.aspx" id="registerHereLink">Register Here</a>
             <br />
             <img src="../resources/images/icon.png" alt="watermelon icon"/>
-           
-
         </div>
     </form>
 </body>

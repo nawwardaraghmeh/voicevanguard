@@ -14,39 +14,64 @@ rel="stylesheet">
 <body>
     <form id="form1" runat="server">
         <div class="heroDiv">
-             <h1>Join VoiceVanguard</h1>
+            <h1>Join VoiceVanguard</h1>
 
 
             <div class="flexboxDiv">
-                <div class="labelsDiv">  
-                        <label id="username">Username</label>
-                        <label>E-Mail</label>
-                        <label>Password</label>
-                        <label>Confirm Password</label>
-                        <label>Areas of Interest</label>
-                        
-                        </div>
-       
-            <div class="inputsDiv">  
-                <input type="text" />
-                <input type="email" />        
-                <input type="password" />            
-                <input type="password" />           
-                <select>
-                         <option value="0">Select Interest</option>
-                         <option>Women's Rights</option>
-                         <option>Environment</option>
-                         <option>Racial Issues</option>
-                </select>
-                </div>              
-             </div>
-            <div class="submitAndLinkDiv">
-                <input type="submit" value="SIGNUP" /><br />
-                <p>Already have an account? 
-                    <asp:LinkButton ID="loginLink" runat="server" OnCLick="loginLink_Click">Login</asp:LinkButton></p>
+                <div class="labelsDiv">
+                    <label>Username</label>
+                    <label>Name</label>
+                    <label>E-Mail</label>
+                    <label>Password</label>
+                    <label>Confirm Password</label>
+                    <label>Date of Birth</label>
 
-          <img src="../resources/images/icon.png" alt="watermelon icon"/>
-        </div>
+                </div>
+
+                <div class="inputsDiv">
+                    <asp:TextBox runat="server" ID="txtboxUsername" CssClass="txtboxStyles"></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="rfvUsername" runat="server" CssClass="errorlbl"
+                        ControlToValidate="txtboxUsername" ErrorMessage="Username is required"></asp:RequiredFieldValidator>
+                    <br />
+
+                    <asp:TextBox runat="server" ID="txtboxName" CssClass="txtboxStyles"></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="rfvName" runat="server" CssClass="errorlbl"
+                        ControlToValidate="txtboxName" ErrorMessage="Username is required"></asp:RequiredFieldValidator>
+                    <br />
+
+                    <asp:TextBox runat="server" ID="txtboxEmail" CssClass="txtboxStyles" TextMode="Email"></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="rfvEmail" runat="server" CssClass="errorlbl" ControlToValidate="txtboxEmail"
+                        ErrorMessage="Email is required"></asp:RequiredFieldValidator>
+                    <br />
+
+                    <asp:TextBox runat="server" ID="txtboxPass" CssClass="txtboxStyles" TextMode="Password"></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="rfvPassword" runat="server" CssClass="errorlbl" ControlToValidate="txtboxPass"
+                        ErrorMessage="Password is required"></asp:RequiredFieldValidator>
+                    <br />
+
+                    <asp:TextBox runat="server" ID="txtboxConfirmPass" CssClass="txtboxStyles" TextMode="Password"></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="rfvConfirmPassword" runat="server" CssClass="errorlbl"
+                        ControlToValidate="txtboxConfirmPass" ErrorMessage="Confirm Password is required"></asp:RequiredFieldValidator>
+                    <br />
+
+                    <div class="dobDDL">
+                        <asp:DropDownList ID="ddlDay" runat="server" CssClass="ddlStyle"></asp:DropDownList>
+                        <asp:DropDownList ID="ddlMonth" runat="server" CssClass="ddlStyle"></asp:DropDownList>
+                        <asp:DropDownList ID="ddlYear" runat="server" CssClass="ddlStyle"></asp:DropDownList>
+                    </div>
+                </div>
+            </div>
+
+        <div class="submitAndLinkDiv">
+                <asp:Button runat="server" Text="SIGNUP" CssClass="btnSignupStyle" 
+                    ID="btnsignup" OnClick="btnsignup_Click"/><br />
+                <p>
+                    Already have an account? 
+                    <asp:LinkButton ID="loginLink" runat="server" OnClick="loginLink_Click">Login</asp:LinkButton>
+                </p>
+
+                <img src="../resources/images/icon.png" alt="watermelon icon" />
+            </div>
     </form>
 </body>
 </html>
