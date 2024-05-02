@@ -14,7 +14,7 @@
   <script src="https://kit.fontawesome.com/f6d959a275.js" crossorigin="anonymous"></script>
 
 
-    <title>VV COMMUNITY PAGE </title>
+    <title>COMMUNITY PAGE </title>
 </head>
 <body>
 
@@ -37,11 +37,10 @@
     <br />
     <br />
     <br />
-    <br />
-    <br />
 
 
     <form runat="server">
+        <h1 id="pageTitle">COMMUNITY</h1>
         <div id="heroDiv">
             <div class="buttons">
             <select>

@@ -4,7 +4,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title>Login VoiceVanguard</title>
+    <title>LOGIN TO VOICEVANGUARD</title>
      <link rel="stylesheet" type="text/css" href="../styles/LoginStyles.css"/>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

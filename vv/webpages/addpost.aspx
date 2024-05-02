@@ -4,7 +4,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title>Add Post!</title>
+    <title>ADD POST PAGE</title>
     <link rel="stylesheet" type="text/css" href="../styles/addPostStyles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,6 +17,8 @@
 </head>
 <body>
     <form id="form1" runat="server">
+        <h1 id="pageTitle">ADD POST</h1>
+
         <div id="heroDiv">
             <label id="title">TITLE</label><br />
             <input type="text" id="titleBox" required="required"/><br />

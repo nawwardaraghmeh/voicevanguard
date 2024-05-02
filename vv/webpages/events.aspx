@@ -12,7 +12,7 @@
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
-    <title>VV EVENTS PAGE </title>
+    <title>EVENTS PAGE </title>
 </head>
 <body>
 
@@ -35,6 +35,10 @@
     </nav>
 
     <br />
+    <br />
+    <br />
+
+        <h1 id="pageTitle">EVENTS</h1>
 
     <form id="form1" class="events-main" runat="server">
         <div class="events-top">
@@ -73,7 +77,7 @@
                             <br />
                         </div>
                     </div>
-                    <asp:Button ID="Button1" runat="server" Text="LEARN MORE"
+                    <asp:Button ID="Button1" runat="server" Text="SEE MORE"
                         CssClass="learnmoreBtn" OnClick="btnLearnMore_Click" />
                 </div>
             </div>
@@ -96,7 +100,7 @@
                             <span>10:00 AM</span>
                         </div>
                     </div>
-                    <asp:Button ID="Button2" runat="server" Text="LEARN MORE"
+                    <asp:Button ID="Button2" runat="server" Text="SEE MORE"
                         CssClass="learnmoreBtn" OnClick="btnLearnMore_Click" />
                 </div>
             </div>
@@ -119,7 +123,7 @@
                             <span>10:00 AM</span>
                         </div>
                     </div>
-                    <asp:Button ID="Button3" runat="server" Text="LEARN MORE"
+                    <asp:Button ID="Button3" runat="server" Text="SEE MORE"
                         CssClass="learnmoreBtn" OnClick="btnLearnMore_Click" />
                 </div>
             </div>
@@ -150,7 +154,7 @@
                             <span>8:30 PM</span>
                         </div>
                     </div>
-                    <asp:Button ID="Button4" runat="server" Text="LEARN MORE"
+                    <asp:Button ID="Button4" runat="server" Text="SEE MORE"
                         CssClass="learnmoreBtn" OnClick="btnLearnMore_Click" />
                 </div>
             </div>
@@ -174,7 +178,7 @@
                             <span>8:30 PM</span>
                         </div>
                     </div>
-                    <asp:Button ID="Button5" runat="server" Text="LEARN MORE"
+                    <asp:Button ID="Button5" runat="server" Text="SEE MORE"
                         CssClass="learnmoreBtn" OnClick="btnLearnMore_Click" />
                 </div>
             </div>
@@ -198,7 +202,7 @@
                             <span>8:30 PM</span>
                         </div>
                     </div>
-                    <asp:Button ID="Button6" runat="server" Text="LEARN MORE"
+                    <asp:Button ID="Button6" runat="server" Text="SEE MORE"
                         CssClass="learnmoreBtn" OnClick="btnLearnMore_Click" />
                 </div>
             </div>

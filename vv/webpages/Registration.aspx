@@ -4,7 +4,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title>Register Page</title>
+    <title>REGISTER TO VOICECANGUARD</title>
      <link rel="stylesheet" type="text/css" href="../styles/RegistrationStyles.css"/>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

@@ -70,3 +70,8 @@ select {
 i{
     margin:10px;
 }
+
+#pageTitle {
+    font-family: "Coustard", serif;
+    text-align: center;
+}

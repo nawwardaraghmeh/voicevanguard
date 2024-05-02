@@ -342,3 +342,11 @@ form#vieweventform {
     #btnInterested:hover {
         background-color: #DE2B2B;
     }
+
+#pageTitle {
+    font-family: "Coustard", serif;
+    text-align:center;
+    margin-right:10%;
+    font-size:40pt;
+}
+
