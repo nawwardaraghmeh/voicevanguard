@@ -33,6 +33,7 @@
             </div>
         </div>
     </nav>
+    <!-- end of header-->
 
 
     <form id="notifMainForm" runat="server">
@@ -66,31 +67,9 @@
                 <asp:Label ID="Label3" runat="server" Text="X is interested in your event!"></asp:Label>
             </div>
         </div>
-
-        <div class="notifTemp">
-            <asp:Image ID="Image4" runat="server"
-                ImageUrl="~/resources/images/person2.jpg" />
-            <div class="notifTextDiv">
-                <asp:Label ID="Label4" runat="server" Text="You gained a new follower!"></asp:Label>
-            </div>
-        </div>
-                <div class="notifTemp">
-            <asp:Image ID="Image5" runat="server"
-                ImageUrl="~/resources/images/eventpic.png"/>
-            <div class="notifTextDiv">
-                <asp:Label ID="Label5" runat="server" Text="X is interested in your event!"></asp:Label>
-            </div>
-        </div>
-
-        <div class="notifTemp">
-            <asp:Image ID="Image6" runat="server"
-                ImageUrl="~/resources/images/person2.jpg" />
-            <div class="notifTextDiv">
-                <asp:Label ID="Label6" runat="server" Text="You gained a new follower!"></asp:Label>
-            </div>
-        </div>
     </form>
 
+    <!-- Footer-->
     <footer class="footer">
         <div class="footer-content">
             <h2>Contact</h2>
