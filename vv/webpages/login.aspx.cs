@@ -13,5 +13,9 @@ namespace vv.web_pages
         {
 
         }
+
+        protected void btnLogin_Click(object sender, EventArgs e)
+        {
+        }
     }
 }

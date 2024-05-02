@@ -234,7 +234,9 @@
     <Content Include="styles\faqpageStyles.css" />
     <Content Include="styles\headerfooterStyles.css" />
     <Content Include="styles\homepageStyles.css" />
-    <Content Include="styles\LoginStyles.css" />
+    <Content Include="styles\LoginStyles.css">
+      <BrowseToURL>txtbox2</BrowseToURL>
+    </Content>
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="webpages\community.aspx" />
     <Content Include="webpages\events.aspx" />
