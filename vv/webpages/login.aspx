@@ -18,13 +18,13 @@
             <label>username</label>
             <asp:TextBox runat="server" CssClass="textboxStyles" ID="nametxtbox"></asp:TextBox> <br />
             <asp:RequiredFieldValidator ID="rfvUsername" runat="server" ControlToValidate="nametxtbox"
-                ErrorMessage="Username is required" style="color:#DE2B2B;"></asp:RequiredFieldValidator> <br />
+                ErrorMessage="Username is required" CssClass="errorlbl"></asp:RequiredFieldValidator> <br />
             <br />
 
             <label>password</label>
             <asp:TextBox runat="server" CssClass="textboxStyles" TextMode="Password" ID="pwtxtbox"></asp:TextBox>  <br /> 
             <asp:RequiredFieldValidator ID="rfvPassword" runat="server" ControlToValidate="pwtxtbox"
-                ErrorMessage="Password is required" style="color:#DE2B2B;"></asp:RequiredFieldValidator> <br />
+                ErrorMessage="Password is required" CssClass="errorlbl"></asp:RequiredFieldValidator> <br />
 
             <br />
 

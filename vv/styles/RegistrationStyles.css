@@ -40,7 +40,7 @@
     background-color: white;
     text-align: center;
     width: 50%;
-    height: 80%;
+    height: 90%;
     margin: auto;
     position: absolute;
     top: 50%;
@@ -51,12 +51,12 @@
 
 
 
-input[type=text], input[type=password], input[type=email], select {
+input[type=text], input[type=password], input[type=email], select, .txtboxStyles {
     border-radius: 20px;
     padding: 5px;
     background-color: rgb(167, 221, 186);
     width: 94%;
-    margin: 0px 0px 20px 20px;
+    margin: 0px 0px 5px 20px;
     display: inline-block;
    
 }
@@ -78,7 +78,7 @@ input[type=submit] {
 label{
     font-family: "Coustard", serif;
     font-Size: 14pt;
-    margin-bottom:22px;
+    margin-bottom:50px;
 }
 
 a:hover {
@@ -108,7 +108,10 @@ img {
     transform: rotate(270deg);
     position: absolute;
     left: -40px;
-    top: 450px;
+    top: 460px;
 }
 
-
+.errorlbl {
+    color: #DE2B2B;
+    font-family: "Coustard", serif;
+}
