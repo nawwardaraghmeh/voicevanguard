@@ -63,7 +63,8 @@
             </div>
 
         <div class="submitAndLinkDiv">
-                <asp:Button runat="server" Text="SIGNUP" CssClass="btnSignupStyle"/><br />
+                <asp:Button runat="server" Text="SIGNUP" CssClass="btnSignupStyle" 
+                    ID="btnsignup" OnClick="btnsignup_Click"/><br />
                 <p>
                     Already have an account? 
                     <asp:LinkButton ID="loginLink" runat="server" OnClick="loginLink_Click">Login</asp:LinkButton>
