@@ -12,7 +12,17 @@
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
     <title>PROFILE PAGE </title>
+
+    <script>
+        $(document).ready(function () {
+            $(".nav-item icon current-page .fa fa-bell").click(function () {
+                $("#notifMainForm").toggleClass("active");
+            })
+        });
+    </script>
 </head>
 <body>
 
@@ -26,8 +36,8 @@
                 <a href="faq.aspx" class="nav-item">FAQs</a>
             </div>
             <div class="navbar-right">
-                <a href="notification.aspx" class="nav-item icon current-page"><i class="fa fa-bell"
-                    aria-hidden="true"></i></a>
+                <div class="nav-item icon current-page"><i class="fa fa-bell"
+                    aria-hidden="true"></i></div>
                 <a href="profile.aspx" class="nav-item icon"><i class="fa fa-user" aria-hidden="true">
                 </i></a>
             </div>
@@ -35,7 +45,7 @@
     </nav>
     <!-- end of header-->
 
-
+<div id="heroDiv">
     <form id="notifMainForm" runat="server">
         <div class="notifTemp">
             <asp:Image ID="notifImage" runat="server"
@@ -68,6 +78,19 @@
             </div>
         </div>
     </form>
+    </div>
+
+
+
+
+
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
 
     <!-- Footer-->
     <footer class="footer">
