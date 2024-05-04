@@ -1,0 +1,61 @@
+﻿#heroDiv {
+    width: 40%;
+    border: solid;
+    margin: auto;
+    background-color: #EEE6E6;
+}
+
+
+#lblandbtn {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 10px 10px 0px 10px;
+}
+
+#secondDiv {
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+}
+
+#pfpandname {
+    display: flex;
+    align-items:center;
+}
+
+#titleLabel {
+    font-family: "Coustard", serif;
+    font-size: 20pt;
+}
+
+#savebtn {
+    border-radius: 20px;
+    background-color: #F1A7A7;
+    font-family: "Coustard", serif;
+    width:30%;
+    font-size:15pt;
+}
+
+#bannerimgbtn {
+    height: 150px;
+    object-fit: cover;
+    margin-bottom:10px;
+}
+
+#profileimgbtn {
+    width: 100px;
+    height: 100px;
+    border-radius: 50px;
+    object-fit: cover;
+    margin-right:30px;
+}
+
+#nametxtBox{
+    height:40px;
+    width:50%;
+}
+
+#BannerimageUpload {
+    display: none;
+}
