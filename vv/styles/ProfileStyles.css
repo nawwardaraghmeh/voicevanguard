@@ -41,7 +41,9 @@
 .profileAccountInfoGrey {
     color: #818181;
     display: flex;
+    font-size: 14px;
 }
+
 
 #lblAccountName {
     font-size: 24px;
@@ -49,7 +51,7 @@
 }
 
 #hLinkEditProfile {
-    margin-left: calc(75% - 20px);
+    margin-left: calc(250% - 20px);
     cursor: pointer;
 }
 

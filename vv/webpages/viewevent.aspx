@@ -4,7 +4,9 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <link rel="stylesheet" type="text/css" href="../styles/eventspageStyles.css" />
+    <link rel="stylesheet" type="text/css" href="../styles/viewEventStyles.css" />
+        <link rel="stylesheet" type="text/css" href="../styles/headerfooterStyles.css">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Coustard:wght@400;900&display=swap"
@@ -14,9 +16,31 @@
     <title>VIEW EVENT PAGE </title>
 </head>
 <body>
-    <form ID="vieweventform" runat="server">
+    <!-- header section -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="navbar-left">
+                <a href="home.aspx" class="nav-item">HOME</a>
+                <a href="events.aspx" class="nav-item current-page">EVENTS</a>
+                <a href="community.aspx" class="nav-item">COMMUNITY</a>
+                <a href="faq.aspx" class="nav-item">FAQs</a>
+            </div>
+            <div class="navbar-right">
+                <a href="notification.aspx" class="nav-item icon"><i class="fa fa-bell" aria-hidden="true">
+                </i></a>
+                <a href="profile.aspx" class="nav-item icon"><i class="fa fa-user" aria-hidden="true">
+                </i></a>
+            </div>
+        </div>
+    </nav>
+
+    <br />
+    <br />
+    <br />
+
+    <form id="vieweventform" runat="server">
         <div>
-            <asp:Image ID="eventMainImg" runat="server" 
+            <asp:Image ID="eventMainImg" runat="server"
                 ImageUrl="~/resources/images/rallypic.jpg" />
 
             <div class="labelsEventMain">
@@ -27,7 +51,7 @@
             </div>
 
             <div class="profileimgs">
-                <asp:Image ID="imgPerson1" runat="server" 
+                <asp:Image ID="imgPerson1" runat="server"
                     ImageUrl="~/resources/images/person1.jpg" />
                 <asp:Image ID="imgPerson2" runat="server" ImageUrl="~/resources/images/person2.jpg" />
             </div>
@@ -41,18 +65,21 @@
                     Don't miss this chance to be a catalyst for positive change in our community! 
                     RSVP now and be a part of this meaningful initiative."></asp:Label>
             </div>
-            
+
             <div class="eventDetailsDiv">
                 <div class="eventDateDiv">
-                <i class="fa fa-calendar" aria-hidden="true"></i><asp:Label ID="lblEventDate" runat="server" Text="13 January 2025 "></asp:Label>
+                    <i class="fa fa-calendar" aria-hidden="true"></i>
+                    <asp:Label ID="lblEventDate" runat="server" Text="13 January 2025 "></asp:Label>
                 </div>
 
                 <div class="eventTimeDiv">
-                <i class="fa fa-clock" aria-hidden="true"></i><asp:Label ID="lblEventTime" runat="server" Text="10:AM"></asp:Label>
+                    <i class="fa fa-clock" aria-hidden="true"></i>
+                    <asp:Label ID="lblEventTime" runat="server" Text="10:AM"></asp:Label>
                 </div>
 
                 <div class="eventLocationDiv">
-                <i class="fa fa-map-marker" aria-hidden="true"></i><asp:Label ID="lblEventLocation" runat="server" Text="Main Park"></asp:Label>
+                    <i class="fa fa-map-marker" aria-hidden="true"></i>
+                    <asp:Label ID="lblEventLocation" runat="server" Text="Main Park"></asp:Label>
                 </div>
             </div>
 
@@ -60,5 +87,25 @@
 
         </div>
     </form>
+
+    <!-- footer section -->
+    <footer class="footer">
+        <div class="footer-content">
+            <h2>Contact</h2>
+            <p>
+                <a href="mailto:voicevanguard@gmail.com" class="contact-info">voicevanguard@gmail.com</a>
+            </p>
+            <p>+972 12-345-6789</p>
+            <div class="social-icons">
+                <a href="#" class="icon"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="icon"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="icon"><i class="fab fa-twitter"></i></a>
+            </div>
+            <p style="font-size: 12px; padding-bottom: 10px;">
+                <i class="fa fa-copyright" aria-hidden="true"></i>2024 VoiceVanguard. All rights
+                reserved
+            </p>
+        </div>
+    </footer>
 </body>
 </html>

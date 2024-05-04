@@ -37,10 +37,12 @@
     <br />
     <br />
     <br />
+    <br />
+    <br />
+    <br />
 
 
     <form runat="server">
-        <h1 id="pageTitle">COMMUNITY</h1>
         <div id="heroDiv">
             <div class="buttons">
             <select>

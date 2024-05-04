@@ -1,0 +1,94 @@
+﻿body {
+    background-color: rgba(217, 217, 217, 0.25)
+}
+
+form#addEventForm {
+    background-color: white;
+    border: 2px solid black;
+    border-radius: 5px;
+    width: 50%;
+    margin: 15px 23%;
+    padding: 25px;
+    display: inline-block;
+    font-family: "Coustard", serif;
+}
+
+#addEventForm * {
+    margin-bottom: 8px;
+}
+
+
+#addEventForm input[type="text"], select {
+    padding: 10px;
+    border: 1px solid #E46262;
+    border-radius: 22px;
+    font-weight: 100;
+}
+
+#addEventForm input[type="radio"] {
+    font-weight: 600;
+}
+
+#addEventForm label {
+    font-weight: 600;
+}
+
+#lblTitle, #lblDate, #lblTime, #lblDuration, #lblLocation, #lblLink, #lblTags {
+    font-weight: 600;
+}
+
+#lblLocation, #lblLink {
+    margin-left: 10px;
+}
+
+#selectTimeH, #selectTimeM, #selectTimeAMPM {
+    width: calc(25% - 10px)
+}
+
+#selectDurationH, #selectDurationM {
+    width: calc(40% - 10px)
+}
+
+#selectTags {
+    width: calc(80% - 10px);
+    margin-left: 10px;
+}
+
+#hlinkAddDesc, #hlinkAddPic, #hlinkAddRoom {
+    color: #DE2B2B;
+    cursor: pointer;
+}
+
+#txtTitle, #txtLocation, #txtLink, #txtDate {
+    width: calc(100% - 20px);
+}
+
+.addHlinksDiv, .timeInputDiv, .durationInputDiv {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+.timeInputDiv {
+    margin-top: 7px;
+}
+
+#btnAddNewEvent {
+    background-color: #F1A7A7;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 22px;
+    cursor: pointer;
+}
+
+    #btnAddNewEvent:hover {
+        background-color: #E46262;
+    }
+
+
+#pageTitle {
+    font-family: "Coustard", serif;
+    text-align: center;
+}

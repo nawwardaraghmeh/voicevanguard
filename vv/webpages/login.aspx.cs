@@ -33,15 +33,18 @@ namespace vv.web_pages
                 object result = command.ExecuteScalar();
                 connection.Close();
 
-                if (result != null) 
+                if (result != null)
                 {
-                   
+                    
+                    Session["UserId"] = result.ToString();
                     Response.Redirect("~/webpages/profile.aspx");
                 }
                 else
                 {
-                    
+                    lblerror.Text = "Username or Password incorrect.";
                 }
+
+                
             }
         }
     }

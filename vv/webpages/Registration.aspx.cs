@@ -5,11 +5,16 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Windows.Forms;
 
 namespace vv.webpages
 {
     public partial class Registration : System.Web.UI.Page
     {
+        string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\CRC\\Desktop\\Y4S2\\senior\\vv\\vv\\App_Data\\VV.mdf;Integrated Security=True";
+        string query = "INSERT INTO users (userId, username, name, email, password, dob, dateCreated)" +
+            " VALUES (@userId, @username, @name, @email, @password, @dob, @dateCreated)";
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -44,7 +49,7 @@ namespace vv.webpages
             string name = txtboxName.Text;
             string email = txtboxEmail.Text;
             string password = txtboxPass.Text;
-            DateTime dateCreated = DateTime.Now; 
+            DateTime dateCreated = DateTime.Today; 
 
             int day = int.Parse(ddlDay.SelectedValue);
             int month = int.Parse(ddlMonth.SelectedValue);
@@ -53,33 +58,51 @@ namespace vv.webpages
 
             Guid userId = Guid.NewGuid();
 
-
-            string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\CRC\\Desktop\\Y4S2\\senior\\vv\\vv\\App_Data\\VV.mdf;Integrated Security=True";
-            string query = "INSERT INTO users (userId, username, name, email, password, dob, dateCreated)" +
-                " VALUES (@userId, @username, @name, @email, @password, @dob, @dateCreated)";
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                SqlCommand command = new SqlCommand(query, connection);
-                command.Parameters.AddWithValue("@userId", userId);
-                command.Parameters.AddWithValue("@username", username);
-                command.Parameters.AddWithValue("@name", name);
-                command.Parameters.AddWithValue("@email", email);
-                command.Parameters.AddWithValue("@password", password);
-                command.Parameters.AddWithValue("@dob", dob);
-                command.Parameters.AddWithValue("@dateCreated", dateCreated);
+                if (IsUsernameUnique(username))
+                {    
+                    SqlCommand command = new SqlCommand(query, connection);
+                    command.Parameters.AddWithValue("@userId", userId);
+                    command.Parameters.AddWithValue("@username", username);
+                    command.Parameters.AddWithValue("@name", name);
+                    command.Parameters.AddWithValue("@email", email);
+                    command.Parameters.AddWithValue("@password", password);
+                    command.Parameters.AddWithValue("@dob", dob);
+                    command.Parameters.AddWithValue("@dateCreated", dateCreated);
 
 
-                connection.Open();
-                int rowsAffected = command.ExecuteNonQuery();
-                connection.Close();
+                    connection.Open();
+                    int rowsAffected = command.ExecuteNonQuery();
+                    connection.Close();
 
-                if (rowsAffected > 0)
-                {
-                    Response.Redirect("~/webpages/profile.aspx");
+                    if (rowsAffected > 0)
+                    {
+                        Response.Redirect("~/webpages/login.aspx");
+                    } 
                 }
+
                 else
                 {
+                    usernameErrorlbl.Text = "Username is already taken.";
+                }
 
+
+
+            }
+        }
+
+        private bool IsUsernameUnique(string username)
+        {
+            string query = "SELECT COUNT(*) FROM users WHERE username = @username";
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@username", username);
+                    connection.Open();
+                    int count = (int)command.ExecuteScalar();
+                    return count == 0;
                 }
             }
         }

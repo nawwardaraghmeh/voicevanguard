@@ -52,9 +52,7 @@
                     <asp:HyperLink ID="hLinkEditProfile" runat="server">Edit Profile</asp:HyperLink>
                 &nbsp;</div>
 
-                <asp:Label ID="lblAccountBio" runat="server" Text="Hello, I’m Amanda, 
-                    and I care about the environment and women’s rights. I believe in Policy and change. 
-                    and together, we can change the world for the better"></asp:Label>
+                <asp:Label ID="lblAccountBio" runat="server" Text="No Bio Yet!"></asp:Label>
                 <br />
                 <br />
                 <div class="divTabTitlel">

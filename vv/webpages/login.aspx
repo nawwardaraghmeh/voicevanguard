@@ -15,6 +15,7 @@
     <form id="form1" runat="server">
         <div id="loginDiv">
             <h1>Welcome Back</h1>
+            <asp:Label runat="server" ID="lblerror" CssClass="errorlbl" style="margin-left:100px"></asp:Label> <br />
             <label>username</label>
             <asp:TextBox runat="server" CssClass="textboxStyles" ID="nametxtbox"></asp:TextBox> <br />
             <asp:RequiredFieldValidator ID="rfvUsername" runat="server" ControlToValidate="nametxtbox"
