@@ -24,6 +24,7 @@ rel="stylesheet">
                     <label>E-Mail</label>
                     <label>Password</label>
                     <label>Confirm Password</label>
+                    <br />
                     <label>Date of Birth</label>
 
                 </div>
@@ -31,7 +32,7 @@ rel="stylesheet">
                 <div class="inputsDiv">
                     <asp:TextBox runat="server" ID="txtboxUsername" CssClass="txtboxStyles"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="rfvUsername" runat="server" CssClass="errorlbl"
-                        ControlToValidate="txtboxUsername" ErrorMessage="Username is required"></asp:RequiredFieldValidator>
+                        ControlToValidate="txtboxUsername" ErrorMessage="Username is required"></asp:RequiredFieldValidator>  
                     <br />
 
                     <asp:TextBox runat="server" ID="txtboxName" CssClass="txtboxStyles"></asp:TextBox>
@@ -52,6 +53,8 @@ rel="stylesheet">
                     <asp:TextBox runat="server" ID="txtboxConfirmPass" CssClass="txtboxStyles" TextMode="Password"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="rfvConfirmPassword" runat="server" CssClass="errorlbl"
                         ControlToValidate="txtboxConfirmPass" ErrorMessage="Confirm Password is required"></asp:RequiredFieldValidator>
+                    <asp:CompareValidator ID="cvConfirmPassword" runat="server"  CssClass="errorlbl"
+                        ControlToValidate="txtboxConfirmPass" ControlToCompare="txtboxPass" ErrorMessage="Passwords don't match"></asp:CompareValidator>
                     <br />
 
                     <div class="dobDDL">
