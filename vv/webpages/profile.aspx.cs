@@ -54,7 +54,7 @@ namespace vv.web_pages
 
                 else
                 {
-                    Response.Redirect("~/login.aspx");
+                    Response.Redirect("~/webpages/login.aspx");
                 }
                 
                 btnMyActivity.CssClass = "clickedBtn";
