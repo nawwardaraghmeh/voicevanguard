@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Windows.Forms;
 
 namespace vv.webpages
 {
@@ -83,7 +84,7 @@ namespace vv.webpages
 
                 else
                 {
-                    rfvUsername.ErrorMessage = "Username is already taken.";
+                    usernameErrorlbl.Text = "Username is already taken.";
                 }
 
 

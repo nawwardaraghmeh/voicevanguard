@@ -16,7 +16,7 @@ rel="stylesheet">
         <div class="heroDiv">
             <h1>Join VoiceVanguard</h1>
 
-
+            <asp:Label runat="server" CssClass="errorlbl" ID="usernameErrorlbl" style="margin-left: 100px"></asp:Label>
             <div class="flexboxDiv">
                 <div class="labelsDiv">
                     <label>Username</label>

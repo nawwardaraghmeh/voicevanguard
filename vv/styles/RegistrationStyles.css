@@ -14,7 +14,7 @@
 
 .labelsDiv {
     width: 30%;
-    margin: 10px;
+    margin: 10px 10px 0 10px;
     display: flex;
     flex-direction: column;
     align-items: flex-end;
@@ -23,11 +23,10 @@
 }
 .inputsDiv {
     width: 55%;
-    margin: 10px;
+    margin: 10px 10px 0 10px;
     display: flex;
     flex-direction: column;
     align-items: flex-end;
-
 }
 
 .submitAndLinkDiv {
@@ -41,7 +40,7 @@
     background-color: white;
     text-align: center;
     width: 50%;
-    height: 110%;
+    height: 115%;
     margin-top: 30px;
     position: absolute;
     top: 50%;
@@ -109,7 +108,7 @@ img {
     transform: rotate(270deg);
     position: absolute;
     left: -40px;
-    top: 600px;
+    top: 630px;
 }
 
 .errorlbl {
