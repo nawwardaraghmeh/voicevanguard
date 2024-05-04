@@ -41,13 +41,9 @@ namespace vv.web_pages
                             //Session["bannerPic"] = reader["bannerPic"].ToString();
 
                             lblAccountName.Text = name;
-                            lblJoinDate.Text = "Joined" + formattedDate;
+                            lblJoinDate.Text = "Joined " + formattedDate;
 
-                            if(string.IsNullOrEmpty(bio))
-                            {
-                                lblAccountBio.Text = "No Bio Yet";
-                            }
-                            else
+                            if(bio != "")
                             {
                                 lblAccountBio.Text = bio;
                             }

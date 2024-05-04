@@ -191,12 +191,14 @@
     <Content Include="Content\bootstrap-grid.rtl.css.map" />
     <Content Include="Content\bootstrap-grid.min.css.map" />
     <Content Include="Content\bootstrap-grid.css.map" />
+    <Content Include="styles\addEventStyles.css" />
     <Content Include="styles\addPostStyles.css" />
     <Content Include="styles\eventspageStyles.css" />
     <Content Include="styles\notifPageStyles.css" />
     <Content Include="styles\RegistrationStyles.css" />
     <Content Include="styles\CommunityPageStyles.css" />
     <Content Include="styles\ProfileStyles.css" />
+    <Content Include="styles\viewEventStyles.css" />
     <Content Include="styles\viewPostStyle.css" />
     <Content Include="webpages\addevent.aspx" />
     <Content Include="webpages\notification.aspx" />

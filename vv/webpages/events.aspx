@@ -35,10 +35,7 @@
     </nav>
 
     <br />
-    <br />
-    <br />
 
-        <h1 id="pageTitle">EVENTS</h1>
 
     <form id="form1" class="events-main" runat="server">
         <div class="events-top">

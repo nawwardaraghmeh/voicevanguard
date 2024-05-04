@@ -4,7 +4,8 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <link rel="stylesheet" type="text/css" href="../styles/eventspageStyles.css">
+    <link rel="stylesheet" type="text/css" href="../styles/addEventStyles.css">
+    <link rel="stylesheet" type="text/css" href="../styles/headerfooterStyles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Coustard:wght@400;900&display=swap"
@@ -14,6 +15,30 @@
     <title>ADD EVENT PAGE </title>
 </head>
 <body>
+
+    <!-- header section -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="navbar-left">
+                <a href="home.aspx" class="nav-item">HOME</a>
+                <a href="events.aspx" class="nav-item current-page">EVENTS</a>
+                <a href="community.aspx" class="nav-item">COMMUNITY</a>
+                <a href="faq.aspx" class="nav-item">FAQs</a>
+            </div>
+            <div class="navbar-right">
+                <a href="notification.aspx" class="nav-item icon"><i class="fa fa-bell" aria-hidden="true">
+                </i></a>
+                <a href="profile.aspx" class="nav-item icon"><i class="fa fa-user" aria-hidden="true">
+                </i></a>
+            </div>
+        </div>
+    </nav>
+
+    <br />
+    <br />
+    <br />
+    <br />
+    <h1 id="pageTitle">ADD EVENT</h1>
     <form id="addEventForm" runat="server">
 
         <asp:Label ID="lblTitle" runat="server" Text="TITLE"></asp:Label>
@@ -107,7 +132,7 @@
         </div>
         <br />
 
-        <asp:RadioButton ID="rbtnPhysical" GroupName="eventType" runat="server" 
+        <asp:RadioButton ID="rbtnPhysical" GroupName="eventType" runat="server"
             Text="Physical Event" OnCheckedChanged="rbtnPhysical_CheckedChanged" />
         <br />
         <asp:Label ID="lblLocation" runat="server" Text="LOCATION"></asp:Label>
@@ -118,7 +143,7 @@
         <br />
         <br />
 
-        <asp:RadioButton ID="rbtnVirtual" GroupName="eventType" runat="server" 
+        <asp:RadioButton ID="rbtnVirtual" GroupName="eventType" runat="server"
             Text="Virtual Event" OnCheckedChanged="rbtnVirtual_CheckedChanged" />
         <br />
         <asp:Label ID="lblLink" runat="server" Text="LINK"></asp:Label>
@@ -148,5 +173,25 @@
 
         <asp:Button ID="btnAddNewEvent" runat="server" Text="ADD EVENT" />
     </form>
+
+    <!-- footer section -->
+    <footer class="footer">
+        <div class="footer-content">
+            <h2>Contact</h2>
+            <p>
+                <a href="mailto:voicevanguard@gmail.com" class="contact-info">voicevanguard@gmail.com</a>
+            </p>
+            <p>+972 12-345-6789</p>
+            <div class="social-icons">
+                <a href="#" class="icon"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="icon"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="icon"><i class="fab fa-twitter"></i></a>
+            </div>
+            <p style="font-size: 12px; padding-bottom: 10px;">
+                <i class="fa fa-copyright" aria-hidden="true"></i>2024 VoiceVanguard. All rights
+                reserved
+            </p>
+        </div>
+    </footer>
 </body>
 </html>
