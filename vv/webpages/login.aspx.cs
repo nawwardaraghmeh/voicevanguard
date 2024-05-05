@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
@@ -20,7 +21,7 @@ namespace vv.web_pages
             string username = nametxtbox.Text;
             string password = pwtxtbox.Text;
 
-            string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\CRC\\Desktop\\Y4S2\\senior\\vv\\vv\\App_Data\\VV.mdf;Integrated Security=True";
+            string connectionString = ConfigurationManager.ConnectionStrings["VoiceVanguardDB"].ConnectionString;
             string query = "SELECT userId FROM users WHERE username = @username AND password = @password";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
