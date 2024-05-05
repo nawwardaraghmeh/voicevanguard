@@ -69,6 +69,15 @@ namespace vv.web_pages
         protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvPassword;
 
         /// <summary>
+        /// forgotPasswordLink control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton forgotPasswordLink;
+
+        /// <summary>
         /// btnLogin control.
         /// </summary>
         /// <remarks>

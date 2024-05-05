@@ -74,6 +74,7 @@ h1 {
     color:gray;
     font-size:small;
     margin-left:300px;
+    text-decoration: none;
 }
 
 #registerHereLink {

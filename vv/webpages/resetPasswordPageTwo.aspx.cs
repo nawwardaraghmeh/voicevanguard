@@ -13,5 +13,10 @@ namespace vv.webpages
         {
 
         }
+
+        protected void confirmbtn_Click1(object sender, EventArgs e)
+        {
+            Response.Redirect("~/webpages/login.aspx");
+        }
     }
 }

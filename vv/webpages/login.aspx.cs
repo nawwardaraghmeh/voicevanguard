@@ -48,5 +48,10 @@ namespace vv.web_pages
                 
             }*/
         }
+
+        protected void forgotPasswordLink_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/webpages/resetPasswordPageOne.aspx");
         }
+    }
     }
