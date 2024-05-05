@@ -41,17 +41,11 @@ namespace vv.web_pages
                             string name = reader["name"].ToString();
                             DateTime dateCreated = (DateTime)reader["dateCreated"];
                             string formattedDate = dateCreated.ToString("yyyy/MM/dd");
-                            string bio = reader["bio"].ToString();
                             //Session["profilePic"] = reader["profilePic"].ToString();
                             //Session["bannerPic"] = reader["bannerPic"].ToString();
 
                             lblAccountName.Text = name;
                             lblJoinDate.Text = "Joined " + formattedDate;
-
-                            if(bio != "")
-                            {
-                                lblAccountBio.Text = bio;
-                            }
                         }
                         reader.Close();
                     }

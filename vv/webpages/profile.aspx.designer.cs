@@ -60,24 +60,6 @@ namespace vv.web_pages
         protected global::System.Web.UI.WebControls.Label lblJoinDate;
 
         /// <summary>
-        /// hLinkEditProfile control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink hLinkEditProfile;
-
-        /// <summary>
-        /// lblAccountBio control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblAccountBio;
-
-        /// <summary>
         /// btnMyActivity control.
         /// </summary>
         /// <remarks>

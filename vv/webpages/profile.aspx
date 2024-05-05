@@ -49,10 +49,7 @@
                 <div class="profileAccountInfoGrey">
                     <asp:Label ID="lblJoinDate" runat="server" Text="Joined 3/12/2024"></asp:Label>
                     
-                    <asp:HyperLink href="editProfile.aspx" ID="hLinkEditProfile" runat="server">Edit Profile</asp:HyperLink>
                 &nbsp;</div>
-
-                <asp:Label ID="lblAccountBio" runat="server" Text="No Bio Yet!"></asp:Label>
                 <br />
                 <br />
                 <div class="divTabTitlel">
