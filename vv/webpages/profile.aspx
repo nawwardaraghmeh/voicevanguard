@@ -11,6 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Coustard:wght@400;900&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+     <script src="https://kit.fontawesome.com/f6d959a275.js" crossorigin="anonymous"></script>
 
     <title>PROFILE PAGE </title>
 </head>
@@ -37,14 +38,21 @@
     <form id="form1" runat="server">
 
         <!-- profile page top section -->
+
+       
         <asp:Image ID="imgBannerPic" runat="server"
-            ImageUrl="~/resources/images/profilebanner.jpg" />
+            ImageUrl="~/resources/images/profilebanner.jpg" CssClass="hoverable" />
+        <div class="pencilIcon1"><i class="fa-solid fa-pencil fa-2xl"></i></div>
         <div class="profileAccountInfo">
             <asp:Image ID="imgProfilePic" runat="server"
-                ImageUrl="~/resources/images/profilepic.jpg" />
+                ImageUrl="~/resources/images/profilepic.jpg" CssClass="hoverable" />
+            <div class="pencilIcon2"><i class="fa-solid fa-pencil fa-2xl"></i></div>
 
             <div class="profileAccountInfoTxt">
-                <asp:Label ID="lblAccountName" runat="server" Text="Amanda Crowley"></asp:Label>
+                <div id="nameAndPencilDiv">
+                <asp:Label ID="lblAccountName" runat="server" Text="Amanda Crowley" CssClass="hoverableLbl"></asp:Label>
+                 <div class="pencilIcon3"><i class="fa-solid fa-pencil"></i></div>
+                </div>
 
                 <div class="profileAccountInfoGrey">
                     <asp:Label ID="lblJoinDate" runat="server" Text="Joined 3/12/2024"></asp:Label>
