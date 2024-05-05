@@ -18,6 +18,7 @@ namespace vv.web_pages
 
         protected void btnLogin_Click(object sender, EventArgs e)
         {
+            /*
             string username = nametxtbox.Text;
             string password = pwtxtbox.Text;
 
@@ -44,9 +45,8 @@ namespace vv.web_pages
                 {
                     lblerror.Text = "Username or Password incorrect.";
                 }
-
                 
-            }
+            }*/
+        }
         }
     }
-}

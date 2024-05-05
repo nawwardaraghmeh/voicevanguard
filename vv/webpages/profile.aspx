@@ -22,7 +22,7 @@
                 <a href="index.aspx" class="nav-item">HOME</a>
                 <a href="evnets.aspx" class="nav-item">EVENTS</a>
                 <a href="community.aspx" class="nav-item">COMUUNITY</a>
-                <a href="faq.aspx" class="nav-item">FAQs</a>
+                <a href="faq.aspx" class="nav-item">FAQs</a
             </div>
             <div class="navbar-right">
                 <a href="notification.aspx" class="nav-item icon"><i class="fa fa-bell" aria-hidden="true">
@@ -86,18 +86,18 @@
 
                 <asp:View ID="upcomingEventsView" runat="server">
                     <div class="viewStyles">
-                        <div class="tabDiv">
-                            <asp:Label ID="Label4" runat="server" Text="CLIMATE ACTION RALLY"></asp:Label>
-                            <asp:Label ID="Label7" runat="server" Text="1/5/2024"></asp:Label>
-                        </div>
-                        <div class="tabDiv">
-                            <asp:Label ID="Label5" runat="server" Text="VOICES UNVEILED"></asp:Label>
-                            <asp:Label ID="Label8" runat="server" Text="7/5/2024"></asp:Label>
-                        </div>
-                        <div class="tabDiv">
-                            <asp:Label ID="Label6" runat="server" Text="SOCIAL JUSTICE READS"></asp:Label>
-                            <asp:Label ID="Label9" runat="server" Text="21/6/2024"></asp:Label>
-                        </div>
+
+                        <asp:Calendar BorderStyle="None" CellPadding="40" CssClass="custom-calendar" 
+                            ID="Calendar1" runat="server" AutoPostBack="false" 
+                            OnDayRender="Calendar1_DayRender">
+                            <DayHeaderStyle BackColor="#a7ddba" />
+                            <SelectedDayStyle BackColor="#e46262" />
+                            <WeekendDayStyle ForeColor="#F1A7A7" />
+                            <OtherMonthDayStyle ForeColor="#545454" />
+                            <TodayDayStyle BackColor="#DE2B2B" ForeColor="White" />
+                            <TitleStyle ForeColor="#7BCC98" BackColor="White" />
+                        </asp:Calendar>
+      
                     </div>
                 </asp:View>
 
@@ -108,7 +108,7 @@
     <!-- footer section -->
     <footer class="footer">
         <div class="footer-content">
-            <h2>Contact</h2>
+            <h2>Contactt</h2>
             <p>
                 <a href="mailto:voicevanguard@gmail.com" class="contact-info">voicevanguard@gmail.com</a>
             </p>
