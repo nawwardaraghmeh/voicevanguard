@@ -20,7 +20,8 @@ namespace vv.web_pages
             string username = nametxtbox.Text;
             string password = pwtxtbox.Text;
 
-            string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\CRC\\Desktop\\Y4S2\\senior\\vv\\vv\\App_Data\\VV.mdf;Integrated Security=True";
+            
+            string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\SS\\source\\repos\\voicevanguard\\vv\\App_Data\\VV.mdf;Integrated Security=True";
             string query = "SELECT userId FROM users WHERE username = @username AND password = @password";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
