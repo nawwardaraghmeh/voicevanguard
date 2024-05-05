@@ -128,3 +128,14 @@
     margin-right: 15px;
 }
 */
+
+/* calendar section styles */
+
+.custom-calendar {
+    width: calc(80% - 30px);
+    margin: auto;
+    padding: 50px;
+    font-family: "Coustard", serif;
+    border-style: none;
+    border-radius: 22px;
+}
