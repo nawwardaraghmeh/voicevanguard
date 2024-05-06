@@ -150,6 +150,8 @@
     <Content Include="resources\images\aboutusPic.png" />
     <Content Include="resources\images\aboutusText.png" />
     <Content Include="resources\images\bgSignupLogin.jpg" />
+    <Content Include="resources\images\defaultbanner.png" />
+    <Content Include="resources\images\defaultProfile.jpg" />
     <Content Include="resources\images\eventpic.png" />
     <Content Include="resources\images\header.png" />
     <Content Include="resources\images\icon.png" />

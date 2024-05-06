@@ -44,11 +44,11 @@
 
        
         <asp:Image ID="imgBannerPic" runat="server"
-            ImageUrl="~/resources/images/profilebanner.jpg" CssClass="hoverable" />
+            ImageUrl="~/resources/images/defaultbanner.png" CssClass="hoverable" />
         <div class="pencilIcon1"><i class="fa-solid fa-pencil fa-2xl"></i></div>
         <div class="profileAccountInfo">
             <asp:Image ID="imgProfilePic" runat="server"
-                ImageUrl="~/resources/images/profilepic.jpg" CssClass="hoverable" />
+                ImageUrl="~/resources/images/defaultProfile.jpg" CssClass="hoverable" />
             <div class="pencilIcon2"><i class="fa-solid fa-pencil fa-2xl"></i></div>
 
             <div class="profileAccountInfoTxt">
