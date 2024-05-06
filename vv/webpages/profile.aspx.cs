@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
@@ -14,15 +15,15 @@ namespace vv.web_pages
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            /*
-            string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\CRC\\Desktop\\Y4S2\\senior\\vv\\vv\\App_Data\\VV.mdf;Integrated Security=True";
-            string query = "SELECT name, dateCreated, bio, profilePic, bannerPic FROM users WHERE userId = @userId";
-            */
+            
+            string connectionString = ConfigurationManager.ConnectionStrings["VoiceVanguardDB"].ConnectionString;
+            string query = "SELECT name, dateCreated, profilePic, bannerPic FROM users WHERE userId = @userId";
+            
 
             
             if (!IsPostBack)
             {
-                /*
+                
                 if (Session["userId"] != null)
                 {
                     string userId = Session["UserId"].ToString();
@@ -55,7 +56,7 @@ namespace vv.web_pages
                 {
                     Response.Redirect("~/webpages/login.aspx");
                 }
-                */
+                
                 btnMyActivity.CssClass = "clickedBtn";
                 MainView.ActiveViewIndex = 0;
             }
