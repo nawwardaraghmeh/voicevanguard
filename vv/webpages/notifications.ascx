@@ -1,4 +1,5 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="notification.aspx.cs" Inherits="vv.webpages.notification" %>
+﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="notifications.ascx.cs" Inherits="vv.webpages.notifications" %>
+
 
 <!DOCTYPE html>
 

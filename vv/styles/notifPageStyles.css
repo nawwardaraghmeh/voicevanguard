@@ -9,7 +9,7 @@
     position:absolute;
     left:740px;
     bottom:207px;
-    /*display:none;*/
+    display:none;
 }
 
     #notifMainForm:before {
@@ -21,7 +21,7 @@
         border-color: transparent transparent black transparent;
     }
 
-    #notifMainForm:active{
+    #notifMainForm.show{
         display: inline-block;
     }
 

@@ -7,11 +7,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace vv.web_pages
+namespace vv.webpages
 {
 
 
-    public partial class community
+    public partial class notifications
     {
 
         /// <summary>
