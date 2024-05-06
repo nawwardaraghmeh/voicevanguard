@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="profile.aspx.cs" Inherits="vv.web_pages.profile" %>
+﻿    <%@ Page Language="C#" AutoEventWireup="true" CodeBehind="profile.aspx.cs" Inherits="vv.web_pages.profile" %>
 
 <!DOCTYPE html>
 
@@ -40,16 +40,13 @@
         <!-- profile page top section -->
 
        
-        <asp:Image for="imageIpload1" ID="imgBannerPic" runat="server"
-            ImageUrl="" CssClass="hoverable" />
-       <div class="pencilIcon1" ><i class="fa-solid fa-pencil fa-2xl"></i></div>
-        <input type="file" id="imageUpload1" name="imageUpload1" />
-
+        <asp:Image ID="imgBannerPic" runat="server"
+            ImageUrl="~/resources/images/profilebanner.jpg" CssClass="hoverable" />
+        <div class="pencilIcon1"><i class="fa-solid fa-pencil fa-2xl"></i></div>
         <div class="profileAccountInfo">
-            <asp:Image for="imageIpload2" ID="imgProfilePic" runat="server"
-                ImageUrl="~/resources/images/profilePic.png" CssClass="hoverable" />
+            <asp:Image ID="imgProfilePic" runat="server"
+                ImageUrl="~/resources/images/profilepic.jpg" CssClass="hoverable" />
             <div class="pencilIcon2"><i class="fa-solid fa-pencil fa-2xl"></i></div>
-            <input type="file" id="imageUpload2" name="imageUpload2" />
 
             <div class="profileAccountInfoTxt">
                 <div id="nameAndPencilDiv">
