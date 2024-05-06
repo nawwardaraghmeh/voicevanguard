@@ -14,7 +14,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Coustard:wght@400;900&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-     <script src="https://kit.fontawesome.com/f6d959a275.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/f6d959a275.js" crossorigin="anonymous"></script>
 
     <title>PROFILE PAGE </title>
 </head>
@@ -42,25 +42,32 @@
 
         <!-- profile page top section -->
 
-       
-        <asp:Image ID="imgBannerPic" runat="server"
-            ImageUrl="~/resources/images/defaultbanner.png" CssClass="hoverable" />
-        <div class="pencilIcon1"><i class="fa-solid fa-pencil fa-2xl"></i></div>
+        <asp:Image ID="imgBannerPic" runat="server" ImageUrl="~/resources/images/defaultbanner.png"
+            CssClass="hoverable" OnMouseOver="showUploadIcon('pencilIcon1')" OnMouseLeave="hideUploadIcon('pencilIcon1')" />
+        <div class="pencilIcon1" id="pencilIcon1" onclick="fileUploadBanner_Click"><i class="fa-solid fa-pencil fa-2xl">
+        </i></div>
+        <asp:FileUpload ID="fileUploadBanner" runat="server" CssClass="file-upload" Style="display: none"
+            OnChange="fileUploadBanner_Changed" />
+
         <div class="profileAccountInfo">
-            <asp:Image ID="imgProfilePic" runat="server"
-                ImageUrl="~/resources/images/defaultProfile.jpg" CssClass="hoverable" />
-            <div class="pencilIcon2"><i class="fa-solid fa-pencil fa-2xl"></i></div>
+            <asp:Image ID="imgProfilePic" runat="server" ImageUrl="~/resources/images/defaultProfile.jpg"
+                CssClass="hoverable" OnMouseOver="showUploadIcon('pencilIcon2')" OnMouseLeave="hideUploadIcon('pencilIcon2')" />
+            <div class="pencilIcon2" id="pencilIcon2" onclick="fileUploadProfile_Click"><i class="fa-solid fa-pencil fa-2xl">
+            </i></div>
+            <asp:FileUpload ID="fileUploadProfile" runat="server" CssClass="file-upload" Style="display: none"
+                OnChange="fileUploadProfile_Changed" />
 
             <div class="profileAccountInfoTxt">
                 <div id="nameAndPencilDiv">
-                <asp:Label ID="lblAccountName" runat="server" Text="Amanda Crowley" CssClass="hoverableLbl"></asp:Label>
-                 <div class="pencilIcon3"><i class="fa-solid fa-pencil"></i></div>
+                    <asp:Label ID="lblAccountName" runat="server" Text="Amanda Crowley" CssClass="hoverableLbl"></asp:Label>
+                    <div class="pencilIcon3"><i class="fa-solid fa-pencil"></i></div>
                 </div>
 
                 <div class="profileAccountInfoGrey">
                     <asp:Label ID="lblJoinDate" runat="server" Text="Joined 3/12/2024"></asp:Label>
-                    
-                &nbsp;</div>
+
+                    &nbsp;
+                </div>
                 <br />
                 <br />
                 <div class="divTabTitlel">
@@ -75,41 +82,41 @@
         </div>
 
 
-            <!-- tabs section -->
-            <asp:MultiView ID="MainView" runat="server">
-                <asp:View ID="ActivityView" runat="server">
-                    <div class="viewStyles">
-                        <div class="tabDiv">
-                            <asp:Label ID="Label1" runat="server" Text="You gained a new follower!"></asp:Label>
-                        </div>
-                        <div class="tabDiv">
-                            <asp:Label ID="Label2" runat="server" Text="Y replied to your comment on X post."></asp:Label>
-                        </div>
-                        <div class="tabDiv">
-                            <asp:Label ID="Label3" runat="server" Text="Z created a new event. Check it out"></asp:Label>
-                        </div>
+        <!-- tabs section -->
+        <asp:MultiView ID="MainView" runat="server">
+            <asp:View ID="ActivityView" runat="server">
+                <div class="viewStyles">
+                    <div class="tabDiv">
+                        <asp:Label ID="Label1" runat="server" Text="You gained a new follower!"></asp:Label>
                     </div>
-                </asp:View>
-
-
-                <asp:View ID="upcomingEventsView" runat="server">
-                    <div class="viewStyles">
-
-                        <asp:Calendar BorderStyle="None" CellPadding="40" CssClass="custom-calendar" 
-                            ID="Calendar1" runat="server" AutoPostBack="false" 
-                            OnDayRender="Calendar1_DayRender">
-                            <DayHeaderStyle BackColor="#a7ddba" />
-                            <SelectedDayStyle BackColor="#e46262" />
-                            <WeekendDayStyle ForeColor="#F1A7A7" />
-                            <OtherMonthDayStyle ForeColor="#545454" />
-                            <TodayDayStyle BackColor="#DE2B2B" ForeColor="White" />
-                            <TitleStyle ForeColor="#7BCC98" BackColor="White" />
-                        </asp:Calendar>
-      
+                    <div class="tabDiv">
+                        <asp:Label ID="Label2" runat="server" Text="Y replied to your comment on X post."></asp:Label>
                     </div>
-                </asp:View>
+                    <div class="tabDiv">
+                        <asp:Label ID="Label3" runat="server" Text="Z created a new event. Check it out"></asp:Label>
+                    </div>
+                </div>
+            </asp:View>
 
-            </asp:MultiView>
+
+            <asp:View ID="upcomingEventsView" runat="server">
+                <div class="viewStyles">
+
+                    <asp:Calendar BorderStyle="None" CellPadding="40" CssClass="custom-calendar"
+                        ID="Calendar1" runat="server" AutoPostBack="false"
+                        OnDayRender="Calendar1_DayRender">
+                        <DayHeaderStyle BackColor="#a7ddba" />
+                        <SelectedDayStyle BackColor="#e46262" />
+                        <WeekendDayStyle ForeColor="#F1A7A7" />
+                        <OtherMonthDayStyle ForeColor="#545454" />
+                        <TodayDayStyle BackColor="#DE2B2B" ForeColor="White" />
+                        <TitleStyle ForeColor="#7BCC98" BackColor="White" />
+                    </asp:Calendar>
+
+                </div>
+            </asp:View>
+
+        </asp:MultiView>
 
     </form>
 
