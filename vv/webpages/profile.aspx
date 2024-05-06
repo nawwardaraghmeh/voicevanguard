@@ -45,7 +45,7 @@
         <div class="pencilIcon1"><i class="fa-solid fa-pencil fa-2xl"></i></div>
         <div class="profileAccountInfo">
             <asp:Image ID="imgProfilePic" runat="server"
-                ImageUrl="~/resources/images/profilepic.jpg" CssClass="hoverable" />
+                ImageUrl="~/resources/images/profilePic.png" CssClass="hoverable" />
             <div class="pencilIcon2"><i class="fa-solid fa-pencil fa-2xl"></i></div>
 
             <div class="profileAccountInfoTxt">
