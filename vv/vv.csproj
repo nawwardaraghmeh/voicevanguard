@@ -160,6 +160,7 @@
     <Content Include="resources\images\pfp2.jpg" />
     <Content Include="resources\images\profilebanner.jpg" />
     <Content Include="resources\images\profilepic.jpg" />
+    <Content Include="resources\images\profilePic.png" />
     <Content Include="resources\images\rallypic.jpg" />
     <Content Include="resources\images\signupBox.png" />
     <Content Include="resources\images\virtualeventpic.jpg" />

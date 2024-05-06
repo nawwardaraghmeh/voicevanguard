@@ -18,7 +18,7 @@
 
     <script>
         $(document).ready(function () {
-            $(".nav-item icon current-page .fa fa-bell").click(function () {
+            $(".current-page .fa-bell").click(function () {
                 $("#notifMainForm").toggleClass("active");
             })
         });
@@ -85,6 +85,20 @@
 
 
     <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+        <br />
     <br />
     <br />
     <br />

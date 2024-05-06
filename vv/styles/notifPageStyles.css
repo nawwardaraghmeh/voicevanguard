@@ -5,10 +5,11 @@
     width: 15%;
     margin: 100px 22%;
     padding: 10px;
-    display: inline-block;
     font-family: "Coustard", serif;
-    position:relative;
-    display:none;
+    position:absolute;
+    left:740px;
+    bottom:207px;
+    /*display:none;*/
 }
 
     #notifMainForm:before {
@@ -60,4 +61,8 @@
     flex-direction: column;
     justify-content: center;
     font-size:15px;
+}
+
+.current-page{
+    position:relative;
 }
