@@ -1,4 +1,4 @@
-﻿#notifMainForm {
+﻿#heroDiv {
     background-color: black;
     border-style: none;
     border-radius: 5px;
@@ -6,13 +6,13 @@
     margin: 100px 22%;
     padding: 10px;
     font-family: "Coustard", serif;
-    position:absolute;
-    left:740px;
-    bottom:207px;
-    display:none;
+    position: absolute;
+    left: 740px;
+    bottom: 207px;
+    display: none;
 }
 
-    #notifMainForm:before {
+    #heroDiv:before {
         content: "";
         position: absolute;
         top: -9%;
@@ -21,7 +21,7 @@
         border-color: transparent transparent black transparent;
     }
 
-    #notifMainForm.show{
+    #heroDiv.show {
         display: inline-block;
     }
 

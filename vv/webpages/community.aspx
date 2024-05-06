@@ -1,6 +1,5 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="community.aspx.cs" Inherits="vv.web_pages.community" %>
-<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="notifications.ascx.cs" Inherits="vv.webpages.notifications" %>
-
+<%@ Register Src="notifications.ascx" TagName="Notification" TagPrefix="uc" %>
 
 <!DOCTYPE html>
 
@@ -30,7 +29,7 @@
                 <a href="faq.aspx" class="nav-item">FAQs</a>
             </div>
             <div class="navbar-right">
-                <a href="notification.aspx" class="nav-item icon"><i class="fa fa-bell" aria-hidden="true"></i></a>
+               <!-- <div class="nav-item icon"><i class="fa fa-bell" aria-hidden="true"></i></div>-->
                 <a href="profile.aspx" class="nav-item icon"><i class="fa fa-user" aria-hidden="true">
                 </i></a>
             </div>
@@ -45,6 +44,7 @@
 
 
     <form runat="server">
+        <uc:Notification ID="Notification1" runat="server" />
         <div id="heroDiv">
             <div class="buttons">
             <select>

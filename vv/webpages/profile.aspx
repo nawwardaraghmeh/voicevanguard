@@ -1,4 +1,7 @@
 ﻿    <%@ Page Language="C#" AutoEventWireup="true" CodeBehind="profile.aspx.cs" Inherits="vv.web_pages.profile" %>
+    <%@ Register Src="notifications.ascx" TagName="Notification" TagPrefix="uc" %>
+    
+
 
 <!DOCTYPE html>
 
@@ -23,11 +26,9 @@
                 <a href="index.aspx" class="nav-item">HOME</a>
                 <a href="evnets.aspx" class="nav-item">EVENTS</a>
                 <a href="community.aspx" class="nav-item">COMUUNITY</a>
-                <a href="faq.aspx" class="nav-item">FAQs</a
+                <a href="faq.aspx" class="nav-item">FAQs</a>
             </div>
             <div class="navbar-right">
-                <a href="notification.aspx" class="nav-item icon"><i class="fa fa-bell" aria-hidden="true">
-                </i></a>
                 <a href="profile.aspx" class="nav-item icon current-page"><i class="fa fa-user" aria-hidden="true">
                 </i></a>
             </div>
@@ -36,6 +37,8 @@
 
     <!-- profile main content -->
     <form id="form1" runat="server">
+        <uc:Notification ID="Notification1" runat="server" />
+
 
         <!-- profile page top section -->
 

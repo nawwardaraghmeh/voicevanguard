@@ -1,4 +1,6 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="faq.aspx.cs" Inherits="vv.web_pages.faq" %>
+<%@ Register Src="notifications.ascx" TagName="Notification" TagPrefix="uc" %>
+
 
 <!DOCTYPE html>
 
@@ -26,7 +28,6 @@
                 <a href="faq.aspx" class="nav-item">FAQs</a>
             </div>
             <div class="navbar-right">
-                <a href="notification.aspx" class="nav-item icon"><i class="fa fa-bell" aria-hidden="true"></i></a>
                 <a href="profile.aspx" class="nav-item icon"><i class="fa fa-user" aria-hidden="true">
                 </i></a>
             </div>
@@ -35,6 +36,8 @@
 
     <!-- main section -->
     <form id="form2" runat="server">
+        <uc:Notification ID="Notification1" runat="server" />
+
         <asp:Image ID="Image1" runat="server" Height="524px" ImageUrl="~/resources/images/header.png"
             Width="100%" />
         <asp:Image ID="imgAboutus" CssClass="imgAboutus" runat="server" ImageUrl="~/resources/images/aboutusPic.png" />
