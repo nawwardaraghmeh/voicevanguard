@@ -12,8 +12,8 @@
     margin: 100px 22%;
     padding: 10px;
     font-family: "Coustard", serif;
-    left: 47%;
-    top: -2.5%;
+    left: 47.5%;
+    top: -4%;
     display: none;
     z-index:1000;
 }
@@ -79,7 +79,7 @@
     color:white;
     position:fixed;
     z-index:1000;
-    top:2%;
+    top:1.60%;
     left:84%;
     padding:10px 10px;
 }
