@@ -19,22 +19,27 @@
     <title>PROFILE PAGE </title>
 
     <script>
-        function togglePicker(pickerId) {
-            const picker = document.getElementById(pickerId);
-            picker.style.display = picker.style.display === "none" ? "inline-block" : "none";
+        function showProfilePicker() {
+        const input = document.getElementById("profileInput");
+        input.click(); // Trigger the file picker dialog
+    }
+
+    function showBannerPicker() {
+        const input = document.getElementById("bannerInput");
+        input.click(); // Trigger the file picker dialog for banner picture
+    }
+
+    function handleBannerChange(event) {
+        const file = event.target.files[0];
+        const img = document.getElementById("<%=imgBannerPic.ClientID %>");
+        img.src = URL.createObjectURL(file); // Display the selected image as banner picture
         }
 
-        function uploadBanner() {
-            const input = document.getElementById("bannerInput");
-            const file = input.files[0];
-            // Process the uploaded file
-        }
-
-        function uploadProfile() {
-            const input = document.getElementById("profileInput");
-            const file = input.files[0];
-            // Process the uploaded file
-        }
+    function handleProfileChange(event) {
+        const file = event.target.files[0];
+        const img = document.getElementById("<%=imgProfilePic.ClientID %>");
+        img.src = URL.createObjectURL(file); // Display the selected image as profile picture
+         }
     </script>
 </head>
 <body>
@@ -63,11 +68,11 @@
 
        
             <!--banner picture-->
-        <div id="bannerPicture" class="picture" onclick="togglePicker('bannerPicker')"><asp:Image ID="imgBannerPic" runat="server"
+        <div id="bannerPicture" class="picture" onclick="showBannerPicker()"><asp:Image ID="imgBannerPic" runat="server"
             ImageUrl="~/resources/images/defaultbanner.png" CssClass="hoverable" /></div>
+      <!--banner picker content-->
         <div id="bannerPicker" class="picker">
-            <!-- Banner Picker Content -->
-            <input type="file" id="bannerInput" accept="image/*"/>
+            <input type="file" id="bannerInput" accept="image/*" onchange="handleBannerChange(event)"/>
             <button onclick="uploadBanner()">Upload</button>
         </div>
 
@@ -75,16 +80,15 @@
         <div class="profileAccountInfo">
 
             <!--profile picture-->
-           <div id="profilePicture" class="picture" onclick="togglePicker('profilePicker')"> <asp:Image ID="imgProfilePic" runat="server"
+           <div id="profilePicture" class="picture" onclick="showProfilePicker()"> <asp:Image ID="imgProfilePic" runat="server"
                 ImageUrl="~/resources/images/defaultProfile.jpg" CssClass="hoverable" /></div>
-            <div id="profilePicker" class="picker">
-                <!-- Profile Picker Content -->
-                <input type="file" id="profileInput" accept="image/*"/>
-                <button onclick="uploadProfile()">Upload</button>
-            </div>
-
-
             <div class="pencilIcon2"><i class="fa-solid fa-pencil fa-2xl"></i></div>
+          <!--pfp picker content-->
+            <div id="profilePicker" class="picker">
+                <input type="file" id="profileInput" accept="image/*" onchange="handleProfileChange(event)"/>
+                <button onclick="uploadProfile()">Upload</button>
+            </div> 
+            
 
             <div class="profileAccountInfoTxt">
                 <div id="nameAndPencilDiv">
