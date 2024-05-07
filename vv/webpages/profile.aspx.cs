@@ -112,6 +112,7 @@ namespace vv.web_pages
             return (date == new DateTime(2024, 5, 15) || date == new DateTime(2024, 5, 29));
         }
 
+        /*
         protected void fileUploadBanner_Changed(object sender, EventArgs e)
         {
             if (fileUploadBanner.HasFile)
@@ -151,14 +152,10 @@ namespace vv.web_pages
                     SqlCommand command = new SqlCommand(query, connection);
                     command.Parameters.AddWithValue("@imagePath", imagePath);
                     command.Parameters.AddWithValue("@userId", userId);
-
-                   
                 }
             }
 
-            }
-
-
+            }*/
 
 
     }
