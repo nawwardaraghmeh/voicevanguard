@@ -11,7 +11,7 @@ namespace vv.webpages
 {
 
 
-    public partial class resetPasswordPageOne
+    public partial class resetpasswordi
     {
 
         /// <summary>

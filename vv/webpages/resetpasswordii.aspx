@@ -1,5 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="resetPasswordPageTwo.aspx.cs"
-    Inherits="vv.webpages.resetPasswordPageTwo" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="resetpasswordii.aspx.cs" Inherits="vv.webpages.resetpasswordii" %>
 
 <!DOCTYPE html>
 

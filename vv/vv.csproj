@@ -210,8 +210,8 @@
     <Content Include="webpages\notifications.ascx" />
     <Content Include="webpages\Registration.aspx" />
     <Content Include="webpages\addpost.aspx" />
-    <Content Include="webpages\resetPasswordPageOne.aspx" />
-    <Content Include="webpages\resetPasswordPageTwo.aspx" />
+    <Content Include="webpages\resetpasswordi.aspx" />
+    <Content Include="webpages\resetpasswordii.aspx" />
     <Content Include="webpages\viewevent.aspx" />
     <Content Include="webpages\viewPost.aspx" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
@@ -373,19 +373,19 @@
     <Compile Include="webpages\addpost.aspx.designer.cs">
       <DependentUpon>addpost.aspx</DependentUpon>
     </Compile>
-    <Compile Include="webpages\resetPasswordPageOne.aspx.cs">
-      <DependentUpon>resetPasswordPageOne.aspx</DependentUpon>
+    <Compile Include="webpages\resetpasswordi.aspx.cs">
+      <DependentUpon>resetpasswordi.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="webpages\resetPasswordPageOne.aspx.designer.cs">
-      <DependentUpon>resetPasswordPageOne.aspx</DependentUpon>
+    <Compile Include="webpages\resetpasswordi.aspx.designer.cs">
+      <DependentUpon>resetpasswordi.aspx</DependentUpon>
     </Compile>
-    <Compile Include="webpages\resetPasswordPageTwo.aspx.cs">
-      <DependentUpon>resetPasswordPageTwo.aspx</DependentUpon>
+    <Compile Include="webpages\resetpasswordii.aspx.cs">
+      <DependentUpon>resetpasswordii.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="webpages\resetPasswordPageTwo.aspx.designer.cs">
-      <DependentUpon>resetPasswordPageTwo.aspx</DependentUpon>
+    <Compile Include="webpages\resetpasswordii.aspx.designer.cs">
+      <DependentUpon>resetpasswordii.aspx</DependentUpon>
     </Compile>
     <Compile Include="webpages\viewevent.aspx.cs">
       <DependentUpon>viewevent.aspx</DependentUpon>

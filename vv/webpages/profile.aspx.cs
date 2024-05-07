@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -110,6 +111,54 @@ namespace vv.web_pages
             // Replace this with your actual logic to determine if there are events on the given date
             return (date == new DateTime(2024, 5, 15) || date == new DateTime(2024, 5, 29));
         }
+
+        protected void fileUploadBanner_Changed(object sender, EventArgs e)
+        {
+            if (fileUploadBanner.HasFile)
+            {
+                string fileName = Path.GetFileName(fileUploadBanner.FileName);
+                string uploadPath = Server.MapPath("~/uploads/") + fileName;
+                fileUploadBanner.SaveAs(uploadPath);
+
+                // Update banner image path in database for the current user
+                UpdateImagePathInDatabase("banner", uploadPath);
+            }
+        }
+
+        protected void fileUploadProfile_Changed(object sender, EventArgs e)
+        {
+            if (fileUploadProfile.HasFile)
+            {
+                string fileName = Path.GetFileName(fileUploadProfile.FileName);
+                string uploadPath = Server.MapPath("~/uploads/") + fileName;
+                fileUploadProfile.SaveAs(uploadPath);
+
+                // Update profile image path in database for the current user
+                UpdateImagePathInDatabase("profile", uploadPath);
+            }
+        }
+
+        protected void UpdateImagePathInDatabase(string imageType, string imagePath)
+        {
+            string connectionString = ConfigurationManager.ConnectionStrings["VoiceVanguardDB"].ConnectionString;
+            string query;
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                if(imageType == "profile")
+                {
+                    query = "update users set profilePic = @imagePath where userId = @userId";
+                    SqlCommand command = new SqlCommand(query, connection);
+                    command.Parameters.AddWithValue("@imagePath", imagePath);
+                    command.Parameters.AddWithValue("@userId", userId);
+
+                   
+                }
+            }
+
+            }
+
+
 
 
     }
