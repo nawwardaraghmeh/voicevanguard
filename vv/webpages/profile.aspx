@@ -17,6 +17,25 @@
      <script src="https://kit.fontawesome.com/f6d959a275.js" crossorigin="anonymous"></script>
 
     <title>PROFILE PAGE </title>
+
+    <script>
+        function togglePicker(pickerId) {
+            const picker = document.getElementById(pickerId);
+            picker.style.display = picker.style.display === "none" ? "inline-block" : "none";
+        }
+
+        function uploadBanner() {
+            const input = document.getElementById("bannerInput");
+            const file = input.files[0];
+            // Process the uploaded file
+        }
+
+        function uploadProfile() {
+            const input = document.getElementById("profileInput");
+            const file = input.files[0];
+            // Process the uploaded file
+        }
+    </script>
 </head>
 <body>
     <!-- header section -->
@@ -43,12 +62,28 @@
         <!-- profile page top section -->
 
        
-        <asp:Image ID="imgBannerPic" runat="server"
-            ImageUrl="~/resources/images/defaultbanner.png" CssClass="hoverable" />
+            <!--banner picture-->
+        <div id="bannerPicture" class="picture" onclick="togglePicker('bannerPicker')"><asp:Image ID="imgBannerPic" runat="server"
+            ImageUrl="~/resources/images/defaultbanner.png" CssClass="hoverable" /></div>
+        <div id="bannerPicker" class="picker">
+            <!-- Banner Picker Content -->
+            <input type="file" id="bannerInput" accept="image/*"/>
+            <button onclick="uploadBanner()">Upload</button>
+        </div>
+
         <div class="pencilIcon1"><i class="fa-solid fa-pencil fa-2xl"></i></div>
         <div class="profileAccountInfo">
-            <asp:Image ID="imgProfilePic" runat="server"
-                ImageUrl="~/resources/images/defaultProfile.jpg" CssClass="hoverable" />
+
+            <!--profile picture-->
+           <div id="profilePicture" class="picture" onclick="togglePicker('profilePicker')"> <asp:Image ID="imgProfilePic" runat="server"
+                ImageUrl="~/resources/images/defaultProfile.jpg" CssClass="hoverable" /></div>
+            <div id="profilePicker" class="picker">
+                <!-- Profile Picker Content -->
+                <input type="file" id="profileInput" accept="image/*"/>
+                <button onclick="uploadProfile()">Upload</button>
+            </div>
+
+
             <div class="pencilIcon2"><i class="fa-solid fa-pencil fa-2xl"></i></div>
 
             <div class="profileAccountInfoTxt">
