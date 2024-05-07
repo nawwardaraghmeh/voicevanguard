@@ -191,8 +191,8 @@
     display:none;
 }
 
-.picker{
-    display:none;
+.picker, #usernameInput {
+    display: none;
 }
 
 

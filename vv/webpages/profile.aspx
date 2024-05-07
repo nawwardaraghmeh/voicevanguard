@@ -40,6 +40,49 @@
         const img = document.getElementById("<%=imgProfilePic.ClientID %>");
         img.src = URL.createObjectURL(file); // Display the selected image as profile picture
          }
+
+         //CHANGING NAME CODE
+
+         document.addEventListener("DOMContentLoaded", function () {
+            const input = document.getElementById("usernameInput");
+            const label = document.getElementById("usernameLabel");
+            const currentUsername = document.getElementById("lblAccountName");
+
+            // Add event listener for when the input field loses focus
+            input.addEventListener("blur", function () {
+                updateUsername(input, label, currentUsername);
+            });
+        });
+
+        function showUsernameInput() {
+            const label = document.getElementById("usernameLabel");
+            const input = document.getElementById("usernameInput");
+            const currentUsername = document.getElementById("lblAccountName");
+
+            // Hide the label and show the input field
+            label.style.display = "none";
+            input.style.display = "inline-block";
+    
+            // Set the input value to the current username
+            input.value = currentUsername.innerText;
+
+            // Set focus to the input field
+            input.focus();
+        }
+
+        function updateUsername(input, label, currentUsername) {
+            // Get the new username from the input field
+            const newUsername = input.value;
+    
+            // Update the label with the new username
+            currentUsername.innerText = newUsername;
+
+            // Show the label and hide the input field
+            label.style.display = "block";
+            input.style.display = "none";
+        }
+
+      
     </script>
 </head>
 <body>
@@ -91,10 +134,15 @@
             
 
             <div class="profileAccountInfoTxt">
+                <div id="usernameLabel" onclick="showUsernameInput()">
                 <div id="nameAndPencilDiv">
                     <asp:Label ID="lblAccountName" runat="server" Text="Amanda Crowley" CssClass="hoverableLbl"></asp:Label>
                     <div class="pencilIcon3"><i class="fa-solid fa-pencil"></i></div>
                 </div>
+                    </div>
+                <!--username input-->
+                <input type="text" id="usernameInput"/>
+                    
 
                 <div class="profileAccountInfoGrey">
                     <asp:Label ID="lblJoinDate" runat="server" Text="Joined 3/12/2024"></asp:Label>
