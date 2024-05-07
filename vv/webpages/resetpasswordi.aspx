@@ -1,5 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="resetPasswordPageOne.aspx.cs"
-    Inherits="vv.webpages.resetPasswordPageOne" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="resetpasswordi.aspx.cs" Inherits="vv.webpages.resetpasswordi" %>
 
 <!DOCTYPE html>
 
@@ -21,7 +20,8 @@
             <asp:TextBox ID="setEmailtxtbox" runat="server" placeholder="example@email.com"></asp:TextBox>
 
             <div id="btnAndCancelDiv">
-                <asp:Button ID="resetPasswordbtn" runat="server" Text="Reset Password" />
+                <asp:Button runat="server" ID="resetPasswordbtn" Text="Reset Password" OnClick="resetPasswordbtn_Click" />
+
                 <asp:LinkButton runat="server" ID="cancelHlink" Text="cancel" 
                     OnClick="cancelHlink_Click"></asp:LinkButton>
             </div>
@@ -29,4 +29,3 @@
     </form>
 </body>
 </html>
-

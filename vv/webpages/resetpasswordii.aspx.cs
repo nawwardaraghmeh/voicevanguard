@@ -7,16 +7,11 @@ using System.Web.UI.WebControls;
 
 namespace vv.webpages
 {
-    public partial class resetPasswordPageTwo : System.Web.UI.Page
+    public partial class resetpasswordii : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
 
-        }
-
-        protected void confirmbtn_Click1(object sender, EventArgs e)
-        {
-            Response.Redirect("~/webpages/login.aspx");
         }
     }
 }
