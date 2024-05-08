@@ -157,6 +157,9 @@ namespace vv.web_pages
 
             }*/
 
-
+        protected void btnLogout_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/webpages/login.aspx");
+        }
     }
 }

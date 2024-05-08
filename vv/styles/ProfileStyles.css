@@ -22,6 +22,7 @@
     object-fit: cover;
     position: relative;
     background-color: #A7DDBA;
+    border-radius: 50%;
 }
 
 
@@ -195,4 +196,19 @@
     display: none;
 }
 
+
+#btnLogout {
+    cursor: pointer;
+    background-color: #F1A7A7;
+    border: none;
+    border-radius: 22px;
+    font-family: "Coustard", serif;
+    font-weight: 500;
+    margin-left: 240%;
+    padding: 10px;
+}
+
+    #btnLogout:hover {
+        background-color: #E46262;
+    }
 

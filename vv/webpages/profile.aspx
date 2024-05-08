@@ -124,7 +124,7 @@
 
             <!--profile picture-->
            <div id="profilePicture" class="picture" onclick="showProfilePicker()"> <asp:Image ID="imgProfilePic" runat="server"
-                ImageUrl="~/resources/images/defaultProfile.jpg" CssClass="hoverable" /></div>
+                ImageUrl="~/resources/images/profilePic.png" CssClass="hoverable" /></div>
             <div class="pencilIcon2"><i class="fa-solid fa-pencil fa-2xl"></i></div>
           <!--pfp picker content-->
             <div id="profilePicker" class="picker">
@@ -146,9 +146,9 @@
 
                 <div class="profileAccountInfoGrey">
                     <asp:Label ID="lblJoinDate" runat="server" Text="Joined 3/12/2024"></asp:Label>
-
-                    &nbsp;
+                    <asp:Button runat="server" Text="LOGOUT" ID="btnLogout" OnClick="btnLogout_Click" />
                 </div>
+
                 <br />
                 <br />
                 <div class="divTabTitlel">
