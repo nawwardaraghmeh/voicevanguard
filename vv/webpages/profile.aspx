@@ -33,13 +33,13 @@
         const file = event.target.files[0];
         const img = document.getElementById("<%=imgBannerPic.ClientID %>");
         img.src = URL.createObjectURL(file); // Display the selected image as banner picture
-        }
+    }
 
     function handleProfileChange(event) {
         const file = event.target.files[0];
         const img = document.getElementById("<%=imgProfilePic.ClientID %>");
         img.src = URL.createObjectURL(file); // Display the selected image as profile picture
-         }
+    }
 
          //CHANGING NAME CODE
 
@@ -81,8 +81,6 @@
             label.style.display = "block";
             input.style.display = "none";
         }
-
-      
     </script>
 </head>
 <body>
@@ -121,6 +119,7 @@
 
         <div class="pencilIcon1"><i class="fa-solid fa-pencil fa-2xl"></i></div>
         <div class="profileAccountInfo">
+
 
             <!--profile picture-->
            <div id="profilePicture" class="picture" onclick="showProfilePicker()"> <asp:Image ID="imgProfilePic" runat="server"
