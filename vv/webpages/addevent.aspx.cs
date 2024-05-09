@@ -16,17 +16,27 @@ namespace vv.webpages
 
         protected void rbtnPhysical_CheckedChanged(object sender, EventArgs e)
         {
-            if (rbtnPhysical.Checked == true) txtLink.Enabled = false;
+            txtLink.Enabled = false;
+            txtLink.BackColor = System.Drawing.Color.LightGray;
+
+            txtLocation.Enabled = true;
+            txtRoom.Enabled = true;
+            txtLocation.BackColor = System.Drawing.Color.White;
+            txtRoom.BackColor = System.Drawing.Color.White;
         }
 
         protected void rbtnVirtual_CheckedChanged(object sender, EventArgs e)
         {
-            if (rbtnVirtual.Checked == true)
-            {
-                txtLocation.Enabled = false;
-                hlinkAddRoom.Enabled = false;
-            }
+            txtLink.Enabled = true;
+            txtLink.BackColor = System.Drawing.Color.White;
+
+            txtLocation.Enabled = false;
+            txtRoom.Enabled = false;
+            txtLocation.BackColor = System.Drawing.Color.LightGray;
+            txtRoom.BackColor = System.Drawing.Color.LightGray;
+
         }
+
 
         protected void selectTags_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -38,7 +48,7 @@ namespace vv.webpages
                     selectedTags.Add(item.Text);
                 }
             }
-            eventstagslabel.Text = string.Join(", ", selectedTags);
+            eventstagslabel.Text = "#" + string.Join(" #", selectedTags);
         }
 
     }

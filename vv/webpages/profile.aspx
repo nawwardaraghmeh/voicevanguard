@@ -88,8 +88,8 @@
     <nav class="navbar">
         <div class="navbar-container">
             <div class="navbar-left">
-                <a href="index.aspx" class="nav-item">HOME</a>
-                <a href="evnets.aspx" class="nav-item">EVENTS</a>
+                <a href="home.aspx" class="nav-item">HOME</a>
+                <a href="events.aspx" class="nav-item">EVENTS</a>
                 <a href="community.aspx" class="nav-item">COMUUNITY</a>
                 <a href="faq.aspx" class="nav-item">FAQs</a>
             </div>

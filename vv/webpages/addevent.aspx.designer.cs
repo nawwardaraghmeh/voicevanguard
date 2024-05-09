@@ -42,22 +42,40 @@ namespace vv.webpages
         protected global::System.Web.UI.WebControls.TextBox txtTitle;
 
         /// <summary>
-        /// hlinkAddDesc control.
+        /// lblDesc control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink hlinkAddDesc;
+        protected global::System.Web.UI.WebControls.Label lblDesc;
 
         /// <summary>
-        /// hlinkAddPic control.
+        /// txtDesc control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink hlinkAddPic;
+        protected global::System.Web.UI.WebControls.TextBox txtDesc;
+
+        /// <summary>
+        /// lblPic control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblPic;
+
+        /// <summary>
+        /// eventPicUpload control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.FileUpload eventPicUpload;
 
         /// <summary>
         /// lblDate control.
@@ -85,6 +103,33 @@ namespace vv.webpages
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblTime;
+
+        /// <summary>
+        /// selectTimeH control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList selectTimeH;
+
+        /// <summary>
+        /// selectTimeM control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList selectTimeM;
+
+        /// <summary>
+        /// selectTimeAMPM control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList selectTimeAMPM;
 
         /// <summary>
         /// lblDuration control.
@@ -123,13 +168,22 @@ namespace vv.webpages
         protected global::System.Web.UI.WebControls.TextBox txtLocation;
 
         /// <summary>
-        /// hlinkAddRoom control.
+        /// lblRoom control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink hlinkAddRoom;
+        protected global::System.Web.UI.WebControls.Label lblRoom;
+
+        /// <summary>
+        /// txtRoom control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtRoom;
 
         /// <summary>
         /// rbtnVirtual control.

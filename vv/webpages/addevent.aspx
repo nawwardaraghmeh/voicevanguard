@@ -45,12 +45,16 @@
         <br />
         <asp:TextBox ID="txtTitle" runat="server"></asp:TextBox>
         <br />
-        <div class="addHlinksDiv">
-            <asp:HyperLink ID="hlinkAddDesc" runat="server">+ Add Description</asp:HyperLink>
-            <asp:HyperLink ID="hlinkAddPic" runat="server">+ Add Picture</asp:HyperLink>
-        </div>
+        <asp:Label ID="lblDesc" runat="server" Text="DESCRIPTION"></asp:Label>
         <br />
-
+        <asp:TextBox ID="txtDesc" runat="server" TextMode="MultiLine"></asp:TextBox>
+        <br />
+        
+        <asp:Label ID="lblPic" runat="server" Text="PICTURE"></asp:Label>
+        <br />
+        <asp:FileUpload runat="server" ID="eventPicUpload" />
+        
+        <br />
         <asp:Label ID="lblDate" runat="server" Text="DATE"></asp:Label>
         <br />
         <asp:TextBox ID="txtDate" runat="server"></asp:TextBox>
@@ -61,47 +65,50 @@
         <div class="timeInputDiv">
             <asp:Label ID="lblTime" runat="server" Text="TIME"></asp:Label>
 
-            <select id="selectTimeH" name="D1">
-                <option value="one" selected>01</option>
-                <option value="two">02</option>
-                <option value="three">03</option>
-                <option value="four">04</option>
-                <option value="five">05</option>
-                <option value="six">06</option>
-                <option value="seven">07</option>
-                <option value="eight">08</option>
-                <option value="nine">09</option>
-                <option value="ten">10</option>
-                <option value="eleven">11</option>
-                <option value="twelve">12</option>
-            </select>
+            <asp:DropDownList runat="server" ID="selectTimeH">
+                <asp:ListItem Value="default" Selected>Hour</asp:ListItem>
+                <asp:ListItem Value="one">01</asp:ListItem>
+                <asp:ListItem Value="two">02</asp:ListItem>
+                <asp:ListItem Value="three">03</asp:ListItem>
+                <asp:ListItem Value="four">04</asp:ListItem>
+                <asp:ListItem Value="five">05</asp:ListItem>
+                <asp:ListItem Value="six">06</asp:ListItem>
+                <asp:ListItem Value="seven">07</asp:ListItem>
+                <asp:ListItem Value="eight">08</asp:ListItem>
+                <asp:ListItem Value="nine">09</asp:ListItem>
+                <asp:ListItem Value="ten">10</asp:ListItem>
+                <asp:ListItem Value="eleven">11</asp:ListItem>
+                <asp:ListItem Value="twelve">12</asp:ListItem>
+            </asp:DropDownList>
 
-            <select id="selectTimeM" name="D2">
-                <option value="zero-mins" selected>00</option>
-                <option value="five-mins">05</option>
-                <option value="ten-mins">10</option>
-                <option value="fifteen-mins">15</option>
-                <option value="twenty-mins">20</option>
-                <option value="twentyfive-mins">25</option>
-                <option value="thirty-mins">30</option>
-                <option value="thirtyfive-mins">35</option>
-                <option value="forty-mins">40</option>
-                <option value="fortyfive-mins">45</option>
-                <option value="fifty-mins">50</option>
-                <option value="fiftyfive-mins">55</option>
-            </select>
+            <asp:DropDownList runat="server" ID="selectTimeM">
+                <asp:ListItem Value="default" Selected>Min</asp:ListItem>
+                <asp:ListItem Value="zero-mins">00</asp:ListItem>
+                <asp:ListItem Value="five-mins">05</asp:ListItem>
+                <asp:ListItem Value="ten-mins">10</asp:ListItem>
+                <asp:ListItem Value="fifteen-mins">15</asp:ListItem>
+                <asp:ListItem Value="twenty-mins">20</asp:ListItem>
+                <asp:ListItem Value="twentyfive-mins">25</asp:ListItem>
+                <asp:ListItem Value="thirty-mins">30</asp:ListItem>
+                <asp:ListItem Value="thirtyfive-mins">35</asp:ListItem>
+                <asp:ListItem Value="forty-mins">40</asp:ListItem>
+                <asp:ListItem Value="fortyfive-mins">45</asp:ListItem>
+                <asp:ListItem Value="fifty-mins">50</asp:ListItem>
+                <asp:ListItem Value="fiftyfive-mins">55</asp:ListItem>
+            </asp:DropDownList>
 
-            <select id="selectTimeAMPM" name="D3">
-                <option value="AM" selected>AM</option>
-                <option value="PM">PM</option>
-            </select>
+            <asp:DropDownList runat="server" ID="selectTimeAMPM">
+                <asp:ListItem Value="AM" Selected>AM</asp:ListItem>
+                <asp:ListItem Value="PM">PM</asp:ListItem>
+            </asp:DropDownList>
         </div>
         <br />
 
         <div class="durationInputDiv">
             <asp:Label ID="lblDuration" runat="server" Text="DURATION"></asp:Label>
             <select id="selectDurationH" name="D4">
-                <option value="one" selected>01</option>
+                <option value="default" selected>Hour</option>
+                <option value="one">01</option>
                 <option value="two">02</option>
                 <option value="three">03</option>
                 <option value="four">04</option>
@@ -116,7 +123,8 @@
             </select>
 
             <select id="selectDurationM" name="D5">
-                <option value="zero-mins" selected>00</option>
+                <option value="default" selected>Min</option>
+                <option value="zero-mins">00</option>
                 <option value="five-mins">05</option>
                 <option value="ten-mins">10</option>
                 <option value="fifteen-mins">15</option>
@@ -133,28 +141,27 @@
         <br />
 
         <asp:RadioButton ID="rbtnPhysical" GroupName="eventType" runat="server"
-            Text="Physical Event" OnCheckedChanged="rbtnPhysical_CheckedChanged" />
+            Text="Physical Event" OnCheckedChanged="rbtnPhysical_CheckedChanged" AutoPostBack="true" />
         <br />
         <asp:Label ID="lblLocation" runat="server" Text="LOCATION"></asp:Label>
         <br />
         <asp:TextBox ID="txtLocation" runat="server"></asp:TextBox>
         <br />
-        <asp:HyperLink ID="hlinkAddRoom" runat="server">+ Set Meeting Room</asp:HyperLink>
+        <asp:Label ID="lblRoom" runat="server" Text="ROOM"></asp:Label>
         <br />
+        <asp:TextBox ID="txtRoom" runat="server"></asp:TextBox>
         <br />
-
         <asp:RadioButton ID="rbtnVirtual" GroupName="eventType" runat="server"
-            Text="Virtual Event" OnCheckedChanged="rbtnVirtual_CheckedChanged" />
+            Text="Virtual Event" OnCheckedChanged="rbtnVirtual_CheckedChanged" AutoPostBack="true" />
         <br />
         <asp:Label ID="lblLink" runat="server" Text="LINK"></asp:Label>
         <br />
         <asp:TextBox ID="txtLink" runat="server"></asp:TextBox>
         <br />
-        <br />
 
         <asp:Label ID="lblTags" runat="server" Text="ADD TAGS"></asp:Label>
         <div class="tagsAdditionDiv">
-            <div style="height: 70px; overflow-y:auto;">
+            <div style="height: 100px; overflow-y:auto;">
                 <asp:CheckBoxList runat="server" ID="selectTags" AutoPostBack="true" OnSelectedIndexChanged="selectTags_SelectedIndexChanged">
                     <asp:ListItem Value="1">Animal Rights</asp:ListItem>
                     <asp:ListItem Value="2">Climate Change</asp:ListItem>
@@ -184,10 +191,7 @@
             </div>
             <asp:Label runat="server" ID="eventstagslabel"></asp:Label>
         </div>
-        <br />
-        <br />
-        <br />
-        <br />
+
 
         <asp:Button ID="btnAddNewEvent" runat="server" Text="ADD EVENT" />
     </form>
@@ -211,5 +215,6 @@
             </p>
         </div>
     </footer>
+
 </body>
 </html>
