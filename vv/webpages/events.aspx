@@ -54,7 +54,7 @@
 
 
         <!-- recommended events section -->
-        <h1>Recommended for you</h1>
+        <h1>Recently added</h1>
         <div class="card-container">
 
             <div class="card">

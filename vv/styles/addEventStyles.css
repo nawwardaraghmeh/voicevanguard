@@ -54,6 +54,10 @@ form#addEventForm {
     margin-left: 10px;
 }
 
+#selectTags label {
+    font-weight: 200;
+}
+
 #hlinkAddDesc, #hlinkAddPic, #hlinkAddRoom {
     color: #DE2B2B;
     cursor: pointer;
@@ -91,4 +95,15 @@ form#addEventForm {
 #pageTitle {
     font-family: "Coustard", serif;
     text-align: center;
+}
+
+.tagsAdditionDiv {
+    display: flex;
+    flex-direction: column;
+}
+
+#eventstagslabel {
+    font-family: "Coustard", serif;
+    font-size: 10pt;
+    color: #E46262;
 }

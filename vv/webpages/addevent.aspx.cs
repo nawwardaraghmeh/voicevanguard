@@ -27,5 +27,19 @@ namespace vv.webpages
                 hlinkAddRoom.Enabled = false;
             }
         }
+
+        protected void selectTags_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            List<string> selectedTags = new List<string>();
+            foreach (ListItem item in selectTags.Items)
+            {
+                if (item.Selected)
+                {
+                    selectedTags.Add(item.Text);
+                }
+            }
+            eventstagslabel.Text = string.Join(", ", selectedTags);
+        }
+
     }
 }

@@ -168,13 +168,22 @@ namespace vv.webpages
         protected global::System.Web.UI.WebControls.Label lblTags;
 
         /// <summary>
-        /// rbtnAddOrganizer control.
+        /// selectTags control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton rbtnAddOrganizer;
+        protected global::System.Web.UI.WebControls.CheckBoxList selectTags;
+
+        /// <summary>
+        /// eventstagslabel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label eventstagslabel;
 
         /// <summary>
         /// btnAddNewEvent control.

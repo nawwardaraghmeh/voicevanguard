@@ -153,21 +153,39 @@
         <br />
 
         <asp:Label ID="lblTags" runat="server" Text="ADD TAGS"></asp:Label>
-        <select id="selectTags" name="D6">
-            <option value="ClimateChange">Climate Change</option>
-            <option value="SocialJustice">Social Justice</option>
-            <option value="Equality">Equality</option>
-            <option value="HumanRights">Human Rights</option>
-            <option value="EnvironmentalJustice">Environmental Justice</option>
-            <option value="Feminism">Feminism</option>
-            <option value="Activism">Activism</option>
-            <option value="BlackLivesMatter">Black Lives Matter</option>
-            <option value="Vote">Vote</option>
-        </select><br />
+        <div class="tagsAdditionDiv">
+            <div style="height: 70px; overflow-y:auto;">
+                <asp:CheckBoxList runat="server" ID="selectTags" AutoPostBack="true" OnSelectedIndexChanged="selectTags_SelectedIndexChanged">
+                    <asp:ListItem Value="1">Animal Rights</asp:ListItem>
+                    <asp:ListItem Value="2">Climate Change</asp:ListItem>
+                    <asp:ListItem Value="3">Community Development</asp:ListItem>
+                    <asp:ListItem Value="4">Education</asp:ListItem>
+                    <asp:ListItem Value="5">Environmental Justice</asp:ListItem>
+                    <asp:ListItem Value="6">Equality</asp:ListItem>
+                    <asp:ListItem Value="7">Fair Trade</asp:ListItem>
+                    <asp:ListItem Value="8">Feminism</asp:ListItem>
+                    <asp:ListItem Value="9">Human Rights</asp:ListItem>
+                    <asp:ListItem Value="11">Peace and Conflict Resolution</asp:ListItem>
+                    <asp:ListItem Value="12">Poverty Alleviation</asp:ListItem>
+                    <asp:ListItem Value="13">Racial Justice</asp:ListItem>
+                    <asp:ListItem Value="14">Reproductive Rights</asp:ListItem>
+                    <asp:ListItem Value="15">Social Justice</asp:ListItem>
+                    <asp:ListItem Value="16">Sustainability</asp:ListItem>
+                    <asp:ListItem Value="17">Voting Rights</asp:ListItem>
+                    <asp:ListItem Value="18">Worker Rights</asp:ListItem>
+                    <asp:ListItem Value="19">Women's Rights</asp:ListItem>
+                    <asp:ListItem Value="20">Zero Waste</asp:ListItem>
+                    <asp:ListItem Value="21">Access to Healthcare</asp:ListItem>
+                    <asp:ListItem Value="22">Anti-Corruption</asp:ListItem>
+                    <asp:ListItem Value="23">Civic Engagement</asp:ListItem>
+                    <asp:ListItem Value="24">Cultural Preservation</asp:ListItem>
+                    <asp:ListItem Value="25">Disability Rights</asp:ListItem>
+                </asp:CheckBoxList>
+            </div>
+            <asp:Label runat="server" ID="eventstagslabel"></asp:Label>
+        </div>
         <br />
-
-        <asp:RadioButton ID="rbtnAddOrganizer" runat="server" Text="Any Co-Organizers for the Event?"
-            Checked="false" />
+        <br />
         <br />
         <br />
 
