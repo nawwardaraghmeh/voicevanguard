@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
@@ -11,7 +12,7 @@ namespace vv.webpages
 {
     public partial class Registration : System.Web.UI.Page
     {
-        string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\CRC\\Desktop\\Y4S2\\senior\\vv\\vv\\App_Data\\VV.mdf;Integrated Security=True";
+        string connectionString = ConfigurationManager.ConnectionStrings["VoiceVanguardDB"].ConnectionString;
         string query = "INSERT INTO users (userId, username, name, email, password, dob, dateCreated)" +
             " VALUES (@userId, @username, @name, @email, @password, @dob, @dateCreated)";
 

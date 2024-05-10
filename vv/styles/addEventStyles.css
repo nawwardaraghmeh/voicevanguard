@@ -41,11 +41,11 @@ form#addEventForm {
     font-weight: 600;
 }
 
-#selectTimeH, #selectTimeM, #selectTimeAMPM {
-    width: calc(30% - 30px)
+#selectTimeH, #selectTimeM {
+    width: calc(40% - 30px)
 }
 
-#selectTimeAMPM {
+#selectTimeM {
     margin-right: 10px;
 }
 
@@ -57,6 +57,16 @@ form#addEventForm {
     margin-right: 10px;
 }
 
+#ddlDay, #ddlMonth, #ddlYear {
+    width: calc(30% - 30px)
+}
+
+    #ddlYear {
+        margin-right: 10px;
+    }
+
+
+
 #selectTags {
     width: calc(80% - 10px);
     margin-left: 10px;
@@ -66,7 +76,7 @@ form#addEventForm {
         font-weight: 200;
     }
 
-.timeInputDiv, .durationInputDiv {
+.timeInputDiv, .durationInputDiv, .dateInputDiv {
     display: flex;
     justify-content: space-between;
     align-items: baseline;

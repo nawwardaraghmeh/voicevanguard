@@ -6,6 +6,8 @@ using System.Linq;
 using System.Web;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 using System.Xml.Linq;
+using System.Web.UI;
+using System.Windows.Forms;
 
 namespace vv.models
 {
@@ -15,13 +17,14 @@ namespace vv.models
         public string eventTitle { get; set; }
         public string eventDesc { get; set; }
         public DateTime eventDate { get; set; }
-        public DateTime eventTime { get; set; }
+        public TimeSpan eventTime { get; set; }
         public string eventLocation { get; set; }
         public string eventRoom { get; set; }
         public string eventLink { get; set; }
         public UserProfile eventOrganizer { get; set; }
         public List<UserProfile> eventParticipants { get; set; }
         public string eventPic { get; set; }
+        public TimeSpan eventDuration { get; set; }
 
 
         public EventTemp()
@@ -30,7 +33,8 @@ namespace vv.models
             eventTitle = "";
             eventDesc = "";
             eventDate = DateTime.MinValue;
-            eventTime = DateTime.MinValue;
+            eventTime = TimeSpan.MinValue;
+            eventDuration = TimeSpan.MinValue;
             eventLocation = "";
             eventRoom = "";
             eventLink = "";
@@ -39,52 +43,57 @@ namespace vv.models
             eventPic = "";
         }
 
-        public void addEvent(Guid id, UserProfile organizer, List<UserProfile> participants, string title, string desc,
-            string location = " ", string room = " ", string link = " ", string pic = "", string tags = "")
+        public void addEvent(Guid id, Guid organizerid, string title, string desc, string location, string room,
+            string link, string pic, string tags, DateTime date, TimeSpan time, TimeSpan duration)
         {
             string connectionString = ConfigurationManager.ConnectionStrings["VoiceVanguardDB"].ConnectionString;
-            if(location != null)
-            {
-                string query = "insert into event values (eventId = @id, eventTitle = @title, eventDesc = @desc," +
-                    "eventLocation = @location, eventRoom = @room, eventPic = @pic, eventOrganizer = @organizerid, evntTags = @tags)";
-                using (SqlConnection connection = new SqlConnection(connectionString))
-                {
-                    SqlCommand command = new SqlCommand(query, connection);
-                    command.Parameters.AddWithValue("@id", id);
-                    command.Parameters.AddWithValue("@title", title);
-                    command.Parameters.AddWithValue("@desc", desc);
-                    command.Parameters.AddWithValue("@location", location);
-                    command.Parameters.AddWithValue("@room", room);
-                    command.Parameters.AddWithValue("@pic", pic);
-                    command.Parameters.AddWithValue("@organizerid", organizer.Id);
-                    command.Parameters.AddWithValue("@tags", tags);
-                    //command.Parameters.AddWithValue("@participants", id);
+            string query = "";
+            string script = "";
 
-                    connection.Open();
-                    command.ExecuteNonQuery();
-                    connection.Close();
-                }
+            if (location != null && room != null)
+            {
+                query = "INSERT INTO event (eventId, eventTitle, eventDesc, eventLocation, eventRoom, eventPic, eventOrganizer, eventTags, eventDate, eventTime, eventDuration) " +
+                        "VALUES (@id, @title, @desc, @location, @room, @pic, @organizerid, @tags, @date, @time, @duration)";
+            }
+            else if (location != null && room == null)
+            {
+                query = "INSERT INTO event (eventId, eventTitle, eventDesc, eventLocation, eventPic, eventOrganizer, eventTags, eventDate, eventTime, eventDuration) " +
+                "VALUES (@id, @title, @desc, @location, @pic, @organizerid, @tags, @date, @time, @duration)";
+            }
+            else
+            {
+                query = "INSERT INTO event (eventId, eventTitle, eventDesc, eventLink, eventPic, eventOrganizer, eventTags, eventDate, eventTime, eventDuration) " +
+                        "VALUES (@id, @title, @desc, @link, @pic, @organizerid, @tags, @date, @time, @duration)";
             }
 
-            if (link != null)
+            using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                string query = "insert into event values (eventId = @id, eventTitle = @title, eventDesc = @desc," +
-                    "eventLink = @link, eventPic = @pic, eventOrganizer = @organizerid)";
-                using (SqlConnection connection = new SqlConnection(connectionString))
-                {
-                    SqlCommand command = new SqlCommand(query, connection);
-                    command.Parameters.AddWithValue("@id", id);
-                    command.Parameters.AddWithValue("@title", title);
-                    command.Parameters.AddWithValue("@desc", desc);
-                    command.Parameters.AddWithValue("@link", link);
-                    command.Parameters.AddWithValue("@pic", pic);
-                    command.Parameters.AddWithValue("@organizerid", organizer.Id);
-                    command.Parameters.AddWithValue("@tags", tags);
-                    //command.Parameters.AddWithValue("@participants", id);
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@id", id);
+                command.Parameters.AddWithValue("@title", title);
+                command.Parameters.AddWithValue("@desc", desc);
+                command.Parameters.AddWithValue("@location", location);
+                command.Parameters.AddWithValue("@room", room);
+                command.Parameters.AddWithValue("@link", link);
+                command.Parameters.AddWithValue("@pic", pic);
+                command.Parameters.AddWithValue("@organizerid", organizerid);
+                command.Parameters.AddWithValue("@tags", tags);
+                command.Parameters.AddWithValue("@date", date);
+                command.Parameters.AddWithValue("@time", time);
+                command.Parameters.AddWithValue("@duration", duration);
 
-                    connection.Open();
-                    command.ExecuteNonQuery();
-                    connection.Close();
+                connection.Open();
+                int rowsAffected = command.ExecuteNonQuery();
+                connection.Close();
+
+                if (rowsAffected > 0)
+                {
+                    MessageBox.Show("Event added successfully!");
+
+                }
+                else
+                {
+                    MessageBox.Show("Event addition failed. Please try again in a bit.");
                 }
             }
         }

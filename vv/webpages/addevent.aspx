@@ -53,12 +53,21 @@
         <asp:Label ID="lblPic" runat="server" Text="PICTURE"></asp:Label>
         <br />
         <asp:FileUpload runat="server" ID="eventPicUpload" />
-        
-        <br />
-        <asp:Label ID="lblDate" runat="server" Text="DATE"></asp:Label>
-        <br />
-        <asp:TextBox ID="txtDate" runat="server"></asp:TextBox>
 
+        <br />
+        <div class="dateInputDiv">
+            <asp:Label ID="lblDate" runat="server" Text="DATE"></asp:Label>
+            <br />
+            <asp:DropDownList ID="ddlDay" runat="server" CssClass="ddlStyle">
+                <asp:ListItem Value="default" Selected>Day</asp:ListItem>
+            </asp:DropDownList>
+            <asp:DropDownList ID="ddlMonth" runat="server" CssClass="ddlStyle">
+                <asp:ListItem Value="default" Selected>Month</asp:ListItem>
+            </asp:DropDownList>
+            <asp:DropDownList ID="ddlYear" runat="server" CssClass="ddlStyle">
+                <asp:ListItem Value="default" Selected>Year</asp:ListItem>
+            </asp:DropDownList>
+        </div>
         <br />
 
 
@@ -67,76 +76,97 @@
 
             <asp:DropDownList runat="server" ID="selectTimeH">
                 <asp:ListItem Value="default" Selected>Hour</asp:ListItem>
-                <asp:ListItem Value="one">01</asp:ListItem>
-                <asp:ListItem Value="two">02</asp:ListItem>
-                <asp:ListItem Value="three">03</asp:ListItem>
-                <asp:ListItem Value="four">04</asp:ListItem>
-                <asp:ListItem Value="five">05</asp:ListItem>
-                <asp:ListItem Value="six">06</asp:ListItem>
-                <asp:ListItem Value="seven">07</asp:ListItem>
-                <asp:ListItem Value="eight">08</asp:ListItem>
-                <asp:ListItem Value="nine">09</asp:ListItem>
-                <asp:ListItem Value="ten">10</asp:ListItem>
-                <asp:ListItem Value="eleven">11</asp:ListItem>
-                <asp:ListItem Value="twelve">12</asp:ListItem>
+                <asp:ListItem Value="1">01</asp:ListItem>
+                <asp:ListItem Value="2">02</asp:ListItem>
+                <asp:ListItem Value="3">03</asp:ListItem>
+                <asp:ListItem Value="4">04</asp:ListItem>
+                <asp:ListItem Value="5">05</asp:ListItem>
+                <asp:ListItem Value="6">06</asp:ListItem>
+                <asp:ListItem Value="7">07</asp:ListItem>
+                <asp:ListItem Value="8">08</asp:ListItem>
+                <asp:ListItem Value="9">09</asp:ListItem>
+                <asp:ListItem Value="10">10</asp:ListItem>
+                <asp:ListItem Value="11">11</asp:ListItem>
+                <asp:ListItem Value="12">12</asp:ListItem>
+                <asp:ListItem Value="13">13</asp:ListItem>
+                <asp:ListItem Value="14">14</asp:ListItem>
+                <asp:ListItem Value="15">15</asp:ListItem>
+                <asp:ListItem Value="16">16</asp:ListItem>
+                <asp:ListItem Value="17">17</asp:ListItem>
+                <asp:ListItem Value="18">18</asp:ListItem>
+                <asp:ListItem Value="19">19</asp:ListItem>
+                <asp:ListItem Value="20">20</asp:ListItem>
+                <asp:ListItem Value="21">21</asp:ListItem>
+                <asp:ListItem Value="22">22</asp:ListItem>
+                <asp:ListItem Value="23">23</asp:ListItem>
+                <asp:ListItem Value="24">24</asp:ListItem>
             </asp:DropDownList>
 
             <asp:DropDownList runat="server" ID="selectTimeM">
-                <asp:ListItem Value="default" Selected>Min</asp:ListItem>
-                <asp:ListItem Value="zero-mins">00</asp:ListItem>
-                <asp:ListItem Value="five-mins">05</asp:ListItem>
-                <asp:ListItem Value="ten-mins">10</asp:ListItem>
-                <asp:ListItem Value="fifteen-mins">15</asp:ListItem>
-                <asp:ListItem Value="twenty-mins">20</asp:ListItem>
-                <asp:ListItem Value="twentyfive-mins">25</asp:ListItem>
-                <asp:ListItem Value="thirty-mins">30</asp:ListItem>
-                <asp:ListItem Value="thirtyfive-mins">35</asp:ListItem>
-                <asp:ListItem Value="forty-mins">40</asp:ListItem>
-                <asp:ListItem Value="fortyfive-mins">45</asp:ListItem>
-                <asp:ListItem Value="fifty-mins">50</asp:ListItem>
-                <asp:ListItem Value="fiftyfive-mins">55</asp:ListItem>
-            </asp:DropDownList>
-
-            <asp:DropDownList runat="server" ID="selectTimeAMPM">
-                <asp:ListItem Value="AM" Selected>AM</asp:ListItem>
-                <asp:ListItem Value="PM">PM</asp:ListItem>
+                <asp:ListItem Value="default" Selected>Minute</asp:ListItem>
+                <asp:ListItem Value="0">00</asp:ListItem>
+                <asp:ListItem Value="5">05</asp:ListItem>
+                <asp:ListItem Value="10">10</asp:ListItem>
+                <asp:ListItem Value="15">15</asp:ListItem>
+                <asp:ListItem Value="20">20</asp:ListItem>
+                <asp:ListItem Value="25">25</asp:ListItem>
+                <asp:ListItem Value="30">30</asp:ListItem>
+                <asp:ListItem Value="35">35</asp:ListItem>
+                <asp:ListItem Value="40">40</asp:ListItem>
+                <asp:ListItem Value="45">45</asp:ListItem>
+                <asp:ListItem Value="50">50</asp:ListItem>
+                <asp:ListItem Value="55">55</asp:ListItem>
             </asp:DropDownList>
         </div>
         <br />
 
         <div class="durationInputDiv">
             <asp:Label ID="lblDuration" runat="server" Text="DURATION"></asp:Label>
-            <select id="selectDurationH" name="D4">
-                <option value="default" selected>Hour</option>
-                <option value="one">01</option>
-                <option value="two">02</option>
-                <option value="three">03</option>
-                <option value="four">04</option>
-                <option value="five">05</option>
-                <option value="six">06</option>
-                <option value="seven">07</option>
-                <option value="eight">08</option>
-                <option value="nine">09</option>
-                <option value="ten">10</option>
-                <option value="eleven">11</option>
-                <option value="twelve">12</option>
-            </select>
 
-            <select id="selectDurationM" name="D5">
-                <option value="default" selected>Min</option>
-                <option value="zero-mins">00</option>
-                <option value="five-mins">05</option>
-                <option value="ten-mins">10</option>
-                <option value="fifteen-mins">15</option>
-                <option value="twenty-mins">20</option>
-                <option value="twentyfive-mins">25</option>
-                <option value="thirty-mins">30</option>
-                <option value="thirtyfive-mins">35</option>
-                <option value="forty-mins">40</option>
-                <option value="fortyfive-mins">45</option>
-                <option value="fifty-mins">50</option>
-                <option value="fiftyfive-mins">55</option>
-            </select>
+            <asp:DropDownList runat="server" ID="selectDurationH">
+                <asp:ListItem Value="default" Selected>Hour</asp:ListItem>
+                <asp:ListItem Value="1">01</asp:ListItem>
+                <asp:ListItem Value="2">02</asp:ListItem>
+                <asp:ListItem Value="3">03</asp:ListItem>
+                <asp:ListItem Value="4">04</asp:ListItem>
+                <asp:ListItem Value="5">05</asp:ListItem>
+                <asp:ListItem Value="6">06</asp:ListItem>
+                <asp:ListItem Value="7">07</asp:ListItem>
+                <asp:ListItem Value="8">08</asp:ListItem>
+                <asp:ListItem Value="9">09</asp:ListItem>
+                <asp:ListItem Value="10">10</asp:ListItem>
+                <asp:ListItem Value="11">11</asp:ListItem>
+                <asp:ListItem Value="12">12</asp:ListItem>
+                <asp:ListItem Value="13">13</asp:ListItem>
+                <asp:ListItem Value="14">14</asp:ListItem>
+                <asp:ListItem Value="15">15</asp:ListItem>
+                <asp:ListItem Value="16">16</asp:ListItem>
+                <asp:ListItem Value="17">17</asp:ListItem>
+                <asp:ListItem Value="18">18</asp:ListItem>
+                <asp:ListItem Value="19">19</asp:ListItem>
+                <asp:ListItem Value="20">20</asp:ListItem>
+                <asp:ListItem Value="21">21</asp:ListItem>
+                <asp:ListItem Value="22">22</asp:ListItem>
+                <asp:ListItem Value="23">23</asp:ListItem>
+                <asp:ListItem Value="24">24</asp:ListItem>
+            </asp:DropDownList>
+
+            <asp:DropDownList runat="server" ID="selectDurationM">
+                <asp:ListItem Value="default" Selected>Minute</asp:ListItem>
+                <asp:ListItem Value="0">00</asp:ListItem>
+                <asp:ListItem Value="5">05</asp:ListItem>
+                <asp:ListItem Value="10">10</asp:ListItem>
+                <asp:ListItem Value="15">15</asp:ListItem>
+                <asp:ListItem Value="20">20</asp:ListItem>
+                <asp:ListItem Value="25">25</asp:ListItem>
+                <asp:ListItem Value="30">30</asp:ListItem>
+                <asp:ListItem Value="35">35</asp:ListItem>
+                <asp:ListItem Value="40">40</asp:ListItem>
+                <asp:ListItem Value="45">45</asp:ListItem>
+                <asp:ListItem Value="50">50</asp:ListItem>
+                <asp:ListItem Value="55">55</asp:ListItem>
+            </asp:DropDownList>
+
         </div>
         <br />
 
@@ -193,7 +223,8 @@
         </div>
 
 
-        <asp:Button ID="btnAddNewEvent" runat="server" Text="ADD EVENT" />
+        <asp:Button ID="btnAddNewEvent" runat="server" Text="ADD EVENT" 
+            OnClick="btnAddNewEvent_Click" />
     </form>
 
     <!-- footer section -->
