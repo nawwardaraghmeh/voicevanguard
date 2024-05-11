@@ -8,6 +8,7 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 using System.Xml.Linq;
 using System.Web.UI;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace vv.models
 {
@@ -43,7 +44,7 @@ namespace vv.models
             eventPic = "";
         }
 
-        public void addEvent(Guid id, Guid organizerid, string title, string desc, string location, string room,
+        public int addEvent(Guid id, Guid organizerid, string title, string desc, string location, string room,
             string link, string pic, string tags, DateTime date, TimeSpan time, TimeSpan duration)
         {
             string connectionString = ConfigurationManager.ConnectionStrings["VoiceVanguardDB"].ConnectionString;
@@ -86,15 +87,7 @@ namespace vv.models
                 int rowsAffected = command.ExecuteNonQuery();
                 connection.Close();
 
-                if (rowsAffected > 0)
-                {
-                    MessageBox.Show("Event added successfully!");
-
-                }
-                else
-                {
-                    MessageBox.Show("Event addition failed. Please try again in a bit.");
-                }
+                return rowsAffected;
             }
         }
     }

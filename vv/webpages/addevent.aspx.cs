@@ -11,6 +11,7 @@ namespace vv.webpages
     public partial class addevent : System.Web.UI.Page
     {
         Guid userId;
+        int x;
         List<string> selectedTags = new List<string>();
 
         protected void Page_Load(object sender, EventArgs e)
@@ -111,15 +112,30 @@ namespace vv.webpages
 
             if (location != null && room != null)
             {
-                eventobj.addEvent(eventId, userId, title, desc, location, room, "", pic, tags, date, time, duration);
+                x = eventobj.addEvent(eventId, userId, title, desc, location, room, "", pic, tags, date, time, duration);
             }
             else if (location != null && room == null)
             {
-                eventobj.addEvent(eventId, userId, title, desc, location, "", "", pic, tags, date, time, duration);
+                x = eventobj.addEvent(eventId, userId, title, desc, location, "", "", pic, tags, date, time, duration);
             }
             else if (link != null)
             {
-                eventobj.addEvent(eventId, userId, title, desc, "", "", link, pic, tags, date, time, duration);
+                x = eventobj.addEvent(eventId, userId, title, desc, "", "", link, pic, tags, date, time, duration);
+            }
+
+            if (x > 0)
+            {
+                string dataToSend = "Event was added successfully!\nThank you for your contribution.";
+                string url = "popups/eventAdditionPopup.aspx?data=" + Server.UrlEncode(dataToSend);
+                string script = "window.open('" + url + "', '_blank', 'width=400,height=300,top=250,left=450,toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes');";
+                ClientScript.RegisterStartupScript(this.GetType(), "openwindow", script, true);
+            }
+            else
+            {
+                string dataToSend = "Event addition failed.\nPlease try again later!";
+                string url = "popups/eventAdditionPopup.aspx?data=" + Server.UrlEncode(dataToSend);
+                string script = "window.open('" + url + "', '_blank', 'width=400,height=300,top=250,left=450,toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes');";
+                ClientScript.RegisterStartupScript(this.GetType(), "openwindow", script, true);
             }
         }
     }
