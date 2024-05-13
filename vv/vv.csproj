@@ -224,6 +224,7 @@
     <Content Include="webpages\resetpasswordii.aspx" />
     <Content Include="webpages\viewevent.aspx" />
     <Content Include="webpages\viewPost.aspx" />
+    <Content Include="resources\images\defaultEventPic.webp" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
