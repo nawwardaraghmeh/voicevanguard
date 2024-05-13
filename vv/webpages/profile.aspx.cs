@@ -48,6 +48,89 @@ namespace vv.web_pages
 
         }
 
+        protected void UploadImage(object sender, EventArgs e)
+        {
+            Button clickedButton = (Button)sender;
+            string pictureType = clickedButton.CommandName;
+
+            FileUpload fileUpload = null;
+            Image imageControl = null;
+
+            if (pictureType == "ProfilePicture")
+            {
+                fileUpload = fileUploadProfilePic;
+                imageControl = imgProfilePic;
+            }
+            else if (pictureType == "BannerPicture")
+            {
+                fileUpload = fileUploadBannerPic;
+                imageControl = imgBannerPic;
+            }
+
+            if (fileUpload.HasFile)
+            {
+                HttpPostedFile postedFile = fileUpload.PostedFile;
+                byte[] imageData = null;
+
+                using (BinaryReader reader = new BinaryReader(postedFile.InputStream))
+                {
+                    imageData = reader.ReadBytes(postedFile.ContentLength);
+                }
+
+                imageControl.ImageUrl = "data:image;base64," + Convert.ToBase64String(imageData);
+
+                if (pictureType == "ProfilePicture")
+                {
+                    SaveUserProfilePicture(userId, imageData);
+                }
+                else if (pictureType == "BannerPicture")
+                {
+                    SaveUserBannerPicture(userId, imageData);
+                }
+            }
+        }
+
+        protected void SaveUserProfilePicture(Guid userId, byte[] imageData)
+        {
+            // Update user profile picture in the database
+            // Replace this with your actual database update logic
+            string query = "UPDATE Users SET ProfilePicture = @ImageData WHERE UserId = @UserId";
+            string connectionString = ConfigurationManager.ConnectionStrings["VoiceVanguardDB"].ConnectionString;
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@ImageData", imageData);
+                    command.Parameters.AddWithValue("@UserId", userId);
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
+
+        protected void SaveUserBannerPicture(Guid userId, byte[] imageData)
+        {
+            // Update user banner picture in the database
+            // Replace this with your actual database update logic
+            string query = "UPDATE Users SET BannerPicture = @ImageData WHERE UserId = @UserId";
+            string connectionString = ConfigurationManager.ConnectionStrings["VoiceVanguardDB"].ConnectionString;
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@ImageData", imageData);
+                    command.Parameters.AddWithValue("@UserId", userId);
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
+
+
+
+
         protected void btnMyActivity_Click(object sender, EventArgs e)
         {
             btnMyActivity.CssClass = "clickedBtn";
@@ -102,10 +185,17 @@ namespace vv.web_pages
         }
 
 
+        protected void ChangePfp_Click(object sender, EventArgs e)
+        {
+            string dataToSend = "Choose a Profile Picture";
+            string url = "popups/changeProfilePicturePopup.aspx?data=" + Server.UrlEncode(dataToSend);
+            string script = "window.open('" + url + "', '_blank', 'width=400,height=300,top=250,left=450,toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes');";
+            ClientScript.RegisterStartupScript(this.GetType(), "openwindow", script, true);
+        }
 
 
 
-       
+
 
     }
 }

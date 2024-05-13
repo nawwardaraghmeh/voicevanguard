@@ -155,6 +155,7 @@
     <Content Include="Content\Site.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="webpages\popups\changeProfilePicturePopup.aspx" />
     <Content Include="webpages\popups\eventAdditionPopup.aspx" />
     <Content Include="resources\images\aboutusPic.png" />
     <Content Include="resources\images\aboutusText.png" />
@@ -279,6 +280,13 @@
     </Compile>
     <Compile Include="models\EventTemp.cs" />
     <Compile Include="models\UserProfile.cs" />
+    <Compile Include="webpages\popups\changeProfilePicturePopup.aspx.cs">
+      <DependentUpon>changeProfilePicturePopup.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="webpages\popups\changeProfilePicturePopup.aspx.designer.cs">
+      <DependentUpon>changeProfilePicturePopup.aspx</DependentUpon>
+    </Compile>
     <Compile Include="webpages\popups\eventAdditionPopup.aspx.cs">
       <DependentUpon>eventAdditionPopup.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

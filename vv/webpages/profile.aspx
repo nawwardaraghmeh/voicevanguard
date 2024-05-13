@@ -18,6 +18,12 @@
 
     <title>PROFILE PAGE </title>
 
+
+    <script type="text/javascript">
+        function triggerFileUpload(elementId) {
+            document.getElementById(elementId).click();
+        }
+    </script>
 </head>
 <body>
     <!-- header section -->
@@ -45,25 +51,25 @@
 
        
             <!--banner picture-->
-        <div id="bannerPicture" class="picture"><asp:Image ID="imgBannerPic" runat="server"
+        <div id="bannerPicture" class="picture" onclick="triggerFileUpload('<%= fileUploadBannerPic.ClientID %>')"><asp:Image ID="imgBannerPic" runat="server"
             ImageUrl="~/resources/images/defaultbanner.png" CssClass="hoverable" /></div>
       <!--banner picker content-->
-       <!-- <div id="bannerPicker" class="picker">
-            <asp:FileUpload id="bannerInput" accept="image/*" onchange="handleBannerChange(event)" runat="server"/>
-        </div>-->
+        <div id="bannerPicker" class="picker">
+            <asp:FileUpload id="fileUploadBannerPic" accept="image/*" runat="server"/>
+        </div>
 
         <div class="pencilIcon1"><i class="fa-solid fa-pencil fa-2xl"></i></div>
         <div class="profileAccountInfo">
 
 
             <!--profile picture-->
-           <div id="profilePicture" class="picture"> <asp:Image ID="imgProfilePic" runat="server"
-                ImageUrl="~/resources/images/profilePic.png" CssClass="hoverable" /></div>
+           <div id="profilePicture" class="picture" > <asp:Image ID="imgProfilePic" runat="server"
+                ImageUrl="~/resources/images/profilePic.png" CssClass="hoverable" onclick="ChangePfp_Click" /></div>
             <div class="pencilIcon2"><i class="fa-solid fa-pencil fa-2xl"></i></div>
           <!--pfp picker content-->
-           <!-- <div id="profilePicker" class="picker">
-                <asp:FileUpload runat="server" id="profileInput" accept="image/*" onchange="handleProfileChange(event)"/> 
-            </div> -->
+           <div id="profilePicker" class="picker">
+                <asp:FileUpload runat="server" id="fileUploadProfilePic" accept="image/*" /> 
+            </div> 
             
 
             <div class="profileAccountInfoTxt">

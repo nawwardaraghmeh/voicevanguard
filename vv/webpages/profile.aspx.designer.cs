@@ -42,13 +42,13 @@ namespace vv.web_pages
         protected global::System.Web.UI.WebControls.Image imgBannerPic;
 
         /// <summary>
-        /// bannerInput control.
+        /// fileUploadBannerPic control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.FileUpload bannerInput;
+        protected global::System.Web.UI.WebControls.FileUpload fileUploadBannerPic;
 
         /// <summary>
         /// imgProfilePic control.
@@ -60,13 +60,13 @@ namespace vv.web_pages
         protected global::System.Web.UI.WebControls.Image imgProfilePic;
 
         /// <summary>
-        /// profileInput control.
+        /// fileUploadProfilePic control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.FileUpload profileInput;
+        protected global::System.Web.UI.WebControls.FileUpload fileUploadProfilePic;
 
         /// <summary>
         /// lblAccountName control.
