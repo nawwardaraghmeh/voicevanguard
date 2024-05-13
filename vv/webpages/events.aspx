@@ -1,4 +1,5 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="events.aspx.cs" Inherits="vv.web_pages.events" %>
+
 <%@ Register Src="notifications.ascx" TagName="Notification" TagPrefix="uc" %>
 
 
@@ -58,21 +59,23 @@
         <div class="card-container">
 
             <div class="card">
-                <img src="../resources/images/rallypic.jpg">
+                <asp:Image runat="server" ID="eventImg" ImageUrl="../resources/images/rallypic.jpg" />
                 <div class="content">
-                    <h2>CLIMATE ACTION RALLY</h2>
-                    <p>
-                        Join us for a city-wide rally advocating for sustainable practices and urgent climate
-                        action.
-                    </p>
+                    <asp:Label runat="server" CssClass="eventTitleStyles" ID="lblEventTitle" Text="CLIMATE ACTION RALLY"></asp:Label>
+                    <br />
+                    <br />
+                    <asp:Label runat="server" CssClass="eventDescStyles" ID="lblEventDesc" Text="Join us for a city-wide rally advocating
+                        for sustainable practices and urgent climate action.">
+                    </asp:Label>
+
                     <div class="details">
                         <div class="date">
                             <i class="far fa-calendar-alt"></i>
-                            <span>Feb 20th</span>
+                            <asp:Label runat="server" ID="lblEventDate" Text="Feb 20th"></asp:Label>
                         </div>
                         <div class="time">
                             <i class="far fa-clock"></i>
-                            <span>10:00 AM</span>
+                            <asp:Label runat="server" ID="lblEventTime" Text="10:00 AM"></asp:Label>
                             <br />
                         </div>
                     </div>
@@ -82,21 +85,24 @@
             </div>
 
             <div class="card">
-                <img src="../resources/images/rallypic.jpg">
+                <asp:Image runat="server" ID="Image1" ImageUrl="../resources/images/rallypic.jpg" />
                 <div class="content">
-                    <h2>CLIMATE ACTION RALLY</h2>
-                    <p>
-                        Join us for a city-wide rally advocating for sustainable practices and urgent climate
-                        action.
-                    </p>
+                    <asp:Label runat="server" CssClass="eventTitleStyles" ID="Label1" Text="CLIMATE ACTION RALLY"></asp:Label>
+                    <br />
+                    <br />
+                    <asp:Label runat="server" CssClass="eventDescStyles" ID="Label2" Text="Join us for a city-wide rally advocating
+                        for sustainable practices and urgent climate action.">
+                    </asp:Label>
+
                     <div class="details">
                         <div class="date">
                             <i class="far fa-calendar-alt"></i>
-                            <span>Feb 20th</span>
+                            <asp:Label runat="server" ID="Label3" Text="Feb 20th"></asp:Label>
                         </div>
                         <div class="time">
                             <i class="far fa-clock"></i>
-                            <span>10:00 AM</span>
+                            <asp:Label runat="server" ID="Label4" Text="10:00 AM"></asp:Label>
+                            <br />
                         </div>
                     </div>
                     <asp:Button ID="Button2" runat="server" Text="SEE MORE"
@@ -105,21 +111,24 @@
             </div>
 
             <div class="card">
-                <img src="../resources/images/rallypic.jpg">
+                <asp:Image runat="server" ID="Image2" ImageUrl="../resources/images/rallypic.jpg" />
                 <div class="content">
-                    <h2>CLIMATE ACTION RALLY</h2>
-                    <p>
-                        Join us for a city-wide rally advocating for sustainable practices and urgent climate
-                        action.
-                    </p>
+                    <asp:Label runat="server" CssClass="eventTitleStyles" ID="Label5" Text="CLIMATE ACTION RALLY"></asp:Label>
+                    <br />
+                    <br />
+                    <asp:Label runat="server" CssClass="eventDescStyles" ID="Label6" Text="Join us for a city-wide rally advocating
+                        for sustainable practices and urgent climate action.">
+                    </asp:Label>
+
                     <div class="details">
                         <div class="date">
                             <i class="far fa-calendar-alt"></i>
-                            <span>Feb 20th</span>
+                            <asp:Label runat="server" ID="Label7" Text="Feb 20th"></asp:Label>
                         </div>
                         <div class="time">
                             <i class="far fa-clock"></i>
-                            <span>10:00 AM</span>
+                            <asp:Label runat="server" ID="Label8" Text="10:00 AM"></asp:Label>
+                            <br />
                         </div>
                     </div>
                     <asp:Button ID="Button3" runat="server" Text="SEE MORE"
@@ -136,21 +145,24 @@
         <div class="card-container">
 
             <div class="card">
-                <img src="../resources/images/virtualeventpic.jpg">
+                <asp:Image runat="server" ID="Image3" ImageUrl="../resources/images/virtualeventpic.jpg" />
                 <div class="content">
-                    <h2>VOICES UNVEILED</h2>
-                    <p>
-                        Experience the power of art through our virtual exhibition featuring works with
-                        diverse voices and social narratives.
-                    </p>
+                    <asp:Label runat="server" CssClass="eventTitleStyles" ID="Label9" Text="VOICES UNVEILED"></asp:Label>
+                    <br />
+                    <br />
+                    <asp:Label runat="server" CssClass="eventDescStyles" ID="Label10" Text="Experience the power of art through our virtual exhibition featuring works with
+diverse voices and social narratives.">
+                    </asp:Label>
+
                     <div class="details">
                         <div class="date">
                             <i class="far fa-calendar-alt"></i>
-                            <span>Jan 15th</span>
+                            <asp:Label runat="server" ID="Label11" Text="Jan 15th"></asp:Label>
                         </div>
                         <div class="time">
                             <i class="far fa-clock"></i>
-                            <span>8:30 PM</span>
+                            <asp:Label runat="server" ID="Label12" Text="8:30 PM"></asp:Label>
+                            <br />
                         </div>
                     </div>
                     <asp:Button ID="Button4" runat="server" Text="SEE MORE"
@@ -160,21 +172,24 @@
 
 
             <div class="card">
-                <img src="../resources/images/virtualeventpic.jpg">
+                <asp:Image runat="server" ID="Image4" ImageUrl="../resources/images/virtualeventpic.jpg" />
                 <div class="content">
-                    <h2>VOICES UNVEILED</h2>
-                    <p>
-                        Experience the power of art through our virtual exhibition featuring works with
-                        diverse voices and social narratives.
-                    </p>
+                    <asp:Label runat="server" CssClass="eventTitleStyles" ID="Label13" Text="VOICES UNVEILED"></asp:Label>
+                    <br />
+                    <br />
+                    <asp:Label runat="server" CssClass="eventDescStyles" ID="Label14" Text="Experience the power of art through our virtual exhibition featuring works with
+diverse voices and social narratives.">
+                    </asp:Label>
+
                     <div class="details">
                         <div class="date">
                             <i class="far fa-calendar-alt"></i>
-                            <span>Jan 15th</span>
+                            <asp:Label runat="server" ID="Label15" Text="Jan 15th"></asp:Label>
                         </div>
                         <div class="time">
                             <i class="far fa-clock"></i>
-                            <span>8:30 PM</span>
+                            <asp:Label runat="server" ID="Label16" Text="8:30 PM"></asp:Label>
+                            <br />
                         </div>
                     </div>
                     <asp:Button ID="Button5" runat="server" Text="SEE MORE"
@@ -184,21 +199,24 @@
 
 
             <div class="card">
-                <img src="../resources/images/virtualeventpic.jpg">
+                <asp:Image runat="server" ID="Image5" ImageUrl="../resources/images/virtualeventpic.jpg" />
                 <div class="content">
-                    <h2>VOICES UNVEILED</h2>
-                    <p>
-                        Experience the power of art through our virtual exhibition featuring works with
-                        diverse voices and social narratives.
-                    </p>
+                    <asp:Label runat="server" CssClass="eventTitleStyles" ID="Label17" Text="VOICES UNVEILED"></asp:Label>
+                    <br />
+                    <br />
+                    <asp:Label runat="server" CssClass="eventDescStyles" ID="Label18" Text="Experience the power of art through our virtual exhibition featuring works with
+diverse voices and social narratives.">
+                    </asp:Label>
+
                     <div class="details">
                         <div class="date">
                             <i class="far fa-calendar-alt"></i>
-                            <span>Jan 15th</span>
+                            <asp:Label runat="server" ID="Label19" Text="Jan 15th"></asp:Label>
                         </div>
                         <div class="time">
                             <i class="far fa-clock"></i>
-                            <span>8:30 PM</span>
+                            <asp:Label runat="server" ID="Label20" Text="8:30 PM"></asp:Label>
+                            <br />
                         </div>
                     </div>
                     <asp:Button ID="Button6" runat="server" Text="SEE MORE"

@@ -9,6 +9,10 @@ using System.Xml.Linq;
 using System.Web.UI;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using static System.Windows.Forms.LinkLabel;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.TaskbarClock;
+using System.Security.Cryptography;
+using vv.web_pages;
 
 namespace vv.models
 {
@@ -22,8 +26,8 @@ namespace vv.models
         public string eventLocation { get; set; }
         public string eventRoom { get; set; }
         public string eventLink { get; set; }
-        public UserProfile eventOrganizer { get; set; }
-        public List<UserProfile> eventParticipants { get; set; }
+        public Guid eventOrganizer { get; set; }
+        public List<Guid> eventParticipants { get; set; }
         public string eventPic { get; set; }
         public TimeSpan eventDuration { get; set; }
 
@@ -39,8 +43,8 @@ namespace vv.models
             eventLocation = "";
             eventRoom = "";
             eventLink = "";
-            eventOrganizer = new UserProfile();
-            eventParticipants = new List<UserProfile>();
+            eventOrganizer = Guid.Empty;
+            eventParticipants = new List<Guid> ();
             eventPic = "";
         }
 
@@ -89,6 +93,44 @@ namespace vv.models
 
                 return rowsAffected;
             }
+        }
+
+        public EventTemp loadEventData(Guid id)
+        {
+            EventTemp eventDetails = null;
+
+            string connectionString = ConfigurationManager.ConnectionStrings["VoiceVanguardDB"].ConnectionString;
+            string query = "SELECT * FROM event WHERE eventId = @id";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@id", id);
+
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    eventDetails = new EventTemp();
+                    eventDetails.eventTitle = reader["eventTitle"].ToString();
+                    eventDetails.eventDesc = reader["eventDesc"].ToString();
+                    eventDetails.eventTime = (TimeSpan)reader["eventTime"];
+                    eventDetails.eventDate = (DateTime)reader["eventDate"];
+                    eventDetails.eventPic = reader["eventPic"].ToString();
+                    eventDetails.eventLink = reader["eventLink"].ToString();
+                    eventDetails.eventLocation = reader["eventLocation"].ToString();
+                    eventDetails.eventRoom = reader["eventRoom"].ToString();
+                    eventDetails.eventOrganizer = (Guid)reader["eventOrganizer"];
+                    eventDetails.eventDuration = (TimeSpan)reader["eventDuration"];
+                    //eventDetails.eventParticipants = (Guid)reader["eventParticipants"];
+                }
+
+                reader.Close();
+                connection.Close();
+            }
+
+            return eventDetails;
         }
     }
 }
