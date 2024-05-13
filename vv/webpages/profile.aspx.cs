@@ -9,48 +9,31 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Web.WebPages;
+using vv.models;
 
 namespace vv.web_pages
 {
     public partial class profile : System.Web.UI.Page
     {
+        private UserProfile userProfile = new UserProfile();
+        Guid userId;
+
         protected void Page_Load(object sender, EventArgs e)
         {
-            
-            string connectionString = ConfigurationManager.ConnectionStrings["VoiceVanguardDB"].ConnectionString;
-            string query = "SELECT name, dateCreated, profilePic, bannerPic FROM users WHERE userId = @userId";
-            
-
-            
             if (!IsPostBack)
             {
-                
+
                 if (Session["userId"] != null)
                 {
-                    string userId = Session["UserId"].ToString();
+                    userId = new Guid(Session["UserId"].ToString());
+ 
+                    userProfile.LoadFromDatabase(userId);
 
-                    using (SqlConnection connection = new SqlConnection(connectionString))
-                    {
-                        SqlCommand command = new SqlCommand(query, connection);
-                        command.Parameters.AddWithValue("@userId", userId);
+                    lblAccountName.Text = userProfile.Name;
+                    lblJoinDate.Text = "Joined " + userProfile.DateCreated.ToString("yyyy/MM/dd");
 
-                        connection.Open();
-                        SqlDataReader reader = command.ExecuteReader();
-
-                        if (reader.Read())
-                        {
-                            
-                            string name = reader["name"].ToString();
-                            DateTime dateCreated = (DateTime)reader["dateCreated"];
-                            string formattedDate = dateCreated.ToString("yyyy/MM/dd");
-                            //Session["profilePic"] = reader["profilePic"].ToString();
-                            //Session["bannerPic"] = reader["bannerPic"].ToString();
-
-                            lblAccountName.Text = name;
-                            lblJoinDate.Text = "Joined " + formattedDate;
-                        }
-                        reader.Close();
-                    }
+                    imgProfilePic.ImageUrl = userProfile.ProfilePicturePath;
+                    imgBannerPic.ImageUrl = userProfile.BannerPicturePath;
                 }
 
                 else
@@ -112,51 +95,9 @@ namespace vv.web_pages
             return (date == new DateTime(2024, 5, 15) || date == new DateTime(2024, 5, 29));
         }
 
-        /*
-        protected void fileUploadBanner_Changed(object sender, EventArgs e)
+        protected void btnLogout_Click(object sender, EventArgs e)
         {
-            if (fileUploadBanner.HasFile)
-            {
-                string fileName = Path.GetFileName(fileUploadBanner.FileName);
-                string uploadPath = Server.MapPath("~/uploads/") + fileName;
-                fileUploadBanner.SaveAs(uploadPath);
-
-                // Update banner image path in database for the current user
-                UpdateImagePathInDatabase("banner", uploadPath);
-            }
+            Response.Redirect("~/webpages/login.aspx");
         }
-
-        protected void fileUploadProfile_Changed(object sender, EventArgs e)
-        {
-            if (fileUploadProfile.HasFile)
-            {
-                string fileName = Path.GetFileName(fileUploadProfile.FileName);
-                string uploadPath = Server.MapPath("~/uploads/") + fileName;
-                fileUploadProfile.SaveAs(uploadPath);
-
-                // Update profile image path in database for the current user
-                UpdateImagePathInDatabase("profile", uploadPath);
-            }
-        }
-
-        protected void UpdateImagePathInDatabase(string imageType, string imagePath)
-        {
-            string connectionString = ConfigurationManager.ConnectionStrings["VoiceVanguardDB"].ConnectionString;
-            string query;
-
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                if(imageType == "profile")
-                {
-                    query = "update users set profilePic = @imagePath where userId = @userId";
-                    SqlCommand command = new SqlCommand(query, connection);
-                    command.Parameters.AddWithValue("@imagePath", imagePath);
-                    command.Parameters.AddWithValue("@userId", userId);
-                }
-            }
-
-            }*/
-
-
     }
 }

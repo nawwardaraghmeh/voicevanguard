@@ -11,8 +11,17 @@ namespace vv.web_pages
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack)
+            {
+                if (Session["userId"] != null)
+                {
+
+                }
+                else
+                {
+                    Response.Redirect("~/webpages/login.aspx");
+                }
+            }
         }
-
-
     }
 }

@@ -14,56 +14,69 @@ form#addEventForm {
 }
 
 #addEventForm * {
-    margin-bottom: 8px;
+    margin-bottom: 20px;
 }
 
-
-#addEventForm input[type="text"], select {
+#addEventForm input[type="text"], select, #txtDesc, input[type="file"] {
     padding: 10px;
     border: 1px solid #E46262;
     border-radius: 22px;
     font-weight: 100;
+    width: calc(100% - 30px);
 }
 
 #addEventForm input[type="radio"] {
     font-weight: 600;
 }
 
-#addEventForm label {
+#addEventForm span {
     font-weight: 600;
+    margin-bottom: 20px;
 }
 
-#lblTitle, #lblDate, #lblTime, #lblDuration, #lblLocation, #lblLink, #lblTags {
-    font-weight: 600;
-}
+
 
 #lblLocation, #lblLink {
     margin-left: 10px;
+    font-weight: 600;
 }
 
-#selectTimeH, #selectTimeM, #selectTimeAMPM {
-    width: calc(25% - 10px)
+#selectTimeH, #selectTimeM {
+    width: calc(40% - 30px)
+}
+
+#selectTimeM {
+    margin-right: 10px;
 }
 
 #selectDurationH, #selectDurationM {
-    width: calc(40% - 10px)
+    width: calc(40% - 30px)
 }
+
+#selectDurationM {
+    margin-right: 10px;
+}
+
+#ddlDay, #ddlMonth, #ddlYear {
+    width: calc(30% - 30px)
+}
+
+    #ddlYear {
+        margin-right: 10px;
+    }
+
+
 
 #selectTags {
     width: calc(80% - 10px);
     margin-left: 10px;
 }
 
-#hlinkAddDesc, #hlinkAddPic, #hlinkAddRoom {
-    color: #DE2B2B;
-    cursor: pointer;
-}
+    #selectTags label {
+        font-weight: 200;
+    }
 
-#txtTitle, #txtLocation, #txtLink, #txtDate {
-    width: calc(100% - 20px);
-}
-
-.addHlinksDiv, .timeInputDiv, .durationInputDiv {
+.timeInputDiv, .durationInputDiv, .dateInputDiv {
     display: flex;
     justify-content: space-between;
     align-items: baseline;
@@ -81,6 +94,8 @@ form#addEventForm {
     font-size: 16px;
     border-radius: 22px;
     cursor: pointer;
+    font-weight: 600;
+    font-family: "Coustard", serif;
 }
 
     #btnAddNewEvent:hover {
@@ -92,3 +107,15 @@ form#addEventForm {
     font-family: "Coustard", serif;
     text-align: center;
 }
+
+.tagsAdditionDiv {
+    display: flex;
+    flex-direction: column;
+}
+
+#eventstagslabel {
+    font-family: "Coustard", serif;
+    font-size: 10pt;
+    color: #E46262;
+}
+

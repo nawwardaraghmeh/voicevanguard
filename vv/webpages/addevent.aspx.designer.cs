@@ -42,22 +42,40 @@ namespace vv.webpages
         protected global::System.Web.UI.WebControls.TextBox txtTitle;
 
         /// <summary>
-        /// hlinkAddDesc control.
+        /// lblDesc control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink hlinkAddDesc;
+        protected global::System.Web.UI.WebControls.Label lblDesc;
 
         /// <summary>
-        /// hlinkAddPic control.
+        /// txtDesc control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink hlinkAddPic;
+        protected global::System.Web.UI.WebControls.TextBox txtDesc;
+
+        /// <summary>
+        /// lblPic control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblPic;
+
+        /// <summary>
+        /// eventPicUpload control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.FileUpload eventPicUpload;
 
         /// <summary>
         /// lblDate control.
@@ -69,13 +87,31 @@ namespace vv.webpages
         protected global::System.Web.UI.WebControls.Label lblDate;
 
         /// <summary>
-        /// txtDate control.
+        /// ddlDay control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtDate;
+        protected global::System.Web.UI.WebControls.DropDownList ddlDay;
+
+        /// <summary>
+        /// ddlMonth control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlMonth;
+
+        /// <summary>
+        /// ddlYear control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlYear;
 
         /// <summary>
         /// lblTime control.
@@ -87,6 +123,24 @@ namespace vv.webpages
         protected global::System.Web.UI.WebControls.Label lblTime;
 
         /// <summary>
+        /// selectTimeH control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList selectTimeH;
+
+        /// <summary>
+        /// selectTimeM control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList selectTimeM;
+
+        /// <summary>
         /// lblDuration control.
         /// </summary>
         /// <remarks>
@@ -94,6 +148,24 @@ namespace vv.webpages
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblDuration;
+
+        /// <summary>
+        /// selectDurationH control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList selectDurationH;
+
+        /// <summary>
+        /// selectDurationM control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList selectDurationM;
 
         /// <summary>
         /// rbtnPhysical control.
@@ -123,13 +195,22 @@ namespace vv.webpages
         protected global::System.Web.UI.WebControls.TextBox txtLocation;
 
         /// <summary>
-        /// hlinkAddRoom control.
+        /// lblRoom control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink hlinkAddRoom;
+        protected global::System.Web.UI.WebControls.Label lblRoom;
+
+        /// <summary>
+        /// txtRoom control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtRoom;
 
         /// <summary>
         /// rbtnVirtual control.
@@ -168,13 +249,22 @@ namespace vv.webpages
         protected global::System.Web.UI.WebControls.Label lblTags;
 
         /// <summary>
-        /// rbtnAddOrganizer control.
+        /// selectTags control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton rbtnAddOrganizer;
+        protected global::System.Web.UI.WebControls.CheckBoxList selectTags;
+
+        /// <summary>
+        /// eventstagslabel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label eventstagslabel;
 
         /// <summary>
         /// btnAddNewEvent control.

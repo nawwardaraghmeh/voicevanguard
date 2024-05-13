@@ -33,13 +33,13 @@
         const file = event.target.files[0];
         const img = document.getElementById("<%=imgBannerPic.ClientID %>");
         img.src = URL.createObjectURL(file); // Display the selected image as banner picture
-        }
+    }
 
     function handleProfileChange(event) {
         const file = event.target.files[0];
         const img = document.getElementById("<%=imgProfilePic.ClientID %>");
         img.src = URL.createObjectURL(file); // Display the selected image as profile picture
-         }
+    }
 
          //CHANGING NAME CODE
 
@@ -81,8 +81,6 @@
             label.style.display = "block";
             input.style.display = "none";
         }
-
-      
     </script>
 </head>
 <body>
@@ -90,8 +88,8 @@
     <nav class="navbar">
         <div class="navbar-container">
             <div class="navbar-left">
-                <a href="index.aspx" class="nav-item">HOME</a>
-                <a href="evnets.aspx" class="nav-item">EVENTS</a>
+                <a href="home.aspx" class="nav-item">HOME</a>
+                <a href="events.aspx" class="nav-item">EVENTS</a>
                 <a href="community.aspx" class="nav-item">COMUUNITY</a>
                 <a href="faq.aspx" class="nav-item">FAQs</a>
             </div>
@@ -122,9 +120,10 @@
         <div class="pencilIcon1"><i class="fa-solid fa-pencil fa-2xl"></i></div>
         <div class="profileAccountInfo">
 
+
             <!--profile picture-->
            <div id="profilePicture" class="picture" onclick="showProfilePicker()"> <asp:Image ID="imgProfilePic" runat="server"
-                ImageUrl="~/resources/images/defaultProfile.jpg" CssClass="hoverable" /></div>
+                ImageUrl="~/resources/images/profilePic.png" CssClass="hoverable" /></div>
             <div class="pencilIcon2"><i class="fa-solid fa-pencil fa-2xl"></i></div>
           <!--pfp picker content-->
             <div id="profilePicker" class="picker">
@@ -146,9 +145,9 @@
 
                 <div class="profileAccountInfoGrey">
                     <asp:Label ID="lblJoinDate" runat="server" Text="Joined 3/12/2024"></asp:Label>
-
-                    &nbsp;
+                    <asp:Button runat="server" Text="LOGOUT" ID="btnLogout" OnClick="btnLogout_Click" />
                 </div>
+
                 <br />
                 <br />
                 <div class="divTabTitlel">

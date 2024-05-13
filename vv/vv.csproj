@@ -155,6 +155,7 @@
     <Content Include="Content\Site.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="webpages\popups\eventAdditionPopup.aspx" />
     <Content Include="resources\images\aboutusPic.png" />
     <Content Include="resources\images\aboutusText.png" />
     <Content Include="resources\images\bgSignupLogin.jpg" />
@@ -275,6 +276,15 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="models\EventTemp.cs" />
+    <Compile Include="models\UserProfile.cs" />
+    <Compile Include="webpages\popups\eventAdditionPopup.aspx.cs">
+      <DependentUpon>eventAdditionPopup.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="webpages\popups\eventAdditionPopup.aspx.designer.cs">
+      <DependentUpon>eventAdditionPopup.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Site.Master.cs">
