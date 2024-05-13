@@ -68,6 +68,13 @@ h1 {
     margin-left: 100px;
 }
 
+.eventTitleStyles {
+    font-weight: 700;
+    font-size: 24px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
 .seemore {
     color: #545454;
     margin-left: 110px;
@@ -98,12 +105,12 @@ h1 {
         width: 95%;
         height: auto;
         margin: 10px;
+        margin-bottom: 15px;
         border-radius: 22px;
     }
 
 .content {
-    padding: 10px;
-    padding-bottom: 35px;
+    padding: 10px 10px 20px 10px;
 }
 
 .learnmoreBtn {
