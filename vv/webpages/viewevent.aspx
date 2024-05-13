@@ -1,4 +1,5 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="viewevent.aspx.cs" Inherits="vv.webpages.viewevent" %>
+ <%@ Register Src="notifications.ascx" TagName="Notification" TagPrefix="uc" %>
 
 <!DOCTYPE html>
 
@@ -26,8 +27,6 @@
                 <a href="faq.aspx" class="nav-item">FAQs</a>
             </div>
             <div class="navbar-right">
-                <a href="notification.aspx" class="nav-item icon"><i class="fa fa-bell" aria-hidden="true">
-                </i></a>
                 <a href="profile.aspx" class="nav-item icon"><i class="fa fa-user" aria-hidden="true">
                 </i></a>
             </div>
@@ -39,6 +38,7 @@
     <br />
 
     <form id="vieweventform" runat="server">
+         <uc:Notification ID="Notification1" runat="server" />
         <div>
             <asp:Image ID="eventMainImg" runat="server"
                 ImageUrl="~/resources/images/rallypic.jpg" />

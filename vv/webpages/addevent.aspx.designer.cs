@@ -24,6 +24,15 @@ namespace vv.webpages
         protected global::System.Web.UI.HtmlControls.HtmlForm addEventForm;
 
         /// <summary>
+        /// Notification1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::vv.webpages.notifications Notification1;
+
+        /// <summary>
         /// lblTitle control.
         /// </summary>
         /// <remarks>

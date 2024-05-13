@@ -82,6 +82,7 @@
     top:1.60%;
     left:84%;
     padding:10px 10px;
+    cursor:pointer;
 }
 
     </style>
