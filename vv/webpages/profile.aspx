@@ -18,70 +18,6 @@
 
     <title>PROFILE PAGE </title>
 
-    <script>
-        function showProfilePicker() {
-        const input = document.getElementById("profileInput");
-        input.click(); // Trigger the file picker dialog
-    }
-
-    function showBannerPicker() {
-        const input = document.getElementById("bannerInput");
-        input.click(); // Trigger the file picker dialog for banner picture
-    }
-
-    function handleBannerChange(event) {
-        const file = event.target.files[0];
-        const img = document.getElementById("<%=imgBannerPic.ClientID %>");
-        img.src = URL.createObjectURL(file); // Display the selected image as banner picture
-    }
-
-    function handleProfileChange(event) {
-        const file = event.target.files[0];
-        const img = document.getElementById("<%=imgProfilePic.ClientID %>");
-        img.src = URL.createObjectURL(file); // Display the selected image as profile picture
-    }
-
-         //CHANGING NAME CODE
-
-         document.addEventListener("DOMContentLoaded", function () {
-            const input = document.getElementById("usernameInput");
-            const label = document.getElementById("usernameLabel");
-            const currentUsername = document.getElementById("lblAccountName");
-
-            // Add event listener for when the input field loses focus
-            input.addEventListener("blur", function () {
-                updateUsername(input, label, currentUsername);
-            });
-        });
-
-        function showUsernameInput() {
-            const label = document.getElementById("usernameLabel");
-            const input = document.getElementById("usernameInput");
-            const currentUsername = document.getElementById("lblAccountName");
-
-            // Hide the label and show the input field
-            label.style.display = "none";
-            input.style.display = "inline-block";
-    
-            // Set the input value to the current username
-            input.value = currentUsername.innerText;
-
-            // Set focus to the input field
-            input.focus();
-        }
-
-        function updateUsername(input, label, currentUsername) {
-            // Get the new username from the input field
-            const newUsername = input.value;
-    
-            // Update the label with the new username
-            currentUsername.innerText = newUsername;
-
-            // Show the label and hide the input field
-            label.style.display = "block";
-            input.style.display = "none";
-        }
-    </script>
 </head>
 <body>
     <!-- header section -->
@@ -109,38 +45,36 @@
 
        
             <!--banner picture-->
-        <div id="bannerPicture" class="picture" onclick="showBannerPicker()"><asp:Image ID="imgBannerPic" runat="server"
+        <div id="bannerPicture" class="picture"><asp:Image ID="imgBannerPic" runat="server"
             ImageUrl="~/resources/images/defaultbanner.png" CssClass="hoverable" /></div>
       <!--banner picker content-->
-        <div id="bannerPicker" class="picker">
-            <input type="file" id="bannerInput" accept="image/*" onchange="handleBannerChange(event)"/>
-            <button onclick="uploadBanner()">Upload</button>
-        </div>
+       <!-- <div id="bannerPicker" class="picker">
+            <asp:FileUpload id="bannerInput" accept="image/*" onchange="handleBannerChange(event)" runat="server"/>
+        </div>-->
 
         <div class="pencilIcon1"><i class="fa-solid fa-pencil fa-2xl"></i></div>
         <div class="profileAccountInfo">
 
 
             <!--profile picture-->
-           <div id="profilePicture" class="picture" onclick="showProfilePicker()"> <asp:Image ID="imgProfilePic" runat="server"
+           <div id="profilePicture" class="picture"> <asp:Image ID="imgProfilePic" runat="server"
                 ImageUrl="~/resources/images/profilePic.png" CssClass="hoverable" /></div>
             <div class="pencilIcon2"><i class="fa-solid fa-pencil fa-2xl"></i></div>
           <!--pfp picker content-->
-            <div id="profilePicker" class="picker">
-                <input type="file" id="profileInput" accept="image/*" onchange="handleProfileChange(event)"/>
-                <button onclick="uploadProfile()">Upload</button>
-            </div> 
+           <!-- <div id="profilePicker" class="picker">
+                <asp:FileUpload runat="server" id="profileInput" accept="image/*" onchange="handleProfileChange(event)"/> 
+            </div> -->
             
 
             <div class="profileAccountInfoTxt">
-                <div id="usernameLabel" onclick="showUsernameInput()">
+                <div id="usernameLabel">
                 <div id="nameAndPencilDiv">
                     <asp:Label ID="lblAccountName" runat="server" Text="Amanda Crowley" CssClass="hoverableLbl"></asp:Label>
                     <div class="pencilIcon3"><i class="fa-solid fa-pencil"></i></div>
                 </div>
                     </div>
                 <!--username input-->
-                <input type="text" id="usernameInput"/>
+               <!-- <asp:FileUpload runat="server" id="usernameInput"/>-->
                     
 
                 <div class="profileAccountInfoGrey">

@@ -44,6 +44,7 @@ namespace vv.web_pages
                 btnMyActivity.CssClass = "clickedBtn";
                 MainView.ActiveViewIndex = 0;
             }
+          
 
         }
 
@@ -99,5 +100,12 @@ namespace vv.web_pages
         {
             Response.Redirect("~/webpages/login.aspx");
         }
+
+
+
+
+
+       
+
     }
 }
