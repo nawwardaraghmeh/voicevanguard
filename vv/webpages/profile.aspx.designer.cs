@@ -51,6 +51,15 @@ namespace vv.web_pages
         protected global::System.Web.UI.WebControls.FileUpload fileUploadBannerPic;
 
         /// <summary>
+        /// profilePicture control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel profilePicture;
+
+        /// <summary>
         /// imgProfilePic control.
         /// </summary>
         /// <remarks>

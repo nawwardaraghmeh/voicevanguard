@@ -43,7 +43,7 @@
 <body>
     <form id="form1" runat="server">
         <div>
-            <asp:Label ID="lblpfpChangePopup" runat="server" Text=""></asp:Label><br />
+            <asp:Label ID="lblpfpChangePopup" runat="server" Text="Choose a Profile Picture"></asp:Label><br />
             <asp:FileUpload ID="profilePictureUpload" runat="server" /><br />
             <asp:Button ID="btnOk" runat="server" Text="Done" OnClick="btnOk_Click" />
         </div>

@@ -48,7 +48,7 @@ namespace vv.web_pages
 
         }
 
-        protected void UploadImage(object sender, EventArgs e)
+       /* protected void UploadImage(object sender, EventArgs e)
         {
             Button clickedButton = (Button)sender;
             string pictureType = clickedButton.CommandName;
@@ -126,7 +126,7 @@ namespace vv.web_pages
                     command.ExecuteNonQuery();
                 }
             }
-        }
+        }*/
 
 
 
@@ -187,8 +187,7 @@ namespace vv.web_pages
 
         protected void ChangePfp_Click(object sender, EventArgs e)
         {
-            string dataToSend = "Choose a Profile Picture";
-            string url = "popups/changeProfilePicturePopup.aspx?data=" + Server.UrlEncode(dataToSend);
+            string url = "popups/changeProfilePicturePopup.aspx";
             string script = "window.open('" + url + "', '_blank', 'width=400,height=300,top=250,left=450,toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes');";
             ClientScript.RegisterStartupScript(this.GetType(), "openwindow", script, true);
         }

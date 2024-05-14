@@ -19,11 +19,11 @@
     <title>PROFILE PAGE </title>
 
 
-    <script type="text/javascript">
+    <!--<script type="text/javascript">
         function triggerFileUpload(elementId) {
             document.getElementById(elementId).click();
         }
-    </script>
+    </script>-->
 </head>
 <body>
     <!-- header section -->
@@ -63,8 +63,8 @@
 
 
             <!--profile picture-->
-           <div id="profilePicture" class="picture" > <asp:Image ID="imgProfilePic" runat="server"
-                ImageUrl="~/resources/images/profilePic.png" CssClass="hoverable" onclick="ChangePfp_Click" /></div>
+           <asp:Panel runat="server" id="profilePicture" class="picture" onclick="ChangePfp_Click" > <asp:Image ID="imgProfilePic" runat="server"
+                ImageUrl="~/resources/images/profilePic.png" CssClass="hoverable" /></asp:Panel>
             <div class="pencilIcon2"><i class="fa-solid fa-pencil fa-2xl"></i></div>
           <!--pfp picker content-->
            <div id="profilePicker" class="picker">
