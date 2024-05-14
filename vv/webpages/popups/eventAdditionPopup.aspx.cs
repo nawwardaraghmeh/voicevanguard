@@ -24,7 +24,6 @@ namespace vv.popups
         protected void btnOk_Click(object sender, EventArgs e)
         {
             ClientScript.RegisterStartupScript(this.GetType(), "closewindow", "window.close();", true);
-
         }
     }
 }

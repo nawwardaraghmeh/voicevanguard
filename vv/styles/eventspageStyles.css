@@ -153,6 +153,15 @@ h1 {
         margin-left: 10px;
     }
 
+.eventDescStyles {
+    max-height: 3em; 
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
 
 
 
