@@ -161,7 +161,7 @@ namespace vv.web_pages
                 List<Guid> lastThreeEventIds = new List<Guid>();
 
                 string connectionString = ConfigurationManager.ConnectionStrings["VoiceVanguardDB"].ConnectionString;
-                string query = "SELECT TOP 3 eventId FROM event WHERE eventLocation IS NOT NULL ORDER BY eventDate DESC";
+                string query = "SELECT TOP 3 eventId FROM event WHERE eventLocation IS NOT NULL ORDER BY eventDateCreated DESC";
 
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
@@ -188,7 +188,7 @@ namespace vv.web_pages
             List<Guid> lastThreeEventIds = new List<Guid>();
 
             string connectionString = ConfigurationManager.ConnectionStrings["VoiceVanguardDB"].ConnectionString;
-            string query = "SELECT TOP 3 eventId FROM event WHERE eventLink IS NOT NULL ORDER BY eventDate DESC";
+            string query = "SELECT TOP 3 eventId FROM event WHERE eventLink IS NOT NULL ORDER BY eventDateCreated DESC";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {

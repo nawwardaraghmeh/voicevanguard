@@ -57,18 +57,18 @@ namespace vv.models
 
             if (location != null && room != null)
             {
-                query = "INSERT INTO event (eventId, eventTitle, eventDesc, eventLocation, eventRoom, eventPic, eventOrganizer, eventTags, eventDate, eventTime, eventDuration) " +
-                        "VALUES (@id, @title, @desc, @location, @room, @pic, @organizerid, @tags, @date, @time, @duration)";
+                query = "INSERT INTO event (eventId, eventTitle, eventDesc, eventLocation, eventRoom, eventPic, eventOrganizer, eventTags, eventDate, eventTime, eventDuration, eventDateCreated) " +
+                        "VALUES (@id, @title, @desc, @location, @room, @pic, @organizerid, @tags, @date, @time, @duration, @dateCreated)";
             }
             else if (location != null && room == null)
             {
-                query = "INSERT INTO event (eventId, eventTitle, eventDesc, eventLocation, eventPic, eventOrganizer, eventTags, eventDate, eventTime, eventDuration) " +
-                "VALUES (@id, @title, @desc, @location, @pic, @organizerid, @tags, @date, @time, @duration)";
+                query = "INSERT INTO event (eventId, eventTitle, eventDesc, eventLocation, eventPic, eventOrganizer, eventTags, eventDate, eventTime, eventDuration, eventDateCreated) " +
+                "VALUES (@id, @title, @desc, @location, @pic, @organizerid, @tags, @date, @time, @duration, @dateCreated)";
             }
             else
             {
-                query = "INSERT INTO event (eventId, eventTitle, eventDesc, eventLink, eventPic, eventOrganizer, eventTags, eventDate, eventTime, eventDuration) " +
-                        "VALUES (@id, @title, @desc, @link, @pic, @organizerid, @tags, @date, @time, @duration)";
+                query = "INSERT INTO event (eventId, eventTitle, eventDesc, eventLink, eventPic, eventOrganizer, eventTags, eventDate, eventTime, eventDuration, eventDateCreated) " +
+                        "VALUES (@id, @title, @desc, @link, @pic, @organizerid, @tags, @date, @time, @duration, @dateCreated)";
             }
 
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -86,6 +86,7 @@ namespace vv.models
                 command.Parameters.AddWithValue("@date", date);
                 command.Parameters.AddWithValue("@time", time);
                 command.Parameters.AddWithValue("@duration", duration);
+                command.Parameters.AddWithValue("@dateCreated", DateTime.Today);
 
                 connection.Open();
                 int rowsAffected = command.ExecuteNonQuery();
