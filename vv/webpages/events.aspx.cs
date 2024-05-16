@@ -209,20 +209,16 @@ namespace vv.web_pages
             return allUpcomingEventsIds;
         }
 
-        /*
+        
         protected void physicalClicktoSeeMore_Click(object sender, EventArgs e)
         {
-            Panel newPhysicalEventContainer = new Panel();
-            newPhysicalEventContainer.CssClass = "card-container";
-            newPhysicalEventContainer.ID = "physicalEventContainer_" + physicalEventContainer.Controls.Count;
+            int currentCount = physicalEventContainer.Controls.Count;
 
-            Page.Controls.Add(newPhysicalEventContainer);
-
-            List<Guid> physicalEventIds = GetAllPhysicalEventIds().Skip(physicalEventContainer.Controls.Count).Take(3).ToList();
+            List<Guid> physicalEventIds = GetAllRecommendedEventsIds().Skip(currentCount).Take(3).ToList();
             foreach (Guid id in physicalEventIds)
             {
                 HtmlGenericControl physicalEventControl = CreateEventControl(id);
-                newPhysicalEventContainer.Controls.Add(physicalEventControl);
+                physicalEventContainer.Controls.Add(physicalEventControl);
             }
         }
 
@@ -231,13 +227,13 @@ namespace vv.web_pages
         {
             int currentCount = virtualEventContainer.Controls.Count;
 
-            List<Guid> virtualEventIds = GetAllVirtualEventIds().Skip(currentCount).Take(3).ToList();
+            List<Guid> virtualEventIds = GetAllUpcomingEvents().Skip(currentCount).Take(3).ToList();
             foreach (Guid id in virtualEventIds)
             {
                 HtmlGenericControl virtualEventControl = CreateEventControl(id);
                 virtualEventContainer.Controls.Add(virtualEventControl);
             }
         }
-        */
+        
     }
 }

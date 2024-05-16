@@ -60,14 +60,16 @@
             
             </asp:Panel>
         <asp:PlaceHolder runat="server" ID="placeholder1"></asp:PlaceHolder>
-        <asp:LinkButton runat="server" class="seemore" ID="physicalClicktoSeeMore"> Click to see more! </asp:LinkButton>
+        <asp:LinkButton runat="server" class="seemore" ID="physicalClicktoSeeMore" 
+            OnClick="physicalClicktoSeeMore_Click"> Click to see more! </asp:LinkButton>
 
         <!-- events coming up section -->
         <h1>Events Coming Up</h1>
         <asp:Panel runat="server" CssClass="card-container" ID="virtualEventContainer">
 
         </asp:Panel>
-        <asp:LinkButton runat="server" class="seemore" ID="virtualClicktoSeeMore"> Click to see more! </asp:LinkButton>
+        <asp:LinkButton runat="server" class="seemore" ID="virtualClicktoSeeMore" 
+            OnClick="virtualClicktoSeeMore_Click"> Click to see more! </asp:LinkButton>
     </form>
 
     <br />

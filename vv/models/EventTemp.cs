@@ -27,7 +27,6 @@ namespace vv.models
         public string eventRoom { get; set; }
         public string eventLink { get; set; }
         public Guid eventOrganizer { get; set; }
-        public List<Guid> eventParticipants { get; set; }
         public string eventPic { get; set; }
         public TimeSpan eventDuration { get; set; }
         public DateTime eventDateCreated { get; set; }
@@ -45,7 +44,6 @@ namespace vv.models
             eventRoom = "";
             eventLink = "";
             eventOrganizer = Guid.Empty;
-            eventParticipants = new List<Guid> ();
             eventPic = "";
         }
 
@@ -54,8 +52,6 @@ namespace vv.models
         {
             string connectionString = ConfigurationManager.ConnectionStrings["VoiceVanguardDB"].ConnectionString;
             string query = "";
-            string script = "";
-
 
             query = "INSERT INTO event (eventId, eventTitle, eventDesc, eventLocation, eventRoom, eventLink, eventPic, eventOrganizer, eventTags, eventDate, eventTime, eventDuration, eventDateCreated) " +
                         "VALUES (@id, @title, @desc, @location, @room, @link, @pic, @organizerid, @tags, @date, @time, @duration, @dateCreated)";
