@@ -51,9 +51,7 @@
             </div>
 
             <asp:Panel runat="server" ID="participantsPanel" CssClass="participantsProfileimgs">
-                <asp:Image ID="imgPerson1" runat="server"
-                    ImageUrl="~/resources/images/person1.jpg" />
-                <asp:Image ID="imgPerson2" runat="server" ImageUrl="~/resources/images/person2.jpg" />
+                
             </asp:Panel>
 
             <div class="eventDescDiv">

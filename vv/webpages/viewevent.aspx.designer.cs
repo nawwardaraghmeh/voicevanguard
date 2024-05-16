@@ -78,24 +78,6 @@ namespace vv.webpages
         protected global::System.Web.UI.WebControls.Panel participantsPanel;
 
         /// <summary>
-        /// imgPerson1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Image imgPerson1;
-
-        /// <summary>
-        /// imgPerson2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Image imgPerson2;
-
-        /// <summary>
         /// lblEventDesc control.
         /// </summary>
         /// <remarks>

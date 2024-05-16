@@ -119,8 +119,8 @@ namespace vv.web_pages
         dateDiv.Controls.Add(dateIcon);
 
         Label dateLabel = new Label();
-        dateLabel.Text = eventData.eventDate.ToShortDateString();
-        dateDiv.Controls.Add(dateLabel);
+        dateLabel.Text = "  " + eventData.eventDate.ToString("dd MMMM yyyy");
+            dateDiv.Controls.Add(dateLabel);
 
         HtmlGenericControl timeDiv = new HtmlGenericControl("div");
         timeDiv.Attributes["class"] = "time";
@@ -131,7 +131,7 @@ namespace vv.web_pages
         timeDiv.Controls.Add(timeIcon);
 
         Label timeLabel = new Label();
-        timeLabel.Text = eventData.eventTime.ToString(@"hh\:mm");
+        timeLabel.Text = "  " + eventData.eventTime.ToString(@"hh\:mm");
         timeDiv.Controls.Add(timeLabel);
 
         Button seeMoreButton = new Button();
