@@ -31,6 +31,7 @@ namespace vv.models
         public string eventPic { get; set; }
         public TimeSpan eventDuration { get; set; }
 
+        public DateTime eventDateCreated { get; set; }
 
         public EventTemp()
         {
@@ -55,21 +56,10 @@ namespace vv.models
             string query = "";
             string script = "";
 
-            if (location != null && room != null)
-            {
-                query = "INSERT INTO event (eventId, eventTitle, eventDesc, eventLocation, eventRoom, eventPic, eventOrganizer, eventTags, eventDate, eventTime, eventDuration) " +
-                        "VALUES (@id, @title, @desc, @location, @room, @pic, @organizerid, @tags, @date, @time, @duration)";
-            }
-            else if (location != null && room == null)
-            {
-                query = "INSERT INTO event (eventId, eventTitle, eventDesc, eventLocation, eventPic, eventOrganizer, eventTags, eventDate, eventTime, eventDuration) " +
-                "VALUES (@id, @title, @desc, @location, @pic, @organizerid, @tags, @date, @time, @duration)";
-            }
-            else
-            {
-                query = "INSERT INTO event (eventId, eventTitle, eventDesc, eventLink, eventPic, eventOrganizer, eventTags, eventDate, eventTime, eventDuration) " +
-                        "VALUES (@id, @title, @desc, @link, @pic, @organizerid, @tags, @date, @time, @duration)";
-            }
+
+            query = "INSERT INTO event (eventId, eventTitle, eventDesc, eventLocation, eventRoom, eventLink, eventPic, eventOrganizer, eventTags, eventDate, eventTime, eventDuration, eventDateCreated) " +
+                        "VALUES (@id, @title, @desc, @location, @room, @link, @pic, @organizerid, @tags, @date, @time, @duration, @dateCreated)";
+
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -86,6 +76,7 @@ namespace vv.models
                 command.Parameters.AddWithValue("@date", date);
                 command.Parameters.AddWithValue("@time", time);
                 command.Parameters.AddWithValue("@duration", duration);
+                command.Parameters.AddWithValue("@dateCreated", DateTime.Today);
 
                 connection.Open();
                 int rowsAffected = command.ExecuteNonQuery();

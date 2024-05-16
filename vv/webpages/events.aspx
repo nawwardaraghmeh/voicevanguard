@@ -54,20 +54,20 @@
         </div>
 
 
-        <!-- last added section -->
-        <h1>Recently added</h1>
+        <!-- Recommended For You section -->
+        <h1>Recommended For You</h1>
             <asp:Panel runat="server" ID ="physicalEventContainer" CssClass="card-container">
             
             </asp:Panel>
-        <asp:HyperLink runat="server" class="seemore"> Click to see more! </asp:HyperLink>
+        <asp:PlaceHolder runat="server" ID="placeholder1"></asp:PlaceHolder>
+        <asp:LinkButton runat="server" class="seemore" ID="physicalClicktoSeeMore"> Click to see more! </asp:LinkButton>
 
-
-        <!-- virtual events section -->
-        <h1>Virtual events coming up</h1>
+        <!-- events coming up section -->
+        <h1>Events Coming Up</h1>
         <asp:Panel runat="server" CssClass="card-container" ID="virtualEventContainer">
 
         </asp:Panel>
-        <asp:HyperLink runat="server" class="seemore"> Click to see more! </asp:HyperLink>
+        <asp:LinkButton runat="server" class="seemore" ID="virtualClicktoSeeMore"> Click to see more! </asp:LinkButton>
     </form>
 
     <br />

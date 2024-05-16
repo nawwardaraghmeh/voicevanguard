@@ -18,25 +18,22 @@ namespace vv.web_pages
         {
             if (!IsPostBack)
             {
-                if (Session["userId"] != null)
-                {
-
-                }
-                else
+                if (Session["UserId"] == null)
                 {
                     Response.Redirect("~/webpages/login.aspx");
+                    return;
                 }
             }
 
-            List<Guid> lastThreePhysicalEventIds = GetLastThreePhysicalEventIds();
-            foreach (Guid id in lastThreePhysicalEventIds)
+            List<Guid> physicalEventIds = GetAllPhysicalEventIds().Take(3).ToList();
+            foreach (Guid id in physicalEventIds)
             {
                 HtmlGenericControl physicalEventControl = CreateEventControl(id);
                 physicalEventContainer.Controls.Add(physicalEventControl);
             }
 
-            List<Guid> lastThreeVirtualEventIds = GetLastThreeVirtualEventIds();
-            foreach (Guid id in lastThreeVirtualEventIds)
+            List<Guid> virtualEventIds = GetAllVirtualEventIds().Take(3).ToList();
+            foreach (Guid id in virtualEventIds)
             {
                 HtmlGenericControl virtualEventControl = CreateEventControl(id);
                 virtualEventContainer.Controls.Add(virtualEventControl);
@@ -99,7 +96,7 @@ namespace vv.web_pages
 
         Label titleLabel = new Label();
         titleLabel.CssClass = "eventTitleStyles";
-        titleLabel.Text = eventData.eventTitle;
+        titleLabel.Text = eventData.eventTitle.ToUpper();
         contentDiv.Controls.Add(titleLabel);
 
         contentDiv.Controls.Add(new LiteralControl("<br /><br />"));
@@ -144,9 +141,9 @@ namespace vv.web_pages
         contentDiv.Controls.Add(seeMoreButton);
 
         return div;
-    }
+        }
 
-    protected void btnAddEvent_Click(object sender, EventArgs e)
+        protected void btnAddEvent_Click(object sender, EventArgs e)
         {
             Response.Redirect("~/webpages/addevent.aspx");
         }
@@ -156,12 +153,12 @@ namespace vv.web_pages
             Response.Redirect("~/webpages/viewevent.aspx");
         }
 
-        protected List<Guid> GetLastThreePhysicalEventIds()
+        protected List<Guid> GetAllPhysicalEventIds()
             {
-                List<Guid> lastThreeEventIds = new List<Guid>();
+                List<Guid> allPhysicalIds = new List<Guid>();
 
                 string connectionString = ConfigurationManager.ConnectionStrings["VoiceVanguardDB"].ConnectionString;
-                string query = "SELECT TOP 3 eventId FROM event WHERE eventLocation IS NOT NULL ORDER BY eventDate DESC";
+                string query = "SELECT eventId FROM event WHERE eventLocation != '' ORDER BY eventDateCreated DESC";
 
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
@@ -173,22 +170,22 @@ namespace vv.web_pages
                     while (reader.Read())
                     {
                         Guid eventId = (Guid)reader["eventId"];
-                        lastThreeEventIds.Add(eventId);
+                        allPhysicalIds.Add(eventId);
                     }
 
                     reader.Close();
                     connection.Close();
                 }
 
-                return lastThreeEventIds;
+                return allPhysicalIds;
             }
 
-        protected List<Guid> GetLastThreeVirtualEventIds()
+        protected List<Guid> GetAllVirtualEventIds()
         {
-            List<Guid> lastThreeEventIds = new List<Guid>();
+            List<Guid> allVirtualIds = new List<Guid>();
 
             string connectionString = ConfigurationManager.ConnectionStrings["VoiceVanguardDB"].ConnectionString;
-            string query = "SELECT TOP 3 eventId FROM event WHERE eventLink IS NOT NULL ORDER BY eventDate DESC";
+            string query = "SELECT eventId FROM event WHERE eventLink !='' ORDER BY eventDateCreated DESC";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -200,14 +197,45 @@ namespace vv.web_pages
                 while (reader.Read())
                 {
                     Guid eventId = (Guid)reader["eventId"];
-                    lastThreeEventIds.Add(eventId);
+                    allVirtualIds.Add(eventId);
                 }
 
                 reader.Close();
                 connection.Close();
             }
 
-            return lastThreeEventIds;
+            return allVirtualIds;
         }
+
+        /*
+        protected void physicalClicktoSeeMore_Click(object sender, EventArgs e)
+        {
+            Panel newPhysicalEventContainer = new Panel();
+            newPhysicalEventContainer.CssClass = "card-container";
+            newPhysicalEventContainer.ID = "physicalEventContainer_" + physicalEventContainer.Controls.Count;
+
+            Page.Controls.Add(newPhysicalEventContainer);
+
+            List<Guid> physicalEventIds = GetAllPhysicalEventIds().Skip(physicalEventContainer.Controls.Count).Take(3).ToList();
+            foreach (Guid id in physicalEventIds)
+            {
+                HtmlGenericControl physicalEventControl = CreateEventControl(id);
+                newPhysicalEventContainer.Controls.Add(physicalEventControl);
+            }
+        }
+
+
+        protected void virtualClicktoSeeMore_Click(object sender, EventArgs e)
+        {
+            int currentCount = virtualEventContainer.Controls.Count;
+
+            List<Guid> virtualEventIds = GetAllVirtualEventIds().Skip(currentCount).Take(3).ToList();
+            foreach (Guid id in virtualEventIds)
+            {
+                HtmlGenericControl virtualEventControl = CreateEventControl(id);
+                virtualEventContainer.Controls.Add(virtualEventControl);
+            }
+        }
+        */
     }
 }
