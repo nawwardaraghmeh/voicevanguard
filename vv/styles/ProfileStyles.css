@@ -49,6 +49,12 @@
     font-size: 14px;
 }
 
+#editProfilelink {
+    margin-top: 10px;
+    color: #545454;
+    text-decoration:none;
+}
+
 
 #lblAccountName {
     font-size: 24px;

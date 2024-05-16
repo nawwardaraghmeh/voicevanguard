@@ -72,6 +72,8 @@
                     <asp:Label ID="lblJoinDate" runat="server" Text="Joined 3/12/2024"></asp:Label>
                     <asp:Button runat="server" Text="LOGOUT" ID="btnLogout" OnClick="btnLogout_Click" />
                 </div>
+                    <asp:LinkButton ID="editProfilelink" OnClick="linkEditProfile_click" runat="server">Edit Profile</asp:LinkButton>
+
 
                 <br />
                 <br />
