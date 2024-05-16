@@ -42,15 +42,6 @@ namespace vv.web_pages
         protected global::System.Web.UI.WebControls.Image imgBannerPic;
 
         /// <summary>
-        /// fileUploadBannerPic control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.FileUpload fileUploadBannerPic;
-
-        /// <summary>
         /// profilePicture control.
         /// </summary>
         /// <remarks>
@@ -69,15 +60,6 @@ namespace vv.web_pages
         protected global::System.Web.UI.WebControls.Image imgProfilePic;
 
         /// <summary>
-        /// fileUploadProfilePic control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.FileUpload fileUploadProfilePic;
-
-        /// <summary>
         /// lblAccountName control.
         /// </summary>
         /// <remarks>
@@ -85,15 +67,6 @@ namespace vv.web_pages
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblAccountName;
-
-        /// <summary>
-        /// usernameInput control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.FileUpload usernameInput;
 
         /// <summary>
         /// lblJoinDate control.

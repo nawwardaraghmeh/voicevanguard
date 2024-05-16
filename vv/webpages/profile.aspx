@@ -51,36 +51,21 @@
 
        
             <!--banner picture-->
-        <div id="bannerPicture" class="picture" onclick="triggerFileUpload('<%= fileUploadBannerPic.ClientID %>')"><asp:Image ID="imgBannerPic" runat="server"
-            ImageUrl="~/resources/images/defaultbanner.png" CssClass="hoverable" /></div>
+        <div id="bannerPicture" class="picture" ><asp:Image ID="imgBannerPic" runat="server"
+            ImageUrl="~/resources/images/defaultbanner.png" /></div>
       <!--banner picker content-->
-        <div id="bannerPicker" class="picker">
-            <asp:FileUpload id="fileUploadBannerPic" accept="image/*" runat="server"/>
-        </div>
 
-        <div class="pencilIcon1"><i class="fa-solid fa-pencil fa-2xl"></i></div>
         <div class="profileAccountInfo">
-
-
-            <!--profile picture-->
-           <asp:Panel runat="server" id="profilePicture" class="picture" onclick="ChangePfp_Click" > <asp:Image ID="imgProfilePic" runat="server"
-                ImageUrl="~/resources/images/profilePic.png" CssClass="hoverable" /></asp:Panel>
-            <div class="pencilIcon2"><i class="fa-solid fa-pencil fa-2xl"></i></div>
-          <!--pfp picker content-->
-           <div id="profilePicker" class="picker">
-                <asp:FileUpload runat="server" id="fileUploadProfilePic" accept="image/*" /> 
-            </div> 
+           <!--profile picture-->
+           <asp:Panel runat="server" id="profilePicture" class="picture" > <asp:Image ID="imgProfilePic" runat="server"
+                ImageUrl="~/resources/images/profilePic.png" /></asp:Panel>
+           
             
 
             <div class="profileAccountInfoTxt">
                 <div id="usernameLabel">
-                <div id="nameAndPencilDiv">
-                    <asp:Label ID="lblAccountName" runat="server" Text="Amanda Crowley" CssClass="hoverableLbl"></asp:Label>
-                    <div class="pencilIcon3"><i class="fa-solid fa-pencil"></i></div>
-                </div>
+                    <asp:Label ID="lblAccountName" runat="server" Text="Amanda Crowley"></asp:Label>
                     </div>
-                <!--username input-->
-               <!-- <asp:FileUpload runat="server" id="usernameInput"/>-->
                     
 
                 <div class="profileAccountInfoGrey">

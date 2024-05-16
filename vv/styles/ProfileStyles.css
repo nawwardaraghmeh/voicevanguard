@@ -144,7 +144,7 @@
     border-radius: 22px;
 }
 
-
+/*
 .nameAndPencilDiv{
     display:flex;
 }
@@ -195,7 +195,7 @@
 .picker, #usernameInput {
     display: none;
 }
-
+*/
 
 #btnLogout {
     cursor: pointer;

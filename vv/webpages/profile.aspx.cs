@@ -185,13 +185,6 @@ namespace vv.web_pages
         }
 
 
-        protected void ChangePfp_Click(object sender, EventArgs e)
-        {
-            string url = "popups/changeProfilePicturePopup.aspx";
-            string script = "window.open('" + url + "', '_blank', 'width=400,height=300,top=250,left=450,toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes');";
-            ClientScript.RegisterStartupScript(this.GetType(), "openwindow", script, true);
-        }
-
 
 
 
