@@ -30,8 +30,8 @@ namespace vv.models
         public List<Guid> eventParticipants { get; set; }
         public string eventPic { get; set; }
         public TimeSpan eventDuration { get; set; }
-
         public DateTime eventDateCreated { get; set; }
+        public String eventTags { get; set; }
 
         public EventTemp()
         {

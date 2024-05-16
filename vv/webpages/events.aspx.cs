@@ -25,15 +25,15 @@ namespace vv.web_pages
                 }
             }
 
-            List<Guid> physicalEventIds = GetAllPhysicalEventIds().Take(3).ToList();
-            foreach (Guid id in physicalEventIds)
+            List<Guid> recommendedEventsIds = GetAllRecommendedEventsIds().Take(3).ToList();
+            foreach (Guid id in recommendedEventsIds)
             {
                 HtmlGenericControl physicalEventControl = CreateEventControl(id);
                 physicalEventContainer.Controls.Add(physicalEventControl);
             }
 
-            List<Guid> virtualEventIds = GetAllVirtualEventIds().Take(3).ToList();
-            foreach (Guid id in virtualEventIds)
+            List<Guid> upcomingEventsIds = GetAllUpcomingEvents().Take(3).ToList();
+            foreach (Guid id in upcomingEventsIds)
             {
                 HtmlGenericControl virtualEventControl = CreateEventControl(id);
                 virtualEventContainer.Controls.Add(virtualEventControl);
@@ -137,7 +137,7 @@ namespace vv.web_pages
         Button seeMoreButton = new Button();
         seeMoreButton.Text = "SEE MORE";
         seeMoreButton.CssClass = "learnmoreBtn";
-        seeMoreButton.Click += (s, args) => btnLearnMore_Click(s, EventArgs.Empty);
+        seeMoreButton.Click += (s, args) => btnLearnMore_Click(s, EventArgs.Empty, eventId);
         contentDiv.Controls.Add(seeMoreButton);
 
         return div;
@@ -148,14 +148,16 @@ namespace vv.web_pages
             Response.Redirect("~/webpages/addevent.aspx");
         }
 
-        protected void btnLearnMore_Click(object sender, EventArgs e)
+        protected void btnLearnMore_Click(object sender, EventArgs e, Guid eventId)
         {
-            Response.Redirect("~/webpages/viewevent.aspx");
+            string url = $"~/webpages/viewevent.aspx?eventId={eventId}";
+            Response.Redirect(url);
         }
 
-        protected List<Guid> GetAllPhysicalEventIds()
+
+        protected List<Guid> GetAllRecommendedEventsIds()
             {
-                List<Guid> allPhysicalIds = new List<Guid>();
+                List<Guid> allRecommendedEventsIds = new List<Guid>();
 
                 string connectionString = ConfigurationManager.ConnectionStrings["VoiceVanguardDB"].ConnectionString;
                 string query = "SELECT eventId FROM event WHERE eventLocation != '' ORDER BY eventDateCreated DESC";
@@ -170,22 +172,22 @@ namespace vv.web_pages
                     while (reader.Read())
                     {
                         Guid eventId = (Guid)reader["eventId"];
-                        allPhysicalIds.Add(eventId);
+                        allRecommendedEventsIds.Add(eventId);
                     }
 
                     reader.Close();
                     connection.Close();
                 }
 
-                return allPhysicalIds;
+                return allRecommendedEventsIds;
             }
 
-        protected List<Guid> GetAllVirtualEventIds()
+        protected List<Guid> GetAllUpcomingEvents()
         {
-            List<Guid> allVirtualIds = new List<Guid>();
+            List<Guid> allUpcomingEventsIds = new List<Guid>();
 
             string connectionString = ConfigurationManager.ConnectionStrings["VoiceVanguardDB"].ConnectionString;
-            string query = "SELECT eventId FROM event WHERE eventLink !='' ORDER BY eventDateCreated DESC";
+            string query = "SELECT eventId FROM event ORDER BY eventDate DESC";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -197,14 +199,14 @@ namespace vv.web_pages
                 while (reader.Read())
                 {
                     Guid eventId = (Guid)reader["eventId"];
-                    allVirtualIds.Add(eventId);
+                    allUpcomingEventsIds.Add(eventId);
                 }
 
                 reader.Close();
                 connection.Close();
             }
 
-            return allVirtualIds;
+            return allUpcomingEventsIds;
         }
 
         /*
