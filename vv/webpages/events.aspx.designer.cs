@@ -42,6 +42,33 @@ namespace vv.web_pages
         protected global::System.Web.UI.WebControls.Button btnAddEvent;
 
         /// <summary>
+        /// txtboxUserSearch control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtboxUserSearch;
+
+        /// <summary>
+        /// btnSearch control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnSearch;
+
+        /// <summary>
+        /// lblFirstEventsSection control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblFirstEventsSection;
+
+        /// <summary>
         /// physicalEventContainer control.
         /// </summary>
         /// <remarks>
@@ -67,6 +94,15 @@ namespace vv.web_pages
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton physicalClicktoSeeMore;
+
+        /// <summary>
+        /// lblSecondEventsSection control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblSecondEventsSection;
 
         /// <summary>
         /// virtualEventContainer control.

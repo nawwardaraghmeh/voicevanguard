@@ -27,7 +27,7 @@
                 <a href="home.aspx" class="nav-item">HOME</a>
                 <a href="events.aspx" class="nav-item current-page">EVENTS</a>
                 <a href="community.aspx" class="nav-item">COMMUNITY</a>
-                <a href="faq.aspx" class="nav-item">FAQs</a>
+                <a href="faq.aspx" class="nav-item">FAQs</a
             </div>
             <div class="navbar-right">
                 <a href="profile.aspx" class="nav-item icon"><i class="fa fa-user" aria-hidden="true">
@@ -48,14 +48,17 @@
             </div>
             <div class="search-box">
                 <i class="fas fa-search"></i>
-                <asp:TextBox runat="server" placeholder="Enter Keyword/s" name="search">
+                <asp:TextBox runat="server" placeholder="Enter Keyword/s" name="search" ID="txtboxUserSearch">
                 </asp:TextBox>
+                <asp:Button runat="server" ID="btnSearch" Text="SEARCH" 
+                    OnClick="btnSearch_Click" />
             </div>
         </div>
 
 
         <!-- Recommended For You section -->
-        <h1>Recommended For You</h1>
+        <asp:Label runat="server" ID="lblFirstEventsSection" CssClass="h1" Text="Recommended For You"></asp:Label>
+        <br />
             <asp:Panel runat="server" ID ="physicalEventContainer" CssClass="card-container">
             
             </asp:Panel>
@@ -64,7 +67,9 @@
             OnClick="physicalClicktoSeeMore_Click"> Click to see more! </asp:LinkButton>
 
         <!-- events coming up section -->
-        <h1>Events Coming Up</h1>
+        <br /> <br />
+        <asp:Label runat="server" ID="lblSecondEventsSection" CssClass="h1" Text="Events Coming Up"></asp:Label>
+        <br />
         <asp:Panel runat="server" CssClass="card-container" ID="virtualEventContainer">
 
         </asp:Panel>
@@ -77,7 +82,7 @@
     <!-- footer section -->
     <footer class="footer">
         <div class="footer-content">
-            <h2>Contact</h2>
+            <h2>Contactt</h2>
             <p>
                 <a href="mailto:voicevanguard@gmail.com" class="contact-info">voicevanguard@gmail.com</a>
             </p>

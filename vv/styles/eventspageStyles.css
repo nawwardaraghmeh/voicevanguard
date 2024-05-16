@@ -59,12 +59,30 @@
         color: black;
     }
 
+#btnSearch {
+    background-color: transparent;
+    border: 1px solid black;
+    border-radius: 22px;
+    cursor: pointer;
+    font-family: "Coustard", serif;
+}
 
 
-/* events page middle section */
+    #btnSearch:hover {
+        border: 1px solid white;
+        color: white;
+    }
 
-h1 {
-    font-weight: 800;
+    /* events page middle section */
+    .h1 {
+        font-weight: 800;
+        font-size: 30px;
+        margin-left: 100px;
+    }
+
+.noMatchingEvents {
+    font-weight: 500;
+    font-size: 24px;
     margin-left: 100px;
 }
 
