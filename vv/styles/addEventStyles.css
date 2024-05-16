@@ -119,3 +119,13 @@ form#addEventForm {
     color: #E46262;
 }
 
+
+.radioButtons {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.physicalRbutton, .virtualRbutton {
+    width: 46%;
+}

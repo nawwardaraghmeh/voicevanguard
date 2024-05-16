@@ -219,6 +219,7 @@
     <Content Include="webpages\addevent.aspx" />
     <Content Include="webpages\notification.aspx" />
     <Content Include="webpages\notifications.ascx" />
+    <Content Include="webpages\popups\participantsAdditionPopup.aspx" />
     <Content Include="webpages\Registration.aspx" />
     <Content Include="webpages\addpost.aspx" />
     <Content Include="webpages\resetlink.aspx" />
@@ -380,6 +381,13 @@
     </Compile>
     <Compile Include="webpages\notifications.ascx.designer.cs">
       <DependentUpon>notifications.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="webpages\popups\participantsAdditionPopup.aspx.cs">
+      <DependentUpon>participantsAdditionPopup.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="webpages\popups\participantsAdditionPopup.aspx.designer.cs">
+      <DependentUpon>participantsAdditionPopup.aspx</DependentUpon>
     </Compile>
     <Compile Include="webpages\profile.aspx.cs">
       <DependentUpon>profile.aspx</DependentUpon>

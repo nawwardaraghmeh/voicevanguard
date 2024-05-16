@@ -170,28 +170,34 @@
         </div>
         <br />
 
-        <asp:RadioButton ID="rbtnPhysical" GroupName="eventType" runat="server"
-            Text="Physical Event" OnCheckedChanged="rbtnPhysical_CheckedChanged" AutoPostBack="true" />
-        <br />
-        <asp:Label ID="lblLocation" runat="server" Text="LOCATION"></asp:Label>
-        <br />
-        <asp:TextBox ID="txtLocation" runat="server"></asp:TextBox>
-        <br />
-        <asp:Label ID="lblRoom" runat="server" Text="ROOM"></asp:Label>
-        <br />
-        <asp:TextBox ID="txtRoom" runat="server"></asp:TextBox>
-        <br />
-        <asp:RadioButton ID="rbtnVirtual" GroupName="eventType" runat="server"
-            Text="Virtual Event" OnCheckedChanged="rbtnVirtual_CheckedChanged" AutoPostBack="true" />
-        <br />
-        <asp:Label ID="lblLink" runat="server" Text="LINK"></asp:Label>
-        <br />
-        <asp:TextBox ID="txtLink" runat="server"></asp:TextBox>
-        <br />
+        <div class="radioButtons">
+            <div class="physicalRbutton">
+                <asp:RadioButton ID="rbtnPhysical" GroupName="eventType" runat="server"
+                    Text="Physical Event" OnCheckedChanged="rbtnPhysical_CheckedChanged" AutoPostBack="true" />
+                <br />
+                <asp:Label ID="lblLocation" runat="server" Text="LOCATION"></asp:Label>
+                <br />
+                <asp:TextBox ID="txtLocation" runat="server"></asp:TextBox>
+                <br />
+                <asp:Label ID="lblRoom" runat="server" Text="ROOM"></asp:Label>
+                <br />
+                <asp:TextBox ID="txtRoom" runat="server"></asp:TextBox>
+                <br />
+            </div>
+
+            <div class="virtualRbutton">
+                <asp:RadioButton ID="rbtnVirtual" GroupName="eventType" runat="server"
+                    Text="Virtual Event" OnCheckedChanged="rbtnVirtual_CheckedChanged" AutoPostBack="true" />
+                <br />
+                <asp:Label ID="lblLink" runat="server" Text="LINK"></asp:Label>
+                <br />
+                <asp:TextBox ID="txtLink" runat="server"></asp:TextBox>
+            </div>
+        </div>
 
         <asp:Label ID="lblTags" runat="server" Text="ADD TAGS"></asp:Label>
         <div class="tagsAdditionDiv">
-            <div style="height: 100px; overflow-y:auto;">
+            <div style="height: 100px; overflow-y: auto;">
                 <asp:CheckBoxList runat="server" ID="selectTags" AutoPostBack="true" OnSelectedIndexChanged="selectTags_SelectedIndexChanged">
                     <asp:ListItem Value="1">Animal Rights</asp:ListItem>
                     <asp:ListItem Value="2">Climate Change</asp:ListItem>

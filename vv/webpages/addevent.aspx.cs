@@ -82,6 +82,7 @@ namespace vv.webpages
                 }
             }
             eventstagslabel.Text = "#" + string.Join(" #", selectedTags);
+            string eventTags = string.Join(",", selectedTags);
         }
 
         protected void btnAddNewEvent_Click(object sender, EventArgs e)
@@ -96,7 +97,17 @@ namespace vv.webpages
             string room = txtRoom.Text;
             string link = txtLink.Text;
             string pic = eventPicUpload.FileName;
-            string tags = selectTags.ToString();
+            //string tags = selectTags.ToString();
+
+            foreach (ListItem item in selectTags.Items)
+            {
+                if (item.Selected)
+                {
+                    selectedTags.Add(item.Text);
+                }
+            }
+            string eventTags = string.Join(",", selectedTags);
+            string tags = eventTags;
 
             int timeH = int.Parse(selectTimeH.SelectedValue);
             int timeM = int.Parse(selectTimeM.SelectedValue);

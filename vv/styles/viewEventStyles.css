@@ -48,7 +48,7 @@ form#vieweventform {
         text-decoration: underline;
     }
 
-.profileimgs {
+.participantsProfileimgs {
     display: flex;
     flex-direction: row;
     margin: 0 10px;
@@ -68,28 +68,25 @@ form#vieweventform {
     border-radius: 22px;
     padding: 20px;
     margin: 15px;
+    width: 93%;
 }
 
 .eventDetailsDiv {
-    border: 1px solid black;
-    border-radius: 22px;
-    padding: 20px;
-    margin: 15px;
     display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-}
-
-.eventDateDiv, .eventTimeDiv, .eventLocationDiv {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
     padding: 5px;
 }
 
-.fa-calendar, .fa-clock, .fa-map-marker {
+.eventDateNTime, .eventLocationNRoom, .eventLink {
+    width: 65%;
+    display: flex;
+    justify-content: space-between;
+    margin: auto;
+}
+
+.eventIcon {
     margin-right: 10px;
 }
+
 
 #btnInterested {
     background-color: #E46262;

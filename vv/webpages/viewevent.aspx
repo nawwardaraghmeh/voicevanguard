@@ -44,46 +44,52 @@
                 ImageUrl="~/resources/images/rallypic.jpg" />
 
             <div class="labelsEventMain">
-                <asp:Label ID="lblEventTitle" runat="server" Text="CLIMATE ACTION RALLY"></asp:Label>
+                <asp:Label ID="lblEventTitle" runat="server" Text=""></asp:Label>
                 <asp:Label ID="lblEventOrganizer" runat="server" Text="Organized by: ">
-                    <asp:HyperLink runat="server" ID="eventOrganizerProfile"> Mia Singh</asp:HyperLink>
+                    <asp:HyperLink runat="server" ID="eventOrganizerProfile"></asp:HyperLink>
                 </asp:Label>
             </div>
 
-            <div class="profileimgs">
-                <asp:Image ID="imgPerson1" runat="server"
-                    ImageUrl="~/resources/images/person1.jpg" />
-                <asp:Image ID="imgPerson2" runat="server" ImageUrl="~/resources/images/person2.jpg" />
-            </div>
+            <asp:Panel runat="server" ID="participantsPanel" CssClass="participantsProfileimgs">
+                
+            </asp:Panel>
 
             <div class="eventDescDiv">
-                <asp:Label ID="lblEventDesc" runat="server" Text="Be a part of our community cleanup effort
-                    to maintain a cleaner and greener neighborhood. Join us for a day filled with purpose and positive impact.
-                    During the event, you'll have the opportunity to connect with other community members, 
-                    contribute to the improvement of our neighborhood, and enjoy a sense of fulfillment in making a tangible difference. 
-                    Let's work together to create a cleaner and more sustainable environment for everyone. 
-                    Don't miss this chance to be a catalyst for positive change in our community! 
-                    RSVP now and be a part of this meaningful initiative."></asp:Label>
+                <asp:Label ID="lblEventDesc" runat="server" Text=""></asp:Label>
+                <br /> <br />
+                <div class="eventDateNTime">
+                    <div class="eventDetailsDiv">
+                        <i class="fa fa-calendar eventIcon" aria-hidden="true"></i>
+                        <asp:Label ID="lblEventDate" runat="server" Text=""></asp:Label>
+                    </div>
+
+                    <div class="eventDetailsDiv">
+                        <i class="fa fa-clock eventIcon" aria-hidden="true"></i>
+                        <asp:Label ID="lblEventTime" runat="server" Text=""></asp:Label>
+                    </div>
+                </div>
+
+                <div class="eventLocationNRoom">
+                    <div class="eventDetailsDiv">
+                        <asp:Label runat="server" ID="eventLocationIconlbl"><i class="fa fa-map-marker eventIcon" aria-hidden="true"></i></asp:Label>
+                        <asp:Label ID="lblEventLocation" runat="server" Text=""></asp:Label>
+                    </div>
+
+                    <div class="eventDetailsDiv">
+                        <asp:Label runat="server" ID="eventRoomIconlbl"><i class="fa fa-building eventIcon" aria-hidden="true"></i></asp:Label>
+                        <asp:Label ID="lblEventRoom" runat="server" Text=""></asp:Label>
+                    </div>
+                </div>
+                <div class="eventLink">
+                <div class="eventDetailsDiv">
+                   <asp:Label runat="server" ID="eventLinkIconlbl"><i class="fa fa-link eventIcon" aria-hidden="true"  id="eventLinkIcon"></i></asp:Label>
+                    <asp:Label ID="lblEventLink" runat="server" Text=""></asp:Label>
+                </div>
+                    </div>
             </div>
-
-            <div class="eventDetailsDiv">
-                <div class="eventDateDiv">
-                    <i class="fa fa-calendar" aria-hidden="true"></i>
-                    <asp:Label ID="lblEventDate" runat="server" Text="13 January 2025 "></asp:Label>
-                </div>
-
-                <div class="eventTimeDiv">
-                    <i class="fa fa-clock" aria-hidden="true"></i>
-                    <asp:Label ID="lblEventTime" runat="server" Text="10:AM"></asp:Label>
-                </div>
-
-                <div class="eventLocationDiv">
-                    <i class="fa fa-map-marker" aria-hidden="true"></i>
-                    <asp:Label ID="lblEventLocation" runat="server" Text="Main Park"></asp:Label>
-                </div>
-            </div>
-
-            <asp:Button ID="btnInterested" runat="server" Text="I AM INTERESTED" />
+            <br /><br />
+            <asp:Button runat="server" Text="I Am Interested" ID="btnInterested" 
+                OnClick="btnInterested_Click" />
 
         </div>
     </form>

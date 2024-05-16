@@ -69,22 +69,13 @@ namespace vv.webpages
         protected global::System.Web.UI.WebControls.HyperLink eventOrganizerProfile;
 
         /// <summary>
-        /// imgPerson1 control.
+        /// participantsPanel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image imgPerson1;
-
-        /// <summary>
-        /// imgPerson2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Image imgPerson2;
+        protected global::System.Web.UI.WebControls.Panel participantsPanel;
 
         /// <summary>
         /// lblEventDesc control.
@@ -114,6 +105,15 @@ namespace vv.webpages
         protected global::System.Web.UI.WebControls.Label lblEventTime;
 
         /// <summary>
+        /// eventLocationIconlbl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label eventLocationIconlbl;
+
+        /// <summary>
         /// lblEventLocation control.
         /// </summary>
         /// <remarks>
@@ -121,6 +121,42 @@ namespace vv.webpages
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblEventLocation;
+
+        /// <summary>
+        /// eventRoomIconlbl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label eventRoomIconlbl;
+
+        /// <summary>
+        /// lblEventRoom control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblEventRoom;
+
+        /// <summary>
+        /// eventLinkIconlbl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label eventLinkIconlbl;
+
+        /// <summary>
+        /// lblEventLink control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblEventLink;
 
         /// <summary>
         /// btnInterested control.
