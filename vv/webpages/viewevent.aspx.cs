@@ -16,6 +16,7 @@ namespace vv.webpages
     {
         int isOrganizer = 0;
         EventTemp eventDetails = null;
+        int x;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -168,5 +169,42 @@ namespace vv.webpages
             // Implement logic to load and display participant images
             // You might need to query the database for participant data
         }
-    }
+
+        protected void btnInterested_Click(object sender, EventArgs e)
+        {
+            Guid userId = new Guid(Session["UserId"].ToString());
+            string eventIdString = Request.QueryString["eventId"];
+            Guid eventId = new Guid(eventIdString);
+
+            string connectionString = ConfigurationManager.ConnectionStrings["VoiceVanguardDB"].ConnectionString;
+            string query = "INSERT INTO participants VALUES (@eventid, @userid)";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@eventid", eventId);
+                command.Parameters.AddWithValue("@userid", userId);
+
+                connection.Open();
+                x = command.ExecuteNonQuery();
+
+                if (x > 0)
+                {
+                    string dataToSend = "Event was added to your calendar!\nThank you for your contribution.";
+                    string url = "popups/participantsAdditionPopup.aspx?data=" + Server.UrlEncode(dataToSend);
+                    string script = "window.open('" + url + "', '_blank', 'width=400,height=250,top=250,left=450,toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes');";
+                    ClientScript.RegisterStartupScript(this.GetType(), "openwindow", script, true);
+                }
+                else
+                {
+                    string dataToSend = "Something went wrong.\nPlease try again later!";
+                    string url = "popups/participantsAdditionPopup.aspx?data=" + Server.UrlEncode(dataToSend);
+                    string script = "window.open('" + url + "', '_blank', 'width=400,height=300,top=250,left=450,toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes');";
+                    ClientScript.RegisterStartupScript(this.GetType(), "openwindow", script, true);
+                }
+
+                connection.Close();
+
+            }
+        }
 }

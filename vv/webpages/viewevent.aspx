@@ -90,7 +90,8 @@
                     </div>
             </div>
             <br /><br />
-            <asp:Button ID="btnInterested" runat="server" Text="I AM INTERESTED" />
+            <asp:Button runat="server" Text="I Am Interested" ID="btnInterested" 
+                OnClick="btnInterested_Click" />
 
         </div>
     </form>
