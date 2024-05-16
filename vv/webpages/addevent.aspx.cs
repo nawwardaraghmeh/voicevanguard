@@ -10,7 +10,6 @@ namespace vv.webpages
 {
     public partial class addevent : System.Web.UI.Page
     {
-        Guid userId;
         int x;
         List<string> selectedTags = new List<string>();
 
@@ -21,7 +20,7 @@ namespace vv.webpages
 
                 if (Session["userId"] != null)
                 {
-                    userId = new Guid(Session["UserId"].ToString());
+                    //userId = new Guid(Session["UserId"].ToString());
 
                 }
 
@@ -88,6 +87,8 @@ namespace vv.webpages
         protected void btnAddNewEvent_Click(object sender, EventArgs e)
         {
             EventTemp eventobj = new EventTemp();
+
+            Guid userId =  new Guid(Session["UserId"].ToString());
             Guid eventId = Guid.NewGuid();
             string title = txtTitle.Text;
             string desc = txtDesc.Text;
@@ -110,24 +111,14 @@ namespace vv.webpages
             int year = int.Parse(ddlYear.SelectedValue);
             DateTime date = new DateTime(year, month, day);
 
-            if (location != null && room != null)
-            {
-                x = eventobj.addEvent(eventId, userId, title, desc, location, room, "", pic, tags, date, time, duration);
-            }
-            else if (location != null && room == null)
-            {
-                x = eventobj.addEvent(eventId, userId, title, desc, location, "", "", pic, tags, date, time, duration);
-            }
-            else if (link != null)
-            {
-                x = eventobj.addEvent(eventId, userId, title, desc, "", "", link, pic, tags, date, time, duration);
-            }
+            x = eventobj.addEvent(eventId, userId, title, desc, location, room, link, pic, tags, date, time, duration);
+
 
             if (x > 0)
             {
                 string dataToSend = "Event was added successfully!\nThank you for your contribution.";
                 string url = "popups/eventAdditionPopup.aspx?data=" + Server.UrlEncode(dataToSend);
-                string script = "window.open('" + url + "', '_blank', 'width=400,height=300,top=250,left=450,toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes');";
+                string script = "window.open('" + url + "', '_blank', 'width=400,height=250,top=250,left=450,toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes');";
                 ClientScript.RegisterStartupScript(this.GetType(), "openwindow", script, true);
             }
             else

@@ -56,21 +56,10 @@ namespace vv.models
             string query = "";
             string script = "";
 
-            if (location != null && room != null)
-            {
-                query = "INSERT INTO event (eventId, eventTitle, eventDesc, eventLocation, eventRoom, eventPic, eventOrganizer, eventTags, eventDate, eventTime, eventDuration, eventDateCreated) " +
-                        "VALUES (@id, @title, @desc, @location, @room, @pic, @organizerid, @tags, @date, @time, @duration, @dateCreated)";
-            }
-            else if (location != null && room == null)
-            {
-                query = "INSERT INTO event (eventId, eventTitle, eventDesc, eventLocation, eventPic, eventOrganizer, eventTags, eventDate, eventTime, eventDuration, eventDateCreated) " +
-                "VALUES (@id, @title, @desc, @location, @pic, @organizerid, @tags, @date, @time, @duration, @dateCreated)";
-            }
-            else
-            {
-                query = "INSERT INTO event (eventId, eventTitle, eventDesc, eventLink, eventPic, eventOrganizer, eventTags, eventDate, eventTime, eventDuration, eventDateCreated) " +
-                        "VALUES (@id, @title, @desc, @link, @pic, @organizerid, @tags, @date, @time, @duration, @dateCreated)";
-            }
+
+            query = "INSERT INTO event (eventId, eventTitle, eventDesc, eventLocation, eventRoom, eventLink, eventPic, eventOrganizer, eventTags, eventDate, eventTime, eventDuration, eventDateCreated) " +
+                        "VALUES (@id, @title, @desc, @location, @room, @link, @pic, @organizerid, @tags, @date, @time, @duration, @dateCreated)";
+
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {

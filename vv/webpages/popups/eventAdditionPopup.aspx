@@ -27,7 +27,7 @@
             cursor: pointer;
             font-family: "Coustard", serif;
             border-radius: 22px;
-            margin: 20px auto;
+            margin: 20px 33%;
         }
 
             #btnOk:hover {
