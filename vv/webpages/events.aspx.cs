@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Ajax.Utilities;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
@@ -8,6 +9,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
+using System.Web.WebPages;
 using vv.models;
 
 namespace vv.web_pages
@@ -24,7 +26,12 @@ namespace vv.web_pages
                     return;
                 }
             }
+            LoadInitialEvents();
 
+        }
+
+        private void LoadInitialEvents()
+        {
             List<Guid> recommendedEventsIds = GetAllRecommendedEventsIds().Take(3).ToList();
             foreach (Guid id in recommendedEventsIds)
             {
@@ -38,9 +45,9 @@ namespace vv.web_pages
                 HtmlGenericControl virtualEventControl = CreateEventControl(id);
                 virtualEventContainer.Controls.Add(virtualEventControl);
             }
-
         }
-    
+
+
         public EventTemp loadEventData(Guid id)
         {
             EventTemp eventDetails = null;
@@ -209,20 +216,16 @@ namespace vv.web_pages
             return allUpcomingEventsIds;
         }
 
-        /*
+        
         protected void physicalClicktoSeeMore_Click(object sender, EventArgs e)
         {
-            Panel newPhysicalEventContainer = new Panel();
-            newPhysicalEventContainer.CssClass = "card-container";
-            newPhysicalEventContainer.ID = "physicalEventContainer_" + physicalEventContainer.Controls.Count;
+            int currentCount = physicalEventContainer.Controls.Count;
 
-            Page.Controls.Add(newPhysicalEventContainer);
-
-            List<Guid> physicalEventIds = GetAllPhysicalEventIds().Skip(physicalEventContainer.Controls.Count).Take(3).ToList();
+            List<Guid> physicalEventIds = GetAllRecommendedEventsIds().Skip(currentCount).Take(3).ToList();
             foreach (Guid id in physicalEventIds)
             {
                 HtmlGenericControl physicalEventControl = CreateEventControl(id);
-                newPhysicalEventContainer.Controls.Add(physicalEventControl);
+                physicalEventContainer.Controls.Add(physicalEventControl);
             }
         }
 
@@ -231,13 +234,63 @@ namespace vv.web_pages
         {
             int currentCount = virtualEventContainer.Controls.Count;
 
-            List<Guid> virtualEventIds = GetAllVirtualEventIds().Skip(currentCount).Take(3).ToList();
+            List<Guid> virtualEventIds = GetAllUpcomingEvents().Skip(currentCount).Take(3).ToList();
             foreach (Guid id in virtualEventIds)
             {
                 HtmlGenericControl virtualEventControl = CreateEventControl(id);
                 virtualEventContainer.Controls.Add(virtualEventControl);
             }
         }
-        */
+
+        protected void btnSearch_Click(object sender, EventArgs e)
+        {
+            string keywords = txtboxUserSearch.Text;
+
+                List<Guid> matchingEventsIds = SearchEvents(keywords);
+
+                lblFirstEventsSection.Text = "Matching Events";
+                virtualEventContainer.Visible = false;
+                virtualClicktoSeeMore.Visible = false;
+                lblSecondEventsSection.Visible = false;
+            physicalClicktoSeeMore.Visible = false;
+                if (matchingEventsIds == null)
+                {
+                    Label noMatch = new Label();
+                    noMatch.Text = "No matching events found. Please try different keywords!";
+                    noMatch.CssClass = "noMatchingEvents";
+                    physicalEventContainer.Controls.Add(noMatch);
+                }
+                else
+                {
+                    foreach (Guid id in matchingEventsIds)
+                    {
+                        HtmlGenericControl virtualEventControl = CreateEventControl(id);
+                        physicalEventContainer.Controls.Add(virtualEventControl);
+                    }
+                }
+            
+        }
+
+        private List<Guid> SearchEvents(string query)
+        {
+            List<Guid> eventIds = new List<Guid>();
+            string connectionString = ConfigurationManager.ConnectionStrings["VoiceVanguardDB"].ConnectionString;
+            string sqlQuery = "SELECT eventId FROM event WHERE eventTitle LIKE @query OR eventDesc LIKE @query OR eventTags LIKE @query";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlCommand command = new SqlCommand(sqlQuery, connection);
+                command.Parameters.AddWithValue("@query", "%" + query + "%");
+
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    eventIds.Add((Guid)reader["eventId"]);
+                }
+            }
+
+            return eventIds;
+        }
     }
 }
