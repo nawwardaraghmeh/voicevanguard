@@ -67,11 +67,12 @@ namespace vv.models
             string connectionString = ConfigurationManager.ConnectionStrings["VoiceVanguardDB"].ConnectionString;
             string query = "";
 
-            query = "INSERT INTO users (profilePic) VALUES (@imagePath)";
+            query = "UPDATE users SET profilePic = @imagePath WHERE userId = @userId";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@userId", userId);
                 command.Parameters.AddWithValue("@imagePath", imagePath);
                 connection.Open();
                 int rowsAffected = command.ExecuteNonQuery();
@@ -85,11 +86,12 @@ namespace vv.models
             string connectionString = ConfigurationManager.ConnectionStrings["VoiceVanguardDB"].ConnectionString;
             string query = "";
 
-            query = "INSERT INTO users (bannerPic) VALUES (@imagePath)";
+            query = "UPDATE users SET bannerPic = @imagePath WHERE userId = @userId";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@userId", userId);
                 command.Parameters.AddWithValue("@imagePath", imagePath);
                 connection.Open();
                 int rowsAffected = command.ExecuteNonQuery();
@@ -101,51 +103,37 @@ namespace vv.models
 
         public void UpdateUsername(Guid userId, String newUsername)
         {
-            if (IsUsernameUnique(newUsername))
-            {
+           
                 string connectionString = ConfigurationManager.ConnectionStrings["VoiceVanguardDB"].ConnectionString;
                 string query = "";
 
-                query = "INSERT INTO users (username) VALUES (@newUsername)";
+                query = "UPDATE users SET username = @newUsername WHERE userId = @userId";
 
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     SqlCommand command = new SqlCommand(query, connection);
+                    command.Parameters.AddWithValue("@userId", userId);
                     command.Parameters.AddWithValue("@newUsername", newUsername);
                     connection.Open();
                     int rowsAffected = command.ExecuteNonQuery();
                     connection.Close();
                 }
-            }
+            
                /* Username = newUsername;*/
         }
 
-        private bool IsUsernameUnique(string username)
-        {
-            string connectionString = ConfigurationManager.ConnectionStrings["VoiceVanguardDB"].ConnectionString;
-            string query = "SELECT COUNT(*) FROM users WHERE username = @username";
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                using (SqlCommand command = new SqlCommand(query, connection))
-                {
-                    command.Parameters.AddWithValue("@username", username);
-                    connection.Open();
-                    int count = (int)command.ExecuteScalar();
-                    return count == 0;
-                }
-            }
-        }
 
         public void UpdateName(Guid userId, String newName)
         {
             string connectionString = ConfigurationManager.ConnectionStrings["VoiceVanguardDB"].ConnectionString;
             string query = "";
 
-            query = "INSERT INTO users (name) VALUES (@newName)";
+            query = "UPDATE users SET name = @newName WHERE userId = @userId";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@userId", userId);
                 command.Parameters.AddWithValue("@newName", newName);
                 connection.Open();
                 int rowsAffected = command.ExecuteNonQuery();
@@ -158,11 +146,12 @@ namespace vv.models
             string connectionString = ConfigurationManager.ConnectionStrings["VoiceVanguardDB"].ConnectionString;
             string query = "";
 
-            query = "INSERT INTO users (interests) VALUES (@interestTags)";
+            query = "UPDATE users SET interests = @interestTags WHERE userId = @userId";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@userId", userId);
                 command.Parameters.AddWithValue("@interestTags", interestTags);
                 connection.Open();
                 int rowsAffected = command.ExecuteNonQuery();

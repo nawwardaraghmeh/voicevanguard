@@ -56,19 +56,26 @@ namespace vv.webpages.popups
             }
             string tags = string.Join(",", selectedTags);
 
-            if(bannerPic != null)
+            if(changeBanner.HasFile)
             {
                 profile.UpdateBannerPicture(userId, bannerPic);
             }
 
-            if (profilePic != null)
+            if (changePfp.HasFile)
             {
                 profile.UpdateProfilePicture(userId, profilePic);
             }
 
             if (username != null)
             {
-                profile.UpdateUsername(userId, username);
+                if (IsUsernameUnique(username))
+                {
+                    profile.UpdateUsername(userId, username);
+                }
+                else
+                {
+                    changeUsernamelbl.Text = "username is already taken :(";
+                }
             }
 
             if (name != null)
@@ -79,6 +86,24 @@ namespace vv.webpages.popups
             if (tags != null)
             {
                 profile.UpdateInterest(userId, tags);
+            }
+
+
+        }
+
+        private bool IsUsernameUnique(string username)
+        {
+            string connectionString = ConfigurationManager.ConnectionStrings["VoiceVanguardDB"].ConnectionString;
+            string query = "SELECT COUNT(*) FROM users WHERE username = @username";
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@username", username);
+                    connection.Open();
+                    int count = (int)command.ExecuteScalar();
+                    return count == 0;
+                }
             }
         }
     }
