@@ -38,24 +38,47 @@ namespace vv.webpages.popups
 
         protected void Savebtn_Click(object sender, EventArgs e)
         {
-            string connectionString = ConfigurationManager.ConnectionStrings["VoiceVanguardDB"].ConnectionString;
 
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            UserProfile profile = new UserProfile();
+
+            Guid userId = new Guid(Session["UserId"].ToString());
+            String bannerPic = changeBanner.ToString();
+            String profilePic = changePfp.ToString();
+            String username = changeUsername.Text;
+            String name = changeName.Text;
+
+            foreach (ListItem item in selectTags.Items)
             {
-                connection.Open();
-
-                if (changeBanner.HasFile)
+                if (item.Selected)
                 {
-                    string bannerImagePath = "~/resources/Banners/" + changeBanner.FileName;
-                    string updateBannerQuery = "UPDATE users SET bannerPic = @BannerImagePath WHERE UserId = @UserId";
-
-                    using (SqlCommand command = new SqlCommand(updateBannerQuery, connection))
-                    {
-                        command.Parameters.AddWithValue("@BannerImagePath", bannerImagePath);
-                        command.Parameters.AddWithValue("@UserId", UserId);
-                        command.ExecuteNonQuery();
-                    }
+                    selectedTags.Add(item.Text);
                 }
+            }
+            string tags = string.Join(",", selectedTags);
+
+            if(bannerPic != null)
+            {
+                profile.UpdateBannerPicture(userId, bannerPic);
+            }
+
+            if (profilePic != null)
+            {
+                profile.UpdateProfilePicture(userId, profilePic);
+            }
+
+            if (username != null)
+            {
+                profile.UpdateUsername(userId, username);
+            }
+
+            if (name != null)
+            {
+                profile.UpdateName(userId, name);
+            }
+
+            if (tags != null)
+            {
+                profile.UpdateInterest(userId, tags);
             }
         }
     }

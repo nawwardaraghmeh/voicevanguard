@@ -51,6 +51,15 @@ namespace vv.webpages.popups
         protected global::System.Web.UI.WebControls.Label changePfplbl;
 
         /// <summary>
+        /// changeUsernamelbl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label changeUsernamelbl;
+
+        /// <summary>
         /// changeNamelbl control.
         /// </summary>
         /// <remarks>
@@ -76,6 +85,15 @@ namespace vv.webpages.popups
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.FileUpload changePfp;
+
+        /// <summary>
+        /// changeUsername control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox changeUsername;
 
         /// <summary>
         /// changeName control.

@@ -21,12 +21,14 @@
             <div class="labelDiv">
                 <asp:Label ID="changeBannerlbl" CssClass="labels" runat="server" Text="change banner image"></asp:Label>
                 <asp:Label ID="changePfplbl" CssClass="labels" runat="server" Text="change profile image"></asp:Label>
-                <asp:Label ID="changeNamelbl" CssClass="labels" runat="server" Text="change username"></asp:Label>                
+                <asp:Label ID="changeUsernamelbl" CssClass="labels" runat="server" Text="change username"></asp:Label>                
+                <asp:Label ID="changeNamelbl" CssClass="labels" runat="server" Text="change name"></asp:Label>                                
             </div>
             <div class="FieldDiv">
                 <asp:FileUpload ID="changeBanner" CssClass="fields" runat="server" />
                 <asp:FileUpload ID="changePfp" CssClass="fields" runat="server" />
-                <asp:TextBox ID="changeName" CssClass="fields" runat="server"></asp:TextBox>
+                <asp:TextBox ID="changeUsername" CssClass="fields" placeholder="Enter new username" runat="server"></asp:TextBox>
+                <asp:TextBox ID="changeName" CssClass="fields" placeholder="Enter new name" runat="server"></asp:TextBox>
                 </div>
          </div>
             <asp:Label ID="interestlbl" runat="server" Text="INTERESTS"></asp:Label>
