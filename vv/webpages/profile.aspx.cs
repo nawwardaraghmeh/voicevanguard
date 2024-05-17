@@ -131,7 +131,7 @@ namespace vv.web_pages
         protected void linkEditProfile_click(object sender, EventArgs e)
         {
             string url = "popups/editProfile.aspx";
-            string script = "window.open('" + url + "', '_blank', 'width=500px,height=650px,toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes');";
+            string script = "window.open('" + url + "', '_blank', 'width=650%,height=650%,left=100%,toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes');";
             ClientScript.RegisterStartupScript(this.GetType(), "openwindow", script, true);
         }
 
