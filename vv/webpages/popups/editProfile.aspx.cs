@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -58,15 +59,39 @@ namespace vv.webpages.popups
 
             if(changeBanner.HasFile)
             {
-                profile.UpdateBannerPicture(userId, bannerPic);
+                string folderPath = Server.MapPath("~/Uploads/");
+
+                // Create the directory if it does not exist
+                if (!Directory.Exists(folderPath))
+                {
+                    Directory.CreateDirectory(folderPath);
+                }
+                string fileName = Path.GetFileName(changeBanner.FileName);
+                string filePath = Path.Combine(folderPath, fileName);
+                changeBanner.SaveAs(filePath); 
+                string relativePath = "~/Uploads/" + fileName;
+
+                profile.UpdateBannerPicture(userId, relativePath);
             }
 
             if (changePfp.HasFile)
             {
-                profile.UpdateProfilePicture(userId, profilePic);
+                string folderPath = Server.MapPath("~/Uploads/");
+
+                // Create the directory if it does not exist
+                if (!Directory.Exists(folderPath))
+                {
+                    Directory.CreateDirectory(folderPath);
+                }
+                string fileName = Path.GetFileName(changePfp.FileName);
+                string filePath = Path.Combine(folderPath, fileName);
+                changePfp.SaveAs(filePath); 
+                string relativePath = "~/Uploads/" + fileName;
+
+                profile.UpdateProfilePicture(userId, relativePath);
             }
 
-            if (username != null)
+            if (username != "")
             {
                 if (IsUsernameUnique(username))
                 {
@@ -78,16 +103,18 @@ namespace vv.webpages.popups
                 }
             }
 
-            if (name != null)
+            if (name != "")
             {
                 profile.UpdateName(userId, name);
             }
 
-            if (tags != null)
+            if (tags != "")
             {
                 profile.UpdateInterest(userId, tags);
             }
 
+
+            ClientScript.RegisterStartupScript(this.GetType(), "closewindow", "window.close();", true);
 
         }
 

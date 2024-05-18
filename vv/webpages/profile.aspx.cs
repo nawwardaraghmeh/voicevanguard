@@ -30,6 +30,7 @@ namespace vv.web_pages
                     userProfile.LoadFromDatabase(userId);
 
                     lblAccountName.Text = userProfile.Name;
+                    lblAccountUsername.Text = userProfile.Username;
                     lblJoinDate.Text = "Joined " + userProfile.DateCreated.ToString("yyyy/MM/dd");
 
                     imgProfilePic.ImageUrl = userProfile.ProfilePicturePath;
@@ -48,90 +49,10 @@ namespace vv.web_pages
 
         }
 
-       /* protected void UploadImage(object sender, EventArgs e)
-        {
-            Button clickedButton = (Button)sender;
-            string pictureType = clickedButton.CommandName;
-
-            FileUpload fileUpload = null;
-            Image imageControl = null;
-
-            if (pictureType == "ProfilePicture")
-            {
-                fileUpload = fileUploadProfilePic;
-                imageControl = imgProfilePic;
-            }
-            else if (pictureType == "BannerPicture")
-            {
-                fileUpload = fileUploadBannerPic;
-                imageControl = imgBannerPic;
-            }
-
-            if (fileUpload.HasFile)
-            {
-                HttpPostedFile postedFile = fileUpload.PostedFile;
-                byte[] imageData = null;
-
-                using (BinaryReader reader = new BinaryReader(postedFile.InputStream))
-                {
-                    imageData = reader.ReadBytes(postedFile.ContentLength);
-                }
-
-                imageControl.ImageUrl = "data:image;base64," + Convert.ToBase64String(imageData);
-
-                if (pictureType == "ProfilePicture")
-                {
-                    SaveUserProfilePicture(userId, imageData);
-                }
-                else if (pictureType == "BannerPicture")
-                {
-                    SaveUserBannerPicture(userId, imageData);
-                }
-            }
-        }
-
-        protected void SaveUserProfilePicture(Guid userId, byte[] imageData)
-        {
-            // Update user profile picture in the database
-            // Replace this with your actual database update logic
-            string query = "UPDATE Users SET ProfilePicture = @ImageData WHERE UserId = @UserId";
-            string connectionString = ConfigurationManager.ConnectionStrings["VoiceVanguardDB"].ConnectionString;
-
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                using (SqlCommand command = new SqlCommand(query, connection))
-                {
-                    command.Parameters.AddWithValue("@ImageData", imageData);
-                    command.Parameters.AddWithValue("@UserId", userId);
-                    connection.Open();
-                    command.ExecuteNonQuery();
-                }
-            }
-        }
-
-        protected void SaveUserBannerPicture(Guid userId, byte[] imageData)
-        {
-            // Update user banner picture in the database
-            // Replace this with your actual database update logic
-            string query = "UPDATE Users SET BannerPicture = @ImageData WHERE UserId = @UserId";
-            string connectionString = ConfigurationManager.ConnectionStrings["VoiceVanguardDB"].ConnectionString;
-
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                using (SqlCommand command = new SqlCommand(query, connection))
-                {
-                    command.Parameters.AddWithValue("@ImageData", imageData);
-                    command.Parameters.AddWithValue("@UserId", userId);
-                    connection.Open();
-                    command.ExecuteNonQuery();
-                }
-            }
-        }*/
-
         protected void linkEditProfile_click(object sender, EventArgs e)
         {
             string url = "popups/editProfile.aspx";
-            string script = "window.open('" + url + "', '_blank', 'width=650%,height=650%,left=100%,toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes');";
+            string script = "window.open('" + url + "', '_blank', 'toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes');";
             ClientScript.RegisterStartupScript(this.GetType(), "openwindow", script, true);
         }
 

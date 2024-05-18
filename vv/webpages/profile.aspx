@@ -17,13 +17,6 @@
     <script src="https://kit.fontawesome.com/f6d959a275.js" crossorigin="anonymous"></script>
 
     <title>PROFILE PAGE </title>
-
-
-    <!--<script type="text/javascript">
-        function triggerFileUpload(elementId) {
-            document.getElementById(elementId).click();
-        }
-    </script>-->
 </head>
 <body>
     <!-- header section -->
@@ -65,6 +58,7 @@
             <div class="profileAccountInfoTxt">
                 <div id="usernameLabel">
                     <asp:Label ID="lblAccountName" runat="server" Text="Amanda Crowley"></asp:Label>
+                    <asp:Label ID="lblAccountUsername" runat="server" Text=""></asp:Label>
                     </div>
                     
 

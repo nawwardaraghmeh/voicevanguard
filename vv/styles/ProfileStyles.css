@@ -61,6 +61,11 @@
     font-weight: 600;
 }
 
+#lblAccountUsername {
+    color: #545454;
+    margin-left:5px;
+}
+
 #hLinkEditProfile {
     margin-left: calc(250% - 20px);
     cursor: pointer;
