@@ -71,6 +71,10 @@
     cursor: pointer;
 }
 
+#hLinkEditProfile:hover {
+    color: #e46262;
+}
+
 #lblAccountBio {
     margin-top: 20px;
     word-break: break-word;

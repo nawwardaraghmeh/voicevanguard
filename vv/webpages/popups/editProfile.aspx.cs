@@ -30,6 +30,7 @@ namespace vv.webpages.popups
                 }
             }
             showInterestlbl.Text = "#" + string.Join(" #", selectedTags);
+            string eventTags = string.Join(",", selectedTags);
         }
 
         protected void closebtn_click(object sender, EventArgs e)

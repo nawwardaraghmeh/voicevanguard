@@ -52,11 +52,9 @@ namespace vv.web_pages
         protected void linkEditProfile_click(object sender, EventArgs e)
         {
             string url = "popups/editProfile.aspx";
-            string script = "window.open('" + url + "', '_blank', 'toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes');";
+            string script = "window.open('" + url + "', '_blank', 'width=250,height=250, toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes');";
             ClientScript.RegisterStartupScript(this.GetType(), "openwindow", script, true);
         }
-
-
 
 
         protected void btnMyActivity_Click(object sender, EventArgs e)
