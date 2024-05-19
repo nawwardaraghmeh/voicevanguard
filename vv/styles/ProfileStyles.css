@@ -55,24 +55,19 @@
     text-decoration:none;
 }
 
+    #editProfilelink:hover {
+        color: #e46262;
+    }
 
-#lblAccountName {
-    font-size: 24px;
-    font-weight: 600;
-}
+
+    #lblAccountName {
+        font-size: 24px;
+        font-weight: 600;
+    }
 
 #lblAccountUsername {
     color: #545454;
     margin-left:5px;
-}
-
-#hLinkEditProfile {
-    margin-left: calc(250% - 20px);
-    cursor: pointer;
-}
-
-#hLinkEditProfile:hover {
-    color: #e46262;
 }
 
 #lblAccountBio {
