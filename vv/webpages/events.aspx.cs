@@ -95,8 +95,7 @@ namespace vv.web_pages
         div.Attributes["class"] = "card";
 
 
-            string imageUrl = eventData.eventPic;
-            Debug.WriteLine("Image URL: " + imageUrl); // Or use your preferred logging method
+        string imageUrl = eventData.eventPic;
 
         Image image = new Image();
         image.ImageUrl = imageUrl; 

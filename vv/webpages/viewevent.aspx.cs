@@ -86,7 +86,7 @@ namespace vv.webpages
 
         private void UpdateEventDetails(EventTemp eventDetails)
         {
-            eventMainImg.ImageUrl = "../resources/images/rallypic.jpg";
+            eventMainImg.ImageUrl = eventDetails.eventPic;
             lblEventTitle.Text = eventDetails.eventTitle;
             lblEventDesc.Text = eventDetails.eventDesc;
             lblEventDate.Text = eventDetails.eventDate.ToString("dd MMMM yyyy");

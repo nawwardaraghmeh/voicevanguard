@@ -41,7 +41,7 @@
          <uc:Notification ID="Notification1" runat="server" />
         <div>
             <asp:Image ID="eventMainImg" runat="server"
-                ImageUrl="~/resources/images/rallypic.jpg" />
+                 />
 
             <div class="labelsEventMain">
                 <asp:Label ID="lblEventTitle" runat="server" Text=""></asp:Label>
