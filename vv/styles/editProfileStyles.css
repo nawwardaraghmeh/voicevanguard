@@ -1,129 +1,110 @@
 ﻿#heroDiv {
     display: flex;
     flex-direction: column;
-    padding: 13px;
-    overflow-y: scroll;
-    position: absolute;
-    left: 25%;
-    top: 10%;
-    width: 50%;
-    height: 65%;
-    border: solid;
+    padding: 20px;
+    width: 60%;
+    height: 100%;
+    margin:auto;
+    border: 1px solid;
     border-radius: 10px;
-    backdrop-filter: blur(1px);
     text-align: center;
-    background-color: #A7DDBA;
+    background-color: white;
 }
 
-.labelDiv{
-    display:flex;
-    flex-direction:column;
-    align-items:flex-start;
-}
-
-.FieldDiv {
-    display: flex;
-    flex-direction: column;
-}
 
 #fieldsLabelsDiv{
     display:flex;
-    margin-left:90px;
+    flex-direction: column;
 }
 
-#editTitle {
-    font-family: "Coustard", serif;
-    font-size: 30pt;
+    #fieldsLabelsDiv input[type="file"], input[type="text"] {
+        padding: 10px;
+        border: 1px solid #de2b2b;
+        border-radius: 22px;
+        font-weight: 100;
+        margin: 20px;
+    }
+
+    #fieldsLabelsDiv input[type="file"] {
+        width: calc(90% - 30px);
+        height: 30px;
+    }
+
+    #fieldsLabelsDiv input[type="text"] {
+        width: calc(74% - 30px);
+        height: 30px;
+    }
+
+        .userChangeInput {
+            display: flex;
+        }
+
+#changeBannerlbl, #changePfplbl, #changeNamelbl, #interestlbl {
+    margin: 30px;
     font-weight: bold;
-    margin-bottom: 50px;
 }
 
-.labels {
-    font-family: "Coustard", serif;
-    font-size:17pt;
-    margin-right:40px;
-    margin-bottom:90px;
-}
+    #changeNamelbl {
+        margin-right: 55px;
+    }
 
-.fields{
-    margin-bottom:105px;
-}
+    #editTitle {
+        font-family: "Coustard", serif;
+        font-size: 30pt;
+        font-weight: bold;
+        margin-bottom: 50px;
+    }
 
-#changeName, #changeUsername{
-    padding:3px;
-}
-
-#interestlbl {
-    font-family: "Coustard", serif;
-    font-size: 20pt;
-    margin-bottom:25px;
-}
-
-#interestDiv {
-    display: flex;
-    justify-content: space-around;
+#selectTags {
+    padding: 10px;
+    border: 1px solid #de2b2b;
+    border-radius: 22px;
+    font-weight: 100;
+    margin: 20px;
+    margin-left: 85px;
 }
 
 #interestPickerDiv {
-    overflow-y: scroll;
-    border: solid;
-    border-color: #E46262;
-    border-radius:15px;
-    border-width:5px;
-    width:40%;
-    height:40%;
-}
-
-#listOfInterestDiv {
-    border: solid;
-    border-color: #E46262;
-    border-radius: 15px;
-    border-width: 5px;
-    width: 40%;
-    height: 40%;
+    text-align: left;
 }
 
 #showInterestlbl {
     font-family: "Coustard", serif;
-    font-size: 12pt;
+    font-size: 10pt;
+    color: #de2b2b;
+    margin-left: 20%;
+    margin-top: 20px;
 }
 
-#buttons{
-    position:absolute;
-    top:225%;
-    left:34%;
+.buttons {
+    display: flex;
+    margin-left: 20%;
 }
 
 #savebtn, #cancelbtn {
     font-family: "Coustard", serif;
-    background-color: #E46262;
     border-radius: 25px;
     padding: 10px;
-    font-size:18pt;
+    font-size: 12pt;
+    border: none;
+    cursor: pointer;
+    margin-top: 50px;
 }
 
-#savebtn{
-    margin-right:20px;
+#savebtn {
+    background-color: #f1a7a7;
+    margin-left: 30px;
+}
+
+#savebtn:hover {
+    background-color: #e46262;
 }
 
 #cancelbtn {
-    background-color: #D9D9D9;
-    margin-left:30px;   
+    background-color: #a7ddba;
+    margin-left: 20px;
 }
 
-
-/*scrollbar style*/
-::-webkit-scrollbar {
-    width: 10px;
+#cancelbtn:hover {
+    background-color: #7bcc98;
 }
-
-::-webkit-scrollbar-track {
-    background: #f1f1f1;
-    border-radius: 10px;
-}
-
-::-webkit-scrollbar-thumb {
-    background: #414a44;
-    border-radius: 10px;
-}
-
