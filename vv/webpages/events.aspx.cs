@@ -168,31 +168,59 @@ namespace vv.web_pages
 
 
         protected List<Guid> GetAllRecommendedEventsIds()
+        {
+            string connectionString = ConfigurationManager.ConnectionStrings["VoiceVanguardDB"].ConnectionString;
+            string query = "";
+
+            Guid userId = new Guid(Session["UserId"].ToString());
+            string userQuery = "SELECT interests FROM users WHERE userId = @userid";
+            string userTags = "";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                List<Guid> allRecommendedEventsIds = new List<Guid>();
+                SqlCommand command = new SqlCommand(userQuery, connection);
+                command.Parameters.AddWithValue("@userid", userId);
 
-                string connectionString = ConfigurationManager.ConnectionStrings["VoiceVanguardDB"].ConnectionString;
-                string query = "SELECT eventId FROM event WHERE eventLocation != '' ORDER BY eventDateCreated DESC";
-
-                using (SqlConnection connection = new SqlConnection(connectionString))
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                if (reader.Read())
                 {
-                    SqlCommand command = new SqlCommand(query, connection);
+                    userTags = reader["interests"].ToString();
+                    query = "SELECT eventId FROM event WHERE eventTags LIKE '%' + @usertags + '%'";
+                }
+                else
+                {
+                    query = "SELECT eventId FROM event ORDER BY eventDateCreated DESC";
+                }
+                reader.Close();
+            }
 
-                    connection.Open();
-                    SqlDataReader reader = command.ExecuteReader();
+            List<Guid> allRecommendedEventsIds = new List<Guid>();
 
-                    while (reader.Read())
-                    {
-                        Guid eventId = (Guid)reader["eventId"];
-                        allRecommendedEventsIds.Add(eventId);
-                    }
-
-                    reader.Close();
-                    connection.Close();
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlCommand command = new SqlCommand(query, connection);
+                if (!string.IsNullOrEmpty(userTags))
+                {
+                    command.Parameters.AddWithValue("@usertags", userTags);
                 }
 
-                return allRecommendedEventsIds;
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    Guid eventId = (Guid)reader["eventId"];
+                    allRecommendedEventsIds.Add(eventId);
+                }
+
+                reader.Close();
             }
+
+            return allRecommendedEventsIds;
+        }
+
+
 
         protected List<Guid> GetAllUpcomingEvents()
         {
