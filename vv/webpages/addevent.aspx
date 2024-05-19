@@ -52,7 +52,7 @@
         
         <asp:Label ID="lblPic" runat="server" Text="PICTURE"></asp:Label>
         <br />
-        <asp:FileUpload runat="server" ID="eventPicUpload" />
+        <asp:FileUpload runat="server" ID="eventPicUpload" /> <!--code here-->
 
         <br />
         <div class="dateInputDiv">

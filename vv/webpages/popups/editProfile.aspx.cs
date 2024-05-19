@@ -115,7 +115,7 @@ namespace vv.webpages.popups
 
 
             ClientScript.RegisterStartupScript(this.GetType(), "closewindow", "window.close();", true);
-
+            Response.Redirect("~/webpages/profile.aspx");
         }
 
         private bool IsUsernameUnique(string username)

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -96,8 +97,24 @@ namespace vv.webpages
             string location = txtLocation.Text;
             string room = txtRoom.Text;
             string link = txtLink.Text;
-            string pic = eventPicUpload.FileName;
+            string relativePath ="";
+            /*string pic = eventPicUpload.ToString();*/
             //string tags = selectTags.ToString();
+
+            if (eventPicUpload.HasFile)
+            {
+                string folderPath = Server.MapPath("~/Uploads/");
+
+                // Create the directory if it does not exist
+                if (!Directory.Exists(folderPath))
+                {
+                    Directory.CreateDirectory(folderPath);
+                }
+                string fileName = Path.GetFileName(eventPicUpload.FileName);
+                string filePath = Path.Combine(folderPath, fileName);
+                eventPicUpload.SaveAs(filePath);
+                relativePath = "~/Uploads/" + fileName;
+            }
 
             foreach (ListItem item in selectTags.Items)
             {
@@ -122,7 +139,7 @@ namespace vv.webpages
             int year = int.Parse(ddlYear.SelectedValue);
             DateTime date = new DateTime(year, month, day);
 
-            x = eventobj.addEvent(eventId, userId, title, desc, location, room, link, pic, tags, date, time, duration);
+            x = eventobj.addEvent(eventId, userId, title, desc, location, room, link, relativePath, tags, date, time, duration);
 
 
             if (x > 0)
