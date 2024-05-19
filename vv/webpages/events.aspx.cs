@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
+using System.Diagnostics;
 using System.Linq;
 using System.Resources;
 using System.Web;
@@ -93,8 +94,12 @@ namespace vv.web_pages
         HtmlGenericControl div = new HtmlGenericControl("div");
         div.Attributes["class"] = "card";
 
+
+            string imageUrl = eventData.eventPic;
+            Debug.WriteLine("Image URL: " + imageUrl); // Or use your preferred logging method
+
         Image image = new Image();
-        image.ImageUrl = "../resources/images/rallypic.jpg"; // eventData.eventPic;
+        image.ImageUrl = imageUrl; 
         div.Controls.Add(image);
 
         HtmlGenericControl contentDiv = new HtmlGenericControl("div");

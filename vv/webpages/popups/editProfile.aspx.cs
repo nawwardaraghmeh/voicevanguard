@@ -45,7 +45,6 @@ namespace vv.webpages.popups
             Guid userId = new Guid(Session["UserId"].ToString());
             String bannerPic = changeBanner.ToString();
             String profilePic = changePfp.ToString();
-            String username = changeUsername.Text;
             String name = changeName.Text;
 
             foreach (ListItem item in selectTags.Items)
@@ -91,17 +90,6 @@ namespace vv.webpages.popups
                 profile.UpdateProfilePicture(userId, relativePath);
             }
 
-            if (username != "")
-            {
-                if (IsUsernameUnique(username))
-                {
-                    profile.UpdateUsername(userId, username);
-                }
-                else
-                {
-                    changeUsernamelbl.Text = "username is already taken :(";
-                }
-            }
 
             if (name != "")
             {
@@ -116,22 +104,6 @@ namespace vv.webpages.popups
 
             ClientScript.RegisterStartupScript(this.GetType(), "closewindow", "window.close();", true);
             Response.Redirect("~/webpages/profile.aspx");
-        }
-
-        private bool IsUsernameUnique(string username)
-        {
-            string connectionString = ConfigurationManager.ConnectionStrings["VoiceVanguardDB"].ConnectionString;
-            string query = "SELECT COUNT(*) FROM users WHERE username = @username";
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                using (SqlCommand command = new SqlCommand(query, connection))
-                {
-                    command.Parameters.AddWithValue("@username", username);
-                    connection.Open();
-                    int count = (int)command.ExecuteScalar();
-                    return count == 0;
-                }
-            }
         }
     }
 }

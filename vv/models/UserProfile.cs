@@ -101,26 +101,26 @@ namespace vv.models
            /* BannerPicturePath = imagePath;*/
         }
 
-        public void UpdateUsername(Guid userId, String newUsername)
-        {
-           
-                string connectionString = ConfigurationManager.ConnectionStrings["VoiceVanguardDB"].ConnectionString;
-                string query = "";
+        /*       public void UpdateUsername(Guid userId, String newUsername)
+               {
 
-                query = "UPDATE users SET username = @newUsername WHERE userId = @userId";
+                       string connectionString = ConfigurationManager.ConnectionStrings["VoiceVanguardDB"].ConnectionString;
+                       string query = "";
 
-                using (SqlConnection connection = new SqlConnection(connectionString))
-                {
-                    SqlCommand command = new SqlCommand(query, connection);
-                    command.Parameters.AddWithValue("@userId", userId);
-                    command.Parameters.AddWithValue("@newUsername", newUsername);
-                    connection.Open();
-                    int rowsAffected = command.ExecuteNonQuery();
-                    connection.Close();
-                }
-            
-               /* Username = newUsername;*/
-        }
+                       query = "UPDATE users SET username = @newUsername WHERE userId = @userId";
+
+                       using (SqlConnection connection = new SqlConnection(connectionString))
+                       {
+                           SqlCommand command = new SqlCommand(query, connection);
+                           command.Parameters.AddWithValue("@userId", userId);
+                           command.Parameters.AddWithValue("@newUsername", newUsername);
+                           connection.Open();
+                           int rowsAffected = command.ExecuteNonQuery();
+                           connection.Close();
+                       }
+
+
+               }*/
 
 
         public void UpdateName(Guid userId, String newName)
