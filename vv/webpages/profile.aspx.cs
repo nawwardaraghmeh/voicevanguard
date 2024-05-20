@@ -21,25 +21,26 @@ namespace vv.web_pages
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
+            if (Session["userId"] != null)
             {
+                userId = new Guid(Session["UserId"].ToString());
 
-                if (Session["userId"] != null)
+                if (!IsPostBack)
                 {
-                    userId = new Guid(Session["UserId"].ToString());
                     loadUserData(userId);
-                    
+                    btnMyActivity.CssClass = "clickedBtn";
+                    MainView.ActiveViewIndex = 0;
                 }
-
-                else
+                else if (Session["ProfileUpdated"] != null && (bool)Session["ProfileUpdated"])
                 {
-                    Response.Redirect("~/webpages/login.aspx");
+                    loadUserData(userId);
+                    Session["ProfileUpdated"] = false; // Reset the session variable
                 }
-                
-                btnMyActivity.CssClass = "clickedBtn";
-                MainView.ActiveViewIndex = 0;
             }
-          
+            else
+            {
+                Response.Redirect("~/webpages/login.aspx");
+            }
 
         }
 
