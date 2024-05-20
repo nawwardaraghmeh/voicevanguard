@@ -56,23 +56,24 @@
             
 
             <div class="profileAccountInfoTxt">
-                <div id="usernameLabel">
-                    <asp:Label ID="lblAccountName" runat="server" Text="Amanda Crowley"></asp:Label>
-                    <asp:Label ID="lblAccountUsername" runat="server" Text=""></asp:Label>
+                <div class="userProfileTop">
+                    <div class="profileText">
+                        <div id="usernameLabel">
+                            <asp:Label ID="lblAccountName" runat="server" Text="Amanda Crowley"></asp:Label>
+                            <asp:Label ID="lblAccountUsername" runat="server" Text=""></asp:Label>
+                        </div>
+                        <div class="profileAccountInfoGrey">
+                            <asp:Label ID="lblJoinDate" runat="server" Text="Joined 3/12/2024"></asp:Label>
+                        </div>
+                        <asp:Label runat="server" ID="lblUserInterests"></asp:Label>
                     </div>
-                    
-
-                <div class="profileAccountInfoGrey">
-                    <asp:Label ID="lblJoinDate" runat="server" Text="Joined 3/12/2024"></asp:Label>
-                    <asp:Button runat="server" Text="LOGOUT" ID="btnLogout" OnClick="btnLogout_Click" />
+                    <div class="profileButtons">
+                        <asp:Button runat="server" Text="LOGOUT" ID="btnLogout" OnClick="btnLogout_Click" />
+                        <asp:LinkButton ID="editProfilelink" OnClick="linkEditProfile_click" runat="server">Edit Profile</asp:LinkButton>
+                    </div>
                 </div>
-                    <asp:LinkButton ID="editProfilelink" OnClick="linkEditProfile_click" runat="server">Edit Profile</asp:LinkButton>
 
-
-                <br />
-                <br />
                 <div class="divTabTitlel">
-
                     <asp:Button ID="btnMyActivity" CssClass="initialBtn" runat="server"
                         Text="My Activity" OnClick="btnMyActivity_Click"></asp:Button>
                     <asp:Button ID="btnUpcomingEvents" CssClass="initialBtn" runat="server"

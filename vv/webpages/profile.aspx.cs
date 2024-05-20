@@ -27,15 +27,8 @@ namespace vv.web_pages
                 if (Session["userId"] != null)
                 {
                     userId = new Guid(Session["UserId"].ToString());
- 
-                    userProfile.LoadFromDatabase(userId);
-
-                    lblAccountName.Text = userProfile.Name;
-                    lblAccountUsername.Text = userProfile.Username;
-                    lblJoinDate.Text = "Joined " + userProfile.DateCreated.ToString("yyyy/MM/dd");
-
-                    imgProfilePic.ImageUrl = userProfile.ProfilePicturePath;
-                    imgBannerPic.ImageUrl = userProfile.BannerPicturePath;
+                    loadUserData(userId);
+                    
                 }
 
                 else
@@ -48,6 +41,19 @@ namespace vv.web_pages
             }
           
 
+        }
+
+        protected void loadUserData(Guid id)
+        {
+            userProfile.LoadFromDatabase(userId);
+
+            lblAccountName.Text = userProfile.Name;
+            lblAccountUsername.Text = userProfile.Username;
+            lblJoinDate.Text = "Joined " + userProfile.DateCreated.ToString("yyyy/MM/dd");
+            lblUserInterests.Text = "Interests: " + userProfile.interests.ToString();
+            imgProfilePic.ImageUrl = userProfile.ProfilePicturePath;
+            imgBannerPic.ImageUrl = userProfile.BannerPicturePath;
+            
         }
 
         protected void linkEditProfile_click(object sender, EventArgs e)
