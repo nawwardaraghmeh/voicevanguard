@@ -282,6 +282,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="models\EventTemp.cs" />
+    <Compile Include="models\ResetPasswordViewModel.cs" />
     <Compile Include="models\UserProfile.cs" />
     <Compile Include="webpages\popups\editProfile.aspx.cs">
       <DependentUpon>editProfile.aspx</DependentUpon>
