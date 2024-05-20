@@ -21,33 +21,40 @@ namespace vv.web_pages
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
+            if (Session["userId"] != null)
             {
+                userId = new Guid(Session["UserId"].ToString());
 
-                if (Session["userId"] != null)
+                if (!IsPostBack)
                 {
-                    userId = new Guid(Session["UserId"].ToString());
- 
-                    userProfile.LoadFromDatabase(userId);
-
-                    lblAccountName.Text = userProfile.Name;
-                    lblAccountUsername.Text = userProfile.Username;
-                    lblJoinDate.Text = "Joined " + userProfile.DateCreated.ToString("yyyy/MM/dd");
-
-                    imgProfilePic.ImageUrl = userProfile.ProfilePicturePath;
-                    imgBannerPic.ImageUrl = userProfile.BannerPicturePath;
+                    loadUserData(userId);
+                    btnMyActivity.CssClass = "clickedBtn";
+                    MainView.ActiveViewIndex = 0;
                 }
-
-                else
+                else if (Session["ProfileUpdated"] != null && (bool)Session["ProfileUpdated"])
                 {
-                    Response.Redirect("~/webpages/login.aspx");
+                    loadUserData(userId);
+                    Session["ProfileUpdated"] = false; // Reset the session variable
                 }
-                
-                btnMyActivity.CssClass = "clickedBtn";
-                MainView.ActiveViewIndex = 0;
             }
-          
+            else
+            {
+                Response.Redirect("~/webpages/login.aspx");
+            }
 
+        }
+
+        protected void loadUserData(Guid id)
+        {
+            userProfile.LoadFromDatabase(userId);
+
+            lblAccountName.Text = userProfile.Name;
+            lblAccountUsername.Text = userProfile.Username;
+            lblJoinDate.Text = "Joined " + userProfile.DateCreated.ToString("yyyy/MM/dd");
+            lblUserInterests.Text = "Interests: " + userProfile.interests.ToString();
+            imgProfilePic.ImageUrl = userProfile.ProfilePicturePath;
+            imgBannerPic.ImageUrl = userProfile.BannerPicturePath;
+            
         }
 
         protected void linkEditProfile_click(object sender, EventArgs e)
