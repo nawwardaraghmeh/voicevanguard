@@ -1,5 +1,6 @@
 ﻿using Microsoft.Ajax.Utilities;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
@@ -165,15 +166,13 @@ namespace vv.web_pages
             Response.Redirect(url);
         }
 
-
-        protected List<Guid> GetAllRecommendedEventsIds()
+        protected string getUserTags(Guid userid)
         {
             string connectionString = ConfigurationManager.ConnectionStrings["VoiceVanguardDB"].ConnectionString;
-            string query = "";
-
             Guid userId = new Guid(Session["UserId"].ToString());
             string userQuery = "SELECT interests FROM users WHERE userId = @userid";
             string userTags = "";
+
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -185,35 +184,66 @@ namespace vv.web_pages
                 if (reader.Read())
                 {
                     userTags = reader["interests"].ToString();
-                    query = "SELECT eventId FROM event WHERE eventTags LIKE '%' + @usertags + '%'";
+                    return userTags;
                 }
                 else
                 {
-                    query = "SELECT eventId FROM event ORDER BY eventDateCreated DESC";
                 }
                 reader.Close();
             }
+            return null;
+        }
+
+        protected List<Guid> GetAllRecommendedEventsIds()
+        {
+            string connectionString = ConfigurationManager.ConnectionStrings["VoiceVanguardDB"].ConnectionString;
+            Guid userId = new Guid(Session["UserId"].ToString());
+            string userTags = getUserTags(userId);
 
             List<Guid> allRecommendedEventsIds = new List<Guid>();
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                SqlCommand command = new SqlCommand(query, connection);
-                if (!string.IsNullOrEmpty(userTags))
-                {
-                    command.Parameters.AddWithValue("@usertags", userTags);
-                }
-
                 connection.Open();
-                SqlDataReader reader = command.ExecuteReader();
 
-                while (reader.Read())
+                string query = string.IsNullOrEmpty(userTags) ?
+                               "SELECT eventId FROM event ORDER BY eventDateCreated DESC" :
+                               "SELECT eventId FROM event WHERE eventTags LIKE '%' + @usertags + '%'";
+
+                using (SqlCommand command = new SqlCommand(query, connection))
                 {
-                    Guid eventId = (Guid)reader["eventId"];
-                    allRecommendedEventsIds.Add(eventId);
-                }
+                    if (!string.IsNullOrEmpty(userTags))
+                    {
+                        command.Parameters.AddWithValue("@usertags", userTags);
 
-                reader.Close();
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.HasRows)
+                            {
+                                while (reader.Read())
+                                {
+                                    Guid eventId = (Guid)reader["eventId"];
+                                    allRecommendedEventsIds.Add(eventId);
+                                }
+                            }
+                        }
+                    }
+
+                    // if no matches found or userTags is null/empty, fallback to the second query
+                    if (allRecommendedEventsIds.Count == 0)
+                    {
+                        command.CommandText = "SELECT eventId FROM event ORDER BY eventDateCreated DESC";
+
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                Guid eventId = (Guid)reader["eventId"];
+                                allRecommendedEventsIds.Add(eventId);
+                            }
+                        }
+                    }
+                }
             }
 
             return allRecommendedEventsIds;
