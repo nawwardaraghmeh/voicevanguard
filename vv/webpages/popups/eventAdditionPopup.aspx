@@ -38,13 +38,19 @@
             margin: 20px auto;
         }
     </style>
+        <script type="text/javascript">
+        function closePopupAndRedirect() {
+            window.opener.location.href = '../events.aspx'; 
+            window.close();
+        }
+        </script>
 </head>
 <body>
     <form id="form1" runat="server">
         <div>
             <asp:Label ID="lblEventAdditionPopup" runat="server" Text=""></asp:Label> 
             <br />
-            <asp:Button ID="btnOk" runat="server" Text="CLOSE" OnClick="btnOk_Click" />
+            <asp:Button ID="btnOk" runat="server" Text="CLOSE" OnClientClick="closePopupAndRedirect(); return false;" />
         </div>
     </form>
 </body>

@@ -10,6 +10,13 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link href="https://fonts.googleapis.com/css2?family=Coustard:wght@400;900&display=swap"
         rel="stylesheet" />
+    <!--
+            <script type="text/javascript">
+        function closePopupAndRedirect() {
+            window.opener.location.href = '../profile.aspx'; 
+            window.close();
+        }
+            </script> -->
 </head>
 <body>
     <form id="form1" runat="server">

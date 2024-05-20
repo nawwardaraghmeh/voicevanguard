@@ -87,7 +87,7 @@ namespace vv.webpages
         private void UpdateEventDetails(EventTemp eventDetails)
         {
             eventMainImg.ImageUrl = "../resources/images/rallypic.jpg";
-            lblEventTitle.Text = eventDetails.eventTitle;
+            lblEventTitle.Text = eventDetails.eventTitle.ToUpper();
             lblEventDesc.Text = eventDetails.eventDesc;
             lblEventDate.Text = eventDetails.eventDate.ToString("dd MMMM yyyy");
             lblEventTime.Text = eventDetails.eventTime.ToString(@"hh\:mm");
@@ -133,12 +133,15 @@ namespace vv.webpages
             {
                 string imageUrl = getParticipantPic(id);
 
-                Image participantImage = new Image();
-                //participantImage.ImageUrl = imageUrl;
-                participantImage.ImageUrl = "../resources/images/defaultProfile.jpg";
-                participantImage.CssClass = "participantProfileImg"; 
-                participantsPanel.Controls.Add(participantImage);
+                if (!string.IsNullOrEmpty(imageUrl))
+                {
+                    Image participantImage = new Image();
+                    participantImage.ImageUrl = imageUrl;
+                    participantImage.CssClass = "participantProfileImg";
+                    participantsPanel.Controls.Add(participantImage);
+                }
             }
+
         }
 
         private String GetOrganizerName(Guid organizerId)
@@ -193,14 +196,14 @@ namespace vv.webpages
                 while (reader.Read())
                 {
                     Guid userid = (Guid)reader["userId"];
-                    allParticipantsIds.Add(eventId);
+                    allParticipantsIds.Add(userid);
                 }
 
                 reader.Close();
-                connection.Close();
             }
             return allParticipantsIds;
         }
+
 
         protected void btnInterested_Click(object sender, EventArgs e)
         {
@@ -271,7 +274,7 @@ namespace vv.webpages
         protected string getParticipantPic(Guid userId)
         {
             string connectionString = ConfigurationManager.ConnectionStrings["VoiceVanguardDB"].ConnectionString;
-            string query = "SELECT * FROM users WHERE userId = @id";
+            string query = "SELECT profilePic FROM users WHERE userId = @id";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
