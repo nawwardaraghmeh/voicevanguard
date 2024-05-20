@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
+using System.Drawing.Printing;
 using System.IO;
 using System.Linq;
 using System.Web;
@@ -73,46 +74,102 @@ namespace vv.web_pages
 
         protected void Calendar1_DayRender(object sender, DayRenderEventArgs e)
         {
-            // Check if the day has events and customize its appearance
-            if (HasEventsOnDate(e.Day.Date))
+            List<Guid> eventIds = GetUserEventIds();
+            foreach (Guid eventId in eventIds)
             {
-                e.Cell.BorderColor = System.Drawing.ColorTranslator.FromHtml("#DE2B2B");
-                e.Cell.BorderStyle = BorderStyle.Inset;
+                EventTemp eventData = GetEventData(eventId);
+                if (eventData != null && eventData.eventDate == e.Day.Date)
+                {
+                    e.Cell.BorderColor = System.Drawing.ColorTranslator.FromHtml("#DE2B2B");
+                    e.Cell.BorderStyle = BorderStyle.Inset;
 
-                // Create a hyperlink
-                HyperLink eventLink = new HyperLink();
-                //eventLink.Text = e.Day.DayNumberText;
-                eventLink.Text = "CLIMATE ACTION RALLY";
-                //eventLink.NavigateUrl = "EventDetails.aspx?date=" + e.Day.Date.ToShortDateString(); // Replace with your event details page URL
-                eventLink.NavigateUrl = "~/webpages/viewevent.aspx";
+                    HyperLink eventLink = new HyperLink
+                    {
+                        Text = eventData.eventTitle.ToUpper(),
+                        NavigateUrl = $"~/webpages/viewevent.aspx?eventId={eventId}",
+                        ForeColor = System.Drawing.ColorTranslator.FromHtml("#DE2B2B"),
+                        Font = { Italic = true }
+                    };
 
-                // Customize the appearance of the hyperlink
-                eventLink.ForeColor = System.Drawing.ColorTranslator.FromHtml("#DE2B2B");
-                eventLink.Font.Italic = true;
-
-                // Add a line break before the hyperlink
-                e.Cell.Controls.Add(new LiteralControl("<br />"));
-
-                // Add the hyperlink to the cell
-                e.Cell.Controls.Add(eventLink);
+                    e.Cell.Controls.Add(new LiteralControl("<br />"));
+                    e.Cell.Controls.Add(eventLink);
+                }
             }
         }
 
-        private bool HasEventsOnDate(DateTime date)
+        private EventTemp GetEventData(Guid id)
         {
-            // Check if there are events on the specified date
-            // Replace this with your actual logic to determine if there are events on the given date
-            return (date == new DateTime(2024, 5, 15) || date == new DateTime(2024, 5, 29));
+            EventTemp userEvent = null;
+            string connectionString = ConfigurationManager.ConnectionStrings["VoiceVanguardDB"].ConnectionString;
+            string query = "SELECT eventTitle, eventDate FROM event WHERE eventId = @id";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@id", id);
+
+                try
+                {
+                    connection.Open();
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            userEvent = new EventTemp
+                            {
+                                eventTitle = reader["eventTitle"].ToString(),
+                                eventDate = (DateTime)reader["eventDate"]
+                            };
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                }
+            }
+            return userEvent;
         }
+
+        private List<Guid> GetUserEventIds()
+        {
+            List<Guid> ids = new List<Guid>();
+            if (Session["UserId"] == null)
+            {
+                return ids; 
+            }
+
+            Guid userId = new Guid(Session["UserId"].ToString());
+            string connectionString = ConfigurationManager.ConnectionStrings["VoiceVanguardDB"].ConnectionString;
+            string query = "SELECT eventId FROM participants WHERE userId = @id";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@id", userId);
+
+                try
+                {
+                    connection.Open();
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            ids.Add((Guid)reader["eventId"]);
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                }
+            }
+            return ids;
+        }
+
 
         protected void btnLogout_Click(object sender, EventArgs e)
         {
             Response.Redirect("~/webpages/login.aspx");
         }
-
-
-
-
 
 
     }

@@ -102,9 +102,9 @@ namespace vv.webpages.popups
                 profile.UpdateInterest(userId, tags);
             }
 
-
+            
             ClientScript.RegisterStartupScript(this.GetType(), "closewindow", "window.close();", true);
-            Response.Redirect("~/webpages/profile.aspx");
+          //  Response.Redirect("~/webpages/profile.aspx");
         }
     }
 }

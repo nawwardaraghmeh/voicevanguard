@@ -54,7 +54,7 @@ form#vieweventform {
     margin: 0 10px;
 }
 
-#imgPerson1, #imgPerson2 {
+.participantProfileImg {
     width: 50px;
     height: 50px;
     margin: 5px;
