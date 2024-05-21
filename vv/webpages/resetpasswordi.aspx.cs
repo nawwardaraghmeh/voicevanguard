@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Configuration;
+using System.Data.SqlClient;
 using System.Net;
 using System.Net.Mail;
 using System.Web;
@@ -25,23 +26,44 @@ namespace vv.webpages
             string userEmail = setEmailtxtbox.Text;
             bool emailSent = false;
 
-            if (userEmail != "")
+            if (userEmail != "" && doesEmailExist(userEmail))
             {
                 SendResetPasswordEmail(userEmail, resetUrl);
                 emailSent = true;
             }
-            else
+            else if(userEmail == "")
             {
-                errorlbl.Text = "Please provide an email address";
+                errorlbl.Text = "Please provide an email address.";
+            }
+            else if(!doesEmailExist(userEmail))
+            {
+                errorlbl.Text = "Email doesn't exist.";
             }
 
             if (emailSent)
             {
-                // Set the session variable before redirecting
                 Session["UserEmail"] = userEmail;
                 Response.Redirect("~/webpages/resetlink.aspx");
             }
         }
+
+         private bool doesEmailExist(string email)
+         {
+             string connectionString = ConfigurationManager.ConnectionStrings["VoiceVanguardDB"].ConnectionString;
+             string query = "SELECT COUNT(*) FROM users WHERE email = @email";
+
+             using (SqlConnection connection = new SqlConnection(connectionString))
+             {
+                 SqlCommand command = new SqlCommand(query, connection);
+                 command.Parameters.AddWithValue("@email", email);
+
+                 connection.Open();
+                 int count = (int)command.ExecuteScalar();
+                 connection.Close();
+
+                 return count > 0;
+             }
+         }
 
         public string GetResetPasswordUrl(string token)
         {
