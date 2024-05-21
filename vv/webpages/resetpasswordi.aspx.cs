@@ -1,23 +1,17 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Net.Mail;
 using System.Net;
+using System.Net.Mail;
 using System.Web;
 using System.Web.UI;
-using System.Web.UI.WebControls;
 
 namespace vv.webpages
 {
-    public partial class resetpasswordi : System.Web.UI.Page
+    public partial class resetpasswordi : Page
     {
-
-        
         protected void Page_Load(object sender, EventArgs e)
         {
-
         }
 
         protected void cancelHlink_Click(object sender, EventArgs e)
@@ -32,89 +26,28 @@ namespace vv.webpages
             string userEmail = setEmailtxtbox.Text;
             bool emailSent = false;
 
-            if(userEmail != "")
+            if (userEmail != "" && doesEmailExist(userEmail))
             {
                 SendResetPasswordEmail(userEmail, resetUrl);
                 emailSent = true;
             }
-            else
+            else if(userEmail == "")
             {
-                errorlbl.Text = "Please provide an email address";
+                errorlbl.Text = "Please provide an email address.";
+            }
+            else if(!doesEmailExist(userEmail))
+            {
+                errorlbl.Text = "Email doesn't exist.";
             }
 
             if (emailSent)
             {
+                Session["UserEmail"] = userEmail;
                 Response.Redirect("~/webpages/resetlink.aspx");
             }
-
-            Session["UserEmail"] = userEmail;
-
-
-            /* string email = setEmailtxtbox.Text;
-
-             if (doesEmailExist(email))
-             {
-                 string token = Guid.NewGuid().ToString();
-
-                 // Store the token in the database along with the user's email and timestamp
-                 StoreTokenInDatabase(email, token);
-
-                 // Send an email to the user's email address with a link that includes the token
-                 string resetLink = $"https://localhost:44313/webpages/resetpasswordii.aspx?token={HttpUtility.UrlEncode(token)}";
-                 bool emailSent = SendResetEmail(email, resetLink);
-
-                 if (emailSent)
-                 {
-                     // Redirect to a page indicating that the reset link has been sent
-                     Response.Redirect("~/webpages/resetlink.aspx");
-                 }
-                 else
-                 {
-                     errorlbl.Text = "Sending password reset link failed. Please try again.";
-                 }
-             }
-             else
-             {
-                 errorlbl.Text = "Email address not found";
-             }*/
         }
 
-       
-        public string GetResetPasswordUrl(string token)
-        {
-            string baseUrl = "https://localhost:44313/webpages/resetpasswordii";
-            return $"{baseUrl}?token={HttpUtility.UrlEncode(token)}";
-        }
-
-        public void SendResetPasswordEmail(string email, string resetUrl)
-        {
-            var fromAddress = new MailAddress("voicevanguardofficial@gmail.com", "Voice Vanguard");
-            var toAddress = new MailAddress(email);
-            const string fromPassword = "vihb kxst ueep kswy";
-            const string subject = "Password Reset Request";
-            string body = $"Please click the link to reset your password for Voice Vanguard: {resetUrl}";
-
-            var smtp = new SmtpClient
-            {
-                Host = "smtp.gmail.com", 
-                Port = 587, 
-                EnableSsl = true,
-                DeliveryMethod = SmtpDeliveryMethod.Network,
-                UseDefaultCredentials = false,
-                Credentials = new NetworkCredential(fromAddress.Address, fromPassword)
-            };
-
-            using (var message = new MailMessage(fromAddress, toAddress)
-            {
-                Subject = subject,
-                Body = body
-            })
-            {
-                smtp.Send(message);
-            }
-        }
-
-        /* private bool doesEmailExist(string email)
+         private bool doesEmailExist(string email)
          {
              string connectionString = ConfigurationManager.ConnectionStrings["VoiceVanguardDB"].ConnectionString;
              string query = "SELECT COUNT(*) FROM users WHERE email = @email";
@@ -132,55 +65,38 @@ namespace vv.webpages
              }
          }
 
-         private void StoreTokenInDatabase(string email, string token)
-         {
-             string connectionString = ConfigurationManager.ConnectionStrings["VoiceVanguardDB"].ConnectionString;
-             string query = "INSERT INTO passwordResetTokens (email, token, expiryDate) VALUES (@email, @token, DATEADD(day, 1, GETDATE()))";
+        public string GetResetPasswordUrl(string token)
+        {
+            string baseUrl = "https://localhost:44313/webpages/resetpasswordii";
+            return $"{baseUrl}?token={HttpUtility.UrlEncode(token)}";
+        }
 
-             using (SqlConnection connection = new SqlConnection(connectionString))
-             {
-                 SqlCommand command = new SqlCommand(query, connection);
-                 command.Parameters.AddWithValue("@email", email);
-                 command.Parameters.AddWithValue("@token",token);
+        public void SendResetPasswordEmail(string email, string resetUrl)
+        {
+            var fromAddress = new MailAddress("voicevanguardofficial@gmail.com", "Voice Vanguard");
+            var toAddress = new MailAddress(email);
+            const string fromPassword = "vihb kxst ueep kswy";
+            const string subject = "Password Reset Request";
+            string body = $"Please click the link to reset your password for Voice Vanguard: {resetUrl}";
 
-                 connection.Open();
-                 command.ExecuteNonQuery();
-                 connection.Close();
-             }
-         }
+            var smtp = new SmtpClient
+            {
+                Host = "smtp.gmail.com",
+                Port = 587,
+                EnableSsl = true,
+                DeliveryMethod = SmtpDeliveryMethod.Network,
+                UseDefaultCredentials = false,
+                Credentials = new NetworkCredential(fromAddress.Address, fromPassword)
+            };
 
-         private bool SendResetEmail(string email, string resetLink)
-         {
-             string senderEmail = "voicevanguardofficial@gmail.com";
-             string appPassword = "ytwzeqnusfhdaxoz";
-
-             MailMessage message = new MailMessage(senderEmail, email);
-             message.Subject = "Password Reset Request";
-             message.Body = $"Please click the following link to reset your password: {resetLink}";
-             message.IsBodyHtml = true;
-
-             SmtpClient client = new SmtpClient("smtp.gmail.com", 465);
-             client.EnableSsl = false;
-             client.UseDefaultCredentials = false;
-             client.Credentials = new NetworkCredential(senderEmail, appPassword);
-
-             try
-             {
-                 client.Send(message);
-                 return true;
-             }
-             catch (Exception ex)
-             {
-                 // Log the error message
-                 System.Diagnostics.Debug.WriteLine($"Error sending email: {ex.Message}");
-
-                 // Display an alert message using JavaScript
-                 string errorMessage = $"Error sending email: {ex.Message.Replace("'", "\\'")}";
-                 string script = $"<script>alert('{errorMessage}');</script>";
-                 ClientScript.RegisterStartupScript(this.GetType(), "ErrorAlert", script);
-
-                 return false;
-             }
-         }*/
+            using (var message = new MailMessage(fromAddress, toAddress)
+            {
+                Subject = subject,
+                Body = body
+            })
+            {
+                smtp.Send(message);
+            }
+        }
     }
 }
