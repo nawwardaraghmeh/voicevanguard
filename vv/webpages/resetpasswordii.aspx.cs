@@ -11,14 +11,29 @@ namespace vv.webpages
 {
     public partial class resetpasswordii : System.Web.UI.Page
     {
+        
         protected void Page_Load(object sender, EventArgs e)
         {
-
+           /* if (!IsPostBack)
+            {
+                email = Session["UserEmail"] as string;
+            }*/
         }
 
         protected void confirmbtn_Click(object sender, EventArgs e)
         {
-            string token = Request.QueryString["token"];
+            string email = Session["UserEmail"] as string;
+            string newpass = newPassword.Text;
+            ResetPassword(email, newpass);
+
+
+
+
+
+
+
+
+            /*string token = Request.QueryString["token"];
             string mewpass = newPassword.Text;
 
             // Validate the token
@@ -34,10 +49,13 @@ namespace vv.webpages
             {
                 // Token is invalid or expired, handle accordingly
                 // You can display an error message or redirect to another page
-            }
+            }*/
         }
 
-        private bool IsValidToken(string token)
+
+
+
+        /*private bool IsValidToken(string token)
         {
             string connectionString = ConfigurationManager.ConnectionStrings["VoiceVanguardDB"].ConnectionString;
             string query = "SELECT COUNT(*) FROM passwordResetTokens WHERE token = @token AND expiryDate > GETDATE()";
@@ -53,18 +71,18 @@ namespace vv.webpages
 
                 return count > 0;
             }
-        }
+        }*/
 
-        private void ResetPassword(string token, string newPassword)
+        private void ResetPassword(string email, string newPassword)
         {
             string connectionString = ConfigurationManager.ConnectionStrings["VoiceVanguardDB"].ConnectionString;
-            string query = "UPDATE users SET password = @password WHERE email IN (SELECT email FROM passwordResetTokens WHERE token = @token)";
+            string query = "UPDATE users SET password = @newpassword WHERE email = @email";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 SqlCommand command = new SqlCommand(query, connection);
-                command.Parameters.AddWithValue("@password", newPassword);
-                command.Parameters.AddWithValue("@token", token);
+                command.Parameters.AddWithValue("@newpassword", newPassword);
+                command.Parameters.AddWithValue("@email", email);
 
                 connection.Open();
                 command.ExecuteNonQuery();

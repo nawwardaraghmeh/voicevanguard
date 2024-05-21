@@ -30,15 +30,24 @@ namespace vv.webpages
             string token = "exampletoken";
             string resetUrl = GetResetPasswordUrl(token);
             string userEmail = setEmailtxtbox.Text;
+            bool emailSent = false;
 
             if(userEmail != "")
             {
                 SendResetPasswordEmail(userEmail, resetUrl);
+                emailSent = true;
             }
             else
             {
                 errorlbl.Text = "Please provide an email address";
             }
+
+            if (emailSent)
+            {
+                Response.Redirect("~/webpages/resetlink.aspx");
+            }
+
+            Session["UserEmail"] = userEmail;
 
 
             /* string email = setEmailtxtbox.Text;
