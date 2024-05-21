@@ -17,6 +17,7 @@
         <div id="heroDiv">
             <asp:Label ID="Label1" runat="server" Text="RESET PASSWORD" CssClass="labels"></asp:Label>
             <asp:Label ID="Label2" runat="server" Text="Enter your new password below" CssClass="labels"></asp:Label>
+            <asp:Label ID="Label5" runat="server" Text="" CssClass="errorlbl"></asp:Label>
 
 
             <div id="secondDiv">

@@ -22,10 +22,18 @@ namespace vv.webpages
 
         protected void confirmbtn_Click(object sender, EventArgs e)
         {
-            string email = Session["UserEmail"].ToString();
-            string newpass = newPassword.Text;
-            ResetPassword(email, newpass);
-            Response.Redirect("~/webpages/login.aspx");
+            if (Session["UserEmail"] != null)
+            {
+                string email = Session["UserEmail"].ToString();
+                string newpass = newPassword.Text;
+                ResetPassword(email, newpass);
+                Response.Redirect("~/webpages/login.aspx");
+            }
+            else
+            {
+                Label5.Text = "Email not found. Please try again";
+            }
+                
 
             /*string token = Request.QueryString["token"];
             string mewpass = newPassword.Text;
@@ -70,12 +78,12 @@ namespace vv.webpages
         private void ResetPassword(string email, string newPassword)
         {
             string connectionString = ConfigurationManager.ConnectionStrings["VoiceVanguardDB"].ConnectionString;
-            string query = "UPDATE users SET password = @newpassword WHERE email = @email";
+            string query = "UPDATE users SET password = @newpassword WHERE email = @mail";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 SqlCommand command = new SqlCommand(query, connection);
-                command.Parameters.AddWithValue("@email", email);
+                command.Parameters.AddWithValue("@mail", email);
                 command.Parameters.AddWithValue("@newpassword", newPassword);
 
                 connection.Open();
