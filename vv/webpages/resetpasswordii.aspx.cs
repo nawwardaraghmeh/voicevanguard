@@ -22,16 +22,10 @@ namespace vv.webpages
 
         protected void confirmbtn_Click(object sender, EventArgs e)
         {
-            string email = Session["UserEmail"] as string;
+            string email = Session["UserEmail"].ToString();
             string newpass = newPassword.Text;
             ResetPassword(email, newpass);
-
-
-
-
-
-
-
+            Response.Redirect("~/webpages/login.aspx");
 
             /*string token = Request.QueryString["token"];
             string mewpass = newPassword.Text;
@@ -81,8 +75,8 @@ namespace vv.webpages
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 SqlCommand command = new SqlCommand(query, connection);
-                command.Parameters.AddWithValue("@newpassword", newPassword);
                 command.Parameters.AddWithValue("@email", email);
+                command.Parameters.AddWithValue("@newpassword", newPassword);
 
                 connection.Open();
                 command.ExecuteNonQuery();

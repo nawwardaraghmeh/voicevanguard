@@ -210,6 +210,7 @@ namespace vv.webpages
             Guid userId = new Guid(Session["UserId"].ToString());
             string eventIdString = Request.QueryString["eventId"];
             Guid eventId = new Guid(eventIdString);
+            int rowsAffected = 0;
 
             if (IsUserSubscribed(eventId, userId))
             {
@@ -230,7 +231,11 @@ namespace vv.webpages
                     command.Parameters.AddWithValue("@userid", userId);
 
                     connection.Open();
-                    int rowsAffected = command.ExecuteNonQuery();
+                    try
+                    {
+                        rowsAffected = command.ExecuteNonQuery();
+                    }
+                    catch(Exception ex) { }
 
                     if (rowsAffected > 0)
                     {
