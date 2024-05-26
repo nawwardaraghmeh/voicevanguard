@@ -27,7 +27,7 @@
                 <a href="home.aspx" class="nav-item">HOME</a>
                 <a href="events.aspx" class="nav-item current-page">EVENTS</a>
                 <a href="community.aspx" class="nav-item">COMMUNITY</a>
-                <a href="faq.aspx" class="nav-item">FAQs</a
+                <a href="faq.aspx" class="nav-item">FAQs</a>
             </div>
             <div class="navbar-right">
                 <a href="profile.aspx" class="nav-item icon"><i class="fa fa-user" aria-hidden="true">
@@ -50,30 +50,34 @@
                 <i class="fas fa-search"></i>
                 <asp:TextBox runat="server" placeholder="Enter Keyword/s" name="search" ID="txtboxUserSearch">
                 </asp:TextBox>
-                <asp:Button runat="server" ID="btnSearch" Text="SEARCH" 
+                <asp:Button runat="server" ID="btnSearch" Text="SEARCH"
                     OnClick="btnSearch_Click" />
             </div>
         </div>
 
+        <!-- matching events section -->
+        <asp:Label runat="server" ID="lblMatchingEventsSection" CssClass="h1" Text="Matching Events"></asp:Label>
+        <br />
+        <asp:Panel runat="server" ID="matchingEventsContainer" CssClass="card-container">
+        </asp:Panel>
 
-        <!-- Recommended For You section -->
+        <!-- recommended for you section -->
         <asp:Label runat="server" ID="lblFirstEventsSection" CssClass="h1" Text="Recommended For You"></asp:Label>
         <br />
-            <asp:Panel runat="server" ID ="physicalEventContainer" CssClass="card-container">
-            
-            </asp:Panel>
+        <asp:Panel runat="server" ID="physicalEventContainer" CssClass="card-container">
+        </asp:Panel>
         <asp:PlaceHolder runat="server" ID="placeholder1"></asp:PlaceHolder>
-        <asp:LinkButton runat="server" class="seemore" ID="physicalClicktoSeeMore" 
+        <asp:LinkButton runat="server" class="seemore" ID="physicalClicktoSeeMore"
             OnClick="physicalClicktoSeeMore_Click"> Click to see more! </asp:LinkButton>
 
         <!-- events coming up section -->
-        <br /> <br />
+        <br />
+        <br />
         <asp:Label runat="server" ID="lblSecondEventsSection" CssClass="h1" Text="Events Coming Up"></asp:Label>
         <br />
         <asp:Panel runat="server" CssClass="card-container" ID="virtualEventContainer">
-
         </asp:Panel>
-        <asp:LinkButton runat="server" class="seemore" ID="virtualClicktoSeeMore" 
+        <asp:LinkButton runat="server" class="seemore" ID="virtualClicktoSeeMore"
             OnClick="virtualClicktoSeeMore_Click"> Click to see more! </asp:LinkButton>
     </form>
 

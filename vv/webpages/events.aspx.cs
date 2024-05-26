@@ -1,4 +1,5 @@
-﻿using Microsoft.Ajax.Utilities;
+﻿using Antlr.Runtime.Misc;
+using Microsoft.Ajax.Utilities;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -29,6 +30,8 @@ namespace vv.web_pages
                 }
             }
             LoadInitialEvents();
+            lblMatchingEventsSection.Visible = false;
+            matchingEventsContainer.Visible = false;
 
         }
 
@@ -307,29 +310,31 @@ namespace vv.web_pages
         protected void btnSearch_Click(object sender, EventArgs e)
         {
             string keywords = txtboxUserSearch.Text;
-
-                List<Guid> matchingEventsIds = SearchEvents(keywords);
-
-                lblFirstEventsSection.Text = "Matching Events";
-                virtualEventContainer.Visible = false;
-                virtualClicktoSeeMore.Visible = false;
-                lblSecondEventsSection.Visible = false;
+            List<Guid> matchingEventsIds = SearchEvents(keywords);
+            lblMatchingEventsSection.Visible = true;
+            matchingEventsContainer.Visible = true;
+            lblFirstEventsSection.Visible = false;
+            virtualEventContainer.Visible = false;
+            virtualClicktoSeeMore.Visible = false;
+            lblSecondEventsSection.Visible = false;
             physicalClicktoSeeMore.Visible = false;
-                if (matchingEventsIds == null)
+            physicalEventContainer.Visible = false;
+
+            if (matchingEventsIds != null)
+            {
+                foreach (Guid id in matchingEventsIds)
                 {
-                    Label noMatch = new Label();
-                    noMatch.Text = "No matching events found. Please try different keywords!";
-                    noMatch.CssClass = "noMatchingEvents";
-                    physicalEventContainer.Controls.Add(noMatch);
+                    HtmlGenericControl matchingEventControl = CreateEventControl(id);
+                    matchingEventsContainer.Controls.Add(matchingEventControl);
                 }
-                else
-                {
-                    foreach (Guid id in matchingEventsIds)
-                    {
-                        HtmlGenericControl virtualEventControl = CreateEventControl(id);
-                        physicalEventContainer.Controls.Add(virtualEventControl);
-                    }
-                }
+            }
+            else
+            {
+                Label noMatch = new Label();
+                noMatch.Text = "No matching events found. Please try different keywords!";
+                noMatch.CssClass = "noMatchingEvents";
+                matchingEventsContainer.Controls.Add(noMatch);
+            }
             
         }
 

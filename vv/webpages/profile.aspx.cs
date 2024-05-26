@@ -34,7 +34,7 @@ namespace vv.web_pages
                 else if (Session["ProfileUpdated"] != null && (bool)Session["ProfileUpdated"])
                 {
                     loadUserData(userId);
-                    Session["ProfileUpdated"] = false; // Reset the session variable
+                    Session["ProfileUpdated"] = false; // reset the session variable
                 }
             }
             else
