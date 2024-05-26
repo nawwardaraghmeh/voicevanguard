@@ -81,32 +81,50 @@ namespace vv.web_pages
 
         protected void Calendar1_DayRender(object sender, DayRenderEventArgs e)
         {
-            List<Guid> eventIds = GetUserEventIds();
-            foreach (Guid eventId in eventIds)
+            Guid userId = GetUserIdFromSession(); 
+
+            List<Guid> subscribedEventIds = GetUserEventIds(userId);
+            List<Guid> createdEventIds = GetEventIdsUserCreated(userId);
+
+            foreach (Guid eventId in subscribedEventIds)
             {
                 EventTemp eventData = GetEventData(eventId);
                 if (eventData != null && eventData.eventDate == e.Day.Date)
                 {
-                    e.Cell.BorderColor = System.Drawing.ColorTranslator.FromHtml("#DE2B2B");
-                    e.Cell.BorderStyle = BorderStyle.Inset;
+                    RenderEventInCell(e.Cell, eventData, "#DE2B2B"); 
+                }
+            }
 
-                    HyperLink eventLink = new HyperLink
-                    {
-                        Text = eventData.eventTitle.ToUpper(),
-                        NavigateUrl = $"~/webpages/viewevent.aspx?eventId={eventId}",
-                        ForeColor = System.Drawing.ColorTranslator.FromHtml("#DE2B2B"),
-                        Font = { Italic = true }
-                    };
-
-                    e.Cell.Controls.Add(new LiteralControl("<br />"));
-                    e.Cell.Controls.Add(eventLink);
+            foreach (Guid eventId in createdEventIds)
+            {
+                EventTemp eventData = GetEventData(eventId);
+                if (eventData != null && eventData.eventDate == e.Day.Date)
+                {
+                    RenderEventInCell(e.Cell, eventData, "#7BCC98"); 
                 }
             }
         }
 
+        private void RenderEventInCell(TableCell cell, EventTemp eventData, string borderColor)
+        {
+            cell.BorderColor = System.Drawing.ColorTranslator.FromHtml(borderColor);
+            cell.BorderStyle = BorderStyle.Inset;
+
+            HyperLink eventLink = new HyperLink
+            {
+                Text = eventData.eventTitle.ToUpper(),
+                NavigateUrl = $"~/webpages/viewevent.aspx?eventId={eventData.eventId}",
+                ForeColor = System.Drawing.ColorTranslator.FromHtml(borderColor),
+                Font = { Italic = true }
+            };
+
+            cell.Controls.Add(new LiteralControl("<br />"));
+            cell.Controls.Add(eventLink);
+        }
+
         private EventTemp GetEventData(Guid id)
         {
-            EventTemp userEvent = null;
+            EventTemp eventDetails = null;
             string connectionString = ConfigurationManager.ConnectionStrings["VoiceVanguardDB"].ConnectionString;
             string query = "SELECT eventTitle, eventDate FROM event WHERE eventId = @id";
 
@@ -122,10 +140,10 @@ namespace vv.web_pages
                     {
                         if (reader.Read())
                         {
-                            userEvent = new EventTemp
+                            eventDetails = new EventTemp
                             {
                                 eventTitle = reader["eventTitle"].ToString(),
-                                eventDate = (DateTime)reader["eventDate"]
+                                eventDate = (DateTime)reader["eventDate"],
                             };
                         }
                     }
@@ -134,25 +152,26 @@ namespace vv.web_pages
                 {
                 }
             }
-            return userEvent;
+
+            return eventDetails;
         }
 
-        private List<Guid> GetUserEventIds()
+        private List<Guid> GetUserEventIds(Guid userId)
         {
-            List<Guid> ids = new List<Guid>();
-            if (Session["UserId"] == null)
+            List<Guid> eventIds = new List<Guid>();
+
+            if (userId == Guid.Empty)
             {
-                return ids; 
+                return eventIds; 
             }
 
-            Guid userId = new Guid(Session["UserId"].ToString());
             string connectionString = ConfigurationManager.ConnectionStrings["VoiceVanguardDB"].ConnectionString;
-            string query = "SELECT eventId FROM participants WHERE userId = @id";
+            string query = "SELECT eventId FROM participants WHERE userId = @userId";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 SqlCommand command = new SqlCommand(query, connection);
-                command.Parameters.AddWithValue("@id", userId);
+                command.Parameters.AddWithValue("@userId", userId);
 
                 try
                 {
@@ -161,7 +180,7 @@ namespace vv.web_pages
                     {
                         while (reader.Read())
                         {
-                            ids.Add((Guid)reader["eventId"]);
+                            eventIds.Add((Guid)reader["eventId"]);
                         }
                     }
                 }
@@ -169,7 +188,56 @@ namespace vv.web_pages
                 {
                 }
             }
-            return ids;
+
+            return eventIds;
+        }
+
+        private List<Guid> GetEventIdsUserCreated(Guid userId)
+        {
+            List<Guid> eventIds = new List<Guid>();
+
+            if (userId == Guid.Empty)
+            {
+                return eventIds; 
+            }
+
+            string connectionString = ConfigurationManager.ConnectionStrings["VoiceVanguardDB"].ConnectionString;
+            string query = "SELECT eventId FROM event WHERE eventOrganizer = @userId";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@userId", userId);
+
+                try
+                {
+                    connection.Open();
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            eventIds.Add((Guid)reader["eventId"]);
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                }
+            }
+
+            return eventIds;
+        }
+
+        private Guid GetUserIdFromSession()
+        {
+            if (Session["UserId"] != null && Guid.TryParse(Session["UserId"].ToString(), out Guid userId))
+            {
+                return userId;
+            }
+            else
+            {
+                return Guid.Empty; 
+            }
         }
 
 

@@ -155,6 +155,9 @@
     <Content Include="Content\Site.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="resources\images\eventadd.png" />
+    <Content Include="resources\images\eventinterest.png" />
+    <Content Include="resources\images\eventsub.png" />
     <Content Include="styles\editProfileStyles.css" />
     <Content Include="webpages\popups\editProfile.aspx" />
     <Content Include="webpages\popups\eventAdditionPopup.aspx" />
@@ -282,6 +285,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="models\EventTemp.cs" />
+    <Compile Include="models\NotifTemp.cs" />
     <Compile Include="models\UserProfile.cs" />
     <Compile Include="webpages\popups\editProfile.aspx.cs">
       <DependentUpon>editProfile.aspx</DependentUpon>
