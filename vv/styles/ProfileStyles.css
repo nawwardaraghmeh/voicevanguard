@@ -82,6 +82,12 @@
     justify-content: center;
 }
 
+.activityDiv {
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+}
+
 .tabDiv span {
     margin: 10px;
 }
@@ -129,6 +135,20 @@
     margin-top: 20px;
     margin-bottom: 50px;
 }
+
+
+.eventLink {
+    text-decoration: none;
+    margin-left: 5px;
+    font-size: 15px;
+    color: black;
+}
+
+    .eventLink:hover {
+        text-decoration: underline;
+        color: #DE2B2B;
+    }
+
 
 /*
 .rightSection {

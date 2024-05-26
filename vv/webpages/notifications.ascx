@@ -65,9 +65,13 @@
 
 .notifTextDiv {
     display: flex;
-    flex-direction: column;
     justify-content: center;
     font-size:15px;
+}
+
+.noNotifText {
+    color: white;
+    font-weight: 700;
 }
 
 .current-page{
@@ -83,6 +87,16 @@
     left:84%;
     padding:10px 10px;
     cursor:pointer;
+}
+
+.eventLink {
+    text-decoration: none;
+    margin-left: 5px;
+    font-size: 15px;
+}
+.eventLink:hover {
+    text-decoration: underline;
+    color: #DE2B2B;
 }
 
     </style>
@@ -115,38 +129,10 @@
 
     <!-- end of header-->
 
+
 <div id="notifheroDiv">
-        <div class="notifTemp">
-            <asp:Image ID="notifImage" runat="server"
-                ImageUrl="~/resources/images/person2.jpg" />
-            <div class="notifTextDiv">
-                <asp:Label ID="lblNotifBody" runat="server" Text="X Replied to your comment!"></asp:Label>
-            </div>
-        </div>
-
-        <div class="notifTemp">
-            <asp:Image ID="Image1" runat="server"
-                ImageUrl="~/resources/images/eventpic.png"/>
-            <div class="notifTextDiv">
-                <asp:Label ID="Label1" runat="server" Text="X is interested in your event!"></asp:Label>
-            </div>
-        </div>
-
-        <div class="notifTemp">
-            <asp:Image ID="Image2" runat="server"
-                ImageUrl="~/resources/images/person2.jpg" />
-            <div class="notifTextDiv">
-                <asp:Label ID="Label2" runat="server" Text="X Replied to your comment!"></asp:Label>
-            </div>
-        </div>
-                <div class="notifTemp">
-            <asp:Image ID="Image3" runat="server"
-                ImageUrl="~/resources/images/eventpic.png"/>
-            <div class="notifTextDiv">
-                <asp:Label ID="Label3" runat="server" Text="X is interested in your event!"></asp:Label>
-            </div>
-        </div>
-    </div>
-
+    <asp:Panel runat="server" id="notifheroContainer">
+    </asp:Panel>
+</div>
 
 

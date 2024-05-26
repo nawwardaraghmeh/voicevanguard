@@ -36,7 +36,7 @@ namespace vv.webpages
                 }
 
                 string eventIdString = Request.QueryString["eventId"];
-                if (Guid.TryParse(eventIdString, out Guid eventId))
+                if (!string.IsNullOrEmpty(eventIdString) && Guid.TryParse(eventIdString, out Guid eventId))
                 {
                     eventDetails = LoadEventDetails(eventId);
                     UpdateEventDetails(eventDetails);
@@ -239,6 +239,11 @@ namespace vv.webpages
 
                     if (rowsAffected > 0)
                     {
+                        Guid notifid = Guid.NewGuid();
+                        NotifTemp notif = new NotifTemp();
+                        notif.addNotif(notifid, userId, eventId, "EventSubscription");
+                        sendNotifToOrganizer(eventId);
+                       
                         string dataToSend = "Event was added to your calendar!\nThank you for your contribution.";
                         string url = "popups/participantsAdditionPopup.aspx?data=" + Server.UrlEncode(dataToSend);
                         string script = "window.open('" + url + "', '_blank', 'width=400,height=250,top=250,left=450,toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes');";
@@ -257,6 +262,30 @@ namespace vv.webpages
             }
         }
 
+        private void sendNotifToOrganizer(Guid eventid)
+        {
+            string connectionString = ConfigurationManager.ConnectionStrings["VoiceVanguardDB"].ConnectionString;
+            string query = "SELECT eventOrganizer FROM event where eventId = @id";
+            Guid userid = Guid.Empty;
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@id", eventid);
+
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    userid = (Guid)reader["eventOrganizer"];
+                    Guid notifid = Guid.NewGuid();
+                    NotifTemp notif = new NotifTemp();
+                    notif.addNotif(notifid, userid, eventid, "EventInterested");
+                }
+
+            } 
+        }
         private bool IsUserSubscribed(Guid eventId, Guid userId)
         {
             string connectionString = ConfigurationManager.ConnectionStrings["VoiceVanguardDB"].ConnectionString;

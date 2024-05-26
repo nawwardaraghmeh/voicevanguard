@@ -144,6 +144,10 @@ namespace vv.webpages
 
             if (x > 0)
             {
+                Guid notifid = Guid.NewGuid();
+                NotifTemp notif = new NotifTemp();
+                notif.addNotif(notifid, userId, eventId, "EventAddition");
+
                 string dataToSend = "Event was added successfully!\nThank you for your contribution.";
                 string url = "popups/eventAdditionPopup.aspx?data=" + Server.UrlEncode(dataToSend);
                 string script = "window.open('" + url + "', '_blank', 'width=400,height=250,top=250,left=450,toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes');";
