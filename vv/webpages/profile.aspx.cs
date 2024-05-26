@@ -30,6 +30,7 @@ namespace vv.web_pages
                     loadUserData(userId);
                     btnMyActivity.CssClass = "clickedBtn";
                     MainView.ActiveViewIndex = 0;
+                    PopulateActivitiesTab();
                 }
                 else if (Session["ProfileUpdated"] != null && (bool)Session["ProfileUpdated"])
                 {
@@ -240,6 +241,138 @@ namespace vv.web_pages
             }
         }
 
+        public void PopulateActivitiesTab()
+        {
+            Guid userId = GetUserIdFromSession();
+
+            List<Guid> notifIds = GetUserNotifIds(userId);
+            if (notifIds != null && notifIds.Count > 0)
+            {
+                foreach (Guid id in notifIds)
+                {
+                    NotifTemp notif = LoadNotifContent(id);
+                    if (notif != null)
+                    {
+                        Panel actPanel = new Panel();
+                        actPanel.CssClass = "tabDiv";
+
+                        LiteralControl divStart = new LiteralControl("<div class=\"activityDiv\">");
+                        LiteralControl divEnd = new LiteralControl("</div>");
+
+                        actPanel.Controls.Add(divStart);
+
+                        Label actLabel = new Label();
+                        switch (notif.notifType)
+                        {
+                            case "EventAddition":
+                                actLabel.Text = "You created a new event: ";
+                                break;
+                            case "EventSubscription":
+                                actLabel.Text = "You added an event to your calendar: ";
+                                break;
+                            case "EventInterested":
+                                actLabel.Text = "1 person is interested in your event: ";
+                                break;
+                        }
+
+                        HyperLink eventPage = new HyperLink();
+                        string url = $"~/webpages/viewevent.aspx?eventId={notif.EventId}";
+                        eventPage.NavigateUrl = url;
+                        eventPage.Text = GetEventTitle(notif.EventId).ToUpper(); 
+                        eventPage.CssClass = "eventLink";
+
+                        actPanel.Controls.Add(actLabel);
+                        actPanel.Controls.Add(eventPage);
+
+                        actPanel.Controls.Add(divEnd);
+
+                        activitiesPanel.Controls.Add(actPanel);
+                    }
+                }
+            }
+            else
+            {
+                Label notifLabel = new Label();
+                notifLabel.Text = "No activity yet!";
+                activitiesPanel.Controls.Add(notifLabel);
+            }
+        }
+
+        public List<Guid> GetUserNotifIds(Guid userId)
+        {
+            List<Guid> notifIds = new List<Guid>();
+            string connectionString = ConfigurationManager.ConnectionStrings["VoiceVanguardDB"].ConnectionString;
+            string sqlQuery = "SELECT notifId FROM notification WHERE userId = @userId";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlCommand command = new SqlCommand(sqlQuery, connection);
+                command.Parameters.AddWithValue("@userId", userId);
+
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    notifIds.Add((Guid)reader["notifId"]);
+                }
+            }
+
+            return notifIds;
+        }
+
+        private NotifTemp LoadNotifContent(Guid notifId)
+        {
+            NotifTemp notifContent = null;
+
+            string connectionString = ConfigurationManager.ConnectionStrings["VoiceVanguardDB"].ConnectionString;
+            string query = "SELECT notifId, eventId, notifType FROM notification WHERE notifId = @id";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@id", notifId);
+
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    notifContent = new NotifTemp
+                    {
+                        NotifId = (Guid)reader["notifId"],
+                        EventId = (Guid)reader["eventId"],
+                        notifType = reader["notifType"].ToString()
+                    };
+                }
+
+                reader.Close();
+                connection.Close();
+            }
+
+            return notifContent;
+        }
+
+        private string GetEventTitle(Guid eventId)
+        {
+            string eventTitle = "";
+            string connectionString = ConfigurationManager.ConnectionStrings["VoiceVanguardDB"].ConnectionString;
+            string query = "SELECT eventTitle FROM event WHERE eventId = @eventId";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@eventId", eventId);
+
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                if (reader.Read())
+                {
+                    eventTitle = reader["eventTitle"].ToString();
+                }
+            }
+
+            return eventTitle;
+        }
 
         protected void btnLogout_Click(object sender, EventArgs e)
         {

@@ -87,17 +87,8 @@
         <!-- tabs section -->
         <asp:MultiView ID="MainView" runat="server">
             <asp:View ID="ActivityView" runat="server">
-                <div class="viewStyles">
-                    <div class="tabDiv">
-                        <asp:Label ID="Label1" runat="server" Text="You added a new event to your calendar."></asp:Label>
-                    </div>
-                    <div class="tabDiv">
-                        <asp:Label ID="Label2" runat="server" Text="You created a new event."></asp:Label>
-                    </div>
-                    <div class="tabDiv">
-                        <asp:Label ID="Label3" runat="server" Text="X is interested in your event!"></asp:Label>
-                    </div>
-                </div>
+                <asp:Panel runat="server" ID="activitiesPanel" class="viewStyles">
+                </asp:Panel>
             </asp:View>
 
 
