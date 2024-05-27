@@ -1,5 +1,4 @@
-﻿using Microsoft.Extensions.Logging;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
@@ -146,7 +145,7 @@ namespace vv.webpages
             */
 
             int numOfParticipants = GetNumOfParticipants(eventDetails.eventId);
-            lblParticipantCount.Text = numOfParticipants + " people are interested in this event";
+            lblParticipantCount.Text = $"{numOfParticipants} people are interested in this event";
 
         }
 
@@ -188,7 +187,7 @@ namespace vv.webpages
         private int GetNumOfParticipants(Guid eventId)
         {
             string connectionString = ConfigurationManager.ConnectionStrings["VoiceVanguardDB"].ConnectionString;
-            string query = "SELECT COUNT(userId) FROM participants WHERE eventId = @id";
+            string query = "SELECT COUNT(*) FROM participants WHERE eventId = @id";
             int participantCount = 0;
 
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -203,34 +202,34 @@ namespace vv.webpages
             return participantCount;
         }
 
-        /*
-        private List<Guid> LoadParticipants(Guid eventId)
-        {
-            string connectionString = ConfigurationManager.ConnectionStrings["VoiceVanguardDB"].ConnectionString;
-            string query = "SELECT userId FROM participants WHERE eventId = @id";
-            List<Guid> allParticipantsIds = new List<Guid>();
-
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            /*
+            private List<Guid> LoadParticipants(Guid eventId)
             {
-                SqlCommand command = new SqlCommand(query, connection);
-                command.Parameters.AddWithValue("@id", eventId);
+                string connectionString = ConfigurationManager.ConnectionStrings["VoiceVanguardDB"].ConnectionString;
+                string query = "SELECT userId FROM participants WHERE eventId = @id";
+                List<Guid> allParticipantsIds = new List<Guid>();
 
-                connection.Open();
-                SqlDataReader reader = command.ExecuteReader();
-
-                while (reader.Read())
+                using (SqlConnection connection = new SqlConnection(connectionString))
                 {
-                    Guid userid = (Guid)reader["userId"];
-                    allParticipantsIds.Add(userid);
+                    SqlCommand command = new SqlCommand(query, connection);
+                    command.Parameters.AddWithValue("@id", eventId);
+
+                    connection.Open();
+                    SqlDataReader reader = command.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        Guid userid = (Guid)reader["userId"];
+                        allParticipantsIds.Add(userid);
+                    }
+
+                    reader.Close();
                 }
-
-                reader.Close();
+                return allParticipantsIds;
             }
-            return allParticipantsIds;
-        }
-        */
+            */
 
-        protected void btnInterested_Click(object sender, EventArgs e)
+            protected void btnInterested_Click(object sender, EventArgs e)
         {
             Guid userId = new Guid(Session["UserId"].ToString());
             string eventIdString = Request.QueryString["eventId"];
@@ -260,17 +259,15 @@ namespace vv.webpages
                     {
                         rowsAffected = command.ExecuteNonQuery();
                     }
-                    catch (Exception ex) { }
+                    catch(Exception ex) { }
 
                     if (rowsAffected > 0)
                     {
                         Guid notifid = Guid.NewGuid();
-                        DateTime notifDate = DateTime.Today;
-                        TimeSpan notifTime = DateTime.Now - DateTime.Today;
                         NotifTemp notif = new NotifTemp();
-                        notif.addNotif(notifid, userId, eventId, "EventSubscription", notifDate, notifTime);
+                        notif.addNotif(notifid, userId, eventId, "EventSubscription");
                         sendNotifToOrganizer(eventId);
-
+                       
                         string dataToSend = "Event was added to your calendar!\nThank you for your contribution.";
                         string url = "popups/participantsAdditionPopup.aspx?data=" + Server.UrlEncode(dataToSend);
                         string script = "window.open('" + url + "', '_blank', 'width=400,height=250,top=250,left=450,toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes');";
@@ -307,13 +304,11 @@ namespace vv.webpages
                 {
                     userid = (Guid)reader["eventOrganizer"];
                     Guid notifid = Guid.NewGuid();
-                    DateTime notifDate = DateTime.Today;
-                    TimeSpan notifTime = DateTime.Now - DateTime.Today;
                     NotifTemp notif = new NotifTemp();
-                    notif.addNotif(notifid, userid, eventid, "EventInterested", notifDate, notifTime);
+                    notif.addNotif(notifid, userid, eventid, "EventInterested");
                 }
 
-            }
+            } 
         }
         private bool IsUserSubscribed(Guid eventId, Guid userId)
         {
@@ -356,6 +351,6 @@ namespace vv.webpages
             }
             return null;
         }
-        */
-    }
+        */
+    }
 }
