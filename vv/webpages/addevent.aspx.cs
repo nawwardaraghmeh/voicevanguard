@@ -1,11 +1,14 @@
-﻿using System;
+﻿using Google.Cloud.Vision.V1;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using vv.models;
+using Image = Google.Cloud.Vision.V1.Image;
 
 namespace vv.webpages
 {
@@ -13,6 +16,9 @@ namespace vv.webpages
     {
         int x;
         List<string> selectedTags = new List<string>();
+
+        private readonly string _tempDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "temp");
+        private readonly string _uploadsDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "uploads");
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -46,6 +52,16 @@ namespace vv.webpages
                 {
                     ddlYear.Items.Add(new ListItem(year.ToString(), year.ToString()));
                 }
+            }
+
+            if (!Directory.Exists(_tempDirectory))
+            {
+                Directory.CreateDirectory(_tempDirectory);
+            }
+
+            if (!Directory.Exists(_uploadsDirectory))
+            {
+                Directory.CreateDirectory(_uploadsDirectory);
             }
         }
 
@@ -103,7 +119,27 @@ namespace vv.webpages
 
             if (eventPicUpload.HasFile)
             {
-                string folderPath = Server.MapPath("~/Uploads/");
+                var tempFilePath = Path.Combine(_tempDirectory, Guid.NewGuid().ToString() + Path.GetExtension(eventPicUpload.FileName));
+                eventPicUpload.SaveAs(tempFilePath);
+                var isSafe = IsImageSafe(tempFilePath).GetAwaiter().GetResult();
+                if (!isSafe)
+                {
+                    File.Delete(tempFilePath);
+                    MessageLabel.Text = "The uploaded image contains inappropriate content.";
+                    return;
+                }
+
+                string fileName = Path.GetFileName(eventPicUpload.FileName);
+
+                var permanentFilePath = Path.Combine(_uploadsDirectory, eventPicUpload.FileName);
+                File.Move(tempFilePath, permanentFilePath);
+                eventPicUpload.SaveAs(permanentFilePath);
+                relativePath = "~/Uploads/" + fileName; 
+
+                MessageLabel.Text = "Image uploaded successfully.";
+                MessageLabel.ForeColor = System.Drawing.Color.Green;
+
+                /*string folderPath = Server.MapPath("~/Uploads/");
 
                 // Create the directory if it does not exist
                 if (!Directory.Exists(folderPath))
@@ -113,7 +149,7 @@ namespace vv.webpages
                 string fileName = Path.GetFileName(eventPicUpload.FileName);
                 string filePath = Path.Combine(folderPath, fileName);
                 eventPicUpload.SaveAs(filePath);
-                relativePath = "~/Uploads/" + fileName;
+                relativePath = "~/Uploads/" + fileName;*/
             }
 
             foreach (ListItem item in selectTags.Items)
@@ -160,6 +196,17 @@ namespace vv.webpages
                 string script = "window.open('" + url + "', '_blank', 'width=400,height=300,top=250,left=450,toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes');";
                 ClientScript.RegisterStartupScript(this.GetType(), "openwindow", script, true);
             }
+        }
+
+        private async Task<bool> IsImageSafe(string imagePath)
+        {
+            var client = ImageAnnotatorClient.Create();
+            var image = Image.FromFile(imagePath);
+            var response = await client.DetectSafeSearchAsync(image);
+
+            return response.Adult <= Likelihood.Possible &&
+                   response.Violence <= Likelihood.Possible &&
+                   response.Racy <= Likelihood.Possible;
         }
     }
 }

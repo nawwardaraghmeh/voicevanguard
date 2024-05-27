@@ -1,6 +1,7 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="addevent.aspx.cs" Inherits="vv.webpages.addevent" %>
 <%@ Register Src="notifications.ascx" TagName="Notification" TagPrefix="uc" %>
 
+
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -53,6 +54,7 @@
         <asp:Label ID="lblPic" runat="server" Text="PICTURE"></asp:Label>
         <br />
         <asp:FileUpload runat="server" ID="eventPicUpload" /> <!--code here-->
+        <asp:Label ID="MessageLabel" runat="server" Text=""></asp:Label>
 
         <br />
         <div class="dateInputDiv">
@@ -232,6 +234,8 @@
         <asp:Button ID="btnAddNewEvent" runat="server" Text="ADD EVENT" 
             OnClick="btnAddNewEvent_Click" />
     </form>
+
+
 
     <!-- footer section -->
     <footer class="footer">
