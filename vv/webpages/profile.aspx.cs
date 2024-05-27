@@ -294,6 +294,7 @@ namespace vv.web_pages
             {
                 Label notifLabel = new Label();
                 notifLabel.Text = "No activity yet!";
+                notifLabel.CssClass = "noActLabel";
                 activitiesPanel.Controls.Add(notifLabel);
             }
         }
