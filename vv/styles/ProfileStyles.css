@@ -149,6 +149,11 @@
         color: #DE2B2B;
     }
 
+.noActLabel {
+    font-weight: 800;
+    margin: 20px auto;
+}
+
 
 /*
 .rightSection {

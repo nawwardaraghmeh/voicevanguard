@@ -83,7 +83,7 @@ namespace vv.webpages
             else
             {
                 Label notifLabel = new Label();
-                notifLabel.Text = "No new notifications!";
+                notifLabel.Text = "No notifications!";
                 notifLabel.CssClass = "noNotifText";
                 notifheroContainer.Controls.Add(notifLabel);
             }
