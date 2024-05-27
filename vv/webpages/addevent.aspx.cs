@@ -119,27 +119,28 @@ namespace vv.webpages
 
             if (eventPicUpload.HasFile)
             {
-                var tempFilePath = Path.Combine(_tempDirectory, Guid.NewGuid().ToString() + Path.GetExtension(eventPicUpload.FileName));
-                eventPicUpload.SaveAs(tempFilePath);
-                var isSafe = IsImageSafe(tempFilePath).GetAwaiter().GetResult();
-                if (!isSafe)
-                {
-                    File.Delete(tempFilePath);
-                    MessageLabel.Text = "The uploaded image contains inappropriate content.";
-                    return;
-                }
+                /* var tempFilePath = Path.Combine(_tempDirectory, Guid.NewGuid().ToString() + Path.GetExtension(eventPicUpload.FileName));
+                 eventPicUpload.SaveAs(tempFilePath);
+                 var isSafe = IsImageSafe(tempFilePath).GetAwaiter().GetResult();
+                 if (!isSafe)
+                 {
+                     File.Delete(tempFilePath);
+                     MessageLabel.Text = "The uploaded image contains inappropriate content.";
+                     return;
+                 }
 
-                string fileName = Path.GetFileName(eventPicUpload.FileName);
+                 string fileName = Path.GetFileName(eventPicUpload.FileName);
 
-                var permanentFilePath = Path.Combine(_uploadsDirectory, eventPicUpload.FileName);
-                File.Move(tempFilePath, permanentFilePath);
-                eventPicUpload.SaveAs(permanentFilePath);
-                relativePath = "~/Uploads/" + fileName; 
+                 var permanentFilePath = Path.Combine(_uploadsDirectory, eventPicUpload.FileName);
+                 File.Move(tempFilePath, permanentFilePath);
+                 eventPicUpload.SaveAs(permanentFilePath);
+                 relativePath = "~/Uploads/" + fileName; 
 
-                MessageLabel.Text = "Image uploaded successfully.";
-                MessageLabel.ForeColor = System.Drawing.Color.Green;
+                 MessageLabel.Text = "Image uploaded successfully.";
+                 MessageLabel.ForeColor = System.Drawing.Color.Green;*/
 
-                /*string folderPath = Server.MapPath("~/Uploads/");
+
+                string folderPath = Server.MapPath("~/Uploads/");
 
                 // Create the directory if it does not exist
                 if (!Directory.Exists(folderPath))
@@ -149,7 +150,7 @@ namespace vv.webpages
                 string fileName = Path.GetFileName(eventPicUpload.FileName);
                 string filePath = Path.Combine(folderPath, fileName);
                 eventPicUpload.SaveAs(filePath);
-                relativePath = "~/Uploads/" + fileName;*/
+                relativePath = "~/Uploads/" + fileName;
             }
 
             foreach (ListItem item in selectTags.Items)
@@ -181,8 +182,10 @@ namespace vv.webpages
             if (x > 0)
             {
                 Guid notifid = Guid.NewGuid();
+                DateTime notifDate = DateTime.Today;
+                TimeSpan notifTime = DateTime.Now - DateTime.Today;
                 NotifTemp notif = new NotifTemp();
-                notif.addNotif(notifid, userId, eventId, "EventAddition");
+                notif.addNotif(notifid, userId, eventId, "EventAddition", notifDate, notifTime);
 
                 string dataToSend = "Event was added successfully!\nThank you for your contribution.";
                 string url = "popups/eventAdditionPopup.aspx?data=" + Server.UrlEncode(dataToSend);
@@ -198,15 +201,6 @@ namespace vv.webpages
             }
         }
 
-        private async Task<bool> IsImageSafe(string imagePath)
-        {
-            var client = ImageAnnotatorClient.Create();
-            var image = Image.FromFile(imagePath);
-            var response = await client.DetectSafeSearchAsync(image);
-
-            return response.Adult <= Likelihood.Possible &&
-                   response.Violence <= Likelihood.Possible &&
-                   response.Racy <= Likelihood.Possible;
-        }
+      
     }
 }

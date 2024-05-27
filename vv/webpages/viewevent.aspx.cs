@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Extensions.Logging;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
@@ -128,6 +129,7 @@ namespace vv.webpages
 
             eventOrganizerProfile.Text = GetOrganizerName(eventDetails.eventOrganizer);
 
+            /*
             List<Guid> participants = LoadParticipants(eventDetails.eventId);
             foreach (Guid id in participants)
             {
@@ -141,6 +143,10 @@ namespace vv.webpages
                     participantsPanel.Controls.Add(participantImage);
                 }
             }
+            */
+
+            int numOfParticipants = GetNumOfParticipants(eventDetails.eventId);
+            lblParticipantCount.Text = numOfParticipants + " people are interested in this event";
 
         }
 
@@ -179,6 +185,25 @@ namespace vv.webpages
             return null;
         }
 
+        private int GetNumOfParticipants(Guid eventId)
+        {
+            string connectionString = ConfigurationManager.ConnectionStrings["VoiceVanguardDB"].ConnectionString;
+            string query = "SELECT COUNT(userId) FROM participants WHERE eventId = @id";
+            int participantCount = 0;
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@id", eventId);
+
+                connection.Open();
+                participantCount = (int)command.ExecuteScalar();
+                connection.Close();
+            }
+            return participantCount;
+        }
+
+        /*
         private List<Guid> LoadParticipants(Guid eventId)
         {
             string connectionString = ConfigurationManager.ConnectionStrings["VoiceVanguardDB"].ConnectionString;
@@ -203,7 +228,7 @@ namespace vv.webpages
             }
             return allParticipantsIds;
         }
-
+        */
 
         protected void btnInterested_Click(object sender, EventArgs e)
         {
@@ -235,15 +260,17 @@ namespace vv.webpages
                     {
                         rowsAffected = command.ExecuteNonQuery();
                     }
-                    catch(Exception ex) { }
+                    catch (Exception ex) { }
 
                     if (rowsAffected > 0)
                     {
                         Guid notifid = Guid.NewGuid();
+                        DateTime notifDate = DateTime.Today;
+                        TimeSpan notifTime = DateTime.Now - DateTime.Today;
                         NotifTemp notif = new NotifTemp();
-                        notif.addNotif(notifid, userId, eventId, "EventSubscription");
+                        notif.addNotif(notifid, userId, eventId, "EventSubscription", notifDate, notifTime);
                         sendNotifToOrganizer(eventId);
-                       
+
                         string dataToSend = "Event was added to your calendar!\nThank you for your contribution.";
                         string url = "popups/participantsAdditionPopup.aspx?data=" + Server.UrlEncode(dataToSend);
                         string script = "window.open('" + url + "', '_blank', 'width=400,height=250,top=250,left=450,toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes');";
@@ -280,11 +307,13 @@ namespace vv.webpages
                 {
                     userid = (Guid)reader["eventOrganizer"];
                     Guid notifid = Guid.NewGuid();
+                    DateTime notifDate = DateTime.Today;
+                    TimeSpan notifTime = DateTime.Now - DateTime.Today;
                     NotifTemp notif = new NotifTemp();
-                    notif.addNotif(notifid, userid, eventid, "EventInterested");
+                    notif.addNotif(notifid, userid, eventid, "EventInterested", notifDate, notifTime);
                 }
 
-            } 
+            }
         }
         private bool IsUserSubscribed(Guid eventId, Guid userId)
         {
@@ -305,6 +334,7 @@ namespace vv.webpages
             }
         }
 
+        /*
         protected string getParticipantPic(Guid userId)
         {
             string connectionString = ConfigurationManager.ConnectionStrings["VoiceVanguardDB"].ConnectionString;
@@ -326,5 +356,6 @@ namespace vv.webpages
             }
             return null;
         }
-    }
+        */
+    }
 }

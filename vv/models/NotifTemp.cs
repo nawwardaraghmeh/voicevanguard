@@ -20,12 +20,12 @@ namespace vv.models
         public Guid EventId { get; set; }
         public string notifType { get; set; }
 
-        public int addNotif(Guid notifid, Guid userid, Guid eventid, string notifType)
+        public int addNotif(Guid notifid, Guid userid, Guid eventid, string notifType, DateTime date, TimeSpan time)
         {
             string connectionString = ConfigurationManager.ConnectionStrings["VoiceVanguardDB"].ConnectionString;
             string query = "";
 
-            query = "INSERT INTO notification (notifId, userId, eventId, notifType) VALUES(@notifid, @userid, @eventid, @type)";
+            query = "INSERT INTO notification (notifId, userId, eventId, notifType,notifDate, notifTime) VALUES(@notifid, @userid, @eventid, @type, @notifDate, @notifTime)";
 
 
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -35,6 +35,9 @@ namespace vv.models
                 command.Parameters.AddWithValue("@userid", userid);
                 command.Parameters.AddWithValue("@eventid", eventid);
                 command.Parameters.AddWithValue("@type", notifType);
+                command.Parameters.AddWithValue("@notifDate", date);
+                command.Parameters.AddWithValue("@notifTime", time);
+
 
                 connection.Open();
                 int rowsAffected = command.ExecuteNonQuery();

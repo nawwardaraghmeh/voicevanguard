@@ -71,6 +71,7 @@ namespace vv.web_pages
             btnMyActivity.CssClass = "clickedBtn";
             btnUpcomingEvents.CssClass = "initialBtn";
             MainView.ActiveViewIndex = 0;
+            PopulateActivitiesTab();
         }
 
         protected void btnUpcomingEvents_Click(object sender, EventArgs e)

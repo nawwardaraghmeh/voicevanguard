@@ -21,10 +21,11 @@ namespace vv.webpages
             List<Guid> notifIds = getUserNotifIds(userId);
             if(notifIds != null)
             {
+                emptynotif.Visible = false;
                 foreach (Guid id in notifIds)
                 {
                     NotifTemp notif = LoadNotifContent(id);
-                    if (notif != null)
+                    if (notif != null && notifIds.Any())
                     {
                         Panel notifPanel = new Panel();
                         notifPanel.CssClass = "notifTemp";
@@ -80,13 +81,13 @@ namespace vv.webpages
                 }
 
             }
-            else
+           /* else
             {
                 Label notifLabel = new Label();
                 notifLabel.Text = "No notifications!";
                 notifLabel.CssClass = "noNotifText";
                 notifheroContainer.Controls.Add(notifLabel);
-            }
+            }*/
 
 
         }
@@ -94,7 +95,7 @@ namespace vv.webpages
         {
             List<Guid> notifIds = new List<Guid>();
             string connectionString = ConfigurationManager.ConnectionStrings["VoiceVanguardDB"].ConnectionString;
-            string sqlQuery = "SELECT notifId FROM notification WHERE userId = @userid";
+            string sqlQuery = "SELECT top 5 notifId FROM notification WHERE userId = @userid order by notifDate DESC, notifTime";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {

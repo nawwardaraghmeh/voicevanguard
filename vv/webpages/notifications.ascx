@@ -12,20 +12,20 @@
     margin: 100px 22%;
     padding: 10px;
     font-family: "Coustard", serif;
-    left: 47.5%;
-    top: -4%;
+    left: 44%;
+    top: -5.5%;
     display: none;
     z-index:1000;
 }
 
-    #notifheroDiv:before {
+/*    #notifheroDiv:before {
         content: "";
         position: absolute;
         top: -9%;
         left: 88%;
         border: 15px solid;
         border-color: transparent transparent black transparent;
-    }
+    }*/
 
     #notifheroDiv.show {
         display: inline-block;
@@ -72,6 +72,7 @@
 .noNotifText {
     color: white;
     font-weight: 700;
+    margin-left:45px;
 }
 
 .current-page{
@@ -84,7 +85,7 @@
     position:fixed;
     z-index:1000;
     top:1.60%;
-    left:84%;
+    left:80%;
     padding:10px 10px;
     cursor:pointer;
 }
@@ -132,6 +133,7 @@
 
 <div id="notifheroDiv">
     <asp:Panel runat="server" id="notifheroContainer">
+        <asp:Label runat="server" Text="No notifications" CssClass="noNotifText" ID="emptynotif" ></asp:Label>
     </asp:Panel>
 </div>
 

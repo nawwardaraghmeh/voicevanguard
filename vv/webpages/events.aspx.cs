@@ -285,6 +285,7 @@ namespace vv.web_pages
         protected void physicalClicktoSeeMore_Click(object sender, EventArgs e)
         {
             int currentCount = physicalEventContainer.Controls.Count;
+            List<Guid> allEventIds = GetAllRecommendedEventsIds().ToList();
 
             List<Guid> physicalEventIds = GetAllRecommendedEventsIds().Skip(currentCount).Take(3).ToList();
             foreach (Guid id in physicalEventIds)
@@ -292,18 +293,31 @@ namespace vv.web_pages
                 HtmlGenericControl physicalEventControl = CreateEventControl(id);
                 physicalEventContainer.Controls.Add(physicalEventControl);
             }
+
+            if (currentCount + physicalEventIds.Count >= allEventIds.Count)
+            {
+                // Hide or disable the "see more" button
+                physicalClicktoSeeMore.Visible = false;
+            }
         }
 
 
         protected void virtualClicktoSeeMore_Click(object sender, EventArgs e)
         {
             int currentCount = virtualEventContainer.Controls.Count;
+            List<Guid> allEventIds = GetAllUpcomingEvents().ToList();
 
             List<Guid> virtualEventIds = GetAllUpcomingEvents().Skip(currentCount).Take(3).ToList();
             foreach (Guid id in virtualEventIds)
             {
                 HtmlGenericControl virtualEventControl = CreateEventControl(id);
                 virtualEventContainer.Controls.Add(virtualEventControl);
+            }
+
+            if (currentCount + virtualEventIds.Count >= allEventIds.Count)
+            {
+                // Hide or disable the "see more" button
+                virtualClicktoSeeMore.Visible = false;
             }
         }
 

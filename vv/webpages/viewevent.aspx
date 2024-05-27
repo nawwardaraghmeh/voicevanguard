@@ -48,11 +48,10 @@
                 <asp:Label ID="lblEventOrganizer" runat="server" Text="Organized by: ">
                     <asp:HyperLink runat="server" ID="eventOrganizerProfile"></asp:HyperLink>
                 </asp:Label>
+                <asp:Label ID="lblParticipantCount" runat="server" Text=""></asp:Label>
             </div>
-
-            <asp:Panel runat="server" ID="participantsPanel" CssClass="participantsProfileimgs">
-                
-            </asp:Panel>
+            
+            <!--<asp:Panel runat="server" ID="participantsPanel" CssClass="participantsProfileimgs"> </asp:Panel> -->
 
             <div class="eventDescDiv">
                 <asp:Label ID="lblEventDesc" runat="server" Text=""></asp:Label>
