@@ -128,7 +128,6 @@ namespace vv.webpages
 
             eventOrganizerProfile.Text = GetOrganizerName(eventDetails.eventOrganizer);
 
-            /*
             List<Guid> participants = LoadParticipants(eventDetails.eventId);
             foreach (Guid id in participants)
             {
@@ -142,10 +141,6 @@ namespace vv.webpages
                     participantsPanel.Controls.Add(participantImage);
                 }
             }
-            */
-
-            int numOfParticipants = GetNumOfParticipants(eventDetails.eventId);
-            lblParticipantCount.Text = $"{numOfParticipants} people are interested in this event";
 
         }
 
@@ -184,11 +179,11 @@ namespace vv.webpages
             return null;
         }
 
-        private int GetNumOfParticipants(Guid eventId)
+        private List<Guid> LoadParticipants(Guid eventId)
         {
             string connectionString = ConfigurationManager.ConnectionStrings["VoiceVanguardDB"].ConnectionString;
-            string query = "SELECT COUNT(*) FROM participants WHERE eventId = @id";
-            int participantCount = 0;
+            string query = "SELECT userId FROM participants WHERE eventId = @id";
+            List<Guid> allParticipantsIds = new List<Guid>();
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -196,40 +191,21 @@ namespace vv.webpages
                 command.Parameters.AddWithValue("@id", eventId);
 
                 connection.Open();
-                participantCount = (int)command.ExecuteScalar();
-                connection.Close();
+                SqlDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    Guid userid = (Guid)reader["userId"];
+                    allParticipantsIds.Add(userid);
+                }
+
+                reader.Close();
             }
-            return participantCount;
+            return allParticipantsIds;
         }
 
-            /*
-            private List<Guid> LoadParticipants(Guid eventId)
-            {
-                string connectionString = ConfigurationManager.ConnectionStrings["VoiceVanguardDB"].ConnectionString;
-                string query = "SELECT userId FROM participants WHERE eventId = @id";
-                List<Guid> allParticipantsIds = new List<Guid>();
 
-                using (SqlConnection connection = new SqlConnection(connectionString))
-                {
-                    SqlCommand command = new SqlCommand(query, connection);
-                    command.Parameters.AddWithValue("@id", eventId);
-
-                    connection.Open();
-                    SqlDataReader reader = command.ExecuteReader();
-
-                    while (reader.Read())
-                    {
-                        Guid userid = (Guid)reader["userId"];
-                        allParticipantsIds.Add(userid);
-                    }
-
-                    reader.Close();
-                }
-                return allParticipantsIds;
-            }
-            */
-
-            protected void btnInterested_Click(object sender, EventArgs e)
+        protected void btnInterested_Click(object sender, EventArgs e)
         {
             Guid userId = new Guid(Session["UserId"].ToString());
             string eventIdString = Request.QueryString["eventId"];
@@ -329,7 +305,6 @@ namespace vv.webpages
             }
         }
 
-        /*
         protected string getParticipantPic(Guid userId)
         {
             string connectionString = ConfigurationManager.ConnectionStrings["VoiceVanguardDB"].ConnectionString;
@@ -351,6 +326,5 @@ namespace vv.webpages
             }
             return null;
         }
-        */
     }
 }
