@@ -1,11 +1,9 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="addpost.aspx.cs" Inherits="vv.webpages.WebForm2" %>
- <%@ Register Src="notifications.ascx" TagName="Notification" TagPrefix="uc" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="addPost.aspx.cs" Inherits="vv.web_pages.addPost" %>
 
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    
     <link rel="stylesheet" type="text/css" href="../styles/addPostStyles.css">
     <link rel="stylesheet" type="text/css" href="../styles/headerfooterStyles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -17,7 +15,6 @@
     <title>ADD POST PAGE</title>
 </head>
 <body>
-
     <!-- header section -->
     <nav class="navbar">
         <div class="navbar-container">
@@ -28,38 +25,28 @@
                 <a href="faq.aspx" class="nav-item">FAQs</a>
             </div>
             <div class="navbar-right">
-                <a href="profile.aspx" class="nav-item icon"><i class="fa fa-user" aria-hidden="true">
-                </i></a>
+                <a href="profile.aspx" class="nav-item icon"><i class="fa fa-user" aria-hidden="true"></i></a>
             </div>
         </div>
     </nav>
-    <br /> <br /> <br /> <br />
+    <br />
+    <br />
+    <br />
+    <br />
 
     <form id="form1" runat="server">
-         <uc:Notification ID="Notification1" runat="server" />
+        <uc:notification id="Notification1" runat="server" />
         <h1 id="pageTitle">ADD POST</h1>
 
         <div id="heroDiv">
             <label id="title">TITLE</label><br />
-            <input type="text" id="titleBox" required="required" /><br />
-            <select>
-                <option value="only-me">Only Me</option>
-                <option value="only-followers">Only Followers</option>
-                <option value="everyone">Everyone</option>
-            </select><br />
+            <asp:TextBox runat="server" type="text" ID="titleBox" required="required" /><br />
 
             <div id="secondDiv">
-                <input type="text" id="contentBox" placeholder="What's On Your Mind?" required="required" /><br />
-                <div id="text-strip">
-
-                    <label for="imageUpload"><i class="fa-solid fa-image fa-2x"></i></label>
-                    <input type="file" id="imageUpload" name="imageUpload" />
-
-                    <i class="fa-regular fa-face-smile fa-2x"></i>
-                </div>
+                <asp:TextBox runat="server" type="text" ID="contentBox" placeholder="What's On Your Mind?" required="required" /><br />
             </div>
             <br />
-            <asp:Button runat="server" Text="POST" ID="postBtn" />
+            <asp:Button runat="server" Text="POST" ID="postBtn" OnClick="postBtn_Click" />
         </div>
     </form>
 
@@ -70,7 +57,7 @@
             <p>
                 <a href="mailto:voicevanguard@gmail.com" class="contact-info">voicevanguard@gmail.com</a>
             </p>
-            
+
             <p>+972 12-345-6789</p>
             <div class="social-icons">
                 <a href="#" class="icon"><i class="fab fa-facebook-f"></i></a>
@@ -83,5 +70,6 @@
             </p>
         </div>
     </footer>
+
 </body>
 </html>

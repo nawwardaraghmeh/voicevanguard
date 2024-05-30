@@ -3,7 +3,6 @@
   <Import Project="..\packages\Microsoft.AspNetCore.Mvc.Razor.Extensions.2.2.0\build\netstandard2.0\Microsoft.AspNetCore.Mvc.Razor.Extensions.props" Condition="Exists('..\packages\Microsoft.AspNetCore.Mvc.Razor.Extensions.2.2.0\build\netstandard2.0\Microsoft.AspNetCore.Mvc.Razor.Extensions.props')" />
   <Import Project="..\packages\Microsoft.DiaSymReader.Native.1.7.0\build\Microsoft.DiaSymReader.Native.props" Condition="Exists('..\packages\Microsoft.DiaSymReader.Native.1.7.0\build\Microsoft.DiaSymReader.Native.props')" />
   <Import Project="..\packages\Microsoft.AspNetCore.Razor.Design.2.2.0\build\netstandard2.0\Microsoft.AspNetCore.Razor.Design.props" Condition="Exists('..\packages\Microsoft.AspNetCore.Razor.Design.2.2.0\build\netstandard2.0\Microsoft.AspNetCore.Razor.Design.props')" />
-  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -555,9 +554,6 @@
     <Reference Include="System.Web.Mvc">
       <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.9\lib\net45\System.Web.Mvc.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
-      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\VV.mdf" />
@@ -587,6 +583,7 @@
     <Content Include="resources\images\eventinterest.png" />
     <Content Include="resources\images\eventsub.png" />
     <Content Include="styles\editProfileStyles.css" />
+    <Content Include="webpages\addPost.aspx" />
     <Content Include="webpages\popups\editProfile.aspx" />
     <Content Include="webpages\popups\eventAdditionPopup.aspx" />
     <Content Include="resources\images\aboutusPic.png" />
@@ -651,8 +648,8 @@
     <Content Include="webpages\notification.aspx" />
     <Content Include="webpages\notifications.ascx" />
     <Content Include="webpages\popups\participantsAdditionPopup.aspx" />
+    <Content Include="webpages\popups\postAdditionPopup.aspx" />
     <Content Include="webpages\Registration.aspx" />
-    <Content Include="webpages\addpost.aspx" />
     <Content Include="webpages\resetlink.aspx" />
     <Content Include="webpages\resetpasswordi.aspx" />
     <Content Include="webpages\resetpasswordii.aspx" />
@@ -768,9 +765,18 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="models\CommentTemp.cs" />
     <Compile Include="models\EventTemp.cs" />
     <Compile Include="models\NotifTemp.cs" />
+    <Compile Include="models\PostTemp.cs" />
     <Compile Include="models\UserProfile.cs" />
+    <Compile Include="webpages\addPost.aspx.cs">
+      <DependentUpon>addPost.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="webpages\addPost.aspx.designer.cs">
+      <DependentUpon>addPost.aspx</DependentUpon>
+    </Compile>
     <Compile Include="webpages\popups\editProfile.aspx.cs">
       <DependentUpon>editProfile.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -877,6 +883,13 @@
     <Compile Include="webpages\popups\participantsAdditionPopup.aspx.designer.cs">
       <DependentUpon>participantsAdditionPopup.aspx</DependentUpon>
     </Compile>
+    <Compile Include="webpages\popups\postAdditionPopup.aspx.cs">
+      <DependentUpon>postAdditionPopup.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="webpages\popups\postAdditionPopup.aspx.designer.cs">
+      <DependentUpon>postAdditionPopup.aspx</DependentUpon>
+    </Compile>
     <Compile Include="webpages\profile.aspx.cs">
       <DependentUpon>profile.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -890,13 +903,6 @@
     </Compile>
     <Compile Include="webpages\Registration.aspx.designer.cs">
       <DependentUpon>Registration.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="webpages\addpost.aspx.cs">
-      <DependentUpon>addpost.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="webpages\addpost.aspx.designer.cs">
-      <DependentUpon>addpost.aspx</DependentUpon>
     </Compile>
     <Compile Include="webpages\resetlink.aspx.cs">
       <DependentUpon>resetlink.aspx</DependentUpon>
@@ -978,7 +984,6 @@
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
     <Error Condition="!Exists('..\packages\Google.Api.CommonProtos.2.15.0\build\Google.Api.CommonProtos.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Google.Api.CommonProtos.2.15.0\build\Google.Api.CommonProtos.targets'))" />
     <Error Condition="!Exists('..\packages\Grpc.Core.2.46.6\build\net45\Grpc.Core.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Grpc.Core.2.46.6\build\net45\Grpc.Core.targets'))" />
     <Error Condition="!Exists('..\packages\Microsoft.Extensions.Logging.Abstractions.6.0.0\build\Microsoft.Extensions.Logging.Abstractions.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Extensions.Logging.Abstractions.6.0.0\build\Microsoft.Extensions.Logging.Abstractions.targets'))" />

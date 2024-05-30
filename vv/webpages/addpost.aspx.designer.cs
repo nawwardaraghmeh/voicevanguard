@@ -7,11 +7,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace vv.webpages
+namespace vv.web_pages
 {
 
 
-    public partial class WebForm2
+    public partial class addPost
     {
 
         /// <summary>
@@ -24,13 +24,22 @@ namespace vv.webpages
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
-        /// Notification1 control.
+        /// titleBox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::vv.webpages.notifications Notification1;
+        protected global::System.Web.UI.WebControls.TextBox titleBox;
+
+        /// <summary>
+        /// contentBox control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox contentBox;
 
         /// <summary>
         /// postBtn control.

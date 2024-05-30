@@ -34,10 +34,10 @@ select {
 #contentBox {
     padding: 60px 5px 60px 5px;
     width: 95%;
-    border-radius: 20px 20px 0px 0px;
+    border-radius: 20px;
     margin: 10px 10px 0px 10px;
     background-color: #F5F5F5;
-    border-style:solid solid none solid;
+    border-style:solid;
 }
 
 ::placeholder {
@@ -50,14 +50,15 @@ select {
     border: none;
     background-color: #F1A7A7;
     font-family: "Coustard", serif;
-    width:20%;
-    font-size: 15pt;
+    width:30%;
+    font-size: 20pt;
     padding: 5px;
     margin: 10px;
+    margin-left:34%;
     border-radius: 20px;
     font-weight:bold;
 }
-
+/*
 #text-strip {
     background-color: #F1A7A7;
     border-radius: 0px 0px 20px 20px;
@@ -65,15 +66,15 @@ select {
     text-align:right;
     width:96.6%;
     margin:0px 10px 0px 10px; ;
-}
+}*/
 
-#imageUpload{
+/*#imageUpload{
     display:none;
 }
 
 i{
     margin:10px;
-}
+}*/
 
 #pageTitle {
     font-family: "Coustard", serif;
