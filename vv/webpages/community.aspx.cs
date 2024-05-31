@@ -47,7 +47,7 @@ namespace vv.web_pages
 
                     Label lblPostTime = new Label();
                     lblPostTime.CssClass = "time";
-                    lblPostTime.Text = post.postTime().ToString(@"hh\:mm");
+                    lblPostTime.Text = post.postTime.ToString(@"hh\:mm");
                     postPanel.Controls.Add(lblPostTime);
 
                     postPanel.Controls.Add(new LiteralControl("<br />"));

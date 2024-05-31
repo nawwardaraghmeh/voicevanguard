@@ -143,7 +143,7 @@ namespace vv.webpages
             }
 
         }
-
+        
         private String GetOrganizerName(Guid organizerId)
         {
             string connectionString = ConfigurationManager.ConnectionStrings["VoiceVanguardDB"].ConnectionString;

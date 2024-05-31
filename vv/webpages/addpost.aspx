@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="addPost.aspx.cs" Inherits="vv.web_pages.addPost" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="addpost.aspx.cs" Inherits="vv.webpages.addpost" %>
 
 <!DOCTYPE html>
 
@@ -25,7 +25,8 @@
                 <a href="faq.aspx" class="nav-item">FAQs</a>
             </div>
             <div class="navbar-right">
-                <a href="profile.aspx" class="nav-item icon"><i class="fa fa-user" aria-hidden="true"></i></a>
+                <a href="profile.aspx" class="nav-item icon"><i class="fa fa-user" aria-hidden="true">
+                </i></a>
             </div>
         </div>
     </nav>
@@ -35,7 +36,7 @@
     <br />
 
     <form id="form1" runat="server">
-        <uc:notification id="Notification1" runat="server" />
+
         <h1 id="pageTitle">ADD POST</h1>
 
         <div id="heroDiv">
@@ -43,7 +44,8 @@
             <asp:TextBox runat="server" type="text" ID="titleBox" required="required" /><br />
 
             <div id="secondDiv">
-                <asp:TextBox runat="server" type="text" ID="contentBox" placeholder="What's On Your Mind?" required="required" /><br />
+                <asp:TextBox runat="server" type="text" ID="contentBox" placeholder="What's On Your Mind?"
+                    required="required" /><br />
             </div>
             <br />
             <asp:Button runat="server" Text="POST" ID="postBtn" OnClick="postBtn_Click" />
