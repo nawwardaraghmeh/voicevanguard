@@ -33,13 +33,13 @@ namespace vv.webpages
         protected global::vv.webpages.notifications Notification1;
 
         /// <summary>
-        /// pfp1 control.
+        /// postDetailsContainer control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image pfp1;
+        protected global::System.Web.UI.WebControls.Panel postDetailsContainer;
 
         /// <summary>
         /// userName control.
@@ -114,13 +114,13 @@ namespace vv.webpages
         protected global::System.Web.UI.WebControls.Label commentLabel;
 
         /// <summary>
-        /// pfp2 control.
+        /// commentContainer control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image pfp2;
+        protected global::System.Web.UI.WebControls.Panel commentContainer;
 
         /// <summary>
         /// userName2 control.
@@ -157,68 +157,5 @@ namespace vv.webpages
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HyperLink reportCommentLink;
-
-        /// <summary>
-        /// replyButton1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button replyButton1;
-
-        /// <summary>
-        /// pfp3 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Image pfp3;
-
-        /// <summary>
-        /// userName3 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label userName3;
-
-        /// <summary>
-        /// replyDate control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label replyDate;
-
-        /// <summary>
-        /// replyContent control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label replyContent;
-
-        /// <summary>
-        /// reportReplyLink control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink reportReplyLink;
-
-        /// <summary>
-        /// replyButton2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button replyButton2;
     }
 }

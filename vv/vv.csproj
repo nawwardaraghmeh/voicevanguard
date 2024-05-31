@@ -557,6 +557,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\VV.mdf" />
+    <Content Include="App_Data\VV2.mdf" />
+    <Content Include="App_Data\VV2_log.ldf">
+      <DependentUpon>VV2.mdf</DependentUpon>
+    </Content>
     <Content Include="App_Data\VV_log.ldf">
       <DependentUpon>VV.mdf</DependentUpon>
     </Content>

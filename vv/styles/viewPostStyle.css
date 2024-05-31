@@ -121,11 +121,11 @@
     font-family: "Coustard", serif;
 }
 
-#userName2, #userName3 {
+.commenterName {
     font-size: 15pt;
     display: inline-block;
 }
-#commentPostDate, #commentContent {
+.commentPostDate, .commentContent {
     display: inline-block;
     margin: 0px;
 }

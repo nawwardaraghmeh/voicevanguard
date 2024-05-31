@@ -56,36 +56,25 @@
                 <option value="Mental-Health">Mental Health</option>
             </select>
             <input type="button" value="Most Popular" />
-            <input type="button" value="Recent Posts" />
-            <input type="button" value="Trending" />
-           
-            <asp:Button runat="server" id="createPostbtn" Text="Join the community, Ignite the Action" OnClick="createPostbtn_Click"/>
+                <input type="button" value="Recent Posts" />
+                <input type="button" value="Trending" />
+
+                <asp:Button runat="server" ID="createPostbtn" Text="Join the community, Ignite the Action"
+                    OnClick="createPostbtn_Click" />
             </div>
-            <div id="SecondDiv">
+            <asp:Panel runat="server" CssClass="SecondDiv" ID="postsContainer">
+                <!--
                 <div class="post">
-                    <p class="poster">By: Andrew Matt</p><p class="time">2d ago</p><br />
-                    <asp:LinkButton runat="server" CssClass="h4" ID="title1" OnClick="title1_Click">Is this Organization Legitimate?</asp:LinkButton>
-                    <p class="postContent">I've come across an organization that claims to support a cause close to my heart,
-                        but I want to ensure its legitimacy. 
-                        Has anyone had experience with “EarthGuardians”?
-                        I heard some bad rumors about it recently, and I ... Read More</p><br />
-                    <p class="num_of_comments">25 comments</p>
+                    <asp:Label runat="server" ID="lblposter" CssClass="poster" Text="By: "></asp:Label>
+                    <asp:Label runat="server" CssClass="time" ID="lblPostTime"></asp:Label>
+                    <br />
+                    <asp:LinkButton runat="server" CssClass="h4" ID="title1" OnClick="title1_Click"></asp:LinkButton>
+                    <asp:Label runat="server" CssClass="postContent" ID="lblPostContent"></asp:Label>
+                    <br />
+                    <asp:Label runat="server" CssClass="num_of_comments" ID="lblNumOfComments"></asp:Label>
                 </div>
-                <div class="post">
-                    <p class="poster">By: Isabella Lopez</p><p class="time">3h ago</p><br />
-                   <asp:LinkButton runat="server" CssClass="h4" ID="LinkButton2" OnClick="title1_Click">Equality Rally Pictures</asp:LinkButton>
-                    <p class="postContent">Captured these moments at today's equality rally. The power of unity! 
-                                            💙✊ #SocialJustice #EqualityForAll</p><br />
-                    <p class="num_of_comments">17 comments</p>
-                </div>
-                <div class="post">
-                    <p class="poster">By: Aiden Kim </p><p class="time">2w ago</p><br />
-                    <asp:LinkButton runat="server" CssClass="h4" ID="LinkButton1" OnClick="title1_Click">Sustainable Living Article</asp:LinkButton>
-                    <p class="postContent">Stumbled upon an inspiring article about sustainable living. Dive into the details and let's discuss its impact on our community!
-                                            https://www.example.com/sustainable-living</p><br />
-                    <p class="num_of_comments">49 comments</p>
-                </div>
-            </div>
+                -->
+            </asp:Panel>
         </div>
         </form>
     <br />
