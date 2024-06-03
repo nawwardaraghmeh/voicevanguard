@@ -34,7 +34,7 @@ namespace vv
                 DateTime notifDate = DateTime.Today;
                 TimeSpan notifTime = DateTime.Now - DateTime.Today;
                 NotifTemp notif = new NotifTemp();
-                notif.addNotif(notifid, userId, postId, "PostAddition", notifDate, notifTime);
+                notif.addPostNotif(notifid, userId, postId, notifDate, notifTime);
 
                 string dataToSend = "Post was added successfully!\nThank you for your contribution.";
                 string url = "popups/postAdditionPopup.aspx?data=" + Server.UrlEncode(dataToSend);

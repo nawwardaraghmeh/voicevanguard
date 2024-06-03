@@ -16,7 +16,7 @@ namespace vv.webpages.popups
                 string dataReceived = Request.QueryString["data"];
                 if (!string.IsNullOrEmpty(dataReceived))
                 {
-                    lblPostAdditionPopup.Text = dataReceived;
+                    //lblPostAddition.Text = dataReceived;
                 }
             }
         }

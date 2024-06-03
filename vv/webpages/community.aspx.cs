@@ -55,7 +55,7 @@ namespace vv.web_pages
                     LinkButton lnkTitle = new LinkButton();
                     lnkTitle.CssClass = "h4";
                     lnkTitle.Text = post.postTitle;
-                    lnkTitle.Click += (s, args) => title1_Click(s, EventArgs.Empty, postId);
+                    lnkTitle.Click += (s, args) => title2_Click(s, EventArgs.Empty, postId);
                     postPanel.Controls.Add(lnkTitle);
 
                     Label lblPostContent = new Label();
@@ -188,6 +188,12 @@ namespace vv.web_pages
         }
 
         protected void title1_Click(object sender, EventArgs e, Guid postId)
+        {
+            string url = $"~/webpages/viewPost.aspx?postId={postId}";
+            Response.Redirect(url);
+        }
+
+        protected void title2_Click(object sender, EventArgs e, Guid postId)
         {
             string url = $"~/webpages/viewPost.aspx?postId={postId}";
             Response.Redirect(url);

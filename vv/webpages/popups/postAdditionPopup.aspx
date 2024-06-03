@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="eventAdditionPopup.aspx.cs" Inherits="vv.popups.eventAdditionPopup" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="postAdditionPopup.aspx.cs" Inherits="vv.popups.postAdditionPopup" %>
 
 <!DOCTYPE html>
 
@@ -33,22 +33,22 @@
             #btnOk:hover {
                 background-color: #7BCC98;
             }
-            
+
         #lblPostAdditionPopup {
             margin: 20px auto;
         }
     </style>
-        <script type="text/javascript">
+    <script type="text/javascript">
         function closePopupAndRedirect() {
-            window.opener.location.href = '../events.aspx'; 
+            window.opener.location.href = '../events.aspx';
             window.close();
         }
-        </script>
+    </script>
 </head>
 <body>
     <form id="form1" runat="server">
         <div>
-            <asp:Label ID="lblPostAdditionPopup" runat="server" Text=""></asp:Label> 
+            <asp:Label ID="lblPostAddition" runat="server" Text="none"></asp:Label>
             <br />
             <asp:Button ID="btnOk" runat="server" Text="CLOSE" OnClientClick="closePopupAndRedirect(); return false;" />
         </div>

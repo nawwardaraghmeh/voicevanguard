@@ -263,27 +263,28 @@ namespace vv.web_pages
                         actPanel.Controls.Add(divStart);
 
                         Label actLabel = new Label();
+                        HyperLink link = new HyperLink();
                         switch (notif.notifType)
                         {
                             case "EventAddition":
                                 actLabel.Text = "You created a new event: ";
+                                link = getEventHyperLink(notif.EventId);
                                 break;
                             case "EventSubscription":
                                 actLabel.Text = "You added an event to your calendar: ";
+                                link = getEventHyperLink(notif.EventId);
                                 break;
                             case "EventInterested":
                                 actLabel.Text = "1 person is interested in your event: ";
+                                link = getEventHyperLink(notif.EventId);
                                 break;
-                        }
-
-                        HyperLink eventPage = new HyperLink();
-                        string url = $"~/webpages/viewevent.aspx?eventId={notif.EventId}";
-                        eventPage.NavigateUrl = url;
-                        eventPage.Text = GetEventTitle(notif.EventId).ToUpper(); 
-                        eventPage.CssClass = "eventLink";
+                            case "PostAdded":
+                                actLabel.Text = "You added a post!";
+                                break;
+                        }                        
 
                         actPanel.Controls.Add(actLabel);
-                        actPanel.Controls.Add(eventPage);
+                        actPanel.Controls.Add(link);
 
                         actPanel.Controls.Add(divEnd);
 
@@ -298,6 +299,26 @@ namespace vv.web_pages
                 notifLabel.CssClass = "noActLabel";
                 activitiesPanel.Controls.Add(notifLabel);
             }
+        }
+
+        public HyperLink getEventHyperLink(Guid eventId)
+        {
+            HyperLink eventPage = new HyperLink();
+            string url = $"~/webpages/viewevent.aspx?eventId={eventId}";
+            eventPage.NavigateUrl = url;
+            eventPage.Text = GetEventTitle(eventId).ToUpper();
+            eventPage.CssClass = "eventLink";
+            return eventPage;
+        }
+
+        public HyperLink getPostHyperLink(Guid postId)
+        {
+            HyperLink eventPage = new HyperLink();
+            string url = $"~/webpages/viewpost.aspx?eventId={postId}";
+            eventPage.NavigateUrl = url;
+            eventPage.Text = GetPostTitle(postId).ToUpper();
+            eventPage.CssClass = "eventLink";
+            return eventPage;
         }
 
         public List<Guid> GetUserNotifIds(Guid userId)
@@ -374,6 +395,28 @@ namespace vv.web_pages
             }
 
             return eventTitle;
+        }
+
+        private string GetPostTitle(Guid postId)
+        {
+            string postTitle = "";
+            string connectionString = ConfigurationManager.ConnectionStrings["VoiceVanguardDB"].ConnectionString;
+            string query = "SELECT postTitle FROM post WHERE postId = @postId";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@postId", postId);
+
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                if (reader.Read())
+                {
+                    postTitle = reader["postTitle"].ToString();
+                }
+            }
+
+            return postTitle;
         }
 
         protected void btnLogout_Click(object sender, EventArgs e)

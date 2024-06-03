@@ -48,7 +48,7 @@
 <body>
     <form id="form1" runat="server">
         <div>
-            <asp:Label ID="lblEventAdditionPopup" runat="server" Text=""></asp:Label> 
+            <asp:Label ID="lblEventAdditionPopup" runat="server" Text="none"></asp:Label> 
             <br />
             <asp:Button ID="btnOk" runat="server" Text="CLOSE" OnClientClick="closePopupAndRedirect(); return false;" />
         </div>

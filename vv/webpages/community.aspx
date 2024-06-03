@@ -63,17 +63,7 @@
                     OnClick="createPostbtn_Click" />
             </div>
             <asp:Panel runat="server" CssClass="SecondDiv" ID="postsContainer">
-                <!--
-                <div class="post">
-                    <asp:Label runat="server" ID="lblposter" CssClass="poster" Text="By: "></asp:Label>
-                    <asp:Label runat="server" CssClass="time" ID="lblPostTime"></asp:Label>
-                    <br />
-                    <asp:LinkButton runat="server" CssClass="h4" ID="title1" OnClick="title1_Click"></asp:LinkButton>
-                    <asp:Label runat="server" CssClass="postContent" ID="lblPostContent"></asp:Label>
-                    <br />
-                    <asp:Label runat="server" CssClass="num_of_comments" ID="lblNumOfComments"></asp:Label>
-                </div>
-                -->
+               
             </asp:Panel>
         </div>
         </form>

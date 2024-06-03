@@ -27,6 +27,7 @@ namespace vv.webpages
                     NotifTemp notif = LoadNotifContent(id);
                     if (notif != null && notifIds.Any())
                     {
+                        
                         Panel notifPanel = new Panel();
                         notifPanel.CssClass = "notifTemp";
 
@@ -40,6 +41,9 @@ namespace vv.webpages
                                 notifImage.ImageUrl = "~/resources/images/eventsub.png";
                                 break;
                             case "EventInterested":
+                                notifImage.ImageUrl = "~/resources/images/eventinterest.png";
+                                break;
+                            case "PostAdded":
                                 notifImage.ImageUrl = "~/resources/images/eventinterest.png";
                                 break;
                         }
@@ -62,6 +66,9 @@ namespace vv.webpages
                                 break;
                             case "EventInterested":
                                 notifLabel.Text = "1 person is interested in your event! ";
+                                break;
+                            case "PostAdded":
+                                notifLabel.Text = "You added a post!";
                                 break;
                         }
                         /*
@@ -133,6 +140,8 @@ namespace vv.webpages
                     notifContent = new NotifTemp();
                     notifContent.NotifId = (Guid)reader["notifId"];
                     notifContent.EventId = (Guid)reader["eventId"];
+                    //notifContent.PostId = (Guid)reader["postId"];
+                    //notifContent.CommentId = (Guid)reader["commentId"];
                     notifContent.notifType = reader["notifType"].ToString();
                 }
 
