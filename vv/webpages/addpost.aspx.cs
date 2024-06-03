@@ -6,7 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using vv.models;
 
-namespace vv.webpages
+namespace vv
 {
     public partial class addpost : System.Web.UI.Page
     {
@@ -18,7 +18,7 @@ namespace vv.webpages
 
         protected void postBtn_Click(object sender, EventArgs e)
         {
-            /*
+
             PostTemp postobj = new PostTemp();
 
             Guid userId = new Guid(Session["UserId"].ToString());
@@ -48,7 +48,7 @@ namespace vv.webpages
                 string script = "window.open('" + url + "', '_blank', 'width=400,height=300,top=250,left=450,toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes');";
                 ClientScript.RegisterStartupScript(this.GetType(), "openwindow", script, true);
             }
-            */
+
         }
     }
 }

@@ -556,6 +556,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="webpages\addpost.aspx" />
     <Content Include="App_Data\VV.mdf" />
     <Content Include="App_Data\VV2.mdf" />
     <Content Include="App_Data\VV2_log.ldf">
@@ -587,7 +588,6 @@
     <Content Include="resources\images\eventinterest.png" />
     <Content Include="resources\images\eventsub.png" />
     <Content Include="styles\editProfileStyles.css" />
-    <Content Include="webpages\addpost.aspx" />
     <Content Include="webpages\popups\editProfile.aspx" />
     <Content Include="webpages\popups\eventAdditionPopup.aspx" />
     <Content Include="resources\images\aboutusPic.png" />
@@ -770,6 +770,13 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="webpages\addpost.aspx.cs">
+      <DependentUpon>addpost.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="webpages\addpost.aspx.designer.cs">
+      <DependentUpon>addpost.aspx</DependentUpon>
+    </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Global.asax.cs">
@@ -780,13 +787,6 @@
     <Compile Include="models\NotifTemp.cs" />
     <Compile Include="models\PostTemp.cs" />
     <Compile Include="models\UserProfile.cs" />
-    <Compile Include="webpages\addpost.aspx.cs">
-      <DependentUpon>addpost.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="webpages\addpost.aspx.designer.cs">
-      <DependentUpon>addpost.aspx</DependentUpon>
-    </Compile>
     <Compile Include="webpages\popups\editProfile.aspx.cs">
       <DependentUpon>editProfile.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

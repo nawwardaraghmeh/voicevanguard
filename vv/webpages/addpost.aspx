@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="addpost.aspx.cs" Inherits="vv.webpages.addpost" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="addpost.aspx.cs" Inherits="vv.addpost" %>
 
 <!DOCTYPE html>
 
@@ -72,6 +72,5 @@
             </p>
         </div>
     </footer>
-
 </body>
 </html>

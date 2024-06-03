@@ -241,7 +241,9 @@ namespace vv.webpages
                     {
                         Guid notifid = Guid.NewGuid();
                         NotifTemp notif = new NotifTemp();
-                        notif.addNotif(notifid, userId, eventId, "EventSubscription");
+                        TimeSpan time = DateTime.Now - DateTime.Today;
+                        DateTime date = DateTime.Now;
+                        notif.addNotif(notifid, userId, eventId, "EventSubscription", date, time );
                         sendNotifToOrganizer(eventId);
                        
                         string dataToSend = "Event was added to your calendar!\nThank you for your contribution.";
@@ -281,7 +283,9 @@ namespace vv.webpages
                     userid = (Guid)reader["eventOrganizer"];
                     Guid notifid = Guid.NewGuid();
                     NotifTemp notif = new NotifTemp();
-                    notif.addNotif(notifid, userid, eventid, "EventInterested");
+                    TimeSpan time = DateTime.Now - DateTime.Today;
+                    DateTime date = DateTime.Now;
+                    notif.addNotif(notifid, userid, eventid, "EventInterested", date, time);
                 }
 
             } 
