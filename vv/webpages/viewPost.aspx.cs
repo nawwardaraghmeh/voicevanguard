@@ -31,7 +31,7 @@ namespace vv.webpages
                 }
 
                 string eventIdString = Request.QueryString["postId"];
-                if (!string.IsNullOrEmpty(eventIdString) && Guid.TryParse(eventIdString, out Guid eventId))
+                if (!string.IsNullOrEmpty(eventIdString) && Guid.TryParse(eventIdString, out Guid postId))
                 {
                     postDetails = LoadPostDetails(postId);
                     UpdatePostDetails(postDetails);
@@ -230,5 +230,4 @@ namespace vv.webpages
 
 
     }
-}
 }

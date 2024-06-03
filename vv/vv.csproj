@@ -556,6 +556,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="webpages\addpost.aspx" />
     <Content Include="App_Data\VV.mdf" />
     <Content Include="App_Data\VV2.mdf" />
     <Content Include="App_Data\VV2_log.ldf">
@@ -763,6 +764,13 @@
     <Content Include="Views\web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="webpages\addpost.aspx.cs">
+      <DependentUpon>addpost.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="webpages\addpost.aspx.designer.cs">
+      <DependentUpon>addpost.aspx</DependentUpon>
+    </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Global.asax.cs">
