@@ -20,7 +20,7 @@ namespace vv.web_pages
             {
                 if (Session["userId"] != null)
                 {
-
+                    loadPosts(); 
                 }
                 else
                 {
@@ -32,10 +32,10 @@ namespace vv.web_pages
         private void loadPosts()
         {
             List<Guid> postIds = getPostsIds();
-            foreach(Guid postId in postIds)
+            foreach (Guid postId in postIds)
             {
                 PostTemp post = loadPostDetails(postId);
-                if(post != null)
+                if (post != null)
                 {
                     Panel postPanel = new Panel();
                     postPanel.CssClass = "post";
@@ -47,7 +47,7 @@ namespace vv.web_pages
 
                     Label lblPostTime = new Label();
                     lblPostTime.CssClass = "time";
-                    lblPostTime.Text = post.postTime.ToString(@"hh\:mm");
+                    lblPostTime.Text = post.postDate.ToString("yyyy-MM-dd") + " " + post.postTime.ToString(@"hh\:mm");
                     postPanel.Controls.Add(lblPostTime);
 
                     postPanel.Controls.Add(new LiteralControl("<br />"));
@@ -80,7 +80,7 @@ namespace vv.web_pages
             List<Guid> allPostsIds = new List<Guid>();
 
             string connectionString = ConfigurationManager.ConnectionStrings["VoiceVanguardDB"].ConnectionString;
-            string query = "SELECT postId FROM post ORDER BY postDate DESC, postTime";
+            string query = "SELECT postId FROM post ORDER BY postDate DESC, postTime DESC";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -91,8 +91,8 @@ namespace vv.web_pages
 
                 while (reader.Read())
                 {
-                    Guid eventId = (Guid)reader["eventId"];
-                    allPostsIds.Add(eventId);
+                    Guid postId = (Guid)reader["postId"];
+                    allPostsIds.Add(postId);
                 }
 
                 reader.Close();
@@ -102,7 +102,7 @@ namespace vv.web_pages
             return allPostsIds;
         }
 
-        private PostTemp loadPostDetails(Guid postid)
+        private PostTemp loadPostDetails(Guid postId)
         {
             PostTemp postDetails = null;
 
@@ -112,7 +112,7 @@ namespace vv.web_pages
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 SqlCommand command = new SqlCommand(query, connection);
-                command.Parameters.AddWithValue("@id", postid);
+                command.Parameters.AddWithValue("@id", postId);
 
                 connection.Open();
                 SqlDataReader reader = command.ExecuteReader();
@@ -136,10 +136,10 @@ namespace vv.web_pages
 
         private String getPosterName(Guid posterId)
         {
+            string posterName = null;
             string connectionString = ConfigurationManager.ConnectionStrings["VoiceVanguardDB"].ConnectionString;
-            string query = "SELECT * FROM users WHERE userId = @id";
+            string query = "SELECT name FROM users WHERE userId = @id";
 
-            String posterName;
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 SqlCommand command = new SqlCommand(query, connection);
@@ -151,23 +151,19 @@ namespace vv.web_pages
                 if (reader.Read())
                 {
                     posterName = reader["name"].ToString();
-
-                    Guid userId = new Guid(Session["UserId"].ToString());
-                    Guid id = new Guid(reader["userId"].ToString());
-
-                    return posterName;
                 }
 
                 reader.Close();
                 connection.Close();
             }
-            return null;
+
+            return posterName;
         }
 
         private int getNumofComments(Guid postId)
         {
             int numOfComments = 0;
-            string connectionString = ConfigurationManager.ConnectionStrings["YourConnectionStringName"].ConnectionString;
+            string connectionString = ConfigurationManager.ConnectionStrings["VoiceVanguardDB"].ConnectionString; // Corrected connection string name
 
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
@@ -180,17 +176,11 @@ namespace vv.web_pages
             }
 
             return numOfComments;
-        } 
+        }
 
         protected void createPostbtn_Click(object sender, EventArgs e)
         {
             Response.Redirect("~/webpages/addpost.aspx");
-        }
-
-        protected void title1_Click(object sender, EventArgs e, Guid postId)
-        {
-            string url = $"~/webpages/viewPost.aspx?postId={postId}";
-            Response.Redirect(url);
         }
 
         protected void title2_Click(object sender, EventArgs e, Guid postId)
