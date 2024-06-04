@@ -162,7 +162,7 @@ namespace vv.web_pages
         {
             List<Guid> eventIds = new List<Guid>();
             string connectionString = ConfigurationManager.ConnectionStrings["VoiceVanguardDB"].ConnectionString;
-            string sqlQuery = "SELECT eventId FROM EventSubscription WHERE userId = @userId";
+            string sqlQuery = "SELECT eventId FROM participants WHERE userId = @userId";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -188,7 +188,7 @@ namespace vv.web_pages
         {
             List<Guid> eventIds = new List<Guid>();
             string connectionString = ConfigurationManager.ConnectionStrings["VoiceVanguardDB"].ConnectionString;
-            string sqlQuery = "SELECT eventId FROM Event WHERE userId = @userId";
+            string sqlQuery = "SELECT eventId FROM event WHERE eventOrganizer = @userId";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {

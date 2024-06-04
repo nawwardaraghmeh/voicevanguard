@@ -239,7 +239,6 @@ namespace vv.webpages
 
             return notifContent;
         }
-y
 
     }
 }

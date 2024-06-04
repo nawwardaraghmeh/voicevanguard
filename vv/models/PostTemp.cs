@@ -25,7 +25,7 @@ namespace vv.models
             postTitle = string.Empty;
         }
 
-        public int addPost(Guid userId, Guid postId, string postContent, string postTitle)
+        public int addPost(Guid userId, Guid postId, string postTitle, string postContent)
         {
             string connectionString = ConfigurationManager.ConnectionStrings["VoiceVanguardDB"].ConnectionString;
             string query = "";
