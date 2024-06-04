@@ -653,7 +653,6 @@
     <Content Include="styles\viewEventStyles.css" />
     <Content Include="styles\viewPostStyle.css" />
     <Content Include="webpages\addevent.aspx" />
-    <Content Include="webpages\notification.aspx" />
     <Content Include="webpages\notifications.ascx" />
     <Content Include="webpages\popups\participantsAdditionPopup.aspx" />
     <Content Include="webpages\popups\postAdditionPopup.aspx" />
@@ -875,13 +874,6 @@
     </Compile>
     <Compile Include="webpages\login.aspx.designer.cs">
       <DependentUpon>login.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="webpages\notification.aspx.cs">
-      <DependentUpon>notification.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="webpages\notification.aspx.designer.cs">
-      <DependentUpon>notification.aspx</DependentUpon>
     </Compile>
     <Compile Include="webpages\notifications.ascx.cs">
       <DependentUpon>notifications.ascx</DependentUpon>
