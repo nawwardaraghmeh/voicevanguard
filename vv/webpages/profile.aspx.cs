@@ -35,7 +35,7 @@ namespace vv.web_pages
                 else if (Session["ProfileUpdated"] != null && (bool)Session["ProfileUpdated"])
                 {
                     loadUserData(userId);
-                    Session["ProfileUpdated"] = false; // reset the session variable
+                    Session["ProfileUpdated"] = false; 
                 }
             }
             else
@@ -161,74 +161,54 @@ namespace vv.web_pages
         private List<Guid> GetUserEventIds(Guid userId)
         {
             List<Guid> eventIds = new List<Guid>();
-
-            if (userId == Guid.Empty)
-            {
-                return eventIds; 
-            }
-
             string connectionString = ConfigurationManager.ConnectionStrings["VoiceVanguardDB"].ConnectionString;
-            string query = "SELECT eventId FROM participants WHERE userId = @userId";
+            string sqlQuery = "SELECT eventId FROM EventSubscription WHERE userId = @userId";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                SqlCommand command = new SqlCommand(query, connection);
+                SqlCommand command = new SqlCommand(sqlQuery, connection);
                 command.Parameters.AddWithValue("@userId", userId);
 
-                try
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
                 {
-                    connection.Open();
-                    using (SqlDataReader reader = command.ExecuteReader())
+                    if (Guid.TryParse(reader["eventId"].ToString(), out Guid eventId))
                     {
-                        while (reader.Read())
-                        {
-                            eventIds.Add((Guid)reader["eventId"]);
-                        }
+                        eventIds.Add(eventId);
                     }
-                }
-                catch (Exception ex)
-                {
                 }
             }
 
             return eventIds;
         }
+
 
         private List<Guid> GetEventIdsUserCreated(Guid userId)
         {
             List<Guid> eventIds = new List<Guid>();
-
-            if (userId == Guid.Empty)
-            {
-                return eventIds; 
-            }
-
             string connectionString = ConfigurationManager.ConnectionStrings["VoiceVanguardDB"].ConnectionString;
-            string query = "SELECT eventId FROM event WHERE eventOrganizer = @userId";
+            string sqlQuery = "SELECT eventId FROM Event WHERE userId = @userId";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                SqlCommand command = new SqlCommand(query, connection);
+                SqlCommand command = new SqlCommand(sqlQuery, connection);
                 command.Parameters.AddWithValue("@userId", userId);
 
-                try
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
                 {
-                    connection.Open();
-                    using (SqlDataReader reader = command.ExecuteReader())
+                    if (Guid.TryParse(reader["eventId"].ToString(), out Guid eventId))
                     {
-                        while (reader.Read())
-                        {
-                            eventIds.Add((Guid)reader["eventId"]);
-                        }
+                        eventIds.Add(eventId);
                     }
-                }
-                catch (Exception ex)
-                {
                 }
             }
 
             return eventIds;
         }
+
 
         private Guid GetUserIdFromSession()
         {
@@ -246,61 +226,81 @@ namespace vv.web_pages
         {
             Guid userId = GetUserIdFromSession();
 
-            List<Guid> notifIds = GetUserNotifIds(userId);
-            if (notifIds != null && notifIds.Count > 0)
-            {
-                foreach (Guid id in notifIds)
-                {
-                    NotifTemp notif = LoadNotifContent(id);
-                    if (notif != null)
-                    {
-                        Panel actPanel = new Panel();
-                        actPanel.CssClass = "tabDiv";
+            List<Guid> eventNotifIds = getUserEventNotifIds(userId);
+            List<Guid> postNotifIds = getUserPostNotifIds(userId);
 
-                        LiteralControl divStart = new LiteralControl("<div class=\"activityDiv\">");
-                        LiteralControl divEnd = new LiteralControl("</div>");
-
-                        actPanel.Controls.Add(divStart);
-
-                        Label actLabel = new Label();
-                        HyperLink link = new HyperLink();
-                        switch (notif.notifType)
-                        {
-                            case "EventAddition":
-                                actLabel.Text = "You created a new event: ";
-                                link = getEventHyperLink(notif.EventId);
-                                break;
-                            case "EventSubscription":
-                                actLabel.Text = "You added an event to your calendar: ";
-                                link = getEventHyperLink(notif.EventId);
-                                break;
-                            case "EventInterested":
-                                actLabel.Text = "1 person is interested in your event: ";
-                                link = getEventHyperLink(notif.EventId);
-                                break;
-                            case "PostAdded":
-                                actLabel.Text = "You added a post!";
-                                break;
-                        }                        
-
-                        actPanel.Controls.Add(actLabel);
-                        actPanel.Controls.Add(link);
-
-                        actPanel.Controls.Add(divEnd);
-
-                        activitiesPanel.Controls.Add(actPanel);
-                    }
-                }
-            }
-            else
+            if (postNotifIds == null && eventNotifIds == null)
             {
                 Label notifLabel = new Label();
                 notifLabel.Text = "No activity yet!";
                 notifLabel.CssClass = "noActLabel";
                 activitiesPanel.Controls.Add(notifLabel);
             }
+
+            if (eventNotifIds != null && eventNotifIds.Count > 0)
+            {
+                foreach (Guid id in eventNotifIds)
+                {
+                    NotifTemp notif = LoadEventNotifContent(id);
+                    if (notif != null)
+                    {
+                        populateActivityContainer(notif);
+                    }
+                }
+            }
+            if (postNotifIds != null && postNotifIds.Count > 0)
+            {
+                foreach (Guid id in postNotifIds)
+                {
+                    NotifTemp notif = LoadPostNotifContent(id);
+                    if (notif != null)
+                    {
+                        populateActivityContainer(notif);
+                    }
+                }
+            }
         }
 
+        public void populateActivityContainer(NotifTemp notif)
+        {
+            Panel actPanel = new Panel();
+            actPanel.CssClass = "tabDiv";
+
+            LiteralControl divStart = new LiteralControl("<div class=\"activityDiv\">");
+            LiteralControl divEnd = new LiteralControl("</div>");
+
+            actPanel.Controls.Add(divStart);
+
+            Label actLabel = new Label();
+            HyperLink link = new HyperLink();
+            switch (notif.notifType)
+            {
+                case "EventAddition":
+                    actLabel.Text = "You created a new event: ";
+                    link = getEventHyperLink(notif.EventId);
+                    break;
+                case "EventSubscription":
+                    actLabel.Text = "You added an event to your calendar: ";
+                    link = getEventHyperLink(notif.EventId);
+                    break;
+                case "EventInterested":
+                    actLabel.Text = "1 person is interested in your event: ";
+                    link = getEventHyperLink(notif.EventId);
+                    break;
+                case "PostAdded":
+                    actLabel.Text = "You added a post!";
+                    link = getPostHyperLink(notif.PostId);
+                    break;
+            }
+
+            actPanel.Controls.Add(actLabel);
+            actPanel.Controls.Add(link);
+
+            actPanel.Controls.Add(divEnd);
+
+            activitiesPanel.Controls.AddAt(0, actPanel);
+        }
+    
         public HyperLink getEventHyperLink(Guid eventId)
         {
             HyperLink eventPage = new HyperLink();
@@ -321,16 +321,16 @@ namespace vv.web_pages
             return eventPage;
         }
 
-        public List<Guid> GetUserNotifIds(Guid userId)
+        public List<Guid> getUserEventNotifIds(Guid userid)
         {
             List<Guid> notifIds = new List<Guid>();
             string connectionString = ConfigurationManager.ConnectionStrings["VoiceVanguardDB"].ConnectionString;
-            string sqlQuery = "SELECT notifId FROM notification WHERE userId = @userId";
+            string sqlQuery = "SELECT top 5 notifId FROM notification WHERE userId = @userid and eventId IS NOT NULL order by notifDate DESC, notifTime";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 SqlCommand command = new SqlCommand(sqlQuery, connection);
-                command.Parameters.AddWithValue("@userId", userId);
+                command.Parameters.AddWithValue("@userid", userid);
 
                 connection.Open();
                 SqlDataReader reader = command.ExecuteReader();
@@ -343,12 +343,34 @@ namespace vv.web_pages
             return notifIds;
         }
 
-        private NotifTemp LoadNotifContent(Guid notifId)
+        public List<Guid> getUserPostNotifIds(Guid userid)
+        {
+            List<Guid> notifIds = new List<Guid>();
+            string connectionString = ConfigurationManager.ConnectionStrings["VoiceVanguardDB"].ConnectionString;
+            string sqlQuery = "SELECT top 5 notifId FROM notification WHERE userId = @userid and postId IS NOT NULL order by notifDate DESC, notifTime";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlCommand command = new SqlCommand(sqlQuery, connection);
+                command.Parameters.AddWithValue("@userid", userid);
+
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    notifIds.Add((Guid)reader["notifId"]);
+                }
+            }
+
+            return notifIds;
+        }
+
+        private NotifTemp LoadEventNotifContent(Guid notifId)
         {
             NotifTemp notifContent = null;
 
             string connectionString = ConfigurationManager.ConnectionStrings["VoiceVanguardDB"].ConnectionString;
-            string query = "SELECT notifId, eventId, notifType FROM notification WHERE notifId = @id";
+            string query = "SELECT * FROM notification WHERE notifId = @id";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -360,12 +382,40 @@ namespace vv.web_pages
 
                 if (reader.Read())
                 {
-                    notifContent = new NotifTemp
-                    {
-                        NotifId = (Guid)reader["notifId"],
-                        EventId = (Guid)reader["eventId"],
-                        notifType = reader["notifType"].ToString()
-                    };
+                    notifContent = new NotifTemp();
+                    notifContent.NotifId = (Guid)reader["notifId"];
+                    notifContent.EventId = (Guid)reader["eventId"];
+                    notifContent.notifType = reader["notifType"].ToString();
+                }
+
+                reader.Close();
+                connection.Close();
+            }
+
+            return notifContent;
+        }
+
+        private NotifTemp LoadPostNotifContent(Guid notifId)
+        {
+            NotifTemp notifContent = null;
+
+            string connectionString = ConfigurationManager.ConnectionStrings["VoiceVanguardDB"].ConnectionString;
+            string query = "SELECT * FROM notification WHERE notifId = @id";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@id", notifId);
+
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    notifContent = new NotifTemp();
+                    notifContent.NotifId = (Guid)reader["notifId"];
+                    notifContent.PostId = (Guid)reader["postId"];
+                    notifContent.notifType = reader["notifType"].ToString();
                 }
 
                 reader.Close();

@@ -20,7 +20,7 @@ namespace vv.webpages
             Guid userId = new Guid(Session["UserId"].ToString());
 
             List<Guid> eventNotifIds = getUserEventNotifIds(userId);
-            if(eventNotifIds != null)
+            if (eventNotifIds != null && eventNotifIds.Count > 0)
             {
                 emptynotif.Visible = false;
                 foreach (Guid id in eventNotifIds)
@@ -30,8 +30,8 @@ namespace vv.webpages
                 }
             }
 
-            List<Guid> postNotifIds = getUserEventNotifIds(userId);
-            if (postNotifIds != null)
+            List<Guid> postNotifIds = getUserPostNotifIds(userId);
+            if (postNotifIds != null && postNotifIds.Count > 0)
             {
                 emptynotif.Visible = false;
                 foreach (Guid id in postNotifIds)
@@ -40,16 +40,16 @@ namespace vv.webpages
                     populateNotifContainer(notif);
                 }
             }
-            /* else
-             {
-                 Label notifLabel = new Label();
-                 notifLabel.Text = "No notifications!";
-                 notifLabel.CssClass = "noNotifText";
-                 notifheroContainer.Controls.Add(notifLabel);
-             }*/
 
-
+            if ((eventNotifIds == null || eventNotifIds.Count == 0) && (postNotifIds == null || postNotifIds.Count == 0))
+            {
+                Label notifLabel = new Label();
+                notifLabel.Text = "No notifications!";
+                notifLabel.CssClass = "noNotifText";
+                notifheroContainer.Controls.Add(notifLabel);
+            }
         }
+
 
         public void populateNotifContainer(NotifTemp notif)
         {
@@ -117,7 +117,7 @@ namespace vv.webpages
         {
             List<Guid> notifIds = new List<Guid>();
             string connectionString = ConfigurationManager.ConnectionStrings["VoiceVanguardDB"].ConnectionString;
-            string sqlQuery = "SELECT top 5 notifId FROM notification WHERE userId = @userid order by notifDate DESC, notifTime";
+            string sqlQuery = "SELECT top 5 notifId FROM notification WHERE userId = @userid AND eventId IS NOT NULL ORDER BY notifDate DESC, notifTime";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -128,18 +128,23 @@ namespace vv.webpages
                 SqlDataReader reader = command.ExecuteReader();
                 while (reader.Read())
                 {
-                    notifIds.Add((Guid)reader["notifId"]);
+                    if (Guid.TryParse(reader["notifId"].ToString(), out Guid notifId))
+                    {
+                        notifIds.Add(notifId);
+                    }
                 }
             }
 
             return notifIds;
         }
+
+
 
         public List<Guid> getUserPostNotifIds(Guid userid)
         {
             List<Guid> notifIds = new List<Guid>();
             string connectionString = ConfigurationManager.ConnectionStrings["VoiceVanguardDB"].ConnectionString;
-            string sqlQuery = "SELECT top 5 notifId FROM notification WHERE userId = @userid and postId NOT NULL order by notifDate DESC, notifTime";
+            string sqlQuery = "SELECT top 5 notifId FROM notification WHERE userId = @userid AND postId IS NOT NULL ORDER BY notifDate DESC, notifTime";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -150,12 +155,17 @@ namespace vv.webpages
                 SqlDataReader reader = command.ExecuteReader();
                 while (reader.Read())
                 {
-                    notifIds.Add((Guid)reader["notifId"]);
+                    if (Guid.TryParse(reader["notifId"].ToString(), out Guid notifId))
+                    {
+                        notifIds.Add(notifId);
+                    }
                 }
             }
 
             return notifIds;
         }
+
+
 
         private NotifTemp LoadEventNotifContent(Guid notifId)
         {
@@ -174,10 +184,16 @@ namespace vv.webpages
 
                 if (reader.Read())
                 {
-                    notifContent = new NotifTemp();
-                    notifContent.NotifId = (Guid)reader["notifId"];
-                    notifContent.EventId = (Guid)reader["eventId"];
-                    notifContent.notifType = reader["notifType"].ToString();
+                    notifContent = new NotifTemp
+                    {
+                        NotifId = reader.GetGuid(reader.GetOrdinal("notifId")),
+                        notifType = reader["notifType"]?.ToString()
+                    };
+
+                    if (reader["eventId"] != DBNull.Value)
+                    {
+                        notifContent.EventId = reader.GetGuid(reader.GetOrdinal("eventId"));
+                    }
                 }
 
                 reader.Close();
@@ -186,6 +202,7 @@ namespace vv.webpages
 
             return notifContent;
         }
+
 
         private NotifTemp LoadPostNotifContent(Guid notifId)
         {
@@ -204,10 +221,16 @@ namespace vv.webpages
 
                 if (reader.Read())
                 {
-                    notifContent = new NotifTemp();
-                    notifContent.NotifId = (Guid)reader["notifId"];
-                    notifContent.EventId = (Guid)reader["postId"];
-                    notifContent.notifType = reader["notifType"].ToString();
+                    notifContent = new NotifTemp
+                    {
+                        NotifId = reader.GetGuid(reader.GetOrdinal("notifId")),
+                        notifType = reader["notifType"]?.ToString()
+                    };
+
+                    if (reader["postId"] != DBNull.Value)
+                    {
+                        notifContent.PostId = reader.GetGuid(reader.GetOrdinal("postId"));
+                    }
                 }
 
                 reader.Close();
@@ -216,5 +239,7 @@ namespace vv.webpages
 
             return notifContent;
         }
+y
+
     }
 }
