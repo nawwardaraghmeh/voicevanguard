@@ -2,11 +2,11 @@
     background-color: rgba(217, 217, 217, 0.25)
 }
 
-#heroDiv {
+.heroDiv {
     background-color: rgba(167, 221, 186, 0.73);
     margin: auto;
     display: flex;
-    width: 50%;
+    width: 60%;
     padding: 35px;
     flex-direction: column;
     border-radius: 5px;
@@ -63,11 +63,13 @@
 }
 
 /*comment number and report link*/
-#commentsAndReport {
+/*#commentsAndReport {
     display: flex;
     gap: 65%;
-    margin-left: 30px;
+    margin-left: 50px;
 }
+    */
+
 
 /*post comment box*/
 #postComment {
@@ -98,6 +100,7 @@
     font-family: "Coustard", serif;
     font-size: 20px;
     font-weight: bold;
+    margin-left: 30px;
 }
 
 #commentSectionDiv {
@@ -173,8 +176,9 @@
 }
 
 #commentNumber{
-        display:inline;
-    }
+   display:inline;
+}
+
 #reportPostLink {
     color: #545454;
     font-family: "Coustard", serif;

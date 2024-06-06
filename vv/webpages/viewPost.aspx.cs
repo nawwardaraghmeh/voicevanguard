@@ -21,7 +21,6 @@ namespace vv.webpages
             {
                 if (Session["userId"] != null)
                 {
-                    // User is logged in
                 }
                 else
                 {

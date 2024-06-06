@@ -187,7 +187,7 @@ namespace vv.web_pages
 
         protected void title2_Click(object sender, EventArgs e, Guid postId)
         {
-            string url = $"~/webpages/viewPost.aspx?postId={postId}";
+            string url = $"~/webpages/viewPost.aspx?eventId={postId}";
             Response.Redirect(url);
         }
     }

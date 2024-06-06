@@ -314,7 +314,7 @@ namespace vv.web_pages
         public HyperLink getPostHyperLink(Guid postId)
         {
             HyperLink eventPage = new HyperLink();
-            string url = $"~/webpages/viewpost.aspx?eventId={postId}";
+            string url = $"~/webpages/viewPost.aspx?eventId={postId}";
             eventPage.NavigateUrl = url;
             eventPage.Text = GetPostTitle(postId).ToUpper();
             eventPage.CssClass = "eventLink";

@@ -57,11 +57,11 @@
                 </div>
                 <div id="commentsAndReport">
                     <asp:Label ID="commentNumber" runat="server" Text=""></asp:Label>
-                    <asp:HyperLink ID="reportPostLink" runat="server">ReportPost</asp:HyperLink><br />
+                    <!--<asp:HyperLink ID="reportPostLink" runat="server">ReportPost</asp:HyperLink><br />-->
                 </div>
             </div>
 
-            <!--<asp:TextBox ID="postComment" runat="server" placeholder="Share Your Thoughts! "></asp:TextBox>-->
+            <asp:TextBox ID="postComment" runat="server" placeholder="Share Your Thoughts! " TextMode="MultiLine" ></asp:TextBox>
             <br />
 
             <asp:Label ID="commentLabel" runat="server" Text="COMMENTS"></asp:Label><br />
@@ -77,10 +77,6 @@
                         </div>
 
                         <asp:Label ID="commentContent" runat="server" Text=""></asp:Label><br />
-
-                        <div class="reportAndReply">
-                            <asp:HyperLink ID="reportCommentLink" runat="server">Report</asp:HyperLink>
-                        </div>
 
                     </div>
                 </div>
