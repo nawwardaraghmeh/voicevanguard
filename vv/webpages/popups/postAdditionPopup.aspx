@@ -1,4 +1,5 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="postAdditionPopup.aspx.cs" Inherits="vv.popups.postAdditionPopup" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="postAdditionPopup.aspx.cs"
+    Inherits="vv.webpages.popups.postAdditionPopup" %>
 
 <!DOCTYPE html>
 
@@ -38,9 +39,10 @@
             margin: 20px auto;
         }
     </style>
+
     <script type="text/javascript">
         function closePopupAndRedirect() {
-            window.opener.location.href = '../events.aspx';
+            window.opener.location.href = '../community.aspx';
             window.close();
         }
     </script>
@@ -48,7 +50,7 @@
 <body>
     <form id="form1" runat="server">
         <div>
-            <asp:Label ID="lblPostAddition" runat="server" Text="none"></asp:Label>
+            <asp:Label ID="lblPostAdditionPopup" runat="server" Text="none"></asp:Label>
             <br />
             <asp:Button ID="btnOk" runat="server" Text="CLOSE" OnClientClick="closePopupAndRedirect(); return false;" />
         </div>

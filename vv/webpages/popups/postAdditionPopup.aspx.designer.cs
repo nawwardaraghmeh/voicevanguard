@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace vv.popups
+namespace vv.webpages.popups
 {
 
 
@@ -24,13 +24,13 @@ namespace vv.popups
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
-        /// lblPostAddition control.
+        /// lblPostAdditionPopup control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblPostAddition;
+        protected global::System.Web.UI.WebControls.Label lblPostAdditionPopup;
 
         /// <summary>
         /// btnOk control.
