@@ -75,6 +75,33 @@ namespace vv.models
                 return rowsAffected;
             }
         }
+
+        public int addCommentNotif(Guid notifid, Guid userid, Guid postid, string notifType, DateTime date, TimeSpan time)
+        {
+            string connectionString = ConfigurationManager.ConnectionStrings["VoiceVanguardDB"].ConnectionString;
+            string query = "";
+
+            query = "INSERT INTO notification (notifId, userId, postId, notifType, notifDate, notifTime) VALUES(@notifid, @userid, @postid, @type, @notifDate, @notifTime)";
+
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@notifid", notifid);
+                command.Parameters.AddWithValue("@userid", userid);
+                command.Parameters.AddWithValue("@postid", postid);
+                command.Parameters.AddWithValue("@type", "PostAdded");
+                command.Parameters.AddWithValue("@notifDate", date);
+                command.Parameters.AddWithValue("@notifTime", time);
+
+
+                connection.Open();
+                int rowsAffected = command.ExecuteNonQuery();
+                connection.Close();
+
+                return rowsAffected;
+            }
+        }
     }
         
 }

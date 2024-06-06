@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using vv.models;
+using vv.web_pages;
 
 namespace vv.webpages
 {
@@ -219,7 +220,51 @@ namespace vv.webpages
 
         protected void btnAddComment_Click(object sender, EventArgs e)
         {
+            CommentTemp comment = new CommentTemp();
 
+            Guid userId = new Guid(Session["UserId"].ToString());
+            string commentContent = postComment.Text;
+            string postIdString = Request.QueryString["postId"];
+            Guid postId = new Guid(postIdString);
+            int x = comment.addComment(postId, userId, commentContent);
+
+            if(x != 0)
+            {
+                Guid notifid = Guid.NewGuid();
+                NotifTemp notif = new NotifTemp();
+                TimeSpan time = DateTime.Now - DateTime.Today;
+                DateTime date = DateTime.Now;
+                notif.addNotif(notifid, userId, postId, "CommentAddition", date, time);
+                sendNotifToPoster(postId);
+            } 
+           
+        }
+
+        private void sendNotifToPoster(Guid postid)
+        {
+            string connectionString = ConfigurationManager.ConnectionStrings["VoiceVanguardDB"].ConnectionString;
+            string query = "SELECT userId FROM post where postId = @id";
+            Guid userid = Guid.Empty;
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@id", postid);
+
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    userid = (Guid)reader["userId"];
+                    Guid notifid = Guid.NewGuid();
+                    NotifTemp notif = new NotifTemp();
+                    TimeSpan time = DateTime.Now - DateTime.Today;
+                    DateTime date = DateTime.Now;
+                    notif.addNotif(notifid, userid, postid, "CommentAddedtoPost", date, time);
+                }
+
+            }
         }
     }
 }

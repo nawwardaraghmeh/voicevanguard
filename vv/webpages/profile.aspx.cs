@@ -228,6 +228,8 @@ namespace vv.web_pages
 
             List<Guid> eventNotifIds = getUserEventNotifIds(userId);
             List<Guid> postNotifIds = getUserPostNotifIds(userId);
+            List<Guid> commentNotifIds = getUserCommentNotifIds(userId);
+
 
             if (postNotifIds == null && eventNotifIds == null)
             {
@@ -248,11 +250,24 @@ namespace vv.web_pages
                     }
                 }
             }
+
             if (postNotifIds != null && postNotifIds.Count > 0)
             {
                 foreach (Guid id in postNotifIds)
                 {
                     NotifTemp notif = LoadPostNotifContent(id);
+                    if (notif != null)
+                    {
+                        populateActivityContainer(notif);
+                    }
+                }
+            }
+
+            if (commentNotifIds != null && commentNotifIds.Count > 0)
+            {
+                foreach (Guid id in eventNotifIds)
+                {
+                    NotifTemp notif = LoadCommentNotifContent(id);
                     if (notif != null)
                     {
                         populateActivityContainer(notif);
@@ -289,6 +304,14 @@ namespace vv.web_pages
                     break;
                 case "PostAdded":
                     actLabel.Text = "You added a post!";
+                    link = getPostHyperLink(notif.PostId);
+                    break;
+                case "CommentAddition":
+                    actLabel.Text = "You added a comment: ";
+                    link = getPostHyperLink(notif.PostId);
+                    break;
+                case "CommentAddedtoPost":
+                    actLabel.Text = "1 person commented on your post:";
                     link = getPostHyperLink(notif.PostId);
                     break;
             }
@@ -365,6 +388,28 @@ namespace vv.web_pages
             return notifIds;
         }
 
+        public List<Guid> getUserCommentNotifIds(Guid userid)
+        {
+            List<Guid> notifIds = new List<Guid>();
+            string connectionString = ConfigurationManager.ConnectionStrings["VoiceVanguardDB"].ConnectionString;
+            string sqlQuery = "SELECT top 5 notifId FROM notification WHERE userId = @userid and commentId IS NOT NULL order by notifDate DESC, notifTime";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlCommand command = new SqlCommand(sqlQuery, connection);
+                command.Parameters.AddWithValue("@userid", userid);
+
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    notifIds.Add((Guid)reader["notifId"]);
+                }
+            }
+
+            return notifIds;
+        }
+
         private NotifTemp LoadEventNotifContent(Guid notifId)
         {
             NotifTemp notifContent = null;
@@ -416,6 +461,37 @@ namespace vv.web_pages
                     notifContent.NotifId = (Guid)reader["notifId"];
                     notifContent.PostId = (Guid)reader["postId"];
                     notifContent.notifType = reader["notifType"].ToString();
+                }
+
+                reader.Close();
+                connection.Close();
+            }
+
+            return notifContent;
+        }
+
+        private NotifTemp LoadCommentNotifContent(Guid notifId)
+        {
+            NotifTemp notifContent = null;
+
+            string connectionString = ConfigurationManager.ConnectionStrings["VoiceVanguardDB"].ConnectionString;
+            string query = "SELECT * FROM notification WHERE notifId = @id";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@id", notifId);
+
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    notifContent = new NotifTemp();
+                    notifContent.NotifId = (Guid)reader["notifId"];
+                    notifContent.CommentId = (Guid)reader["commentId"];
+                    notifContent.notifType = reader["notifType"].ToString();
+                    notifContent.PostId = (Guid)reader["postId"];
                 }
 
                 reader.Close();

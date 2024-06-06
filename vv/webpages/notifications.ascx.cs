@@ -73,6 +73,12 @@ namespace vv.webpages
                     case "PostAdded":
                         notifImage.ImageUrl = "~/resources/images/postadded.png";
                         break;
+                    case "CommentAddition":
+                        notifImage.ImageUrl = "~/resources/images/addcomment.png";
+                        break;
+                    case "CommentAddedtoPost":
+                        notifImage.ImageUrl = "~/resources/images/commentadded.png";
+                        break;
                 }
                 notifPanel.Controls.Add(notifImage);
 
@@ -91,10 +97,16 @@ namespace vv.webpages
                         notifLabel.Text = "You subscribed to an event!";
                         break;
                     case "EventInterested":
-                        notifLabel.Text = "1 person is interested in your event! ";
+                        notifLabel.Text = "1 person is interested in your event!";
                         break;
                     case "PostAdded":
                         notifLabel.Text = "You added a post!";
+                        break;
+                    case "CommentAddition":
+                        notifImage.ImageUrl = "You added a comment!";
+                        break;
+                    case "CommentAddedtoPost":
+                        notifImage.ImageUrl = "1 person commented on your post!";
                         break;
                 }
                 /*
