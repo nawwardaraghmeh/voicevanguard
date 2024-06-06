@@ -1,4 +1,4 @@
-﻿c <%@ Page Language="C#" AutoEventWireup="true" CodeBehind="login.aspx.cs" Inherits="vv.web_pages.login" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="login.aspx.cs" Inherits="vv.web_pages.login" %>
 
 <!DOCTYPE html>
 

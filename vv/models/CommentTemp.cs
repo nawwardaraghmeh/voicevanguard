@@ -12,7 +12,6 @@ namespace vv.models
         public Guid postId { get; set; }
         public Guid userId { get; set; }
         public Guid commentId { get; set; }
-
         public DateTime commentDate { get; set; }
         public TimeSpan commentTime { get; set; }
         public string commentContent { get; set; }
@@ -26,7 +25,7 @@ namespace vv.models
             commentContent = string.Empty;
         }
 
-        public int addComment(Guid postId, Guid userId, string commentContent)
+        public int addComment(Guid postId, Guid userId, Guid commentId, string commentContent)
         {
             string connectionString = ConfigurationManager.ConnectionStrings["VoiceVanguardDB"].ConnectionString;
             string query = "";
@@ -41,7 +40,7 @@ namespace vv.models
                 command.Parameters.AddWithValue("@commentContent", commentContent);
                 command.Parameters.AddWithValue("@commentDate", DateTime.Today);
                 command.Parameters.AddWithValue("@commentTime", DateTime.Now - DateTime.Today);
-                command.Parameters.AddWithValue("@commentId", Guid.NewGuid());
+                command.Parameters.AddWithValue("@commentId", commentId);
 
                 connection.Open();
                 int rowsAffected = command.ExecuteNonQuery();

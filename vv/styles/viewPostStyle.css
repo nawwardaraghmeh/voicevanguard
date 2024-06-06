@@ -12,8 +12,8 @@
     border-radius: 5px;
 }
 
-.nameAndPicDiv{
-    display:flex;
+.nameAndPicDiv {
+    display: flex;
 }
 
 
@@ -24,15 +24,15 @@
     text-align: left;
 }
 
-#pfp1{
+#pfp1 {
     margin-left: 10px;
 }
 
 #userName {
     font-family: "Coustard", serif;
-    font-weight:bold;
-    font-size:15pt;
-    margin:0px 200px 0px 0px;
+    font-weight: bold;
+    font-size: 15pt;
+    margin: 0px 200px 0px 0px;
 }
 
 .alignPosterAndPostdate {
@@ -47,15 +47,16 @@
     border-color: #E46262;
     border-width: 4px;
     border-radius: 15px;
-    margin:15px;
-    padding:15px;
+    margin: 15px;
+    padding: 15px;
     display: flex;
     flex-direction: column;
 }
+
 #postTitle {
     font-family: "Coustard", serif;
     margin: 0px 0px 20px 0px;
-    font-size:15pt;
+    font-size: 15pt;
 }
 
 #postContent {
@@ -82,8 +83,8 @@
     background-color: #F5F5F5;
     border-style: solid;
     font-family: "Coustard", serif;
-
 }
+
 ::placeholder {
     font-family: "Coustard", serif;
     margin: 0px 20px 20px 20px;
@@ -96,6 +97,7 @@
     display: flex;
     justify-content: space-between;
     margin-bottom: 10px;
+    margin-left: 30px;
 }
 
 
@@ -125,24 +127,24 @@
     width: 10%;
     height: 70px;
     cursor: pointer;
-    margin-right: 15px; 
+    margin-right: 15px;
 }
 
     #btnAddComment:hover {
         background-color: #E46262;
     }
 
-    /*comment/s */
-    #commentDiv {
-        border: solid;
-        border-color: #E46262;
-        border-width: 4px;
-        border-radius: 15px;
-        display: flex;
-        flex-direction: column;
-        margin: 10px;
-        padding: 20px;
-    }
+/*comment/s */
+#commentDiv {
+    border: solid;
+    border-color: #E46262;
+    border-width: 4px;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+    padding: 20px;
+}
 
 .commentsDetails {
     font-family: "Coustard", serif;
@@ -151,10 +153,17 @@
 .commenterName {
     font-size: 15pt;
     display: inline-block;
+    color: #568f6a;
 }
+
 .commentPostDate, .commentContent {
     display: inline-block;
     margin: 0px;
+}
+
+.commentContent {
+    margin-left: 30px;
+    margin-bottom: 30px;
 }
 
 /*replies*/
@@ -176,7 +185,7 @@
     text-align: right;
     align-items: flex-end;
     justify-content: flex-end;
-    margin-top:0px;
+    margin-top: 0px;
 }
 
 .replybtn {
@@ -185,8 +194,8 @@
     background-color: rgba(0, 0, 0, 0);
     display: inline-block;
     width: 10%;
-    font-size:12pt;
-    cursor:pointer;
+    font-size: 12pt;
+    cursor: pointer;
 }
 
 #replySectionDiv {

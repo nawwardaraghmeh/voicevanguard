@@ -92,7 +92,7 @@ namespace vv.webpages
             commentDiv.CssClass = "commentsDetails";
 
             Panel alignNameAndPostdate = new Panel();
-            alignNameAndPostdate.CssClass = "alignNameAndPostdate";
+            alignNameAndPostdate.CssClass = "alignCommenternameAndCommentdate";
 
             Label lblUserName = new Label();
             lblUserName.CssClass = "commenterName";
@@ -226,7 +226,8 @@ namespace vv.webpages
             string commentContent = postComment.Text;
             string postIdString = Request.QueryString["postId"];
             Guid postId = new Guid(postIdString);
-            int x = comment.addComment(postId, userId, commentContent);
+            Guid commentId = Guid.NewGuid();
+            int x = comment.addComment(postId, userId, commentId, commentContent);
 
             if(x != 0)
             {
@@ -234,10 +235,11 @@ namespace vv.webpages
                 NotifTemp notif = new NotifTemp();
                 TimeSpan time = DateTime.Now - DateTime.Today;
                 DateTime date = DateTime.Now;
-                notif.addNotif(notifid, userId, postId, "CommentAddition", date, time);
+                notif.addCommentNotif(notifid, userId, postId, commentId, "CommentAddition", date, time);
                 sendNotifToPoster(postId);
-            } 
-           
+            }
+
+            Response.Redirect(Request.RawUrl);
         }
 
         private void sendNotifToPoster(Guid postid)
@@ -245,6 +247,7 @@ namespace vv.webpages
             string connectionString = ConfigurationManager.ConnectionStrings["VoiceVanguardDB"].ConnectionString;
             string query = "SELECT userId FROM post where postId = @id";
             Guid userid = Guid.Empty;
+            Guid commentid = Guid.Empty;
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -261,7 +264,7 @@ namespace vv.webpages
                     NotifTemp notif = new NotifTemp();
                     TimeSpan time = DateTime.Now - DateTime.Today;
                     DateTime date = DateTime.Now;
-                    notif.addNotif(notifid, userid, postid, "CommentAddedtoPost", date, time);
+                    notif.addCommentNotiftoPoster(notifid, userid, postid, "CommentAddedtoPost", date, time);
                 }
 
             }

@@ -129,7 +129,7 @@ namespace vv.webpages
         {
             List<Guid> notifIds = new List<Guid>();
             string connectionString = ConfigurationManager.ConnectionStrings["VoiceVanguardDB"].ConnectionString;
-            string sqlQuery = "SELECT top 5 notifId FROM notification WHERE userId = @userid AND eventId IS NOT NULL ORDER BY notifDate DESC, notifTime";
+            string sqlQuery = "SELECT top 3 notifId FROM notification WHERE userId = @userid AND eventId IS NOT NULL ORDER BY notifDate DESC, notifTime";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -156,7 +156,7 @@ namespace vv.webpages
         {
             List<Guid> notifIds = new List<Guid>();
             string connectionString = ConfigurationManager.ConnectionStrings["VoiceVanguardDB"].ConnectionString;
-            string sqlQuery = "SELECT top 5 notifId FROM notification WHERE userId = @userid AND postId IS NOT NULL ORDER BY notifDate DESC, notifTime";
+            string sqlQuery = "SELECT top 3 notifId FROM notification WHERE userId = @userid AND postId IS NOT NULL ORDER BY notifDate DESC, notifTime";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
