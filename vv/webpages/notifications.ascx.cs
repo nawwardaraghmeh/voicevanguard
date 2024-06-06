@@ -209,7 +209,7 @@ namespace vv.webpages
             NotifTemp notifContent = null;
 
             string connectionString = ConfigurationManager.ConnectionStrings["VoiceVanguardDB"].ConnectionString;
-            string query = "SELECT * FROM notification WHERE notifId = @id";
+            string query = "SELECT notifId, postId, notifType FROM notification WHERE notifId = @id";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
