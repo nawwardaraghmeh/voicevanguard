@@ -58,6 +58,8 @@ namespace vv.web_pages
                     lnkTitle.Click += (s, args) => title2_Click(s, EventArgs.Empty, postId);
                     postPanel.Controls.Add(lnkTitle);
 
+                    postPanel.Controls.Add(new LiteralControl("<br />"));
+
                     Label lblPostContent = new Label();
                     lblPostContent.CssClass = "postContent";
                     lblPostContent.Text = post.postContent;

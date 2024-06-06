@@ -109,7 +109,7 @@ namespace vv.webpages
 
                 notifPanel.Controls.Add(divEnd);
 
-                notifheroContainer.Controls.Add(notifPanel);
+                notifheroContainer.Controls.AddAt(0, notifPanel);
             }
         }
 
