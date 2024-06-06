@@ -73,9 +73,9 @@ namespace vv.webpages
         {
             postTitle.Text = postDetails.postTitle;
             postContent.Text = postDetails.postContent;
-            postDate.Text = postDetails.postDate.ToString("dd MMMM yyyy");
+            postDate.Text = postDetails.postDate.ToString("dd MMMM yyyy") + " " + postDetails.postTime.ToString(@"hh\:mm");
             userName.Text = getPosterName(postDetails.userId);
-            commentNumber.Text = getNumofComments(postDetails.postId).ToString();
+            commentNumber.Text = getNumofComments(postDetails.postId).ToString() + " Comments";
 
             List<Guid> comments = getCommentsIds(postDetails.postId);
             foreach (Guid id in comments)
@@ -215,6 +215,11 @@ namespace vv.webpages
             }
 
             return posterName;
+        }
+
+        protected void btnAddComment_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

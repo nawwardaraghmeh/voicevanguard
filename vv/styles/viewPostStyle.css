@@ -3,7 +3,7 @@
 }
 
 .heroDiv {
-    background-color: rgba(167, 221, 186, 0.73);
+    background-color: rgba(167, 221, 186, 0.55);
     margin: auto;
     display: flex;
     width: 60%;
@@ -37,6 +37,7 @@
 
 .alignPosterAndPostdate {
     display: flex;
+    flex-direction: column;
     margin-left: 20px;
 }
 
@@ -72,14 +73,16 @@
 
 /*post comment box*/
 #postComment {
-    width: 93%;
+    width: 85%;
     height: 50px;
     padding: 10px;
     border-radius: 20px;
-    margin: 10px;
+    margin-left: 15px;
+    margin-right: 5px;
     background-color: #F5F5F5;
     border-style: solid;
     font-family: "Coustard", serif;
+
 }
 ::placeholder {
     font-family: "Coustard", serif;
@@ -89,10 +92,10 @@
 /*comment section begins*/
 
 
-.alignNameAndPostdate {
+.alignCommenternameAndCommentdate {
     display: flex;
     justify-content: space-between;
-    margin-bottom:10px;
+    margin-bottom: 10px;
 }
 
 
@@ -108,17 +111,38 @@
     flex-direction: column;
 }
 
-/*comment/s */
-#commentDiv {
-    border: solid;
-    border-color: #E46262;
-    border-width: 4px;
-    border-radius: 15px;
+.addcommentBtnNtextbox {
     display: flex;
-    flex-direction: column;
-    margin:10px;
-    padding:20px;
+    justify-content: space-around;
 }
+
+#btnAddComment {
+    font-family: "Coustard", serif;
+    font-weight: 500;
+    background-color: #F1A7A7;
+    border-style: none;
+    border-radius: 20px;
+    width: 10%;
+    height: 70px;
+    cursor: pointer;
+    margin-right: 15px; 
+}
+
+    #btnAddComment:hover {
+        background-color: #E46262;
+    }
+
+    /*comment/s */
+    #commentDiv {
+        border: solid;
+        border-color: #E46262;
+        border-width: 4px;
+        border-radius: 15px;
+        display: flex;
+        flex-direction: column;
+        margin: 10px;
+        padding: 20px;
+    }
 
 .commentsDetails {
     font-family: "Coustard", serif;
@@ -175,21 +199,20 @@
     font-family: "Coustard", serif;
 }
 
-#postDate {
-    margin-left: 155%;
-}
-
 #commentNumber {
     display: inline;
     margin-left: 30px;
+}
+
+#postDate {
+    margin-right: 5px;
 }
 
 #reportPostLink {
     color: #545454;
     font-family: "Coustard", serif;
     display: inline;
-    margin-right:20px;
-
+    margin-right: 20px;
 }
 
 /*#pageTitle {

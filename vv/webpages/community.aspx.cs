@@ -35,8 +35,6 @@ namespace vv.web_pages
             foreach (Guid postId in postIds)
             {
                 PostTemp post = loadPostDetails(postId);
-                if (post != null)
-                {
                     Panel postPanel = new Panel();
                     postPanel.CssClass = "post";
 
@@ -52,10 +50,11 @@ namespace vv.web_pages
 
                     postPanel.Controls.Add(new LiteralControl("<br />"));
 
-                    LinkButton lnkTitle = new LinkButton();
+                    HyperLink lnkTitle = new HyperLink();
                     lnkTitle.CssClass = "h4";
                     lnkTitle.Text = post.postTitle;
-                    lnkTitle.Click += (s, args) => title2_Click(s, EventArgs.Empty, postId);
+                    string url = $"~/webpages/viewPost.aspx?postId={postId}";
+                lnkTitle.NavigateUrl = url;
                     postPanel.Controls.Add(lnkTitle);
 
                     postPanel.Controls.Add(new LiteralControl("<br />"));
@@ -73,7 +72,7 @@ namespace vv.web_pages
                     postPanel.Controls.Add(lblNumOfComments);
 
                     postsContainer.Controls.Add(postPanel);
-                }
+                
             }
         }
 
@@ -127,6 +126,7 @@ namespace vv.web_pages
                     postDetails.postTime = (TimeSpan)reader["postTime"];
                     postDetails.postDate = (DateTime)reader["postDate"];
                     postDetails.userId = (Guid)reader["userId"];
+                    postDetails.postId = (Guid)reader["postId"];
                 }
 
                 reader.Close();
@@ -187,7 +187,7 @@ namespace vv.web_pages
 
         protected void title2_Click(object sender, EventArgs e, Guid postId)
         {
-            string url = $"~/webpages/viewPost.aspx?eventId={postId}";
+            string url = $"~/webpages/viewPost.aspx?postId={postId}";
             Response.Redirect(url);
         }
     }

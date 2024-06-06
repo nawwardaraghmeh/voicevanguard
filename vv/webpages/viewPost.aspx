@@ -60,8 +60,12 @@
                     <!--<asp:HyperLink ID="reportPostLink" runat="server">ReportPost</asp:HyperLink><br />-->
                 </div>
             </div>
-
-            <asp:TextBox ID="postComment" runat="server" placeholder="Share Your Thoughts! " TextMode="MultiLine" ></asp:TextBox>
+            <div class="addcommentBtnNtextbox">
+                <asp:TextBox ID="postComment" runat="server" placeholder="Share Your Thoughts! "
+                    TextMode="MultiLine"></asp:TextBox>
+                <asp:Button runat="server" ID="btnAddComment" Text="ADD" 
+                    OnClick="btnAddComment_Click" />
+            </div>
             <br />
 
             <asp:Label ID="commentLabel" runat="server" Text="COMMENTS"></asp:Label><br />
@@ -71,7 +75,7 @@
                 <div class="nameAndPicDiv">
                     <div id="commentDiv" class="commentsDetails">
 
-                        <div class="alignNameAndPostdate">
+                        <div class="alignCommenternameAndCommentdate">
                             <asp:Label ID="userName2" runat="server" Text=""></asp:Label>
                             <asp:Label ID="commentPostDate" runat="server" Text=""></asp:Label>
                         </div>
