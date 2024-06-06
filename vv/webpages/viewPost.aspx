@@ -45,18 +45,18 @@
         <asp:Panel runat="server" CssClass="heroDiv" ID="postDetailsContainer">
             <div class="nameAndPicDiv">
                 <div class="alignPosterAndPostdate">
-                    <asp:Label ID="userName" runat="server" Text=""></asp:Label>
-                    <asp:Label ID="postDate" runat="server" Text=""></asp:Label>
+                    <asp:Label ID="userName" runat="server" Text="none"></asp:Label>
+                    <asp:Label ID="postDate" runat="server" Text="none"></asp:Label>
                 </div>
             </div>
             <div>
                 <div id="postDiv">
-                    <asp:Label ID="postTitle" runat="server" Text=""></asp:Label>
-                    <asp:Label ID="postContent" runat="server" Text=""></asp:Label>
+                    <asp:Label ID="postTitle" runat="server" Text="none"></asp:Label>
+                    <asp:Label ID="postContent" runat="server" Text="none"></asp:Label>
                     <br />
                 </div>
                 <div id="commentsAndReport">
-                    <asp:Label ID="commentNumber" runat="server" Text=""></asp:Label>
+                    <asp:Label ID="commentNumber" runat="server" Text="none"></asp:Label>
                     <!--<asp:HyperLink ID="reportPostLink" runat="server">ReportPost</asp:HyperLink><br />-->
                 </div>
             </div>

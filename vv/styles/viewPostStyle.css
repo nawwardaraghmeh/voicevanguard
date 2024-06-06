@@ -37,7 +37,6 @@
 
 .alignPosterAndPostdate {
     display: flex;
-    flex-direction: column;
     margin-left: 20px;
 }
 
@@ -73,13 +72,14 @@
 
 /*post comment box*/
 #postComment {
-    padding: 20px 5px 60px 20px;
-    width: 94%;
-    height:50px;
+    width: 93%;
+    height: 50px;
+    padding: 10px;
     border-radius: 20px;
     margin: 10px;
     background-color: #F5F5F5;
     border-style: solid;
+    font-family: "Coustard", serif;
 }
 ::placeholder {
     font-family: "Coustard", serif;
@@ -175,8 +175,13 @@
     font-family: "Coustard", serif;
 }
 
-#commentNumber{
-   display:inline;
+#postDate {
+    margin-left: 155%;
+}
+
+#commentNumber {
+    display: inline;
+    margin-left: 30px;
 }
 
 #reportPostLink {

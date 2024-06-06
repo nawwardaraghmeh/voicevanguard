@@ -13,8 +13,6 @@ namespace vv.webpages
 {
     public partial class viewPost : System.Web.UI.Page
     {
-        PostTemp postDetails = null;
-
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -30,11 +28,9 @@ namespace vv.webpages
                 string postIdString = Request.QueryString["postId"];
                 if (!string.IsNullOrEmpty(postIdString) && Guid.TryParse(postIdString, out Guid postId))
                 {
-                    postDetails = LoadPostDetails(postId);
-                    if (postDetails != null)
-                    {
-                        UpdatePostDetails(postDetails);
-                    }
+                    PostTemp postDetails = LoadPostDetails(postId);
+                    UpdatePostDetails(postDetails);
+                    
                 }
             }
         }
