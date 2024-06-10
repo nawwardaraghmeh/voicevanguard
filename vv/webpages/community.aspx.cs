@@ -93,7 +93,7 @@ namespace vv.web_pages
             List<Guid> allPostsIds = new List<Guid>();
 
             string connectionString = ConfigurationManager.ConnectionStrings["VoiceVanguardDB"].ConnectionString;
-            string query = "SELECT postId FROM post ORDER BY postDate DESC, postTime DESC";
+            string query = "SELECT postId FROM post ORDER BY postDate DESC";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
