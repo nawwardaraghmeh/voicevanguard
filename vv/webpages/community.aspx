@@ -7,11 +7,11 @@
 <head runat="server">
     <link rel="stylesheet" type="text/css" href="../styles/headerfooterStyles.css">
     <link rel="stylesheet" type="text/css" href="../styles/CommunityPageStyles.css">
-
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Coustard:wght@400;900&display=swap"
         rel="stylesheet">
+    <link rel="shortcut icon" type="image/x-icon" href="~/resources/images/icon.ico" />
   <script src="https://kit.fontawesome.com/f6d959a275.js" crossorigin="anonymous"></script>
 
 
@@ -26,7 +26,7 @@
                 <a href="home.aspx" class="nav-item">HOME</a>
                 <a href="events.aspx" class="nav-item">EVENTS</a>
                 <a href="community.aspx" class="nav-item  current-page">COMMUNITY</a>
-                <a href="faq.aspx" class="nav-item">FAQs</a>
+                <a href="faq.aspx" class="nav-item">FAQs</a
             </div>
             <div class="navbar-right">
                <!-- <div class="nav-item icon"><i class="fa fa-bell" aria-hidden="true"></i></div>-->
@@ -47,12 +47,12 @@
         <uc:Notification ID="Notification1" runat="server" />
         <div id="heroDiv">
             <div class="buttons">
-            <input type="button" value="Most Popular" />
-                <input type="button" value="Recent Posts" />
-                <input type="button" value="Trending" />
-
-                <asp:Button runat="server" ID="createPostbtn" Text="Join the community, Ignite the Action"
-                    OnClick="createPostbtn_Click" />
+            <asp:Button runat="server" ID="createPostbtn" Text="Join the community, Ignite the Action"
+                OnClick="createPostbtn_Click" />
+            <div class="greybtnDiv">
+            <asp:Button runat="server" ID="mostPopularbtn" CssClass="greybtnstyles" Text="Most Popular" OnClick="mostPopularbtn_Click" />
+            <asp:Button runat="server" ID="recentPostsbtn" CssClass="greybtnstyles" Text="Recent Posts" OnClick="recentPostsbtn_Click" /> 
+                </div>
             </div>
             <asp:Panel runat="server" CssClass="SecondDiv" ID="postsContainer">
                
@@ -65,7 +65,7 @@
     <!-- footer section -->
     <footer class="footer">
         <div class="footer-content">
-            <h2>Contact</h2>
+            <h2>Contactt</h2>
             <p>
                 <a href="mailto:voicevanguard@gmail.com" class="contact-info">voicevanguard@gmail.com</a>
             </p>

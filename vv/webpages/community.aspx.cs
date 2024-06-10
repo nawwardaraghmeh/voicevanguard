@@ -202,5 +202,64 @@ namespace vv.web_pages
             string url = $"~/webpages/viewPost.aspx?postId={postId}";
             Response.Redirect(url);
         }
+
+        protected void mostPopularbtn_Click(object sender, EventArgs e)
+        {
+            Button btn = (Button)sender;
+            btn.CssClass = "clickedgreybtn";
+            recentPostsbtn.CssClass = "greybtnstyles";
+
+            List<Guid> allPostsIds = new List<Guid>();
+
+            string connectionString = ConfigurationManager.ConnectionStrings["VoiceVanguardDB"].ConnectionString;
+            string query = "SELECT *, COUNT(Comments.commentId) AS comment_count FROM post LEFT JOIN Comments ON post.postID = Comments.postId GROUP BY post.postID WHERE postId = @id ORDER BY comment_count DESC";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlCommand command = new SqlCommand(query, connection);
+
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    Guid postId = (Guid)reader["postId"];
+                    allPostsIds.Add(postId);
+                }
+
+                reader.Close();
+                connection.Close();
+            }
+
+        }
+
+        protected void recentPostsbtn_Click(object sender, EventArgs e)
+        {
+            Button btn = (Button)sender;
+            btn.CssClass = "clickedgreybtn";
+            mostPopularbtn.CssClass = "greybtnstyles";
+
+            List<Guid> allPostsIds = new List<Guid>();
+
+            string connectionString = ConfigurationManager.ConnectionStrings["VoiceVanguardDB"].ConnectionString;
+            string query = "SELECT *, COUNT(Comments.commentId) AS comment_count FROM post LEFT JOIN Comments ON post.postID = Comments.postId GROUP BY post.postID WHERE postId = @id ORDER BY comment_count DESC";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlCommand command = new SqlCommand(query, connection);
+
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    Guid postId = (Guid)reader["postId"];
+                    allPostsIds.Add(postId);
+                }
+
+                reader.Close();
+                connection.Close();
+            }
+        }
     }
 }

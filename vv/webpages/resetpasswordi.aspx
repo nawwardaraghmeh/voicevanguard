@@ -10,6 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Coustard:wght@400;900&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="../styles/resetPasswordPageOneStyle.css">
+    <link rel="shortcut icon" type="image/x-icon" href="~/resources/images/icon.ico" />
     <script src="https://kit.fontawesome.com/f6d959a275.js" crossorigin="anonymous"></script>
     <title>Reset Password</title>
 </head>

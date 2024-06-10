@@ -9,6 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Coustard:wght@400;900&display=swap"
         rel="stylesheet">
+     <link rel="shortcut icon" type="image/x-icon" href="~/resources/images/icon.ico" />
 
     <title>VV HOMEPAGE</title>
 </head>
