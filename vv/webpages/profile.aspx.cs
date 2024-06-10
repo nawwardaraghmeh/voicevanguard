@@ -128,7 +128,7 @@ namespace vv.web_pages
         {
             EventTemp eventDetails = null;
             string connectionString = ConfigurationManager.ConnectionStrings["VoiceVanguardDB"].ConnectionString;
-            string query = "SELECT eventTitle, eventDate FROM event WHERE eventId = @id";
+            string query = "SELECT * FROM event WHERE eventId = @id";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -146,6 +146,7 @@ namespace vv.web_pages
                             {
                                 eventTitle = reader["eventTitle"].ToString(),
                                 eventDate = (DateTime)reader["eventDate"],
+                                eventId = (Guid)reader["eventId"]
                             };
                         }
                     }
@@ -229,10 +230,9 @@ namespace vv.web_pages
             List<Guid> eventNotifIds = getUserEventNotifIds(userId);
             List<Guid> postNotifIds = getUserPostNotifIds(userId);
             List<Guid> commentNotifIds = getUserCommentNotifIds(userId);
-            //List<Guid> commentLeftToUserNotifIds = getCommentLefttoUserNotifIds(userId);
+            List<NotifTemp> allNotifications = new List<NotifTemp>();
 
-
-            if (postNotifIds == null && eventNotifIds == null)
+            if (postNotifIds == null && eventNotifIds == null && commentNotifIds == null)
             {
                 Label notifLabel = new Label();
                 notifLabel.Text = "No activity yet!";
@@ -245,10 +245,7 @@ namespace vv.web_pages
                 foreach (Guid id in eventNotifIds)
                 {
                     NotifTemp notif = LoadEventNotifContent(id);
-                    if (notif != null)
-                    {
-                        populateActivityContainer(notif);
-                    }
+                    if (notif != null) allNotifications.Add(notif);
                 }
             }
 
@@ -257,10 +254,7 @@ namespace vv.web_pages
                 foreach (Guid id in postNotifIds)
                 {
                     NotifTemp notif = LoadPostNotifContent(id);
-                    if (notif != null)
-                    {
-                        populateActivityContainer(notif);
-                    }
+                    if (notif != null) allNotifications.Add(notif);
                 }
             }
 
@@ -269,24 +263,21 @@ namespace vv.web_pages
                 foreach (Guid id in commentNotifIds)
                 {
                     NotifTemp notif = LoadCommentNotifContent(id);
-                    if (notif != null)
-                    {
-                        populateActivityContainer(notif);
-                    }
+                    if (notif != null) allNotifications.Add(notif);
                 }
             }
-            /*
-            if (commentLeftToUserNotifIds != null && commentLeftToUserNotifIds.Count > 0)
+
+            if (allNotifications.Count > 0)
             {
-                foreach (Guid id in commentLeftToUserNotifIds)
+                var topNotifications = allNotifications
+                    .OrderBy(n => n.NotifDate)
+                    .ToList();
+
+                foreach (var notif in topNotifications)
                 {
-                    NotifTemp notif = LoadCommentLeftToUserNotifContent(id);
-                    if (notif != null)
-                    {
-                        populateActivityContainer(notif);
-                    }
+                    populateActivityContainer(notif);
                 }
-            }*/
+            }
         }
 
         public void populateActivityContainer(NotifTemp notif)
@@ -440,28 +431,6 @@ namespace vv.web_pages
             List<Guid> notifIds = new List<Guid>();
             string connectionString = ConfigurationManager.ConnectionStrings["VoiceVanguardDB"].ConnectionString;
             string sqlQuery = "SELECT notifId FROM notification WHERE userId = @userid and postId IS NOT NULL and commentId IS NOT NULL order by notifDate ASC";
-
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                SqlCommand command = new SqlCommand(sqlQuery, connection);
-                command.Parameters.AddWithValue("@userid", userid);
-
-                connection.Open();
-                SqlDataReader reader = command.ExecuteReader();
-                while (reader.Read())
-                {
-                    notifIds.Add((Guid)reader["notifId"]);
-                }
-            }
-
-            return notifIds;
-        }
-
-        public List<Guid> getCommentLefttoUserNotifIds(Guid userid)
-        {
-            List<Guid> notifIds = new List<Guid>();
-            string connectionString = ConfigurationManager.ConnectionStrings["VoiceVanguardDB"].ConnectionString;
-            string sqlQuery = "SELECT notifId FROM notification WHERE userId = @userid and postId IS NOT NULL and commentId IS NULL order by notifDate ASC";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
