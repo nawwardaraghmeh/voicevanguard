@@ -105,8 +105,8 @@ form#vieweventform {
         background-color: #DE2B2B;
     }
 
-#lblParticipantCount {
-    margin-left: 10px;
+#lblParticipantsNum {
+    margin-left: 15px;
     margin-top: 10px;
     color: #DE2B2B;
 }

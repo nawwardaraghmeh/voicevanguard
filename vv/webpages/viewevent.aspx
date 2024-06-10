@@ -50,9 +50,7 @@
                 </asp:Label>
             </div>
 
-            <asp:Panel runat="server" ID="participantsPanel" CssClass="participantsProfileimgs">
-                
-            </asp:Panel>
+            <asp:Label runat="server" ID="lblParticipantsNum" Text="0 People interested in this event"></asp:Label>
 
             <div class="eventDescDiv">
                 <asp:Label ID="lblEventDesc" runat="server" Text=""></asp:Label>

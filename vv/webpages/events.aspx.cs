@@ -81,7 +81,6 @@ namespace vv.web_pages
                     eventDetails.eventRoom = reader["eventRoom"].ToString();
                     eventDetails.eventOrganizer = (Guid)reader["eventOrganizer"];
                     eventDetails.eventDuration = (TimeSpan)reader["eventDuration"];
-                    //eventDetails.eventParticipants = (Guid)reader["eventParticipants"];
                 }
 
                 reader.Close();

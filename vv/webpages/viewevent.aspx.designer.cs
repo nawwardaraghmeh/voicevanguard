@@ -69,13 +69,13 @@ namespace vv.webpages
         protected global::System.Web.UI.WebControls.HyperLink eventOrganizerProfile;
 
         /// <summary>
-        /// participantsPanel control.
+        /// lblParticipantsNum control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel participantsPanel;
+        protected global::System.Web.UI.WebControls.Label lblParticipantsNum;
 
         /// <summary>
         /// lblEventDesc control.
