@@ -88,7 +88,7 @@
                 <div class="faq-item">
                     <div class="question" onclick="toggleAnswer(this)">
                         How do I reset my password?
-        <i class="fas fa-chevron-down arrow"></i>ething somthing 
+        <i class="fas fa-chevron-down arrow"></i>
                     </div>
                     <div class="answer">
                         Navigate to the Login page, and click on the link "Forgot Password", and follow the process to create a new password.
@@ -103,7 +103,7 @@
         <i class="fas fa-chevron-down arrow"></i>
                 </div>
                 <div class="answer">
-                    If you experience any technical problems, please visit our support page or contact us directly at voicevanguard@gmail.com.
+                    If you experience any technical problems, please contact us directly at voicevanguardofficial@gmail.com.
 
                 </div>
             </div>
@@ -116,7 +116,7 @@
         <div class="footer-content">
             <h2>Contact</h2>
             <p>
-                <a href="mailto:voicevanguard@gmail.com" class="contact-info">voicevanguard@gmail.com</a>
+                <a href="mailto:voicevanguardofficial@gmail.com" class="contact-info">voicevanguardofficial@gmail.com</a>
             </p>
             <p>+972 12-345-6789</p>
             <div class="social-icons">
