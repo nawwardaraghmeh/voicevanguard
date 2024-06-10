@@ -35,46 +35,58 @@ namespace vv.web_pages
             foreach (Guid postId in postIds)
             {
                 PostTemp post = loadPostDetails(postId);
-                    Panel postPanel = new Panel();
-                    postPanel.CssClass = "post";
 
-                    Label lblPoster = new Label();
-                    lblPoster.CssClass = "poster";
-                    lblPoster.Text = "By: " + getPosterName(post.userId);
-                    postPanel.Controls.Add(lblPoster);
+                Panel postPanel = new Panel();
+                postPanel.CssClass = "post";
 
-                    Label lblPostTime = new Label();
-                    lblPostTime.CssClass = "time";
-                    lblPostTime.Text = post.postDate.ToString("yyyy-MM-dd") + " " + post.postTime.ToString(@"hh\:mm");
-                    postPanel.Controls.Add(lblPostTime);
+                Label lblPoster = new Label();
+                lblPoster.CssClass = "poster";
+                lblPoster.Text = "By: " + getPosterName(post.userId);
+                postPanel.Controls.Add(lblPoster);
 
-                    postPanel.Controls.Add(new LiteralControl("<br />"));
+                // calculate the time difference for post date and time
+                DateTime postDateTime = post.postDate.Add(post.postTime);
+                TimeSpan timeDifference = DateTime.Now - postDateTime;
+                string timeText;
+                if (timeDifference.TotalMinutes < 60)
+                    timeText = $"{(int)timeDifference.TotalMinutes}m ago";
+                else if (timeDifference.TotalHours < 24)
+                    timeText = $"{(int)timeDifference.TotalHours}h ago";
+                else
+                    timeText = $"{(int)timeDifference.TotalDays}d ago";
 
-                    HyperLink lnkTitle = new HyperLink();
-                    lnkTitle.CssClass = "h4";
-                    lnkTitle.Text = post.postTitle;
-                    string url = $"~/webpages/viewPost.aspx?postId={postId}";
+                Label lblPostTime = new Label();
+                lblPostTime.CssClass = "time";
+                lblPostTime.Text = timeText;
+                postPanel.Controls.Add(lblPostTime);
+
+                postPanel.Controls.Add(new LiteralControl("<br />"));
+
+                HyperLink lnkTitle = new HyperLink();
+                lnkTitle.CssClass = "h4";
+                lnkTitle.Text = post.postTitle;
+                string url = $"~/webpages/viewPost.aspx?postId={postId}";
                 lnkTitle.NavigateUrl = url;
-                    postPanel.Controls.Add(lnkTitle);
+                postPanel.Controls.Add(lnkTitle);
 
-                    postPanel.Controls.Add(new LiteralControl("<br />"));
+                postPanel.Controls.Add(new LiteralControl("<br />"));
 
-                    Label lblPostContent = new Label();
-                    lblPostContent.CssClass = "postContent";
-                    lblPostContent.Text = post.postContent;
-                    postPanel.Controls.Add(lblPostContent);
+                Label lblPostContent = new Label();
+                lblPostContent.CssClass = "postContent";
+                lblPostContent.Text = post.postContent;
+                postPanel.Controls.Add(lblPostContent);
 
-                    postPanel.Controls.Add(new LiteralControl("<br />"));
+                postPanel.Controls.Add(new LiteralControl("<br />"));
 
-                    Label lblNumOfComments = new Label();
-                    lblNumOfComments.CssClass = "num_of_comments";
-                    lblNumOfComments.Text = "Comments: " + getNumofComments(postId).ToString();
-                    postPanel.Controls.Add(lblNumOfComments);
+                Label lblNumOfComments = new Label();
+                lblNumOfComments.CssClass = "num_of_comments";
+                lblNumOfComments.Text = "Comments: " + getNumofComments(postId).ToString();
+                postPanel.Controls.Add(lblNumOfComments);
 
-                    postsContainer.Controls.Add(postPanel);
-                
+                postsContainer.Controls.Add(postPanel);
             }
         }
+
 
         private List<Guid> getPostsIds()
         {

@@ -299,10 +299,10 @@ namespace vv.web_pages
 
             actPanel.Controls.Add(divStart);
 
-            LiteralControl div2Start = new LiteralControl("<div class=\"activityContent\">");
-            LiteralControl div2End = new LiteralControl("</div>");
+            LiteralControl contentStart = new LiteralControl("<div class=\"activityContentContainer\">");
+            LiteralControl contentEnd = new LiteralControl("</div>");
 
-            actPanel.Controls.Add(div2Start);
+            actPanel.Controls.Add(contentStart);
 
             Label actLabel = new Label();
             HyperLink link = new HyperLink();
@@ -336,23 +336,41 @@ namespace vv.web_pages
 
             actPanel.Controls.Add(actLabel);
             actPanel.Controls.Add(link);
-            actPanel.Controls.Add(div2End);
+            actPanel.Controls.Add(contentEnd);
 
-            Label dateLabel = new Label();
-            dateLabel.Text = notif.NotifDate.ToString("dd MMMM yyyy");
-            Label timeLabel = new Label();
-            timeLabel.Text = notif.NotifTime.ToString(@"hh\:mm");
+            DateTime notifDateTime = notif.NotifDate + notif.NotifTime;
+            TimeSpan timeSinceActivity = DateTime.Now - notifDateTime;
 
-            actPanel.Controls.Add(div2Start);
-            actPanel.Controls.Add(dateLabel);
-            actPanel.Controls.Add(timeLabel);
-            actPanel.Controls.Add(div2End);
+            string timeSinceActivityText;
+            if (timeSinceActivity.TotalMinutes < 60)
+            {
+                timeSinceActivityText = $"{(int)timeSinceActivity.TotalMinutes}m ago";
+            }
+            else if (timeSinceActivity.TotalHours < 24)
+            {
+                timeSinceActivityText = $"{(int)timeSinceActivity.TotalHours}h ago";
+            }
+            else
+            {
+                timeSinceActivityText = $"{(int)timeSinceActivity.TotalDays}d ago";
+            }
+
+            LiteralControl timeStart = new LiteralControl("<div class=\"activityTimeContainer\">");
+            LiteralControl timeEnd = new LiteralControl("</div>");
+
+            Label timeSinceActivityLabel = new Label();
+            timeSinceActivityLabel.Text = timeSinceActivityText;
+
+            actPanel.Controls.Add(timeStart);
+            actPanel.Controls.Add(timeSinceActivityLabel);
+            actPanel.Controls.Add(timeEnd);
 
             actPanel.Controls.Add(divEnd);
 
             activitiesPanel.Controls.AddAt(0, actPanel);
         }
-    
+
+
         public HyperLink getEventHyperLink(Guid eventId)
         {
             HyperLink eventPage = new HyperLink();
@@ -482,8 +500,7 @@ namespace vv.web_pages
                     notifContent.NotifId = (Guid)reader["notifId"];
                     notifContent.EventId = (Guid)reader["eventId"];
                     notifContent.notifType = reader["notifType"].ToString();
-                    //notifContent.NotifDate = (DateTime)reader["notifDate"];
-                    notifContent.NotifDate = reader.GetDateTime(reader.GetOrdinal("notifDate"));
+                    notifContent.NotifDate = (DateTime)reader["notifDate"];
                     notifContent.NotifTime = (TimeSpan)reader["notifTime"]; 
                 }
 

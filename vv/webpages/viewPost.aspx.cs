@@ -74,7 +74,19 @@ namespace vv.webpages
         {
             postTitle.Text = postDetails.postTitle;
             postContent.Text = postDetails.postContent;
-            postDate.Text = postDetails.postDate.ToString("dd MMMM yyyy") + " " + postDetails.postTime.ToString(@"hh\:mm");
+
+            // Calculate the time difference for post date and time
+            DateTime postDateTime = postDetails.postDate.Add(postDetails.postTime);
+            TimeSpan timeDifference = DateTime.Now - postDateTime;
+            string timeText;
+            if (timeDifference.TotalMinutes < 60)
+                timeText = $"{(int)timeDifference.TotalMinutes}m ago";
+            else if (timeDifference.TotalHours < 24)
+                timeText = $"{(int)timeDifference.TotalHours}h ago";
+            else
+                timeText = $"{(int)timeDifference.TotalDays}d ago";
+
+            postDate.Text = timeText;
             userName.Text = getPosterName(postDetails.userId);
             commentNumber.Text = getNumofComments(postDetails.postId).ToString() + " Comments";
 
@@ -85,6 +97,7 @@ namespace vv.webpages
                 createCommentContainer(comment);
             }
         }
+
 
         private void createCommentContainer(CommentTemp comment)
         {
@@ -99,9 +112,20 @@ namespace vv.webpages
             lblUserName.Text = getPosterName(comment.userId);
             alignNameAndPostdate.Controls.Add(lblUserName);
 
+            // Calculate the time difference for comment date and time
+            DateTime commentDateTime = comment.commentDate.Add(comment.commentTime);
+            TimeSpan timeDifference = DateTime.Now - commentDateTime;
+            string timeText;
+            if (timeDifference.TotalMinutes < 60)
+                timeText = $"{(int)timeDifference.TotalMinutes}m ago";
+            else if (timeDifference.TotalHours < 24)
+                timeText = $"{(int)timeDifference.TotalHours}h ago";
+            else
+                timeText = $"{(int)timeDifference.TotalDays}d ago";
+
             Label lblCommentPostDate = new Label();
             lblCommentPostDate.CssClass = "commentPostDate";
-            lblCommentPostDate.Text = comment.commentDate.ToString("dd MMMM yyyy") + " " + comment.commentTime.ToString(@"hh\:mm");
+            lblCommentPostDate.Text = timeText;
             alignNameAndPostdate.Controls.Add(lblCommentPostDate);
 
             commentDiv.Controls.Add(alignNameAndPostdate);
@@ -115,6 +139,7 @@ namespace vv.webpages
 
             commentContainer.Controls.Add(commentDiv);
         }
+
 
         private CommentTemp loadCommentDetails(Guid commentId)
         {
