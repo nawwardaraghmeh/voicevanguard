@@ -58,7 +58,7 @@
         <div class="footer-content">
             <h2>Contact</h2>
             <p>
-                <a href="mailto:voicevanguard@gmail.com" class="contact-info">voicevanguard@gmail.com</a>
+                <a href="mailto:voicevanguardofficial@gmail.com" class="contact-info">voicevanguardofficial@gmail.com</a>
             </p>
 
             <p>+972 12-345-6789</p>
