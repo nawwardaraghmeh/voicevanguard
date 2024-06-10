@@ -1,4 +1,6 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="addpost.aspx.cs" Inherits="vv.addpost" %>
+<%@ Register Src="notifications.ascx" TagName="Notification" TagPrefix="uc" %>
+
 
 <!DOCTYPE html>
 
