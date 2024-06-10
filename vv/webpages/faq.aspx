@@ -49,31 +49,49 @@
             <div class="faq">
                 <div class="faq-item">
                     <div class="question" onclick="toggleAnswer(this)">
-                        Can I create my own events on VoiceVanguard?
+                        What is VoiceVanguard?
         <i class="fas fa-chevron-down arrow"></i>
                     </div>
                     <div class="answer">
-                        something somthing 
+                        Our project, “VoiceVanguard”, aims to address the
+                        growing need for efficient communication and organization
+                        with activist communities. By developing a robust digital platform,
+                        we seek to empower activists in their pursuit of social change.   
+                        The main objectives of VoiceVanguard are centered around creating a centralized platform that
+                        facilitates seamless coordination among activists by providing them with essential tools, 
+                        including event scheduling, and community feed.
+
+                    </div>
+                </div>
+
+                        <div class="faq-item">
+                            <div class="question" onclick="toggleAnswer(this)">
+                                Can I create my own events on VoiceVanguard?
+                <i class="fas fa-chevron-down arrow"></i>
+                            </div>
+                            <div class="answer">
+                                Yes, anyone can create an event on VoiceVanguard.
+                                However, please use common sense and do not post innapropriate events.
+                            </div>
+                        </div>
+
+                <div class="faq-item">
+                    <div class="question" onclick="toggleAnswer(this)">
+                        Is there a fee to use Voice Vanguard?
+        <i class="fas fa-chevron-down arrow"></i>
+                    </div>
+                    <div class="answer">
+                        No, VoiceVanguard is completelly free to use.
                     </div>
                 </div>
 
                 <div class="faq-item">
                     <div class="question" onclick="toggleAnswer(this)">
-                        Can I delete my VoiceVanguard account?
-        <i class="fas fa-chevron-down arrow"></i>
-                    </div>
-                    <div class="answer">
-                        something somthing 
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <div class="question" onclick="toggleAnswer(this)">
-                        Can I delete my VoiceVanguard account?
+                        How do I reset my password?
         <i class="fas fa-chevron-down arrow"></i>ething somthing 
                     </div>
                     <div class="answer">
-                        something somthing 
+                        Navigate to the Login page, and click on the link "Forgot Password", and follow the process to create a new password.
                     </div>
                 </div>
 
@@ -81,31 +99,12 @@
 
             <div class="faq-item">
                 <div class="question" onclick="toggleAnswer(this)">
-                    How does the verification process for uploaded resources work?
+                    What should I do if I encounter a technical issue?
         <i class="fas fa-chevron-down arrow"></i>
                 </div>
                 <div class="answer">
-                    something somthing 
-                </div>
-            </div>
+                    If you experience any technical problems, please visit our support page or contact us directly at voicevanguard@gmail.com.
 
-            <div class="faq-item">
-                <div class="question" onclick="toggleAnswer(this)">
-                    What does the watermelon symbol mean?
-        <i class="fas fa-chevron-down arrow"></i>
-                </div>
-                <div class="answer">
-                    something somthing 
-                </div>
-            </div>
-
-            <div class="faq-item">
-                <div class="question" onclick="toggleAnswer(this)">
-                    What does the watermelon symbol mean?
-        <i class="fas fa-chevron-down arrow"></i>
-                </div>
-                <div class="answer">
-                    something somthing 
                 </div>
             </div>
         </div>
