@@ -26,7 +26,7 @@
                 <a href="home.aspx" class="nav-item">HOME</a>
                 <a href="events.aspx" class="nav-item">EVENTS</a>
                 <a href="community.aspx" class="nav-item  current-page">COMMUNITY</a>
-                <a href="faq.aspx" class="nav-item">FAQs</a
+                <a href="faq.aspx" class="nav-item">FAQs</a>
             </div>
             <div class="navbar-right">
                <!-- <div class="nav-item icon"><i class="fa fa-bell" aria-hidden="true"></i></div>-->

@@ -20,7 +20,7 @@ namespace vv.web_pages
             {
                 if (Session["userId"] != null)
                 {
-                    loadPosts(); 
+                    getPostsIds();
                 }
                 else
                 {
@@ -29,13 +29,40 @@ namespace vv.web_pages
             }
         }
 
-        private void loadPosts()
+        protected string getUserTags(Guid userid)
         {
-            List<Guid> postIds = getPostsIds();
-            foreach (Guid postId in postIds)
-            {
-                PostTemp post = loadPostDetails(postId);
+            string connectionString = ConfigurationManager.ConnectionStrings["VoiceVanguardDB"].ConnectionString;
+            Guid userId = new Guid(Session["UserId"].ToString());
+            string userQuery = "SELECT interests FROM users WHERE userId = @userid";
+            string userTags = "";
 
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlCommand command = new SqlCommand(userQuery, connection);
+                command.Parameters.AddWithValue("@userid", userId);
+
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                if (reader.Read())
+                {
+                    userTags = reader["interests"].ToString();
+                    return userTags;
+                }
+                else
+                {
+                }
+                reader.Close();
+            }
+            return null;
+        }
+
+        private void loadPosts(Guid postId)
+        {
+            PostTemp post = loadPostDetails(postId);
+
+            if (post != null)  
+            {
                 Panel postPanel = new Panel();
                 postPanel.CssClass = "post";
 
@@ -87,13 +114,11 @@ namespace vv.web_pages
             }
         }
 
-
-        private List<Guid> getPostsIds()
+        private void getPostsIds()
         {
             List<Guid> allPostsIds = new List<Guid>();
-
             string connectionString = ConfigurationManager.ConnectionStrings["VoiceVanguardDB"].ConnectionString;
-            string query = "SELECT postId FROM post ORDER BY postDate DESC";
+            string query = "SELECT postId FROM post ORDER BY NEWID()";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -112,8 +137,12 @@ namespace vv.web_pages
                 connection.Close();
             }
 
-            return allPostsIds;
+            foreach (Guid postId in allPostsIds)
+            {
+                loadPosts(postId);
+            }
         }
+
 
         private PostTemp loadPostDetails(Guid postId)
         {
@@ -177,7 +206,7 @@ namespace vv.web_pages
         private int getNumofComments(Guid postId)
         {
             int numOfComments = 0;
-            string connectionString = ConfigurationManager.ConnectionStrings["VoiceVanguardDB"].ConnectionString; // Corrected connection string name
+            string connectionString = ConfigurationManager.ConnectionStrings["VoiceVanguardDB"].ConnectionString;
 
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
@@ -209,10 +238,17 @@ namespace vv.web_pages
             btn.CssClass = "clickedgreybtn";
             recentPostsbtn.CssClass = "greybtnstyles";
 
-            List<Guid> allPostsIds = new List<Guid>();
+            postsContainer.Controls.Clear();
 
             string connectionString = ConfigurationManager.ConnectionStrings["VoiceVanguardDB"].ConnectionString;
-            string query = "SELECT *, COUNT(Comments.commentId) AS comment_count FROM post LEFT JOIN Comments ON post.postID = Comments.postId GROUP BY post.postID WHERE postId = @id ORDER BY comment_count DESC";
+            string query = @"
+                SELECT p.postId
+                FROM post p
+                LEFT JOIN Comments c ON p.postId = c.postId
+                GROUP BY p.postId, p.postDate
+                ORDER BY COUNT(c.commentId) DESC, p.postDate DESC";
+
+            List<Guid> allPostsIds = new List<Guid>();
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -231,6 +267,10 @@ namespace vv.web_pages
                 connection.Close();
             }
 
+            foreach (Guid postId in allPostsIds)
+            {
+                loadPosts(postId); // Correct method call
+            }
         }
 
         protected void recentPostsbtn_Click(object sender, EventArgs e)
@@ -239,10 +279,12 @@ namespace vv.web_pages
             btn.CssClass = "clickedgreybtn";
             mostPopularbtn.CssClass = "greybtnstyles";
 
-            List<Guid> allPostsIds = new List<Guid>();
+            postsContainer.Controls.Clear();
 
             string connectionString = ConfigurationManager.ConnectionStrings["VoiceVanguardDB"].ConnectionString;
-            string query = "SELECT *, COUNT(Comments.commentId) AS comment_count FROM post LEFT JOIN Comments ON post.postID = Comments.postId GROUP BY post.postID WHERE postId = @id ORDER BY comment_count DESC";
+            string query = "SELECT postId FROM post ORDER BY postDate DESC"; 
+
+            List<Guid> allPostsIds = new List<Guid>();
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -259,6 +301,11 @@ namespace vv.web_pages
 
                 reader.Close();
                 connection.Close();
+            }
+
+            foreach (Guid postId in allPostsIds)
+            {
+                loadPosts(postId);
             }
         }
     }

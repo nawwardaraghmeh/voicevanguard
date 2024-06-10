@@ -178,7 +178,7 @@ namespace vv.webpages
             List<Guid> allCommentsIds = new List<Guid>();
 
             string connectionString = ConfigurationManager.ConnectionStrings["VoiceVanguardDB"].ConnectionString;
-            string query = "SELECT commentId FROM Comments WHERE postId = @id";
+            string query = "SELECT commentId FROM Comments WHERE postId = @id ORDER BY commentDate DESC, commentTime DESC";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
