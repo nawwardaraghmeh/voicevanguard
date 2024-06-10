@@ -14,7 +14,6 @@
     position: relative;
 }
 
-
 #imgProfilePic {
     width: 150px;
     height: 150px;
@@ -79,14 +78,28 @@
     padding: 10px;
     background-color: #A7DDBA;
     font-weight: 500;
-    justify-content: center;
+    justify-content: flex-start;
 }
 
 .activityDiv {
     display: flex;
-    flex-direction: column;
+    justify-content: flex-start;
     align-items: baseline;
 }
+
+.activityContentContainer {
+    display: flex;
+    align-items: baseline;
+}
+
+.activityTimeContainer {
+    font-size: small;
+    color: #568f6a;
+    margin-left: 10px;
+}
+
+
+
 
 .tabDiv span {
     margin: 10px;

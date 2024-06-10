@@ -8,20 +8,18 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using vv.models;
+using vv.web_pages;
 
 namespace vv.webpages
 {
     public partial class viewPost : System.Web.UI.Page
     {
-        PostTemp postDetails = null;
-
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
                 if (Session["userId"] != null)
                 {
-                    // User is logged in
                 }
                 else
                 {
@@ -31,11 +29,9 @@ namespace vv.webpages
                 string postIdString = Request.QueryString["postId"];
                 if (!string.IsNullOrEmpty(postIdString) && Guid.TryParse(postIdString, out Guid postId))
                 {
-                    postDetails = LoadPostDetails(postId);
-                    if (postDetails != null)
-                    {
-                        UpdatePostDetails(postDetails);
-                    }
+                    PostTemp postDetails = LoadPostDetails(postId);
+                    UpdatePostDetails(postDetails);
+                    
                 }
             }
         }
@@ -78,9 +74,21 @@ namespace vv.webpages
         {
             postTitle.Text = postDetails.postTitle;
             postContent.Text = postDetails.postContent;
-            postDate.Text = postDetails.postDate.ToString("dd MMMM yyyy");
+
+            // Calculate the time difference for post date and time
+            DateTime postDateTime = postDetails.postDate.Add(postDetails.postTime);
+            TimeSpan timeDifference = DateTime.Now - postDateTime;
+            string timeText;
+            if (timeDifference.TotalMinutes < 60)
+                timeText = $"{(int)timeDifference.TotalMinutes}m ago";
+            else if (timeDifference.TotalHours < 24)
+                timeText = $"{(int)timeDifference.TotalHours}h ago";
+            else
+                timeText = $"{(int)timeDifference.TotalDays}d ago";
+
+            postDate.Text = timeText;
             userName.Text = getPosterName(postDetails.userId);
-            commentNumber.Text = getNumofComments(postDetails.postId).ToString();
+            commentNumber.Text = getNumofComments(postDetails.postId).ToString() + " Comments";
 
             List<Guid> comments = getCommentsIds(postDetails.postId);
             foreach (Guid id in comments)
@@ -90,22 +98,34 @@ namespace vv.webpages
             }
         }
 
+
         private void createCommentContainer(CommentTemp comment)
         {
             Panel commentDiv = new Panel();
             commentDiv.CssClass = "commentsDetails";
 
             Panel alignNameAndPostdate = new Panel();
-            alignNameAndPostdate.CssClass = "alignNameAndPostdate";
+            alignNameAndPostdate.CssClass = "alignCommenternameAndCommentdate";
 
             Label lblUserName = new Label();
             lblUserName.CssClass = "commenterName";
             lblUserName.Text = getPosterName(comment.userId);
             alignNameAndPostdate.Controls.Add(lblUserName);
 
+            // Calculate the time difference for comment date and time
+            DateTime commentDateTime = comment.commentDate.Add(comment.commentTime);
+            TimeSpan timeDifference = DateTime.Now - commentDateTime;
+            string timeText;
+            if (timeDifference.TotalMinutes < 60)
+                timeText = $"{(int)timeDifference.TotalMinutes}m ago";
+            else if (timeDifference.TotalHours < 24)
+                timeText = $"{(int)timeDifference.TotalHours}h ago";
+            else
+                timeText = $"{(int)timeDifference.TotalDays}d ago";
+
             Label lblCommentPostDate = new Label();
             lblCommentPostDate.CssClass = "commentPostDate";
-            lblCommentPostDate.Text = comment.commentDate.ToString("dd MMMM yyyy") + " " + comment.commentTime.ToString(@"hh\:mm");
+            lblCommentPostDate.Text = timeText;
             alignNameAndPostdate.Controls.Add(lblCommentPostDate);
 
             commentDiv.Controls.Add(alignNameAndPostdate);
@@ -119,6 +139,7 @@ namespace vv.webpages
 
             commentContainer.Controls.Add(commentDiv);
         }
+
 
         private CommentTemp loadCommentDetails(Guid commentId)
         {
@@ -220,6 +241,58 @@ namespace vv.webpages
             }
 
             return posterName;
+        }
+
+        protected void btnAddComment_Click(object sender, EventArgs e)
+        {
+            CommentTemp comment = new CommentTemp();
+
+            Guid userId = new Guid(Session["UserId"].ToString());
+            string commentContent = postComment.Text;
+            string postIdString = Request.QueryString["postId"];
+            Guid postId = new Guid(postIdString);
+            Guid commentId = Guid.NewGuid();
+            int x = comment.addComment(postId, userId, commentId, commentContent);
+
+            if(x != 0)
+            {
+                Guid notifid = Guid.NewGuid();
+                NotifTemp notif = new NotifTemp();
+                TimeSpan time = DateTime.Now - DateTime.Today;
+                DateTime date = DateTime.Now;
+                notif.addCommentNotif(notifid, userId, postId, commentId, "CommentAddition", date, time);
+                sendNotifToPoster(postId);
+            }
+
+            Response.Redirect(Request.RawUrl);
+        }
+
+        private void sendNotifToPoster(Guid postid)
+        {
+            string connectionString = ConfigurationManager.ConnectionStrings["VoiceVanguardDB"].ConnectionString;
+            string query = "SELECT userId FROM post where postId = @id";
+            Guid userid = Guid.Empty;
+            Guid commentid = Guid.Empty;
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@id", postid);
+
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    userid = (Guid)reader["userId"];
+                    Guid notifid = Guid.NewGuid();
+                    NotifTemp notif = new NotifTemp();
+                    TimeSpan time = DateTime.Now - DateTime.Today;
+                    DateTime date = DateTime.Now;
+                    notif.addCommentNotiftoPoster(notifid, userid, postid, "CommentAddedtoPost", date, time);
+                }
+
+            }
         }
     }
 }

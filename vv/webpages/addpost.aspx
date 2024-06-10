@@ -44,7 +44,7 @@
             <asp:TextBox runat="server" type="text" ID="titleBox" required="required" /><br />
 
             <div id="secondDiv">
-                <asp:TextBox runat="server" type="text" ID="contentBox" placeholder="What's On Your Mind?"
+                <asp:TextBox runat="server" type="text" ID="contentBox" placeholder="What's On Your Mind?" TextMode="MultiLine"
                     required="required" /><br />
             </div>
             <br />

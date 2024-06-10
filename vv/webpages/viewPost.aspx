@@ -45,23 +45,27 @@
         <asp:Panel runat="server" CssClass="heroDiv" ID="postDetailsContainer">
             <div class="nameAndPicDiv">
                 <div class="alignPosterAndPostdate">
-                    <asp:Label ID="userName" runat="server" Text=""></asp:Label>
-                    <asp:Label ID="postDate" runat="server" Text=""></asp:Label>
+                    <asp:Label ID="userName" runat="server" Text="none"></asp:Label>
+                    <asp:Label ID="postDate" runat="server" Text="none"></asp:Label>
                 </div>
             </div>
             <div>
                 <div id="postDiv">
-                    <asp:Label ID="postTitle" runat="server" Text=""></asp:Label>
-                    <asp:Label ID="postContent" runat="server" Text=""></asp:Label>
+                    <asp:Label ID="postTitle" runat="server" Text="none"></asp:Label>
+                    <asp:Label ID="postContent" runat="server" Text="none"></asp:Label>
                     <br />
                 </div>
                 <div id="commentsAndReport">
-                    <asp:Label ID="commentNumber" runat="server" Text=""></asp:Label>
-                    <asp:HyperLink ID="reportPostLink" runat="server">ReportPost</asp:HyperLink><br />
+                    <asp:Label ID="commentNumber" runat="server" Text="none"></asp:Label>
+                    <!--<asp:HyperLink ID="reportPostLink" runat="server">ReportPost</asp:HyperLink><br />-->
                 </div>
             </div>
-
-            <!--<asp:TextBox ID="postComment" runat="server" placeholder="Share Your Thoughts! "></asp:TextBox>-->
+            <div class="addcommentBtnNtextbox">
+                <asp:TextBox ID="postComment" runat="server" placeholder="Share Your Thoughts! "
+                    TextMode="MultiLine"></asp:TextBox>
+                <asp:Button runat="server" ID="btnAddComment" Text="ADD" 
+                    OnClick="btnAddComment_Click" />
+            </div>
             <br />
 
             <asp:Label ID="commentLabel" runat="server" Text="COMMENTS"></asp:Label><br />
@@ -71,16 +75,12 @@
                 <div class="nameAndPicDiv">
                     <div id="commentDiv" class="commentsDetails">
 
-                        <div class="alignNameAndPostdate">
+                        <div class="alignCommenternameAndCommentdate">
                             <asp:Label ID="userName2" runat="server" Text=""></asp:Label>
                             <asp:Label ID="commentPostDate" runat="server" Text=""></asp:Label>
                         </div>
 
                         <asp:Label ID="commentContent" runat="server" Text=""></asp:Label><br />
-
-                        <div class="reportAndReply">
-                            <asp:HyperLink ID="reportCommentLink" runat="server">Report</asp:HyperLink>
-                        </div>
 
                     </div>
                 </div>

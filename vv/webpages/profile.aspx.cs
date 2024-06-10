@@ -228,6 +228,9 @@ namespace vv.web_pages
 
             List<Guid> eventNotifIds = getUserEventNotifIds(userId);
             List<Guid> postNotifIds = getUserPostNotifIds(userId);
+            List<Guid> commentNotifIds = getUserCommentNotifIds(userId);
+            List<Guid> commentLeftToUserNotifIds = getCommentLefttoUserNotifIds(userId);
+
 
             if (postNotifIds == null && eventNotifIds == null)
             {
@@ -248,11 +251,36 @@ namespace vv.web_pages
                     }
                 }
             }
+
             if (postNotifIds != null && postNotifIds.Count > 0)
             {
                 foreach (Guid id in postNotifIds)
                 {
                     NotifTemp notif = LoadPostNotifContent(id);
+                    if (notif != null)
+                    {
+                        populateActivityContainer(notif);
+                    }
+                }
+            }
+
+            if (commentNotifIds != null && commentNotifIds.Count > 0)
+            {
+                foreach (Guid id in commentNotifIds)
+                {
+                    NotifTemp notif = LoadCommentNotifContent(id);
+                    if (notif != null)
+                    {
+                        populateActivityContainer(notif);
+                    }
+                }
+            }
+
+            if (commentLeftToUserNotifIds != null && commentLeftToUserNotifIds.Count > 0)
+            {
+                foreach (Guid id in commentLeftToUserNotifIds)
+                {
+                    NotifTemp notif = LoadCommentLeftToUserNotifContent(id);
                     if (notif != null)
                     {
                         populateActivityContainer(notif);
@@ -270,6 +298,11 @@ namespace vv.web_pages
             LiteralControl divEnd = new LiteralControl("</div>");
 
             actPanel.Controls.Add(divStart);
+
+            LiteralControl contentStart = new LiteralControl("<div class=\"activityContentContainer\">");
+            LiteralControl contentEnd = new LiteralControl("</div>");
+
+            actPanel.Controls.Add(contentStart);
 
             Label actLabel = new Label();
             HyperLink link = new HyperLink();
@@ -291,16 +324,53 @@ namespace vv.web_pages
                     actLabel.Text = "You added a post!";
                     link = getPostHyperLink(notif.PostId);
                     break;
+                case "CommentAddition":
+                    actLabel.Text = "You added a comment: ";
+                    link = getPostHyperLink(notif.PostId);
+                    break;
+                case "CommentAddedtoPost":
+                    actLabel.Text = "1 person commented on your post:";
+                    link = getPostHyperLink(notif.PostId);
+                    break;
             }
 
             actPanel.Controls.Add(actLabel);
             actPanel.Controls.Add(link);
+            actPanel.Controls.Add(contentEnd);
+
+            DateTime notifDateTime = notif.NotifDate + notif.NotifTime;
+            TimeSpan timeSinceActivity = DateTime.Now - notifDateTime;
+
+            string timeSinceActivityText;
+            if (timeSinceActivity.TotalMinutes < 60)
+            {
+                timeSinceActivityText = $"{(int)timeSinceActivity.TotalMinutes}m ago";
+            }
+            else if (timeSinceActivity.TotalHours < 24)
+            {
+                timeSinceActivityText = $"{(int)timeSinceActivity.TotalHours}h ago";
+            }
+            else
+            {
+                timeSinceActivityText = $"{(int)timeSinceActivity.TotalDays}d ago";
+            }
+
+            LiteralControl timeStart = new LiteralControl("<div class=\"activityTimeContainer\">");
+            LiteralControl timeEnd = new LiteralControl("</div>");
+
+            Label timeSinceActivityLabel = new Label();
+            timeSinceActivityLabel.Text = timeSinceActivityText;
+
+            actPanel.Controls.Add(timeStart);
+            actPanel.Controls.Add(timeSinceActivityLabel);
+            actPanel.Controls.Add(timeEnd);
 
             actPanel.Controls.Add(divEnd);
 
             activitiesPanel.Controls.AddAt(0, actPanel);
         }
-    
+
+
         public HyperLink getEventHyperLink(Guid eventId)
         {
             HyperLink eventPage = new HyperLink();
@@ -314,7 +384,7 @@ namespace vv.web_pages
         public HyperLink getPostHyperLink(Guid postId)
         {
             HyperLink eventPage = new HyperLink();
-            string url = $"~/webpages/viewpost.aspx?eventId={postId}";
+            string url = $"~/webpages/viewPost.aspx?postId={postId}";
             eventPage.NavigateUrl = url;
             eventPage.Text = GetPostTitle(postId).ToUpper();
             eventPage.CssClass = "eventLink";
@@ -325,7 +395,7 @@ namespace vv.web_pages
         {
             List<Guid> notifIds = new List<Guid>();
             string connectionString = ConfigurationManager.ConnectionStrings["VoiceVanguardDB"].ConnectionString;
-            string sqlQuery = "SELECT top 5 notifId FROM notification WHERE userId = @userid and eventId IS NOT NULL order by notifDate DESC, notifTime";
+            string sqlQuery = "SELECT notifId FROM notification WHERE userId = @userid and eventId IS NOT NULL order by notifDate DESC, notifTime";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -347,7 +417,51 @@ namespace vv.web_pages
         {
             List<Guid> notifIds = new List<Guid>();
             string connectionString = ConfigurationManager.ConnectionStrings["VoiceVanguardDB"].ConnectionString;
-            string sqlQuery = "SELECT top 5 notifId FROM notification WHERE userId = @userid and postId IS NOT NULL order by notifDate DESC, notifTime";
+            string sqlQuery = "SELECT notifId FROM notification WHERE userId = @userid and postId IS NOT NULL order by notifDate DESC, notifTime";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlCommand command = new SqlCommand(sqlQuery, connection);
+                command.Parameters.AddWithValue("@userid", userid);
+
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    notifIds.Add((Guid)reader["notifId"]);
+                }
+            }
+
+            return notifIds;
+        }
+
+        public List<Guid> getUserCommentNotifIds(Guid userid)
+        {
+            List<Guid> notifIds = new List<Guid>();
+            string connectionString = ConfigurationManager.ConnectionStrings["VoiceVanguardDB"].ConnectionString;
+            string sqlQuery = "SELECT notifId FROM notification WHERE userId = @userid and postId IS NOT NULL and commentId IS NOT NULL order by notifDate DESC, notifTime";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlCommand command = new SqlCommand(sqlQuery, connection);
+                command.Parameters.AddWithValue("@userid", userid);
+
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    notifIds.Add((Guid)reader["notifId"]);
+                }
+            }
+
+            return notifIds;
+        }
+
+        public List<Guid> getCommentLefttoUserNotifIds(Guid userid)
+        {
+            List<Guid> notifIds = new List<Guid>();
+            string connectionString = ConfigurationManager.ConnectionStrings["VoiceVanguardDB"].ConnectionString;
+            string sqlQuery = "SELECT notifId FROM notification WHERE userId = @userid and postId IS NOT NULL and commentId IS NULL order by notifDate DESC, notifTime";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -386,6 +500,8 @@ namespace vv.web_pages
                     notifContent.NotifId = (Guid)reader["notifId"];
                     notifContent.EventId = (Guid)reader["eventId"];
                     notifContent.notifType = reader["notifType"].ToString();
+                    notifContent.NotifDate = (DateTime)reader["notifDate"];
+                    notifContent.NotifTime = (TimeSpan)reader["notifTime"]; 
                 }
 
                 reader.Close();
@@ -416,6 +532,73 @@ namespace vv.web_pages
                     notifContent.NotifId = (Guid)reader["notifId"];
                     notifContent.PostId = (Guid)reader["postId"];
                     notifContent.notifType = reader["notifType"].ToString();
+                    notifContent.NotifDate = (DateTime)reader["notifDate"];
+                    notifContent.NotifTime = (TimeSpan)reader["notifTime"];
+                }
+
+                reader.Close();
+                connection.Close();
+            }
+
+            return notifContent;
+        }
+
+        private NotifTemp LoadCommentNotifContent(Guid notifId)
+        {
+            NotifTemp notifContent = null;
+
+            string connectionString = ConfigurationManager.ConnectionStrings["VoiceVanguardDB"].ConnectionString;
+            string query = "SELECT * FROM notification WHERE notifId = @id";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@id", notifId);
+
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    notifContent = new NotifTemp();
+                    notifContent.NotifId = (Guid)reader["notifId"];
+                    notifContent.CommentId = (Guid)reader["commentId"];
+                    notifContent.notifType = reader["notifType"].ToString();
+                    notifContent.PostId = (Guid)reader["postId"];
+                    notifContent.NotifDate = (DateTime)reader["notifDate"];
+                    notifContent.NotifTime = (TimeSpan)reader["notifTime"];
+                }
+
+                reader.Close();
+                connection.Close();
+            }
+
+            return notifContent;
+        }
+
+        private NotifTemp LoadCommentLeftToUserNotifContent(Guid notifId)
+        {
+            NotifTemp notifContent = null;
+
+            string connectionString = ConfigurationManager.ConnectionStrings["VoiceVanguardDB"].ConnectionString;
+            string query = "SELECT * FROM notification WHERE notifId = @id";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@id", notifId);
+
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    notifContent = new NotifTemp();
+                    notifContent.NotifId = (Guid)reader["notifId"];
+                    notifContent.notifType = reader["notifType"].ToString();
+                    notifContent.PostId = (Guid)reader["postId"];
+                    notifContent.NotifDate = (DateTime)reader["notifDate"];
+                    notifContent.NotifTime = (TimeSpan)reader["notifTime"];
                 }
 
                 reader.Close();

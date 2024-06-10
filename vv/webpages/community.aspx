@@ -47,14 +47,6 @@
         <uc:Notification ID="Notification1" runat="server" />
         <div id="heroDiv">
             <div class="buttons">
-            <select>
-                <option>Topic</option>
-                <option value="women's-Rights">Women's Rights</option>
-                <option value="Environment">Environment</option>
-                <option value="Racial-Issues">Racial Issues</option>
-                <option value="Animal-Rights">Animal Rights</option>
-                <option value="Mental-Health">Mental Health</option>
-            </select>
             <input type="button" value="Most Popular" />
                 <input type="button" value="Recent Posts" />
                 <input type="button" value="Trending" />

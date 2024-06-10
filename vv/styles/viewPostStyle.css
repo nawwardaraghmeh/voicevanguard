@@ -2,18 +2,18 @@
     background-color: rgba(217, 217, 217, 0.25)
 }
 
-#heroDiv {
-    background-color: rgba(167, 221, 186, 0.73);
+.heroDiv {
+    background-color: rgba(167, 221, 186, 0.55);
     margin: auto;
     display: flex;
-    width: 50%;
+    width: 60%;
     padding: 35px;
     flex-direction: column;
     border-radius: 5px;
 }
 
-.nameAndPicDiv{
-    display:flex;
+.nameAndPicDiv {
+    display: flex;
 }
 
 
@@ -24,15 +24,15 @@
     text-align: left;
 }
 
-#pfp1{
+#pfp1 {
     margin-left: 10px;
 }
 
 #userName {
     font-family: "Coustard", serif;
-    font-weight:bold;
-    font-size:15pt;
-    margin:0px 200px 0px 0px;
+    font-weight: bold;
+    font-size: 15pt;
+    margin: 0px 200px 0px 0px;
 }
 
 .alignPosterAndPostdate {
@@ -47,15 +47,16 @@
     border-color: #E46262;
     border-width: 4px;
     border-radius: 15px;
-    margin:15px;
-    padding:15px;
+    margin: 15px;
+    padding: 15px;
     display: flex;
     flex-direction: column;
 }
+
 #postTitle {
     font-family: "Coustard", serif;
     margin: 0px 0px 20px 0px;
-    font-size:15pt;
+    font-size: 15pt;
 }
 
 #postContent {
@@ -63,22 +64,27 @@
 }
 
 /*comment number and report link*/
-#commentsAndReport {
+/*#commentsAndReport {
     display: flex;
     gap: 65%;
-    margin-left: 30px;
+    margin-left: 50px;
 }
+    */
+
 
 /*post comment box*/
 #postComment {
-    padding: 20px 5px 60px 20px;
-    width: 94%;
-    height:50px;
+    width: 85%;
+    height: 50px;
+    padding: 10px;
     border-radius: 20px;
-    margin: 10px;
+    margin-left: 15px;
+    margin-right: 5px;
     background-color: #F5F5F5;
     border-style: solid;
+    font-family: "Coustard", serif;
 }
+
 ::placeholder {
     font-family: "Coustard", serif;
     margin: 0px 20px 20px 20px;
@@ -87,10 +93,11 @@
 /*comment section begins*/
 
 
-.alignNameAndPostdate {
+.alignCommenternameAndCommentdate {
     display: flex;
     justify-content: space-between;
-    margin-bottom:10px;
+    margin-bottom: 10px;
+    margin-left: 30px;
 }
 
 
@@ -98,12 +105,34 @@
     font-family: "Coustard", serif;
     font-size: 20px;
     font-weight: bold;
+    margin-left: 30px;
 }
 
 #commentSectionDiv {
     display: flex;
     flex-direction: column;
 }
+
+.addcommentBtnNtextbox {
+    display: flex;
+    justify-content: space-around;
+}
+
+#btnAddComment {
+    font-family: "Coustard", serif;
+    font-weight: 500;
+    background-color: #F1A7A7;
+    border-style: none;
+    border-radius: 20px;
+    width: 10%;
+    height: 70px;
+    cursor: pointer;
+    margin-right: 15px;
+}
+
+    #btnAddComment:hover {
+        background-color: #E46262;
+    }
 
 /*comment/s */
 #commentDiv {
@@ -113,8 +142,8 @@
     border-radius: 15px;
     display: flex;
     flex-direction: column;
-    margin:10px;
-    padding:20px;
+    margin: 10px;
+    padding: 20px;
 }
 
 .commentsDetails {
@@ -124,10 +153,17 @@
 .commenterName {
     font-size: 15pt;
     display: inline-block;
+    color: #568f6a;
 }
+
 .commentPostDate, .commentContent {
     display: inline-block;
     margin: 0px;
+}
+
+.commentContent {
+    margin-left: 30px;
+    margin-bottom: 30px;
 }
 
 /*replies*/
@@ -149,7 +185,7 @@
     text-align: right;
     align-items: flex-end;
     justify-content: flex-end;
-    margin-top:0px;
+    margin-top: 0px;
 }
 
 .replybtn {
@@ -158,8 +194,8 @@
     background-color: rgba(0, 0, 0, 0);
     display: inline-block;
     width: 10%;
-    font-size:12pt;
-    cursor:pointer;
+    font-size: 12pt;
+    cursor: pointer;
 }
 
 #replySectionDiv {
@@ -172,15 +208,20 @@
     font-family: "Coustard", serif;
 }
 
-#commentNumber{
-        display:inline;
-    }
+#commentNumber {
+    display: inline;
+    margin-left: 30px;
+}
+
+#postDate {
+    margin-right: 5px;
+}
+
 #reportPostLink {
     color: #545454;
     font-family: "Coustard", serif;
     display: inline;
-    margin-right:20px;
-
+    margin-right: 20px;
 }
 
 /*#pageTitle {

@@ -44,14 +44,14 @@ namespace vv
                 notif.addPostNotif(notifid, userId, postId, notifDate, notifTime);
 
                 string dataToSend = "Post was added successfully!\nThank you for your contribution.";
-                string url = "popups/eventAdditionPopup.aspx?data=" + Server.UrlEncode(dataToSend);
+                string url = "popups/postAdditionPopup.aspx?data=" + Server.UrlEncode(dataToSend);
                 string script = "window.open('" + url + "', '_blank', 'width=400,height=250,top=250,left=450,toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes');";
                 ClientScript.RegisterStartupScript(this.GetType(), "openwindow", script, true);
             }
             else
             {
                 string dataToSend = "Post addition failed.\nPlease try again later!";
-                string url = "popups/eventAdditionPopup.aspx?data=" + Server.UrlEncode(dataToSend);
+                string url = "popups/postAdditionPopup.aspx?data=" + Server.UrlEncode(dataToSend);
                 string script = "window.open('" + url + "', '_blank', 'width=400,height=300,top=250,left=450,toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes');";
                 ClientScript.RegisterStartupScript(this.GetType(), "openwindow", script, true);
             }

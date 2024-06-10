@@ -73,6 +73,12 @@ namespace vv.webpages
                     case "PostAdded":
                         notifImage.ImageUrl = "~/resources/images/postadded.png";
                         break;
+                    case "CommentAddition":
+                        notifImage.ImageUrl = "~/resources/images/addcomment.png";
+                        break;
+                    case "CommentAddedtoPost":
+                        notifImage.ImageUrl = "~/resources/images/commentadded.png";
+                        break;
                 }
                 notifPanel.Controls.Add(notifImage);
 
@@ -91,10 +97,16 @@ namespace vv.webpages
                         notifLabel.Text = "You subscribed to an event!";
                         break;
                     case "EventInterested":
-                        notifLabel.Text = "1 person is interested in your event! ";
+                        notifLabel.Text = "1 person is interested in your event!";
                         break;
                     case "PostAdded":
                         notifLabel.Text = "You added a post!";
+                        break;
+                    case "CommentAddition":
+                        notifImage.ImageUrl = "You added a comment!";
+                        break;
+                    case "CommentAddedtoPost":
+                        notifImage.ImageUrl = "1 person commented on your post!";
                         break;
                 }
                 /*
@@ -109,7 +121,7 @@ namespace vv.webpages
 
                 notifPanel.Controls.Add(divEnd);
 
-                notifheroContainer.Controls.Add(notifPanel);
+                notifheroContainer.Controls.AddAt(0, notifPanel);
             }
         }
 
@@ -117,7 +129,7 @@ namespace vv.webpages
         {
             List<Guid> notifIds = new List<Guid>();
             string connectionString = ConfigurationManager.ConnectionStrings["VoiceVanguardDB"].ConnectionString;
-            string sqlQuery = "SELECT top 5 notifId FROM notification WHERE userId = @userid AND eventId IS NOT NULL ORDER BY notifDate DESC, notifTime";
+            string sqlQuery = "SELECT top 3 notifId FROM notification WHERE userId = @userid AND eventId IS NOT NULL ORDER BY notifDate DESC, notifTime";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -144,7 +156,7 @@ namespace vv.webpages
         {
             List<Guid> notifIds = new List<Guid>();
             string connectionString = ConfigurationManager.ConnectionStrings["VoiceVanguardDB"].ConnectionString;
-            string sqlQuery = "SELECT top 5 notifId FROM notification WHERE userId = @userid AND postId IS NOT NULL ORDER BY notifDate DESC, notifTime";
+            string sqlQuery = "SELECT top 3 notifId FROM notification WHERE userId = @userid AND postId IS NOT NULL ORDER BY notifDate DESC, notifTime";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -209,7 +221,7 @@ namespace vv.webpages
             NotifTemp notifContent = null;
 
             string connectionString = ConfigurationManager.ConnectionStrings["VoiceVanguardDB"].ConnectionString;
-            string query = "SELECT * FROM notification WHERE notifId = @id";
+            string query = "SELECT notifId, postId, notifType FROM notification WHERE notifId = @id";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
