@@ -115,7 +115,7 @@ namespace vv.web_pages
             HyperLink eventLink = new HyperLink
             {
                 Text = eventData.eventTitle.ToUpper(),
-                NavigateUrl = $"~/webpages/viewevent.aspx?eventId={eventData.eventId}",
+                NavigateUrl = $"~/webpages/viewevent.aspx?eventId={(Guid)eventData.eventId}",
                 ForeColor = System.Drawing.ColorTranslator.FromHtml(borderColor),
                 Font = { Italic = true }
             };
@@ -229,7 +229,7 @@ namespace vv.web_pages
             List<Guid> eventNotifIds = getUserEventNotifIds(userId);
             List<Guid> postNotifIds = getUserPostNotifIds(userId);
             List<Guid> commentNotifIds = getUserCommentNotifIds(userId);
-            List<Guid> commentLeftToUserNotifIds = getCommentLefttoUserNotifIds(userId);
+            //List<Guid> commentLeftToUserNotifIds = getCommentLefttoUserNotifIds(userId);
 
 
             if (postNotifIds == null && eventNotifIds == null)
@@ -275,7 +275,7 @@ namespace vv.web_pages
                     }
                 }
             }
-
+            /*
             if (commentLeftToUserNotifIds != null && commentLeftToUserNotifIds.Count > 0)
             {
                 foreach (Guid id in commentLeftToUserNotifIds)
@@ -286,7 +286,7 @@ namespace vv.web_pages
                         populateActivityContainer(notif);
                     }
                 }
-            }
+            }*/
         }
 
         public void populateActivityContainer(NotifTemp notif)
@@ -395,7 +395,7 @@ namespace vv.web_pages
         {
             List<Guid> notifIds = new List<Guid>();
             string connectionString = ConfigurationManager.ConnectionStrings["VoiceVanguardDB"].ConnectionString;
-            string sqlQuery = "SELECT notifId FROM notification WHERE userId = @userid and eventId IS NOT NULL order by notifDate DESC, notifTime";
+            string sqlQuery = "SELECT notifId FROM notification WHERE userId = @userid and eventId IS NOT NULL order by notifDate ASC";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -417,7 +417,7 @@ namespace vv.web_pages
         {
             List<Guid> notifIds = new List<Guid>();
             string connectionString = ConfigurationManager.ConnectionStrings["VoiceVanguardDB"].ConnectionString;
-            string sqlQuery = "SELECT notifId FROM notification WHERE userId = @userid and postId IS NOT NULL order by notifDate DESC, notifTime";
+            string sqlQuery = "SELECT notifId FROM notification WHERE userId = @userid and postId IS NOT NULL AND commentId IS NULL order by notifDate ASC";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -439,7 +439,7 @@ namespace vv.web_pages
         {
             List<Guid> notifIds = new List<Guid>();
             string connectionString = ConfigurationManager.ConnectionStrings["VoiceVanguardDB"].ConnectionString;
-            string sqlQuery = "SELECT notifId FROM notification WHERE userId = @userid and postId IS NOT NULL and commentId IS NOT NULL order by notifDate DESC, notifTime";
+            string sqlQuery = "SELECT notifId FROM notification WHERE userId = @userid and postId IS NOT NULL and commentId IS NOT NULL order by notifDate ASC";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -461,7 +461,7 @@ namespace vv.web_pages
         {
             List<Guid> notifIds = new List<Guid>();
             string connectionString = ConfigurationManager.ConnectionStrings["VoiceVanguardDB"].ConnectionString;
-            string sqlQuery = "SELECT notifId FROM notification WHERE userId = @userid and postId IS NOT NULL and commentId IS NULL order by notifDate DESC, notifTime";
+            string sqlQuery = "SELECT notifId FROM notification WHERE userId = @userid and postId IS NOT NULL and commentId IS NULL order by notifDate ASC";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
