@@ -72,7 +72,7 @@
 .noNotifText {
     color: white;
     font-weight: 700;
-    margin-left:45px;
+    margin-left: 5%;
 }
 
 .current-page{
@@ -133,7 +133,7 @@
 
 <div id="notifheroDiv">
     <asp:Panel runat="server" id="notifheroContainer">
-        <asp:Label runat="server" Text="No notifications" CssClass="noNotifText" ID="emptynotif" ></asp:Label>
+        <asp:Label runat="server" Text="" CssClass="noNotifText" ID="emptynotif" ></asp:Label>
     </asp:Panel>
 </div>
 

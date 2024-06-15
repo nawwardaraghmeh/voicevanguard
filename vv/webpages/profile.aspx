@@ -117,7 +117,7 @@
     <!-- footer section -->
     <footer class="footer">
         <div class="footer-content">
-            <h2>Contactt</h2>
+            <h2>Contact</h2>
             <p>
                 <a href="mailto:voicevanguard@gmail.com" class="contact-info">voicevanguard@gmail.com</a>
             </p>
