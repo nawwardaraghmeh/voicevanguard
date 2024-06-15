@@ -90,72 +90,72 @@ namespace vv.web_pages
             return eventDetails;
         }
 
-    protected HtmlGenericControl CreateEventControl(Guid eventId)
-    {
-        EventTemp eventData = loadEventData(eventId);
+        protected HtmlGenericControl CreateEventControl(Guid eventId)
+        {
+            EventTemp eventData = loadEventData(eventId);
 
-        HtmlGenericControl div = new HtmlGenericControl("div");
-        div.Attributes["class"] = "card";
+            HtmlGenericControl div = new HtmlGenericControl("div");
+            div.Attributes["class"] = "card";
 
+            string imageUrl = eventData.eventPic;
 
-        string imageUrl = eventData.eventPic;
+            Image image = new Image();
+            image.ImageUrl = imageUrl;
+            div.Controls.Add(image);
 
-        Image image = new Image();
-        image.ImageUrl = imageUrl; 
-        div.Controls.Add(image);
+            HtmlGenericControl contentDiv = new HtmlGenericControl("div");
+            contentDiv.Attributes["class"] = "content";
+            div.Controls.Add(contentDiv);
 
-        HtmlGenericControl contentDiv = new HtmlGenericControl("div");
-        contentDiv.Attributes["class"] = "content";
-        div.Controls.Add(contentDiv);
+            Label titleLabel = new Label();
+            titleLabel.CssClass = "eventTitleStyles";
+            titleLabel.Text = eventData.eventTitle.ToUpper();
+            contentDiv.Controls.Add(titleLabel);
 
-        Label titleLabel = new Label();
-        titleLabel.CssClass = "eventTitleStyles";
-        titleLabel.Text = eventData.eventTitle.ToUpper();
-        contentDiv.Controls.Add(titleLabel);
+            contentDiv.Controls.Add(new LiteralControl("<br /><br />"));
 
-        contentDiv.Controls.Add(new LiteralControl("<br /><br />"));
+            Label descriptionLabel = new Label();
+            descriptionLabel.CssClass = "eventDescStyles";
+            descriptionLabel.Text = eventData.eventDesc;
+            contentDiv.Controls.Add(descriptionLabel);
 
-        Label descriptionLabel = new Label();
-        descriptionLabel.CssClass = "eventDescStyles";
-        descriptionLabel.Text = eventData.eventDesc;
-        contentDiv.Controls.Add(descriptionLabel);
+            HtmlGenericControl detailsDiv = new HtmlGenericControl("div");
+            detailsDiv.Attributes["class"] = "details";
+            contentDiv.Controls.Add(detailsDiv);
 
-        HtmlGenericControl detailsDiv = new HtmlGenericControl("div");
-        detailsDiv.Attributes["class"] = "details";
-        contentDiv.Controls.Add(detailsDiv);
+            HtmlGenericControl dateDiv = new HtmlGenericControl("div");
+            dateDiv.Attributes["class"] = "date";
+            detailsDiv.Controls.Add(dateDiv);
 
-        HtmlGenericControl dateDiv = new HtmlGenericControl("div");
-        dateDiv.Attributes["class"] = "date";
-        detailsDiv.Controls.Add(dateDiv);
+            Label dateIcon = new Label();
+            dateIcon.CssClass = "far fa-calendar-alt";
+            dateDiv.Controls.Add(dateIcon);
 
-        Label dateIcon = new Label();
-        dateIcon.CssClass = "far fa-calendar-alt";
-        dateDiv.Controls.Add(dateIcon);
-
-        Label dateLabel = new Label();
-        dateLabel.Text = "  " + eventData.eventDate.ToString("dd MMMM yyyy");
+            Label dateLabel = new Label();
+            dateLabel.Text = "  " + eventData.eventDate.ToString("dd MMMM yyyy");
             dateDiv.Controls.Add(dateLabel);
 
-        HtmlGenericControl timeDiv = new HtmlGenericControl("div");
-        timeDiv.Attributes["class"] = "time";
-        detailsDiv.Controls.Add(timeDiv);
+            HtmlGenericControl timeDiv = new HtmlGenericControl("div");
+            timeDiv.Attributes["class"] = "time";
+            detailsDiv.Controls.Add(timeDiv);
 
-        Label timeIcon = new Label();
-        timeIcon.CssClass = "far fa-clock";
-        timeDiv.Controls.Add(timeIcon);
+            Label timeIcon = new Label();
+            timeIcon.CssClass = "far fa-clock";
+            timeDiv.Controls.Add(timeIcon);
 
-        Label timeLabel = new Label();
-        timeLabel.Text = "  " + eventData.eventTime.ToString(@"hh\:mm");
-        timeDiv.Controls.Add(timeLabel);
+            Label timeLabel = new Label();
+            timeLabel.Text = "  " + eventData.eventTime.ToString(@"hh\:mm");
+            timeDiv.Controls.Add(timeLabel);
 
-        Button seeMoreButton = new Button();
-        seeMoreButton.Text = "SEE MORE";
-        seeMoreButton.CssClass = "learnmoreBtn";
-        seeMoreButton.Click += (s, args) => btnLearnMore_Click(s, EventArgs.Empty, eventId);
-        contentDiv.Controls.Add(seeMoreButton);
+            Button seeMoreButton = new Button();
+            seeMoreButton.Text = "SEE MORE";
+            seeMoreButton.CssClass = "learnmoreBtn";
+            seeMoreButton.Click += (s, args) => btnLearnMore_Click(s, args, eventId); 
+            contentDiv.Controls.Add(seeMoreButton);
 
-        return div;
+            return div;
         }
+
 
         protected void btnAddEvent_Click(object sender, EventArgs e)
         {

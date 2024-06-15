@@ -188,43 +188,46 @@ namespace vv.webpages
         {
             Guid userId = new Guid(Session["UserId"].ToString());
             string eventIdString = Request.QueryString["eventId"];
-            Guid eventId = new Guid(eventIdString);
-            int rowsAffected = 0;
 
-            if (IsUserSubscribed(eventId, userId))
+            if (!string.IsNullOrEmpty(eventIdString) && Guid.TryParse(eventIdString, out Guid eventId))
             {
-                string dataToSend = "You have already subscribed to this event! Please check your calendar.";
-                string url = "popups/participantsAdditionPopup.aspx?data=" + Server.UrlEncode(dataToSend);
-                string script = "window.open('" + url + "', '_blank', 'width=400,height=250,top=250,left=450,toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes');";
-                ClientScript.RegisterStartupScript(this.GetType(), "openwindow", script, true);
-            }
-            else
-            {
-                string connectionString = ConfigurationManager.ConnectionStrings["VoiceVanguardDB"].ConnectionString;
-                string query = "INSERT INTO participants VALUES (@eventid, @userid)";
-
-                using (SqlConnection connection = new SqlConnection(connectionString))
+                if (IsUserSubscribed(eventId, userId))
                 {
-                    SqlCommand command = new SqlCommand(query, connection);
-                    command.Parameters.AddWithValue("@eventid", eventId);
-                    command.Parameters.AddWithValue("@userid", userId);
+                    // User is already subscribed, show appropriate message
+                    string dataToSend = "You have already subscribed to this event! Please check your calendar.";
+                    string url = "popups/participantsAdditionPopup.aspx?data=" + Server.UrlEncode(dataToSend);
+                    string script = "window.open('" + url + "', '_blank', 'width=400,height=250,top=250,left=450,toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes');";
+                    ClientScript.RegisterStartupScript(this.GetType(), "openwindow", script, true);
+                }
+                else
+                {
+                    int rowsAffected = 0;
 
-                    connection.Open();
-                    try
+                    string connectionString = ConfigurationManager.ConnectionStrings["VoiceVanguardDB"].ConnectionString;
+                    string query = "INSERT INTO participants (eventId, userId) VALUES (@eventId, @userId)";
+
+                    using (SqlConnection connection = new SqlConnection(connectionString))
                     {
-                        rowsAffected = command.ExecuteNonQuery();
+                        SqlCommand command = new SqlCommand(query, connection);
+                        command.Parameters.AddWithValue("@eventId", eventId);
+                        command.Parameters.AddWithValue("@userId", userId);
+
+                        connection.Open();
+                        try
+                        {
+                            rowsAffected = command.ExecuteNonQuery();
+                        }
+                        catch (Exception ex)
+                        {
+                            // Handle exception
+                        }
+                        connection.Close();
                     }
-                    catch(Exception ex) { }
 
                     if (rowsAffected > 0)
                     {
-                        Guid notifid = Guid.NewGuid();
-                        NotifTemp notif = new NotifTemp();
-                        TimeSpan time = DateTime.Now - DateTime.Today;
-                        DateTime date = DateTime.Now;
-                        notif.addNotif(notifid, userId, eventId, "EventSubscription", date, time );
                         sendNotifToOrganizer(eventId);
-                       
+
                         string dataToSend = "Event was added to your calendar!\nThank you for your contribution.";
                         string url = "popups/participantsAdditionPopup.aspx?data=" + Server.UrlEncode(dataToSend);
                         string script = "window.open('" + url + "', '_blank', 'width=400,height=250,top=250,left=450,toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes');";
@@ -234,14 +237,13 @@ namespace vv.webpages
                     {
                         string dataToSend = "Something went wrong.\nPlease try again later!";
                         string url = "popups/participantsAdditionPopup.aspx?data=" + Server.UrlEncode(dataToSend);
-                        string script = "window.open('" + url + "', '_blank', 'width=400,height=300,top=250,left=450,toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes');";
+                        string script = "window.open('" + url + "', '_blank', 'width=400,height=250,top=250,left=450,toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes');";
                         ClientScript.RegisterStartupScript(this.GetType(), "openwindow", script, true);
                     }
-
-                    connection.Close();
                 }
             }
         }
+
 
         private void sendNotifToOrganizer(Guid eventid)
         {
