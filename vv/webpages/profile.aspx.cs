@@ -234,10 +234,12 @@ namespace vv.web_pages
 
             if (postNotifIds == null && eventNotifIds == null && commentNotifIds == null)
             {
+                
                 Label notifLabel = new Label();
                 notifLabel.Text = "No activity yet!";
                 notifLabel.CssClass = "noActLabel";
                 activitiesPanel.Controls.Add(notifLabel);
+                
             }
 
             if (eventNotifIds != null && eventNotifIds.Count > 0)

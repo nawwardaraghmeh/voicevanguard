@@ -81,7 +81,7 @@
     margin-left: 20%;
 }
 
-#savebtn, #cancelbtn {
+#savebtn, #cancelbtn, #DeleteProfileButton {
     font-family: "Coustard", serif;
     border-radius: 25px;
     padding: 10px;
@@ -107,4 +107,34 @@
 
 #cancelbtn:hover {
     background-color: #7bcc98;
+}
+
+#DeleteProfileButton {
+    background-color: none;
+    border: 1px black solid;
+    margin-left: 40px;
+}
+
+#DeleteProfileButton:hover {
+    background-color: black;
+    margin-left: 40px;
+    color: white;
+}
+
+#deleteConfirmationPopup {
+    background-color: none;
+    border: 2px #e46262 solid;
+    border-radius: 20px;
+}
+
+#ConfirmDeleteButton, #CancelDeleteButton {
+    font-family: "Coustard", serif;
+    border-radius: 25px;
+    padding: 10px;
+    font-size: 12pt;
+    border: none;
+    cursor: pointer;
+    background-color: #7bcc98;
+    color: white;
+    margin: 5px;
 }
