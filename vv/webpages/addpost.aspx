@@ -39,7 +39,7 @@
     <br />
 
     <form id="form1" runat="server">
-
+        <uc:Notification ID="Notification1" runat="server" />
         <h1 id="pageTitle">ADD POST</h1>
 
         <div id="heroDiv">

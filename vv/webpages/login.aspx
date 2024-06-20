@@ -30,7 +30,7 @@
 
             <br />
 
-            <asp:LinkButton runat="server" ID="forgotPasswordLink" Text="Forgot Password?" 
+            <asp:LinkButton CausesValidation="false" runat="server" ID="forgotPasswordLink" Text="Forgot Password?" 
                 OnClick="forgotPasswordLink_Click"></asp:LinkButton>
             <asp:Button runat="server" ID="btnLogin" Text="LOGIN" CssClass="btnLoginStyle" 
                 OnClick="btnLogin_Click"  />
