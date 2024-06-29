@@ -24,6 +24,7 @@ rel="stylesheet">
                     <label>Name</label>
                     <label>E-Mail</label>
                     <label>Password</label>
+                    <br />
                     <label>Confirm Password</label>
                     <br />
                     <label>Date of Birth</label>
@@ -49,6 +50,10 @@ rel="stylesheet">
                     <asp:TextBox runat="server" ID="txtboxPass" CssClass="txtboxStyles" TextMode="Password"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="rfvPassword" runat="server" CssClass="errorlbl" ControlToValidate="txtboxPass"
                         ErrorMessage="Password is required"></asp:RequiredFieldValidator>
+                    <asp:RegularExpressionValidator ID="revPassword" runat="server" CssClass="errorlbl"
+                        ControlToValidate="txtboxPass"
+                        ErrorMessage="Invalid password format."
+                        ValidationExpression="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&#])[A-Za-z\d@$!%*?&#]{8,}$"></asp:RegularExpressionValidator>
                     <br />
 
                     <asp:TextBox runat="server" ID="txtboxConfirmPass" CssClass="txtboxStyles" TextMode="Password"></asp:TextBox>
