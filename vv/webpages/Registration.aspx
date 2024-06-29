@@ -71,7 +71,7 @@ rel="stylesheet">
                     ID="btnsignup" OnClick="btnsignup_Click"/><br />
                 <p>
                     Already have an account? 
-                    <asp:LinkButton ID="loginLink" runat="server" OnClick="loginLink_Click">Login</asp:LinkButton>
+                    <asp:LinkButton CausesValidation="false" ID="loginLink" runat="server" OnClick="loginLink_Click">Login</asp:LinkButton>
                 </p>
 
                 <img src="../resources/images/icon.png" alt="watermelon icon" />
