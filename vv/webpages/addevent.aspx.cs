@@ -48,7 +48,7 @@ namespace vv.webpages
                 }
 
                 int currentYear = DateTime.Now.Year;
-                for (int year = currentYear; year >= currentYear - 100; year--)
+                for (int year = currentYear; year <= currentYear + 10; year++)
                 {
                     ddlYear.Items.Add(new ListItem(year.ToString(), year.ToString()));
                 }
