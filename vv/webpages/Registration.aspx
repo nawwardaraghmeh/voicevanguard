@@ -1,15 +1,14 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Registration.aspx.cs" Inherits="vv.webpages.Registration" %>
 
 <!DOCTYPE html>
-
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>REGISTER TO VOICECANGUARD</title>
-     <link rel="stylesheet" type="text/css" href="../styles/RegistrationStyles.css"/>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Coustard:wght@400;900&display=swap"
-rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../styles/RegistrationStyles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Coustard:wght@400;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="shortcut icon" type="image/x-icon" href="~/resources/images/icon.ico" />
 </head>
 <body>
@@ -28,7 +27,6 @@ rel="stylesheet">
                     <label>Confirm Password</label>
                     <br />
                     <label>Date of Birth</label>
-
                 </div>
 
                 <div class="inputsDiv">
@@ -51,15 +49,14 @@ rel="stylesheet">
                     <asp:RequiredFieldValidator ID="rfvPassword" runat="server" CssClass="errorlbl" ControlToValidate="txtboxPass"
                         ErrorMessage="Password is required"></asp:RequiredFieldValidator>
                     <asp:RegularExpressionValidator ID="revPassword" runat="server" CssClass="errorlbl"
-                        ControlToValidate="txtboxPass"
-                        ErrorMessage="Invalid password format."
-                        ValidationExpression="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&#])[A-Za-z\d@$!%*?&#]{8,}$"></asp:RegularExpressionValidator>
+                        ControlToValidate="txtboxPass" ErrorMessage="Invalid password format." ValidationExpression="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&#])[A-Za-z\d@$!%*?&#]{8,}$"
+                        ClientValidationFunction="validatePassword"></asp:RegularExpressionValidator>
                     <br />
 
                     <asp:TextBox runat="server" ID="txtboxConfirmPass" CssClass="txtboxStyles" TextMode="Password"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="rfvConfirmPassword" runat="server" CssClass="errorlbl"
                         ControlToValidate="txtboxConfirmPass" ErrorMessage="Confirm Password is required"></asp:RequiredFieldValidator>
-                    <asp:CompareValidator ID="cvConfirmPassword" runat="server"  CssClass="errorlbl"
+                    <asp:CompareValidator ID="cvConfirmPassword" runat="server" CssClass="errorlbl"
                         ControlToValidate="txtboxConfirmPass" ControlToCompare="txtboxPass" ErrorMessage="Passwords don't match"></asp:CompareValidator>
                     <br />
 
@@ -71,16 +68,16 @@ rel="stylesheet">
                 </div>
             </div>
 
-        <div class="submitAndLinkDiv">
-                <asp:Button runat="server" Text="SIGNUP" CssClass="btnSignupStyle" 
-                    ID="btnsignup" OnClick="btnsignup_Click"/><br />
+            <div class="submitAndLinkDiv">
+                <asp:Button runat="server" Text="SIGNUP" CssClass="btnSignupStyle" ID="btnsignup" OnClick="btnsignup_Click"/><br />
                 <p>
                     Already have an account? 
                     <asp:LinkButton CausesValidation="false" ID="loginLink" runat="server" OnClick="loginLink_Click">Login</asp:LinkButton>
                 </p>
-
                 <img src="../resources/images/icon.png" alt="watermelon icon" />
             </div>
+        </div>
     </form>
+
 </body>
 </html>
