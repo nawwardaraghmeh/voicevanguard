@@ -561,6 +561,7 @@
   <ItemGroup>
     <Content Include="resources\images\addcomment.png" />
     <Content Include="resources\images\commentadded.png" />
+    <Content Include="resources\images\eventCancel.png" />
     <Content Include="resources\images\postadded.png" />
     <Content Include="webpages\addpost.aspx" />
     <Content Include="App_Data\VV.mdf" />

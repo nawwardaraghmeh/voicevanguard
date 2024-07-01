@@ -6,6 +6,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
+    <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="../styles/addEventStyles.css">
     <link rel="stylesheet" type="text/css" href="../styles/headerfooterStyles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
