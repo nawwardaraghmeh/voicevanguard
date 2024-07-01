@@ -45,7 +45,12 @@
                         ErrorMessage="Email is required"></asp:RequiredFieldValidator>
                     <br />
 
-                    <asp:TextBox runat="server" ID="txtboxPass" CssClass="txtboxStyles" TextMode="Password"></asp:TextBox>
+                    <div class="passwordIcon">
+                    <asp:TextBox runat="server" ID="txtboxPass" CssClass="txtboxStyles" TextMode="Password"></asp:TextBox><i class="fa fa-question-circle fa-xl" aria-hidden="true" title="please make sure password contains:
+1- a capital and small letter 
+2- a number
+3- a special symbol 
+4- minimum eight characters long"></i></div>
                     <asp:RequiredFieldValidator ID="rfvPassword" runat="server" CssClass="errorlbl" ControlToValidate="txtboxPass"
                         ErrorMessage="Password is required"></asp:RequiredFieldValidator>
                     <asp:RegularExpressionValidator ID="revPassword" runat="server" CssClass="errorlbl"

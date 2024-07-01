@@ -123,3 +123,12 @@ img {
 .ddlStyle {
     width: 107px;
 }
+
+.passwordIcon {
+    display: flex;
+    width: 100%;
+}
+
+i{
+    margin-left:10px;
+}
