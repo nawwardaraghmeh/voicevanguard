@@ -93,6 +93,9 @@ namespace vv.webpages
                     case "CommentAddedtoPost":
                         notifImage.ImageUrl = "~/resources/images/commentadded.png";
                         break;
+                    case "EventCancellation":
+                        notifImage.ImageUrl = "~/resources/images/eventCancel.png";
+                        break;
                 }
                 notifPanel.Controls.Add(notifImage);
 
@@ -121,6 +124,9 @@ namespace vv.webpages
                         break;
                     case "CommentAddedtoPost":
                         notifLabel.Text = "1 person commented on your post!";
+                        break;
+                    case "EventCancellation":
+                        notifLabel.Text = "1 event you subscribed to got deleted got deleted.";
                         break;
                 }
 

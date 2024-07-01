@@ -3,6 +3,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
+    <meta charset="UTF-8">
     <title>REGISTER TO VOICECANGUARD</title>
     <link rel="stylesheet" type="text/css" href="../styles/RegistrationStyles.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
