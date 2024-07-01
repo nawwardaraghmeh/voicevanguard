@@ -232,6 +232,7 @@ namespace vv.webpages
                         string url = "popups/participantsAdditionPopup.aspx?data=" + Server.UrlEncode(dataToSend);
                         string script = "window.open('" + url + "', '_blank', 'width=400,height=250,top=250,left=450,toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes');";
                         ClientScript.RegisterStartupScript(this.GetType(), "openwindow", script, true);
+                        Response.Redirect(Request.RawUrl);
                     }
                     else
                     {
