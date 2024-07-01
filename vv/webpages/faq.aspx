@@ -65,13 +65,28 @@
                 </div>
 
                         <div class="faq-item">
+            <div class="question" onclick="toggleAnswer(this)">
+                            What does the watermelon stand for?
+            <i class="fas fa-chevron-down arrow"></i>
+                        </div>
+                        <div class="answer">
+                            The watermelon is a symbol that expresses the Palestinian
+                            struggle against its occupying forces.
+                            Palestinian people's voices have always been censored and
+                            repressed by the general media, so we wanted to create a
+                            space where anyone can fight for what they believe in without having their voices taken away. It is a matter we truly care about, therefore we have used the watermelon as our icon.
+
+                        </div>
+                    </div>
+
+                        <div class="faq-item">
                             <div class="question" onclick="toggleAnswer(this)">
                                 Can I create my own events on VoiceVanguard?
                 <i class="fas fa-chevron-down arrow"></i>
                             </div>
                             <div class="answer">
                                 Yes, anyone can create an event on VoiceVanguard.
-                                However, please use common sense and do not post innapropriate events.
+                                However, please use common sense and do not post inappropriate events.
                             </div>
                         </div>
 

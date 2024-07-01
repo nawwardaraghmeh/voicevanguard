@@ -3,6 +3,7 @@ using System.Configuration;
 using System.Data.SqlClient;
 using System.Net;
 using System.Net.Mail;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.UI;
 
@@ -95,7 +96,15 @@ namespace vv.webpages
                 Body = body
             })
             {
-                smtp.Send(message);
+                try
+                {
+                    smtp.Send(message);
+                }
+                catch(TaskCanceledException)
+                {
+                    Response.Write("<script>alert('" + "The page took too long to load. " +
+                        "Please try again later."  + ")</script>");
+                }
             }
         }
     }
