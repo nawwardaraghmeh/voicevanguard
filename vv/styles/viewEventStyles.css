@@ -80,7 +80,7 @@ form#vieweventform {
     width: 65%;
     display: flex;
     justify-content: space-between;
-    margin: auto;
+    /*margin: auto; */
 }
 
 .eventIcon {
