@@ -99,4 +99,5 @@ a:link {
 .errorlbl {
     color: #DE2B2B;
     font-family: "Coustard", serif;
+    margin-bottom: 10px;
 }

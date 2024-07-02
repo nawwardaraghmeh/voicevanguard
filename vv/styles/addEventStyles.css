@@ -14,7 +14,7 @@ form#addEventForm {
 }
 
 #addEventForm * {
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 #addEventForm input[type="text"], select, #txtDesc, input[type="file"] {
@@ -128,4 +128,10 @@ form#addEventForm {
 
 .physicalRbutton, .virtualRbutton {
     width: 46%;
+}
+
+.errorlbl {
+    color: #DE2B2B;
+    font-family: "Coustard", serif;
+    margin-bottom: 10px;
 }

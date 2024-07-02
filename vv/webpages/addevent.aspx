@@ -47,30 +47,40 @@
         <asp:Label ID="lblTitle" runat="server" Text="TITLE"></asp:Label>
         <br />
         <asp:TextBox ID="txtTitle" runat="server"></asp:TextBox>
+        <asp:RequiredFieldValidator ID="rfvTitle" runat="server" ControlToValidate="txtTitle" ErrorMessage="Title is required." CssClass="errorlbl" />
         <br />
+
         <asp:Label ID="lblDesc" runat="server" Text="DESCRIPTION"></asp:Label>
         <br />
         <asp:TextBox ID="txtDesc" runat="server" TextMode="MultiLine"></asp:TextBox>
+        <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtDesc" ErrorMessage="Description is required." CssClass="errorlbl" />
         <br />
-        
+
         <asp:Label ID="lblPic" runat="server" Text="PICTURE"></asp:Label>
         <br />
         <asp:FileUpload runat="server" ID="eventPicUpload" /> <!--code here-->
         <asp:Label ID="MessageLabel" runat="server" Text=""></asp:Label>
-
         <br />
+        <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="eventPicUpload" ErrorMessage="Picture is required." CssClass="errorlbl" />
+        
         <div class="dateInputDiv">
             <asp:Label ID="lblDate" runat="server" Text="DATE"></asp:Label>
             <br />
+
             <asp:DropDownList ID="ddlDay" runat="server" CssClass="ddlStyle">
                 <asp:ListItem Value="default" Selected>Day</asp:ListItem>
             </asp:DropDownList>
+         
+
             <asp:DropDownList ID="ddlMonth" runat="server" CssClass="ddlStyle">
                 <asp:ListItem Value="default" Selected>Month</asp:ListItem>
             </asp:DropDownList>
+            
+
             <asp:DropDownList ID="ddlYear" runat="server" CssClass="ddlStyle">
                 <asp:ListItem Value="default" Selected>Year</asp:ListItem>
             </asp:DropDownList>
+            
         </div>
         <br />
 
@@ -78,6 +88,7 @@
         <div class="timeInputDiv">
             <asp:Label ID="lblTime" runat="server" Text="TIME"></asp:Label>
 
+            <div style="display:flex">
             <asp:DropDownList runat="server" ID="selectTimeH">
                 <asp:ListItem Value="default" Selected>Hour</asp:ListItem>
                 <asp:ListItem Value="1">01</asp:ListItem>
@@ -105,7 +116,9 @@
                 <asp:ListItem Value="23">23</asp:ListItem>
                 <asp:ListItem Value="24">24</asp:ListItem>
             </asp:DropDownList>
-
+            <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="selectTimeH" ErrorMessage="Please select an hour." CssClass="errorlbl" />
+                </div>
+            <div style="display:flex">
             <asp:DropDownList runat="server" ID="selectTimeM">
                 <asp:ListItem Value="default" Selected>Minute</asp:ListItem>
                 <asp:ListItem Value="0">00</asp:ListItem>
@@ -121,6 +134,8 @@
                 <asp:ListItem Value="50">50</asp:ListItem>
                 <asp:ListItem Value="55">55</asp:ListItem>
             </asp:DropDownList>
+            <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ControlToValidate="selectTimeM" ErrorMessage="Please select a minute." CssClass="errorlbl" />
+                </div>
         </div>
         <br />
 
@@ -154,6 +169,7 @@
                 <asp:ListItem Value="23">23</asp:ListItem>
                 <asp:ListItem Value="24">24</asp:ListItem>
             </asp:DropDownList>
+            <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ControlToValidate="selectDurationH" ErrorMessage="Please select an hour." CssClass="errorlbl" />
 
             <asp:DropDownList runat="server" ID="selectDurationM">
                 <asp:ListItem Value="default" Selected>Minute</asp:ListItem>
@@ -170,7 +186,6 @@
                 <asp:ListItem Value="50">50</asp:ListItem>
                 <asp:ListItem Value="55">55</asp:ListItem>
             </asp:DropDownList>
-
         </div>
         <br />
 
