@@ -50,6 +50,8 @@
             <div id="secondDiv">
                 <asp:TextBox runat="server" type="text" ID="contentBox" placeholder="What's On Your Mind?" TextMode="MultiLine"
                     required="required" /><br />
+            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="contentBox" ErrorMessage="Content is required." CssClass="errorlbl" />
+
             </div>
             <br />
             <asp:Button runat="server" Text="POST" ID="postBtn" OnClick="postBtn_Click" />
