@@ -99,10 +99,13 @@ namespace vv.webpages.popups
         {
             Guid userId = new Guid(Session["UserId"].ToString());
 
-            DeleteUserProfile(userId);
 
             string script = "<script>window.opener.location.href = '../index.aspx'; window.close();</script>";
             ClientScript.RegisterStartupScript(this.GetType(), "Redirect", script);
+
+            DeleteUserProfile(userId);
+
+            Session.Abandon();
         }
 
         private void DeleteUserProfile(Guid userId)
