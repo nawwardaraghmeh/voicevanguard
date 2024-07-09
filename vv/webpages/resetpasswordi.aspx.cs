@@ -100,7 +100,7 @@ namespace vv.webpages
                 {
                     smtp.Send(message);
                 }
-                catch(TaskCanceledException)
+                catch(Exception e)
                 {
                     Response.Write("<script>alert('" + "The page took too long to load. " +
                         "Please try again later."  + ")</script>");
