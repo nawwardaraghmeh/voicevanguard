@@ -58,7 +58,7 @@
 
         <asp:Label ID="lblPic" runat="server" Text="PICTURE"></asp:Label>
         <br />
-        <asp:FileUpload runat="server" ID="eventPicUpload" /> <!--code here-->
+        <asp:FileUpload runat="server" ID="eventPicUpload" /> 
         <asp:Label ID="MessageLabel" runat="server" Text=""></asp:Label>
         <br />
         <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="eventPicUpload" ErrorMessage="Picture is required." CssClass="errorlbl" />
