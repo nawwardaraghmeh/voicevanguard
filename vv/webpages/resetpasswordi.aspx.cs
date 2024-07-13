@@ -25,30 +25,34 @@ namespace vv.webpages
             string token = "exampletoken";
             string resetUrl = GetResetPasswordUrl(token);
             string userEmail = setEmailtxtbox.Text;
-            bool emailSent = false;
 
-            if (userEmail != "" && doesEmailExist(userEmail))
-            {
-                SendResetPasswordEmail(userEmail, resetUrl);
-                emailSent = true;
-            }
-            else if(userEmail == "")
+            if (string.IsNullOrEmpty(userEmail))
             {
                 errorlbl.Text = "Please provide an email address.";
-            }
-            else if(!doesEmailExist(userEmail))
-            {
-                errorlbl.Text = "Email doesn't exist.";
+                return;
             }
 
-            if (emailSent)
+            if (!doesEmailExist(userEmail))
             {
+                errorlbl.Text = "Email doesn't exist.";
+                return;
+            }
+
+            try
+            {
+                SendResetPasswordEmail(userEmail, resetUrl);
                 Session["UserEmail"] = userEmail;
                 Response.Redirect("~/webpages/resetlink.aspx");
             }
+            catch (Exception ex)
+            {
+                errorlbl.Text = "An error occurred while sending the email. Please try again.";
+                ScriptManager.RegisterStartupScript(this, GetType(), "alert", "alert('The email could not be sent. Please try again later.');", true);
+            }
         }
 
-         private bool doesEmailExist(string email)
+
+        private bool doesEmailExist(string email)
          {
              string connectionString = ConfigurationManager.ConnectionStrings["VoiceVanguardDB"].ConnectionString;
              string query = "SELECT COUNT(*) FROM users WHERE email = @email";
@@ -96,16 +100,10 @@ namespace vv.webpages
                 Body = body
             })
             {
-                try
-                {
-                    smtp.Send(message);
-                }
-                catch(Exception e)
-                {
-                    Response.Write("<script>alert('" + "The page took too long to load. " +
-                        "Please try again later."  + ")</script>");
-                }
+
+                smtp.Send(message);
+
             }
-        }
+        }//
     }
 }
