@@ -41,19 +41,20 @@ form#addEventForm {
     font-weight: 600;
 }
 
-#selectTimeH, #selectTimeM {
-    width: calc(40% - 30px)
+#selectDurationH, #selectDurationM, #selectTimeH, #selectTimeM {
+    /*width: calc(40% - 30px);*/
+    width: 300px;
 }
 
-#selectTimeM {
-    margin-right: 10px;
+#selectDurationH {
+    margin-left: 20px;
 }
 
-#selectDurationH, #selectDurationM {
-    width: calc(40% - 30px)
+#selectTimeH {
+    margin-left: 60px;
 }
 
-#selectDurationM {
+#selectDurationM, #selectTimeM {
     margin-right: 10px;
 }
 
